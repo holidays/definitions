@@ -1,6 +1,6 @@
 # How to contribute
 
-There are multiple ways to help! In this repository we have all of the definitions that are used in holiday calcuations. We rely on users around the world to help keep our definitions accurate and up to date.
+In this repository we have all of the definitions that are used in holiday calcuations. We rely on users around the world to help keep our definitions accurate and up to date.
 
 ## Code of Conduct
 
@@ -25,3 +25,9 @@ Lastly, note that there are many 'meta' regions. For example, there are regions 
 Don't worry about versioning, we'll handle it on our end.
 
 *Tests are required for new definitions*.
+
+## For validation updates
+
+We maintain a `make validate` command to ensure that all YAML definitions match our internal specifications. This is to make working with this repository as independent as possible from the other repositories (like the existing ruby repository). If `make validate` passes then we ensure that anything consuming these files will receive 'correct formats.
+
+If you would like to add to, update, or otherwise fix any of our specs then please fork and submit a PR like you would any other change. Please note that we require 100% test coverage. Your builds will not pass if you fall below 100%.
