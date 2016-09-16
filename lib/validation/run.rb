@@ -11,7 +11,7 @@ require_relative 'test_validator'
 definitions_path = '/../../'
 
 module Definitions
-	class Validate
+  class Validate
     def initialize(path, definition_validator)
       @path = path
       @definition_validator = definition_validator
@@ -31,10 +31,10 @@ module Definitions
 
         definition_count += 1
 
-        definition_file = YAML.load(File.open(target))
         begin
+          definition_file = YAML.load(File.open(target))
           validate!(definition_file)
-        rescue Errors::NoMonths, Errors::InvalidTest => e
+        rescue => e
           puts "Failed on file '#{target}', error: #{e}"
           exit
         end

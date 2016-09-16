@@ -18,7 +18,8 @@ Here are the steps to take once you have a good idea on what you want to change:
 * Run `make validate` to ensure that all updates match our definition format
 * Open a PR with your changes
 
-Including documentation with your updates is very much appreciated. A simple Wikipedia entry or government link in the comments alongside your changes would be perfect.
+Including documentation with your updates is very much appreciated. A simple Wikipedia entry or government link in the
+comments alongside your changes would be perfect.
 
 Lastly, note that there are many 'meta' regions. For example, there are regions for Europe, Scandinavia, and North America. If your new region(s) falls into these areas consider adding them. You can find these 'meta' regions in `definitions/index.yaml`.
 
@@ -26,8 +27,14 @@ Don't worry about versioning, we'll handle it on our end.
 
 *Tests are required for new definitions*.
 
-## For validation updates
+## Definition Validation
 
-We maintain a `make validate` command to ensure that all YAML definitions match our internal specifications. This is to make working with this repository as independent as possible from the other repositories (like the existing ruby repository). If `make validate` passes then we ensure that anything consuming these files will receive 'correct formats.
+We maintain a `make validate` command to ensure that all YAML definitions match our internal specifications. This is to make
+working with this repository as independent as possible from the other repositories (like the existing ruby repository). If
+`make validate` passes then we ensure that anything consuming these files will receive 'correct' formats.
 
-If you would like to add to, update, or otherwise fix any of our specs then please fork and submit a PR like you would any other change. Please note that we require 100% test coverage. Your builds will not pass if you fall below 100%.
+If you run into any weird `make validate` errors please open an issue or PR and highlight to what you are seeing. The
+validation code is brand-new and might have issues. Maintainers will respond quickly to any open problems.
+
+If you would like to add to, update, or otherwise fix any of our specs then please fork and submit a PR like you would any
+other change. Please note that we require 100% test coverage. Your builds will not pass if you fall below 100%.
