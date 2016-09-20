@@ -1,12 +1,13 @@
 require 'spec_helper'
 require 'validation/custom_method_validator'
 
-describe Definitions::Validator::CustomMethod do
-  let(:definition) {
+describe Definitions::Validation::CustomMethod do
+  let(:methods) {
     {
-      :name => 'test',
-      :arguments => "date,year,month,day",
-      :source => "some source",
+      'test' => {
+        'arguments' => "date,year,month,day",
+        'source' => "some source",
+      }
     }
   }
 
@@ -14,49 +15,45 @@ describe Definitions::Validator::CustomMethod do
 
   context 'success' do
     it 'returns true' do
-      expect(subject.valid?(definition)).to be true
+      expect(subject.call(methods)).to be true
     end
   end
 
   context 'failure' do
     context 'name' do
-      it 'returns false if nil' do
-        definition[:name] = nil
-        expect(subject.valid?(definition)).to be false
-      end
-
       it 'returns false if empty' do
-        definition[:name] = ""
-        expect(subject.valid?(definition)).to be false
+        methods = {}
+        methods[""]  = {}
+        expect { subject.call(methods) }.to raise_error(Definitions::Errors::InvalidCustomMethod)
       end
     end
 
     context 'arguments' do
       it 'returns false if nil' do
-        definition[:arguments] = nil
-        expect(subject.valid?(definition)).to be false
+        methods['test']['arguments'] = nil
+        expect { subject.call(methods) }.to raise_error(Definitions::Errors::InvalidCustomMethod)
       end
 
       it 'returns false if empty' do
-        definition[:arguments] = ""
-        expect(subject.valid?(definition)).to be false
+        methods['test']['arguments'] = ""
+        expect { subject.call(methods) }.to raise_error(Definitions::Errors::InvalidCustomMethod)
       end
 
       it 'returns false if contains unknown variable' do
-        definition[:arguments] = "unknown"
-        expect(subject.valid?(definition)).to be false
+        methods['test']['arguments'] = "unknown"
+        expect { subject.call(methods) }.to raise_error(Definitions::Errors::InvalidCustomMethod)
       end
     end
 
     context 'source' do
       it 'returns false if nil' do
-        definition[:source] = nil
-        expect(subject.valid?(definition)).to be false
+        methods['test']['source'] = nil
+        expect { subject.call(methods) }.to raise_error(Definitions::Errors::InvalidCustomMethod)
       end
 
       it 'returns false if empty' do
-        definition[:source] = ""
-        expect(subject.valid?(definition)).to be false
+        methods['test']['source'] = ""
+        expect { subject.call(methods) }.to raise_error(Definitions::Errors::InvalidCustomMethod)
       end
     end
   end

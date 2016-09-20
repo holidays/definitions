@@ -2,49 +2,61 @@
 
 require 'yaml'
 
-require 'validation/custom_method_validator'
+require_relative 'error'
+require_relative 'definition_validator'
+require_relative 'custom_method_validator'
+require_relative 'month_validator'
+require_relative 'test_validator'
+
+definitions_path = '/../../'
 
 module Definitions
-	class Validate
-    def initialize(custom_method_validator = Definitions::Validator::CustomMethod.new)
-      @custom_method_validator = custom_method_validator
+  class Validate
+    def initialize(path, definition_validator)
+      @path = path
+      @definition_validator = definition_validator
     end
 
-		def call(definitions_path)
-			path = File.expand_path(File.dirname(__FILE__)) + definitions_path
+    def call
+      path = File.expand_path(File.dirname(__FILE__)) + @path
 
       definition_count = 0
 
-			Dir.foreach(path) do |item|
-				next if item == '.' or item == '..'
+      Dir.foreach(path) do |item|
+        next if item == '.' or item == '..'
 
-				target = path+item
-				next if File.extname(target) != '.yaml'
+        target = path+item
+        next if File.extname(target) != '.yaml'
+        next if item == 'index.yaml'
 
         definition_count += 1
 
-				definition_file = YAML.load_file(target)
-        #validate!(definition_file)
-
-        #validator.valid?(definition_file['methods'])
-			end
+        begin
+          definition_file = YAML.load(File.open(target))
+          validate!(definition_file)
+        rescue => e
+          puts "Failed on file '#{target}', error: #{e}"
+          exit
+        end
+      end
 
       puts "Success!"
       puts "Definition count: #{definition_count}"
-		end
+    end
 
     private
 
-		def validate!(definition)
-			raise ArgumentError unless methods.all? do |name, pieces|
-				@validator.valid?(
-					{
-						:name => name,
-						:arguments => pieces["arguments"],
-						:source => pieces["source"]
-					}
-				)
-			end
-		end
-	end
+    def validate!(definition)
+      raise StandardError unless @definition_validator.call(definition)
+    end
+  end
 end
+
+Definitions::Validate.new(
+  definitions_path,
+  Definitions::Validation::Definition.new(
+    Definitions::Validation::CustomMethod.new,
+    Definitions::Validation::Month.new,
+    Definitions::Validation::Test.new,
+  ),
+).call

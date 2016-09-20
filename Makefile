@@ -1,7 +1,7 @@
 default: validate
 
 validate:
-	bundle exec ruby validate.rb
+	bundle exec ruby lib/validation/run.rb
 
 test:
 	bundle exec rspec

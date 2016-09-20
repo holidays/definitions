@@ -1,31 +1,38 @@
+require_relative 'error'
+
 module Definitions
-	module Validator
-		class CustomMethod
-			VALID_ARGUMENTS = ["date", "year", "month", "day"]
+  module Validation
+    class CustomMethod
+      VALID_ARGUMENTS = ["date", "year", "month", "day"]
 
-			def valid?(m)
-				valid_name?(m[:name]) &&
-					valid_arguments?(m[:arguments]) &&
-					valid_source?(m[:source])
-			end
+      def call(methods)
+        methods.each do |name, method|
+          raise Errors::InvalidCustomMethod unless
+          valid_name?(name) &&
+            valid_arguments?(method['arguments']) &&
+            valid_source?(method['source'])
+        end
 
-			private
+        true
+      end
 
-			def valid_name?(name)
-				!name.nil? && !name.empty?
-			end
+      private
 
-			def valid_arguments?(arguments)
-				!arguments.nil? &&
+      def valid_name?(name)
+        !name.nil? && !name.empty?
+      end
+
+      def valid_arguments?(arguments)
+        !arguments.nil? &&
           !arguments.empty? &&
           arguments.split(",").all? { |arg|
-					arg == arg.chomp && VALID_ARGUMENTS.include?(arg.strip)
-				}
-			end
+            arg == arg.chomp && VALID_ARGUMENTS.include?(arg.strip)
+          }
+      end
 
-			def valid_source?(source)
-				!source.nil? && !source.empty?
-			end
-		end
-	end
+      def valid_source?(source)
+        !source.nil? && !source.empty?
+      end
+    end
+  end
 end
