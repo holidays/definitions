@@ -5,7 +5,7 @@
 # - http://www.docep.wa.gov.au/lr/LabourRelations/Content/Wages%20and%20Conditions/Public%20Holidays/Public_Holidays.html
 # - http://www.wst.tas.gov.au/employment_info/public_holidays
 # - https://www.fairwork.gov.au/leave/public-holidays/list-of-public-holidays
----
+--- 
 months:
   0:
   - name: Good Friday
@@ -140,10 +140,8 @@ months:
     week: 1
   - name: Melbourne Cup Day
     regions: [au_vic_melbourne]
-    function: melbourne_cup_day_melbourne_only(year)
-  - name: Melbourne Cup Day
-    regions: [au_vic, au_vic_melbourne]
-    function: melbourne_cup_day_all_vic(year)
+    week: 1
+    wday: 2
   12:
   - name: Christmas Day # CHRISTMAS DAY - ACT, NSW, QLD, Tas, WA observe on 27th (and 25th) if 25th is a Sunday
     regions: [au_qld, au_nsw, au_act, au_tas, au_wa]
@@ -168,18 +166,6 @@ months:
     function: to_weekday_if_boxing_weekend_from_year(year)
 
 methods:
-  melbourne_cup_day_melbourne_only:
-    arguments: year
-    source: |
-      if year <= 2015
-        Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 11, :first, :tuesday)
-      end
-  melbourne_cup_day_all_vic:
-    arguments: year
-    source: |
-      if year >= 2016
-        Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 11, :first, :tuesday)
-      end
   afl_grand_final:
     arguments: year
     source: |
@@ -327,11 +313,6 @@ tests: |
 
     assert_equal 'Melbourne Cup Day', Holidays.on(Date.civil(2014,11,4), :au_vic_melbourne)[0][:name]
     assert_equal 'Melbourne Cup Day', Holidays.on(Date.civil(2015,11,3), :au_vic_melbourne)[0][:name]
-
-    assert_equal 'Melbourne Cup Day', Holidays.on(Date.civil(2016,11,1), :au_vic)[0][:name]
-    assert_equal 'Melbourne Cup Day', Holidays.on(Date.civil(2017,11,7), :au_vic)[0][:name]
-    assert_equal 'Melbourne Cup Day', Holidays.on(Date.civil(2016,11,1), :au_vic_melbourne)[0][:name]
-    assert_equal 'Melbourne Cup Day', Holidays.on(Date.civil(2017,11,7), :au_vic_melbourne)[0][:name]
 
     assert_equal 'Friday before the AFL Grand Final', Date.civil(2015,10,2).holidays(:au_vic)[0][:name]
     assert_equal 'Friday before the AFL Grand Final', Date.civil(2016,9, 30).holidays(:au_vic)[0][:name]
