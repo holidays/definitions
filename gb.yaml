@@ -96,56 +96,259 @@ months:
     regions: [gb]
     mday: 26
     observed: to_weekday_if_boxing_weekend(date)
-tests: |
-    {Date.civil(2008,3,21) => 'Good Friday',
-     Date.civil(2008,3,23) => 'Easter Sunday',
-     Date.civil(2008,5,5) => 'May Day',
-     Date.civil(2008,5,26) => 'Bank Holiday',
-     Date.civil(2008,11,5) => 'Guy Fawkes Day',
-     Date.civil(2008,12,25) => 'Christmas Day',
-     Date.civil(2008,12,26) => 'Boxing Day'}.each do |date, name|
-      assert_equal name, (Holidays.on(date, :gb, :informal)[0] || {})[:name]
-    end
 
-    assert_equal 'St. Patrick\'s Day', Holidays.on(Date.civil(2008,3,17), :gb_nir, :informal)[0][:name]
-
-    # St. Andrew's Day is informal 2006 and earlier. Should only show up when :informal is passed
-    assert_equal 'St. Andrew\'s Day', Holidays.on(Date.civil(2006,11,30), :gb_sct, :informal)[0][:name]
-    assert_equal 'St. Andrew\'s Day', Holidays.on(Date.civil(2006,11,30), :gb_sct, :informal, :observed)[0][:name]
-    assert_equal 'St. Andrew\'s Day', Holidays.on(Date.civil(2002,12,2), :gb_sct, :informal, :observed)[0][:name]
-    assert_equal [], Holidays.on(Date.civil(2004,11,30), :gb_sct)
-    assert_equal [], Holidays.on(Date.civil(2005,11,30), :gb_sct)
-    assert_equal [], Holidays.on(Date.civil(2006,11,30), :gb_sct)
-
-    # St. Andrew's Day is considered a formal bank holiday 2007 and later. It should show up regardless of whether
-    # :informal is specified
-    assert_equal 'St. Andrew\'s Day', Holidays.on(Date.civil(2007,11,30), :gb_sct)[0][:name]
-    assert_equal 'St. Andrew\'s Day', Holidays.on(Date.civil(2007,11,30), :gb_sct, :informal)[0][:name]
-    assert_equal 'St. Andrew\'s Day', Holidays.on(Date.civil(2007,11,30), :gb_sct, :informal, :observed)[0][:name]
-    assert_equal 'St. Andrew\'s Day', Holidays.on(Date.civil(2016,11,30), :gb_sct)[0][:name]
-    assert_equal 'St. Andrew\'s Day', Holidays.on(Date.civil(2019,11,30), :gb_sct)[0][:name]
-    assert_equal 'St. Andrew\'s Day', Holidays.on(Date.civil(2019,12,2), :gb_sct, :observed)[0][:name]
-
-    assert_equal 'Christmas Day', Holidays.on(Date.civil(2008,12,25), :gb_, :observed)[0][:name]
-    assert_equal 'Christmas Day', Holidays.on(Date.civil(2009,12,25), :gb_, :observed)[0][:name]
-    assert_equal 'Christmas Day', Holidays.on(Date.civil(2010,12,27), :gb_, :observed)[0][:name]
-
-    assert_equal 'Boxing Day', Holidays.on(Date.civil(2008,12,26), :gb_, :observed)[0][:name]
-    assert_equal 'Boxing Day', Holidays.on(Date.civil(2009,12,28), :gb_, :observed)[0][:name]
-    assert_equal 'Boxing Day', Holidays.on(Date.civil(2010,12,28), :gb_, :observed)[0][:name]
-    assert_equal 'Boxing Day', Holidays.on(Date.civil(2011,12,27), :gb_, :observed)[0][:name]
-
-    assert_equal 'New Year\'s Day', Holidays.on(Date.civil(2010,1,1), :gb, :observed)[0][:name]
-    assert_equal 'New Year\'s Day', Holidays.on(Date.civil(2011,1,3), :gb, :observed)[0][:name]
-    assert_equal 'New Year\'s Day', Holidays.on(Date.civil(2012,1,2), :gb, :observed)[0][:name]
-
-    assert_equal '2nd January', Holidays.on(Date.civil(2010,1,4), :gb_sct, :observed)[0][:name]
-    assert_equal '2nd January', Holidays.on(Date.civil(2011,1,4), :gb_sct, :observed)[0][:name]
-    assert_equal '2nd January', Holidays.on(Date.civil(2012,1,3), :gb_sct, :observed)[0][:name]
-    assert_equal '2nd January', Holidays.on(Date.civil(2013,1,2), :gb_sct, :observed)[0][:name]
-    assert_equal '2nd January', Holidays.on(Date.civil(2014,1,2), :gb_sct, :observed)[0][:name]
-
-    [:gb_wls, :gb_eng, :gb_nir, :gb_eaw, :gb_].each do |r|
-      assert_equal 'Easter Monday', Holidays.on(Date.civil(2008,3,24), r)[0][:name]
-      assert_equal 'Bank Holiday', Holidays.on(Date.civil(2008,8,25), r)[0][:name]
-    end
+tests:
+  - given:
+      date: '2008-03-21'
+      regions: ["gb"]
+      options: ["informal"]
+    expect:
+      name: "Good Friday"
+  - given:
+      date: '2008-03-23'
+      regions: ["gb"]
+      options: ["informal"]
+    expect:
+      name: "Easter Sunday"
+  - given:
+      date: '2008-05-05'
+      regions: ["gb"]
+      options: ["informal"]
+    expect:
+      name: "May Day"
+  - given:
+      date: '2008-05-26'
+      regions: ["gb"]
+      options: ["informal"]
+    expect:
+      name: "Bank Holiday"
+  - given:
+      date: '2008-11-05'
+      regions: ["gb"]
+      options: ["informal"]
+    expect:
+      name: "Guy Fawkes Day"
+  - given:
+      date: '2008-12-25'
+      regions: ["gb"]
+      options: ["informal"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: '2008-12-26'
+      regions: ["gb"]
+      options: ["informal"]
+    expect:
+      name: "Boxing Day"
+  - given:
+      date: '2008-03-17'
+      regions: ["gb_nir"]
+      options: ["informal"]
+    expect:
+      name: "St. Patrick's Day"
+  - given:
+      date: '2006-11-30'
+      regions: ["gb_sct"]
+      options: ["informal"]
+    expect:
+      name: "St. Andrew's Day"
+  - given:
+      date: '2006-11-30'
+      regions: ["gb_sct"]
+      options: ["informal", "observed"]
+    expect:
+      name: "St. Andrew's Day"
+  - given:
+      date: '2002-12-02'
+      regions: ["gb_sct"]
+      options: ["informal", "observed"]
+    expect:
+      name: "St. Andrew's Day"
+  - given:
+      date: '2004-11-30'
+      regions: ["gb_sct"]
+    expect:
+      holiday: false
+  - given:
+      date: '2005-11-30'
+      regions: ["gb_sct"]
+    expect:
+      holiday: false
+  - given:
+      date: '2006-11-30'
+      regions: ["gb_sct"]
+    expect:
+      holiday: false
+  - given:
+      date: '2007-11-30'
+      regions: ["gb_sct"]
+    expect:
+      name: "St. Andrew's Day"
+  - given:
+      date: '2007-11-30'
+      regions: ["gb_sct"]
+      options: ["informal"]
+    expect:
+      name: "St. Andrew's Day"
+  - given:
+      date: '2007-11-30'
+      regions: ["gb_sct"]
+      options: ["informal", "observed"]
+    expect:
+      name: "St. Andrew's Day"
+  - given:
+      date: '2016-11-30'
+      regions: ["gb_sct"]
+    expect:
+      name: "St. Andrew's Day"
+  - given:
+      date: '2019-11-30'
+      regions: ["gb_sct"]
+    expect:
+      name: "St. Andrew's Day"
+  - given:
+      date: '2019-11-30'
+      regions: ["gb_sct"]
+      options: ["observed"]
+    expect:
+      name: "St. Andrew's Day"
+  - given:
+      date: '2008-12-25'
+      regions: ["gb_"]
+      options: ["observed"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: '2009-12-25'
+      regions: ["gb_"]
+      options: ["observed"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: '2010-12-27'
+      regions: ["gb_"]
+      options: ["observed"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: '2008-12-26'
+      regions: ["gb_"]
+      options: ["observed"]
+    expect:
+      name: "Boxing Day"
+  - given:
+      date: '2009-12-28'
+      regions: ["gb_"]
+      options: ["observed"]
+    expect:
+      name: "Boxing Day"
+  - given:
+      date: '2010-12-28'
+      regions: ["gb_"]
+      options: ["observed"]
+    expect:
+      name: "Boxing Day"
+  - given:
+      date: '2011-12-27'
+      regions: ["gb_"]
+      options: ["observed"]
+    expect:
+      name: "Boxing Day"
+  - given:
+      date: '2010-01-01'
+      regions: ["gb"]
+      options: ["observed"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: '2011-01-03'
+      regions: ["gb"]
+      options: ["observed"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: '2012-01-02'
+      regions: ["gb"]
+      options: ["observed"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: '2010-01-04'
+      regions: ["gb_sct"]
+      options: ["observed"]
+    expect:
+      name: "2nd January"
+  - given:
+      date: '2011-01-04'
+      regions: ["gb_sct"]
+      options: ["observed"]
+    expect:
+      name: "2nd January"
+  - given:
+      date: '2012-01-03'
+      regions: ["gb_sct"]
+      options: ["observed"]
+    expect:
+      name: "2nd January"
+  - given:
+      date: '2013-01-02'
+      regions: ["gb_sct"]
+      options: ["observed"]
+    expect:
+      name: "2nd January"
+  - given:
+      date: '2014-01-02'
+      regions: ["gb_sct"]
+      options: ["observed"]
+    expect:
+      name: "2nd January"
+  - given:
+      date: '2008-03-24'
+      regions: ["gb_wls"]
+    expect:
+      name: "Easter Monday"
+  - given:
+      date: '2008-08-25'
+      regions: ["gb_wls"]
+    expect:
+      name: "Bank Holiday"
+  - given:
+      date: '2008-03-24'
+      regions: ["gb_eng"]
+    expect:
+      name: "Easter Monday"
+  - given:
+      date: '2008-08-25'
+      regions: ["gb_eng"]
+    expect:
+      name: "Bank Holiday"
+  - given:
+      date: '2008-03-24'
+      regions: ["gb_nir"]
+    expect:
+      name: "Easter Monday"
+  - given:
+      date: '2008-08-25'
+      regions: ["gb_nir"]
+    expect:
+      name: "Bank Holiday"
+  - given:
+      date: '2008-03-24'
+      regions: ["gb_eaw"]
+    expect:
+      name: "Easter Monday"
+  - given:
+      date: '2008-08-25'
+      regions: ["gb_eaw"]
+    expect:
+      name: "Bank Holiday"
+  - given:
+      date: '2008-03-24'
+      regions: ["gb_"]
+    expect:
+      name: "Easter Monday"
+  - given:
+      date: '2008-08-25'
+      regions: ["gb_"]
+    expect:
+      name: "Bank Holiday"

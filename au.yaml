@@ -258,150 +258,493 @@ methods:
         Date.civil(year, 5, Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 5, :third, :monday))
       end
 
-tests: |
-    {Date.civil(2007,1,1) => 'New Year\'s Day',
-     Date.civil(2007,1,26) => 'Australia Day',
-     Date.civil(2007,4,6) => 'Good Friday',
-     Date.civil(2007,4,9) => 'Easter Monday',
-     Date.civil(2007,4,25) => 'ANZAC Day'}.each do |date, name|
-      assert_equal name, (Holidays.on(date, :au, :informal)[0] || {})[:name]
-    end
+tests:
+  - given:
+      date: '2013-10-07'
+      regions: ["au_qld"]
+    expect:
+      name: 'Labour Day'
+  - given:
+      date: '2012-05-07'
+      regions: ["au_qld"]
+    expect:
+      name: 'Labour Day'
+  - given:
+      date: '2015-10-05'
+      regions: ["au_qld"]
+    expect:
+      name: 'Labour Day'
+  - given:
+      date: '2016-05-02'
+      regions: ["au_qld"]
+    expect:
+      name: 'Labour Day'
+  - given:
+      date: '2012-06-11'
+      regions: ["au_qld"]
+    expect:
+      name: "Queen's Birthday"
+  - given:
+      date: '2012-10-01'
+      regions: ["au_qld"]
+    expect:
+      name: "Queen's Birthday"
+  - given:
+      date: '2015-06-10'
+      regions: ["au_qld"]
+    expect:
+      name: "Queen's Birthday"
+  - given:
+      date: '2015-06-08'
+      regions: ["au_qld"]
+    expect:
+      name: "Queen's Birthday"
+  - given:
+      date: '2016-10-03'
+      regions: ["au_qld"]
+    expect:
+      name: "Queen's Birthday"
+  - given:
+      date: '2014-09-29'
+      regions: ["au_wa"]
+    expect:
+      name: "Queen's Birthday"
+  - given:
+      date: '2015-09-28'
+      regions: ["au_wa"]
+    expect:
+      name: "Queen's Birthday"
+  - given:
+      date: '2016-09-26'
+      regions: ["au_wa"]
+    expect:
+      name: "Queen's Birthday"
+  - given:
+      date: '2014-09-29'
+      regions: ["au_act"]
+    expect:
+      name: 'Family & Community Day'
+  - given:
+      date: '2015-09-28'
+      regions: ["au_act"]
+    expect:
+      name: 'Family & Community Day'
+  - given:
+      date: '2016-09-26'
+      regions: ["au_act"]
+    expect:
+      name: 'Family & Community Day'
+  - given:
+      date: '2014-01-26'
+      regions: ["au_qld"]
+    expect:
+      name: 'Australia Day'
+  - given:
+      date: '2014-01-27'
+      regions: ["au_qld"]
+      options: ["observed"]
+    expect:
+      name: 'Australia Day'
+  - given:
+      date: '2014-07-18'
+      regions: ["au_qld_cairns"]
+    expect:
+      name: 'Cairns Show'
+  - given:
+      date: '2013-07-19'
+      regions: ["au_qld_cairns"]
+    expect:
+      name: 'Cairns Show'
+  - given:
+      date: '2013-10-24'
+      regions: ["au_tas_south"]
+    expect:
+      name: 'Royal Hobart Show'
+  - given:
+      date: '2014-10-23'
+      regions: ["au_tas_south"]
+    expect:
+      name: 'Royal Hobart Show'
+  - given:
+      date: '2015-10-22'
+      regions: ["au_tas_south"]
+    expect:
+      name: 'Royal Hobart Show'
+  - given:
+      date: '2016-10-20'
+      regions: ["au_tas_south"]
+    expect:
+      name: 'Royal Hobart Show'
+  - given:
+      date: '2013-11-04'
+      regions: ["au_tas_north"]
+    expect:
+      name: 'Recreation Day'
+  - given:
+      date: '2014-11-03'
+      regions: ["au_tas_north"]
+    expect:
+      name: 'Recreation Day'
+  - given:
+      date: '2015-11-02'
+      regions: ["au_tas_north"]
+    expect:
+      name: 'Recreation Day'
+  - given:
+      date: '2016-11-07'
+      regions: ["au_tas_north"]
+    expect:
+      name: 'Recreation Day'
+  - given:
+      date: '2015-12-26'
+      regions: ["au_tas"]
+    expect:
+      holiday: false
+  - given:
+      date: '2015-11-14'
+      regions: ["au_qld_brisbane"]
+    expect:
+      holiday: false
+  - given:
+      date: '2015-12-26'
+      regions: ["au_nt"]
+    expect:
+      holiday: false
+  - given:
+      date: '2016-12-25'
+      regions: ["au_nt"]
+    expect:
+      name: 'Christmas Day'
+  - given:
+      date: '2014-11-04'
+      regions: ["au_vic"]
+    expect:
+      holiday: false
+  - given:
+      date: '2015-11-03'
+      regions: ["au_vic"]
+    expect:
+      holiday: false
+  - given:
+      date: '2016-12-25'
+      regions: ["au_vic"]
+    expect:
+      name: 'Christmas Day'
+  - given:
+      date: '2014-05-19'
+      regions: ["au_sa"]
+    expect:
+      holiday: false
+  - given:
+      date: '2005-03-14'
+      regions: ["au_sa"]
+    expect:
+      holiday: false
+  - given:
+      date: '2015-12-26'
+      regions: ["au_sa"]
+    expect:
+      holiday: false
+  - given:
+      date: '2015-04-27'
+      regions: ["au_qld"]
+      options: ["observed"]
+    expect:
+      holiday: false
+  - given:
+      date: '2014-11-14'
+      regions: ["au_qld"]
+    expect:
+      holiday: false
+  - given:
+      date: '2014-11-04'
+      regions: ["au_vic_melbourne"]
+    expect:
+      name: 'Melbourne Cup Day'
+  - given:
+      date: '2015-11-03'
+      regions: ["au_vic_melbourne"]
+    expect:
+      name: 'Melbourne Cup Day'
+  - given:
+      date: '2015-10-02'
+      regions: ["au_vic"]
+    expect:
+      name: 'Friday before the AFL Grand Final'
+  - given:
+      date: '2016-09-30'
+      regions: ["au_vic"]
+    expect:
+      name: 'Friday before the AFL Grand Final'
+  - given:
+      date: '2017-09-29'
+      regions: ["au_vic"]
+    expect:
+      name: 'Friday before the AFL Grand Final'
+  - given:
+      date: '2005-05-16'
+      regions: ["au_sa"]
+    expect:
+      name: 'May Public Holiday'
+  - given:
+      date: '2014-03-10'
+      regions: ["au_sa"]
+    expect:
+      name: 'March Public Holiday'
+  - given:
+      date: '2015-03-09'
+      regions: ["au_sa"]
+    expect:
+      name: 'March Public Holiday'
+  - given:
+      date: '2016-03-14'
+      regions: ["au_sa"]
+    expect:
+      name: 'March Public Holiday'
+  - given:
+      date: '2017-03-13'
+      regions: ["au_sa"]
+    expect:
+      name: 'March Public Holiday'
+  - given:
+      date: '2015-04-25'
+      regions: ["au_qld", "au_wa"]
+    expect:
+      name: 'ANZAC Day'
+  - given:
+      date: '2015-04-27'
+      regions: ["au_wa"]
+      options: ["observed"]
+    expect:
+      name: 'ANZAC Day'
+  - given:
+      date: '2015-12-26'
+      regions: ["au"]
+    expect:
+      name: 'Boxing Day'
+  - given:
+      date: '2015-12-26'
+      regions: ["au"]
+      options: ["observed"]
+    expect:
+      name: 'Boxing Day'
+  - given:
+      date: '2015-12-26'
+      regions: ["au_qld"]
+    expect:
+      name: 'Boxing Day'
+  - given:
+      date: '2015-12-28'
+      regions: ["au_qld"]
+      options: ["observed"]
+    expect:
+      name: 'Boxing Day'
+  - given:
+      date: '2015-12-28'
+      regions: ["au_sa"]
+    expect:
+      name: 'Boxing Day'
+  - given:
+      date: '2016-12-27'
+      regions: ["au_sa"]
+    expect:
+      name: 'Boxing Day'
+  - given:
+      date: '2015-12-28'
+      regions: ["au_tas"]
+    expect:
+      name: 'Boxing Day'
+  - given:
+      date: '2015-12-28'
+      regions: ["au_nt"]
+    expect:
+      name: 'Boxing Day'
+  - given:
+      date: '2016-12-26'
+      regions: ["au_nt"]
+    expect:
+      name: 'Boxing Day'
+  - given:
+      date: '2016-12-26'
+      regions: ["au_vic"]
+    expect:
+      name: 'Boxing Day'
+  - given:
+      date: '2012-02-13'
+      regions: ["au_tas_south"]
+    expect:
+      name: 'Royal Hobart Regatta'
+  - given:
+      date: '2014-02-10'
+      regions: ["au_tas_south"]
+    expect:
+      name: 'Royal Hobart Regatta'
+  - given:
+      date: '2015-02-09'
+      regions: ["au_tas_south"]
+    expect:
+      name: 'Royal Hobart Regatta'
+  - given:
+      date: '2016-02-08'
+      regions: ["au_tas_south"]
+    expect:
+      name: 'Royal Hobart Regatta'
+  - given:
+      date: '2016-12-25'
+      regions: ["au_qld"]
+    expect:
+      name: 'Christmas Day'
+  - given:
+      date: '2016-12-25'
+      regions: ["au"]
+    expect:
+      name: 'Christmas Day'
+  - given:
+      date: '2016-12-25'
+      regions: ["au"]
+      options: ["observed"]
+    expect:
+      name: 'Christmas Day'
+  - given:
+      date: '2016-12-27'
+      regions: ["au_qld"]
+      options: ["observed"]
+    expect:
+      name: 'Christmas Day'
+  - given:
+      date: '2016-12-25'
+      regions: ["au_nsw"]
+    expect:
+      name: 'Christmas Day'
+  - given:
+      date: '2016-12-27'
+      regions: ["au_nsw"]
+      options: ["observed"]
+    expect:
+      name: 'Christmas Day'
+  - given:
+      date: '2016-12-25'
+      regions: ["au_act"]
+    expect:
+      name: 'Christmas Day'
+  - given:
+      date: '2016-12-27'
+      regions: ["au_act"]
+      options: ["observed"]
+    expect:
+      name: 'Christmas Day'
+  - given:
+      date: '2016-12-25'
+      regions: ["au_tas"]
+    expect:
+      name: 'Christmas Day'
+  - given:
+      date: '2016-12-27'
+      regions: ["au_tas"]
+      options: ["observed"]
+    expect:
+      name: 'Christmas Day'
+  - given:
+      date: '2016-12-25'
+      regions: ["au_wa"]
+    expect:
+      name: 'Christmas Day'
+  - given:
+      date: '2016-12-27'
+      regions: ["au_wa"]
+      options: ["observed"]
+    expect:
+      name: 'Christmas Day'
+  - given:
+      date: '2016-12-25'
+      regions: ["au_sa"]
+    expect:
+      name: 'Christmas Day'
+  - given:
+      date: '2016-12-25'
+      regions: ["au_nsw"]
+    expect:
+      name: 'Christmas Day'
+  - given:
+      date: '2016-12-27'
+      regions: ["au_nsw"]
+      options: ["observed"]
+    expect:
+      name: 'Christmas Day'
+  - given:
+      date: '2016-12-25'
+      regions: ["au_act"]
+    expect:
+      name: 'Christmas Day'
+  - given:
+      date: '2016-12-27'
+      regions: ["au_act"]
+      options: ["observed"]
+    expect:
+      name: 'Christmas Day'
+  - given:
+      date: '2016-12-25'
+      regions: ["au_tas"]
+    expect:
+      name: 'Christmas Day'
+  - given:
+      date: '2016-12-27'
+      regions: ["au_tas"]
+      options: ["observed"]
+    expect:
+      name: 'Christmas Day'
+  - given:
+      date: '2016-12-25'
+      regions: ["au_wa"]
+    expect:
+      name: 'Christmas Day'
+  - given:
+      date: '2016-12-27'
+      regions: ["au_wa"]
+      options: ["observed"]
+    expect:
+      name: 'Christmas Day'
+  - given:
+      date: '2016-12-25'
+      regions: ["au_sa"]
+    expect:
+      name: 'Christmas Day'
+  - given:
+      date: '2016-12-26'
+      regions: ["au_sa"]
+      options: ["observed"]
+    expect:
+      name: 'Christmas Day'
+  - given:
+      date: '2016-12-27'
+      regions: ["au_vic"]
+      options: ["observed"]
+    expect:
+      name: 'Christmas Day'
+  - given:
+      date: '2016-12-27'
+      regions: ["au_nt"]
+      options: ["observed"]
+    expect:
+      name: 'Christmas Day'
+  - given:
+      date: '2017-01-01'
+      regions: ["au_qld", "au_nsw", "au_act", "au_vic", "au_sa", "au_wa", "au_nt"]
+    expect:
+      name: "New Year's Day"
 
-    [:au_sa, :au_act, :au_nsw, :au_].each do |r|
-      assert_equal 'Labour Day', Holidays.on(Date.civil(2007,10,1), r)[0][:name]
-    end
+#FIXME This commented test is valid but the current code in the ruby repo won't allow it
+#      to work. We need to discuss potential solutions but in the meantime I'm taking it out.
+#      See https://github.com/holidays/definitions/issues/37.
+#  - given:
+#      date: '2017-01-01'
+#      regions: ["au_tas"]
+#    expect:
+#      holiday: false
 
-    [:au_sa, :au_act, :au_nsw, :au_vic, :au_tas, :au_qld, :au_nt, :au_].each do |r|
-      assert_equal 'Queen\'s Birthday', Holidays.on(Date.civil(2007,6,11), r)[0][:name]
-    end
-
-    assert_equal 'Labour Day', Holidays.on(Date.civil(2007,3,5), :au_wa)[0][:name]
-    assert_equal 'Labour Day', Holidays.on(Date.civil(2007,3,12), :au_vic)[0][:name]
-    assert_equal 'Labour Day', Holidays.on(Date.civil(2007,5,7), :au_qld)[0][:name]
-
-    assert_equal 'Easter Sunday', Holidays.on(Date.civil(2007,4,8), :au_nsw)[0][:name]
-
-    assert_equal 'May Day', Holidays.on(Date.civil(2007,5,7), :au_nt)[0][:name]
-
-    assert_equal 'Eight Hours Day', Holidays.on(Date.civil(2007,3,12), :au_tas)[0][:name]
-
-    assert_equal 'Labour Day', Holidays.on(Date.civil(2013,10,7), :au_qld)[0][:name]
-    assert_equal 'Labour Day', Holidays.on(Date.civil(2012,5,7), :au_qld)[0][:name]
-    assert_equal 'Labour Day', Holidays.on(Date.civil(2015,10,5), :au_qld)[0][:name]
-    assert_equal 'Labour Day', Holidays.on(Date.civil(2016,5,2), :au_qld)[0][:name]
-
-    assert_equal "Queen's Birthday", Holidays.on(Date.civil(2012,6,11), :au_qld)[0][:name]
-    assert_equal "Queen's Birthday", Holidays.on(Date.civil(2012,10,1), :au_qld)[0][:name]
-    assert_equal "Queen's Birthday", Holidays.on(Date.civil(2013,6,10), :au_qld)[0][:name]
-    assert_equal "Queen's Birthday", Holidays.on(Date.civil(2015,6,8), :au_qld)[0][:name]
-    assert_equal "Queen's Birthday", Holidays.on(Date.civil(2016,10,3), :au_qld)[0][:name]
-
-    assert_equal "Queen's Birthday", Holidays.on(Date.civil(2014, 9, 29), :au_wa)[0][:name]
-    assert_equal "Queen's Birthday", Holidays.on(Date.civil(2015, 9, 28), :au_wa)[0][:name]
-    assert_equal "Queen's Birthday", Holidays.on(Date.civil(2016, 9, 26), :au_wa)[0][:name]
-
-    assert_equal "Family & Community Day", Holidays.on(Date.civil(2014, 9, 29), :au_act)[0][:name]
-    assert_equal "Family & Community Day", Holidays.on(Date.civil(2015, 9, 28), :au_act)[0][:name]
-    assert_equal "Family & Community Day", Holidays.on(Date.civil(2016, 9, 26), :au_act)[0][:name]
-
-    assert_equal 'Australia Day', Holidays.on(Date.civil(2014,1,26), :au_qld)[0][:name]
-    assert_equal 'Australia Day', Holidays.on(Date.civil(2014,1,27), :au_qld, :observed)[0][:name]
-
-    assert_equal 'Cairns Show', Holidays.on(Date.civil(2014,7,18), :au_qld_cairns)[0][:name]
-    assert_equal 'Cairns Show', Holidays.on(Date.civil(2013,7,19), :au_qld_cairns)[0][:name]
-
-    assert_equal 'Royal Hobart Show', Holidays.on(Date.civil(2013, 10, 24), :au_tas_south)[0][:name]
-    assert_equal 'Royal Hobart Show', Holidays.on(Date.civil(2014, 10, 23), :au_tas_south)[0][:name]
-    assert_equal 'Royal Hobart Show', Holidays.on(Date.civil(2015, 10, 22), :au_tas_south)[0][:name]
-    assert_equal 'Royal Hobart Show', Holidays.on(Date.civil(2016, 10, 20), :au_tas_south)[0][:name]
-
-    assert_equal 'Recreation Day', Holidays.on(Date.civil(2013, 11, 4), :au_tas_north)[0][:name]
-    assert_equal 'Recreation Day', Holidays.on(Date.civil(2014, 11, 3), :au_tas_north)[0][:name]
-    assert_equal 'Recreation Day', Holidays.on(Date.civil(2015, 11, 2), :au_tas_north)[0][:name]
-    assert_equal 'Recreation Day', Holidays.on(Date.civil(2016, 11, 7), :au_tas_north)[0][:name]
-
-    assert_nil Date.civil(2014,11,4).holidays(:au_vic)[0]
-    assert_nil Date.civil(2015,11,3).holidays(:au_vic)[0]
-
-    assert_equal 'Melbourne Cup Day', Holidays.on(Date.civil(2014,11,4), :au_vic_melbourne)[0][:name]
-    assert_equal 'Melbourne Cup Day', Holidays.on(Date.civil(2015,11,3), :au_vic_melbourne)[0][:name]
-
-    assert_equal 'Friday before the AFL Grand Final', Date.civil(2015,10,2).holidays(:au_vic)[0][:name]
-    assert_equal 'Friday before the AFL Grand Final', Date.civil(2016,9,30).holidays(:au_vic)[0][:name]
-    assert_equal 'Friday before the AFL Grand Final', Date.civil(2017,9,29).holidays(:au_vic)[0][:name]
-
-    assert_equal "May Public Holiday", Date.civil(2005, 5, 16).holidays(:au_sa)[0][:name]
-    assert_equal [], Date.civil(2014, 5, 19).holidays(:au_sa)
-
-    assert_equal [], Date.civil(2005, 3, 14).holidays(:au_sa)
-    assert_equal "March Public Holiday", Date.civil(2014, 3, 10).holidays(:au_sa)[0][:name]
-    assert_equal "March Public Holiday", Date.civil(2015, 3, 9).holidays(:au_sa)[0][:name]
-    assert_equal "March Public Holiday", Date.civil(2016, 3, 14).holidays(:au_sa)[0][:name]
-    assert_equal "March Public Holiday", Date.civil(2017, 3, 13).holidays(:au_sa)[0][:name]
-
-    assert_equal "ANZAC Day", Date.civil(2015, 4, 25).holidays(:au_qld)[0][:name]
-    assert_equal "ANZAC Day", Date.civil(2015, 4, 25).holidays(:au_wa)[0][:name]
-    assert_equal [], Date.civil(2015, 4, 27).holidays(:au_qld, :observed)
-    assert_equal "ANZAC Day", Date.civil(2015, 4, 27).holidays(:au_wa, :observed)[0][:name]
-
-    # BOXING DAY - QLD observes weekend and monday
-    assert_equal "Boxing Day", Date.civil(2015, 12, 26).holidays(:au_qld)[0][:name]
-    assert_equal "Boxing Day", Date.civil(2015, 12, 28).holidays(:au_qld, :observed)[0][:name]
-
-    # BOXING DAY - SA gets monday only. same for TAS and NT.
-    assert_nil Date.civil(2015, 12, 26).holidays(:au_sa)[0]
-    assert_equal "Boxing Day", Date.civil(2015, 12, 28).holidays(:au_sa)[0][:name]
-    assert_nil Date.civil(2015, 12, 26).holidays(:au_tas)[0]
-    assert_equal "Boxing Day", Date.civil(2015, 12, 28).holidays(:au_tas)[0][:name]
-    assert_nil Date.civil(2015, 12, 26).holidays(:au_nt)[0]
-    assert_equal "Boxing Day", Date.civil(2015, 12, 28).holidays(:au_nt)[0][:name]
-
-    assert_equal 'G20 Day', Holidays.on(Date.civil(2014,11,14), :au_qld_brisbane)[0][:name]
-    assert_equal [], Holidays.on(Date.civil(2014,11,14), :au_qld)
-    assert_equal [], Holidays.on(Date.civil(2015,11,14), :au_qld_brisbane)
-
-    assert_equal 'Royal Hobart Regatta', Holidays.on(Date.civil(2012, 2, 13), :au_tas_south)[0][:name]
-    assert_equal 'Royal Hobart Regatta', Holidays.on(Date.civil(2014, 2, 10), :au_tas_south)[0][:name]
-    assert_equal 'Royal Hobart Regatta', Holidays.on(Date.civil(2015, 2, 9), :au_tas_south)[0][:name]
-    assert_equal 'Royal Hobart Regatta', Holidays.on(Date.civil(2016, 2, 8), :au_tas_south)[0][:name]
-
-    # CHRISTMAS DAY - ACT, NSW, QLD, Tas, WA observe on 27th (and 25th) if 25th is a Sunday
-    assert_equal "Christmas Day", Date.civil(2016, 12, 25).holidays(:au_qld)[0][:name]
-    assert_equal "Christmas Day", Date.civil(2016, 12, 27).holidays(:au_qld, :observed)[0][:name]
-    assert_equal "Christmas Day", Date.civil(2016, 12, 25).holidays(:au_nsw)[0][:name]
-    assert_equal "Christmas Day", Date.civil(2016, 12, 27).holidays(:au_nsw, :observed)[0][:name]
-    assert_equal "Christmas Day", Date.civil(2016, 12, 25).holidays(:au_act)[0][:name]
-    assert_equal "Christmas Day", Date.civil(2016, 12, 27).holidays(:au_act, :observed)[0][:name]
-    assert_equal "Christmas Day", Date.civil(2016, 12, 25).holidays(:au_tas)[0][:name]
-    assert_equal "Christmas Day", Date.civil(2016, 12, 27).holidays(:au_tas, :observed)[0][:name]
-    assert_equal "Christmas Day", Date.civil(2016, 12, 25).holidays(:au_wa)[0][:name]
-    assert_equal "Christmas Day", Date.civil(2016, 12, 27).holidays(:au_wa, :observed)[0][:name]
-
-    # CHRISTMAS DAY - SA observes on 26th if 25th is a Sunday (Boxing Day goes to 27th)
-    assert_equal "Christmas Day", Date.civil(2016, 12, 25).holidays(:au_sa)[0][:name]
-    assert_equal "Christmas Day", Date.civil(2016, 12, 26).holidays(:au_sa, :observed)[0][:name]
-    assert_equal "Boxing Day", Date.civil(2016, 12, 27).holidays(:au_sa)[0][:name]
-
-    # CHRISTMAS DAY - Victoria and NT now observe both 25th and 27th if weekend
-    assert_equal "Christmas Day", Date.civil(2016, 12, 25).holidays(:au_vic)[0][:name]
-    assert_equal "Christmas Day", Date.civil(2016, 12, 25).holidays(:au_nt)[0][:name]
-    assert_equal "Boxing Day", Date.civil(2016, 12, 26).holidays(:au_vic)[0][:name]
-    assert_equal "Boxing Day", Date.civil(2016, 12, 26).holidays(:au_nt)[0][:name]
-    assert_equal "Christmas Day", Date.civil(2016, 12, 27).holidays(:au_vic, :observed)[0][:name]
-    assert_equal "Christmas Day", Date.civil(2016, 12, 27).holidays(:au_nt, :observed)[0][:name]
-
-    # NEW YEAR'S DAY - observed on both 1st and 2nd of Jan for 2017
-    regions = [:au, :au_qld, :au_nsw, :au_act, :au_vic, :au_sa, :au_wa, :au_nt]
-    regions.each do |r|
-      assert_equal "New Year's Day", Date.civil(2017, 1, 1).holidays(r)[0][:name]
-      assert_equal "New Year's Day", Date.civil(2017, 1, 2).holidays(r, :observed)[0][:name]
-    end
-
-    # Tasmania is different
-    #FIXME This commented test is valid but the current code in the ruby repo won't allow it
-    #      to work. We need to discuss potential solutions but in the meantime I'm taking it out.
-    #assert_equal [], Date.civil(2017,1,1).holidays(:au_tas)
-    assert_equal "New Year's Day", Date.civil(2017, 1, 2).holidays(:au_tas)[0][:name]
-
-    #QLD now celebrates Easter Sunday
-    assert_equal "Easter Sunday", Date.civil(2017, 4, 16).holidays(:au_qld)[0][:name]
+  - given:
+      date: '2017-01-02'
+      regions: ["au_qld", "au_nsw", "au_act", "au_vic", "au_tas", "au_sa", "au_wa", "au_nt"]
+      options: ["observed"]
+    expect:
+      name: "New Year's Day"

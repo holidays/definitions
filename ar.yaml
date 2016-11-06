@@ -71,23 +71,106 @@ months:
   - name: Navidad
     regions: [ar]
     mday: 25
-tests: |
-    {Date.civil(2016,1,1) => 'Año Nuevo',
-     Date.civil(2016,2,8) => 'Carnaval',
-     Date.civil(2016,2,9) => 'Carnaval',
-     Date.civil(2016,3,24) => 'Día Nacional de la Memoria por la Verdad y la Justicia',
-     Date.civil(2016,3,25) => 'Viernes Santo',
-     Date.civil(2016,4,2) => 'Día del Veterano y de los Caídos en la Guerra de Malvinas',
-     Date.civil(2016,5,1) => 'Día del Trabajador',
-     Date.civil(2016,5,25) => 'Día de la Revolución de Mayo',
-     Date.civil(2016,6,20) => 'Día de la Bandera',
-     Date.civil(2016,7,8) => 'Feriado puente turístico',
-     Date.civil(2016,7,9) => 'Día de la Independencia',
-     Date.civil(2016,8,15) => 'Paso a la Inmortalidad del General José de San Martín',
-     Date.civil(2016,10,12) => 'Día del Respeto a la Diversidad Cultural',
-     Date.civil(2016,11,20) => 'Día de la Soberanía Nacional',
-     Date.civil(2016,12,8) => 'Inmaculada Concepción de María',
-     Date.civil(2016,12,9) => 'Feriado puente turístico',
-     Date.civil(2016,12,25) => 'Navidad'}.each do |date, name|
-      assert_equal name, (Holidays.on(date, :ar, :informal)[0] || {})[:name]
-    end
+tests:
+  - given:
+      date: '2016-01-01'
+      regions: ['ar']
+      options: 'informal'
+    expect:
+      name: 'Año Nuevo'
+  - given:
+      date: '2016-02-08'
+      regions: ['ar']
+      options: 'informal'
+    expect:
+      name: 'Carnaval'
+  - given:
+      date: '2016-02-09'
+      regions: ['ar']
+      options: 'informal'
+    expect:
+      name: 'Carnaval'
+  - given:
+      date: '2016-03-24'
+      regions: ['ar']
+      options: 'informal'
+    expect:
+      name: 'Día Nacional de la Memoria por la Verdad y la Justicia'
+  - given:
+      date: '2016-03-25'
+      regions: ['ar']
+      options: 'informal'
+    expect:
+      name: 'Viernes Santo'
+  - given:
+      date: '2016-04-02'
+      regions: ['ar']
+      options: 'informal'
+    expect:
+      name: 'Día del Veterano y de los Caídos en la Guerra de Malvinas'
+  - given:
+      date: '2016-05-01'
+      regions: ['ar']
+      options: 'informal'
+    expect:
+      name: 'Día del Trabajador'
+  - given:
+      date: '2016-05-25'
+      regions: ['ar']
+      options: 'informal'
+    expect:
+      name: 'Día de la Revolución de Mayo'
+  - given:
+      date: '2016-06-20'
+      regions: ['ar']
+      options: 'informal'
+    expect:
+      name: 'Día de la Bandera'
+  - given:
+      date: '2016-07-08'
+      regions: ['ar']
+      options: 'informal'
+    expect:
+      name: 'Feriado puente turístico'
+  - given:
+      date: '2016-07-09'
+      regions: ['ar']
+      options: 'informal'
+    expect:
+      name: 'Día de la Independencia'
+  - given:
+      date: '2016-08-15'
+      regions: ['ar']
+      options: 'informal'
+    expect:
+      name: 'Paso a la Inmortalidad del General José de San Martín'
+  - given:
+      date: '2016-10-12'
+      regions: ['ar']
+      options: 'informal'
+    expect:
+      name: 'Día del Respeto a la Diversidad Cultural'
+  - given:
+      date: '2016-11-20'
+      regions: ['ar']
+      options: 'informal'
+    expect:
+      name: 'Día de la Soberanía Nacional'
+  - given:
+      date: '2016-12-08'
+      regions: ['ar']
+      options: 'informal'
+    expect:
+      name: 'Inmaculada Concepción de María'
+  - given:
+      date: '2016-12-09'
+      regions: ['ar']
+      options: 'informal'
+    expect:
+      name: 'Feriado puente turístico'
+  - given:
+      date: '2016-12-25'
+      regions: ['ar']
+      options: 'informal'
+    expect:
+      name: 'Navidad'

@@ -64,21 +64,95 @@ months:
   - name: Δεύτερη ημέρα των Χριστουγέννων
     regions: [el]
     mday: 26
-tests: |
-    {Date.civil(2011,1,1) => 'Πρωτοχρονιά',
-     Date.civil(2011,1,6) => 'Θεοφάνεια',
-     Date.civil(2011,4,22) => 'Μεγάλη Παρασκευή',
-     Date.civil(1970,4,25) => 'Μεγάλο Σάββατο',
-     Date.civil(1985,4,14) => 'Κυριακή του Πάσχα',
-     Date.civil(2011,4,24) => 'Κυριακή του Πάσχα',
-     Date.civil(2027,5,2) => 'Κυριακή του Πάσχα',
-     Date.civil(2046,4,30) => 'Δευτέρα του Πάσχα',
-     Date.civil(2011,5,1) => 'Πρωτομαγιά',
-     Date.civil(2011,6,13) => 'Αγίου Πνεύματος',
-     Date.civil(2012,6,4) => 'Αγίου Πνεύματος',
-     Date.civil(2011,3,7) => 'Καθαρά Δευτέρα',
-     Date.civil(2012,2,27) => 'Καθαρά Δευτέρα',
-     Date.civil(2011,12,25) => 'Χριστούγεννα',
-     Date.civil(2011,12,26) => 'Δεύτερη ημέρα των Χριστουγέννων'}.each do |date, name|
-      assert_equal name, (Holidays.on(date, :el, :informal)[0] || {})[:name]
-    end
+
+tests:
+  - given:
+      date: '2011-01-01'
+      regions: ["el"]
+      options: ["informal"]
+    expect:
+      name: "Πρωτοχρονιά"
+  - given:
+      date: '2011-01-06'
+      regions: ["el"]
+      options: ["informal"]
+    expect:
+      name: "Θεοφάνεια"
+  - given:
+      date: '2011-04-22'
+      regions: ["el"]
+      options: ["informal"]
+    expect:
+      name: "Μεγάλη Παρασκευή"
+  - given:
+      date: '1970-04-25'
+      regions: ["el"]
+      options: ["informal"]
+    expect:
+      name: "Μεγάλο Σάββατο"
+  - given:
+      date: '1985-04-14'
+      regions: ["el"]
+      options: ["informal"]
+    expect:
+      name: "Κυριακή του Πάσχα"
+  - given:
+      date: '2011-04-24'
+      regions: ["el"]
+      options: ["informal"]
+    expect:
+      name: "Κυριακή του Πάσχα"
+  - given:
+      date: '2027-05-02'
+      regions: ["el"]
+      options: ["informal"]
+    expect:
+      name: "Κυριακή του Πάσχα"
+  - given:
+      date: '2046-04-30'
+      regions: ["el"]
+      options: ["informal"]
+    expect:
+      name: "Δευτέρα του Πάσχα"
+  - given:
+      date: '2011-05-01'
+      regions: ["el"]
+      options: ["informal"]
+    expect:
+      name: "Πρωτομαγιά"
+  - given:
+      date: '2011-06-13'
+      regions: ["el"]
+      options: ["informal"]
+    expect:
+      name: "Αγίου Πνεύματος"
+  - given:
+      date: '2012-06-04'
+      regions: ["el"]
+      options: ["informal"]
+    expect:
+      name: "Αγίου Πνεύματος"
+  - given:
+      date: '2011-03-07'
+      regions: ["el"]
+      options: ["informal"]
+    expect:
+      name: "Καθαρά Δευτέρα"
+  - given:
+      date: '2012-02-27'
+      regions: ["el"]
+      options: ["informal"]
+    expect:
+      name: "Καθαρά Δευτέρα"
+  - given:
+      date: '2011-12-25'
+      regions: ["el"]
+      options: ["informal"]
+    expect:
+      name: "Χριστούγεννα"
+  - given:
+      date: '2011-12-26'
+      regions: ["el"]
+      options: ["informal"]
+    expect:
+      name: "Δεύτερη ημέρα των Χριστουγέννων"

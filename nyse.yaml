@@ -53,21 +53,58 @@ months:
     regions: [nyse]
     mday: 25
     observed: to_weekday_if_weekend(date)
-methods:
-tests: |
-    {Date.civil(2008,1,1) => 'New Year\'s Day',
-     Date.civil(2008,1,21) => 'Martin Luther King, Jr. Day',
-     Date.civil(2008,2,18) => 'Presidents\' Day',
-     Date.civil(2008,3,21) => 'Good Friday',
-     Date.civil(2008,5,26) => 'Memorial Day',
-     Date.civil(2008,7,4) => 'Independence Day',
-     Date.civil(2008,9,1) => 'Labor Day',
-     Date.civil(2008,11,27) => 'Thanksgiving',
-     Date.civil(2008,12,25) => 'Christmas Day'}.each do |date, name|
-      assert_equal name, (Holidays.on(date, :nyse)[0] || {})[:name]
-    end
 
-    # Test observed New Year
-    [Date.civil(2017,1,2), Date.civil(2012,1,2), Date.civil(2011,1,1), Date.civil(2006,1,2)].each do |date|
-      assert_equal 'New Year\'s Day', (Holidays.on(date, :nyse, :observed)[0] || {})[:name]
-    end
+tests:
+  - given:
+      date: '2008-01-01'
+      regions: ["nyse"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: '2008-01-21'
+      regions: ["nyse"]
+    expect:
+      name: "Martin Luther King, Jr. Day"
+  - given:
+      date: '2008-02-18'
+      regions: ["nyse"]
+    expect:
+      name: "Presidents' Day"
+  - given:
+      date: '2008-03-21'
+      regions: ["nyse"]
+    expect:
+      name: "Good Friday"
+  - given:
+      date: '2008-05-26'
+      regions: ["nyse"]
+    expect:
+      name: "Memorial Day"
+  - given:
+      date: '2008-07-04'
+      regions: ["nyse"]
+    expect:
+      name: "Independence Day"
+  - given:
+      date: '2008-09-01'
+      regions: ["nyse"]
+    expect:
+      name: "Labor Day"
+  - given:
+      date: '2008-11-27'
+      regions: ["nyse"]
+    expect:
+      name: "Thanksgiving"
+  - given:
+      date: '2008-12-25'
+      regions: ["nyse"]
+    expect:
+      name: "Christmas Day"
+
+  # Test observed New Year
+  - given:
+      date: ['2017-01-02', '2012-01-02', '2011-01-01', '2006-01-02']
+      regions: ["nyse"]
+      options: ["observed"]
+    expect:
+      name: "New Year's Day"

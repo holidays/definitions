@@ -40,12 +40,40 @@ months:
     mday: 25
     observed: to_weekday_if_weekend(date)
 
-tests: |
-    {Date.civil(2016,1,1) => "New Year's Day",
-     Date.civil(2016,5,1) => 'Labour Day',
-     Date.civil(2016,6,4) => "Agong's Birthday",
-     Date.civil(2016,8,31) => 'Independence Day',
-     Date.civil(2016,9,16) => 'Malaysia Day',
-     Date.civil(2016,12,25) => 'Christmas Day'}.each do |date, name|
-      assert_equal name, (Holidays.on(date, :my, :informal)[0] || {})[:name]
-    end
+tests:
+  - given:
+      date: '2016-01-01'
+      regions: ["my"]
+      options: ["informal"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: '2016-05-01'
+      regions: ["my"]
+      options: ["informal"]
+    expect:
+      name: "Labour Day"
+  - given:
+      date: '2016-06-04'
+      regions: ["my"]
+      options: ["informal"]
+    expect:
+      name: "Agong's Birthday"
+  - given:
+      date: '2016-08-31'
+      regions: ["my"]
+      options: ["informal"]
+    expect:
+      name: "Independence Day"
+  - given:
+      date: '2016-09-16'
+      regions: ["my"]
+      options: ["informal"]
+    expect:
+      name: "Malaysia Day"
+  - given:
+      date: '2016-12-25'
+      regions: ["my"]
+      options: ["informal"]
+    expect:
+      name: "Christmas Day"

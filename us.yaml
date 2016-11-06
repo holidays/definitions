@@ -72,6 +72,7 @@ months:
     regions: [us]
     mday: 25
     observed: to_weekday_if_weekend(date)
+
 methods:
   us_inauguration_day:
     # January 20, every fourth year, following Presidential election
@@ -82,22 +83,75 @@ methods:
     arguments: year
     source: |
       Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 11, 4, 4) + 1
-tests: |
-    {Date.civil(2008,1,1) => 'New Year\'s Day',
-     Date.civil(2008,1,21) => 'Martin Luther King, Jr. Day',
-     Date.civil(2008,2,18) => 'Presidents\' Day',
-     Date.civil(2008,5,26) => 'Memorial Day',
-     Date.civil(2008,7,4) => 'Independence Day',
-     Date.civil(2008,9,1) => 'Labor Day',
-     Date.civil(2008,10,13) => 'Columbus Day',
-     Date.civil(2008,11,11) => 'Veterans Day',
-     Date.civil(2008,11,27) => 'Thanksgiving',
-     Date.civil(2013,11,28) => 'Thanksgiving',
-     Date.civil(2008,12,25) => 'Christmas Day'}.each do |date, name|
-      assert_equal name, (Holidays.on(date, :us)[0] || {})[:name]
-    end
-    {Date.civil(2008, 3, 31) => 'Cesar Chavez Day',
-     Date.civil(2008, 11, 28) => 'Day after Thanksgiving',
-     Date.civil(2013, 11, 29) => 'Day after Thanksgiving'}.each do |date, name|
-     assert_equal name, (Holidays.on(date, :us, :us_ca)[0] || {})[:name]
-    end
+
+tests:
+  - given:
+      date: '2008-01-01'
+      regions: ["us"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: '2008-01-21'
+      regions: ["us"]
+    expect:
+      name: "Martin Luther King, Jr. Day"
+  - given:
+      date: '2008-02-18'
+      regions: ["us"]
+    expect:
+      name: "Presidents' Day"
+  - given:
+      date: '2008-05-26'
+      regions: ["us"]
+    expect:
+      name: "Memorial Day"
+  - given:
+      date: '2008-07-04'
+      regions: ["us"]
+    expect:
+      name: "Independence Day"
+  - given:
+      date: '2008-09-01'
+      regions: ["us"]
+    expect:
+      name: "Labor Day"
+  - given:
+      date: '2008-10-13'
+      regions: ["us"]
+    expect:
+      name: "Columbus Day"
+  - given:
+      date: '2008-11-11'
+      regions: ["us"]
+    expect:
+      name: "Veterans Day"
+  - given:
+      date: '2008-11-27'
+      regions: ["us"]
+    expect:
+      name: "Thanksgiving"
+  - given:
+      date: '2013-11-28'
+      regions: ["us"]
+    expect:
+      name: "Thanksgiving"
+  - given:
+      date: '2008-12-25'
+      regions: ["us"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: '2008-03-31'
+      regions: ["us", "us_ca"]
+    expect:
+      name: "Cesar Chavez Day"
+  - given:
+      date: '2008-11-28'
+      regions: ["us", "us_ca"]
+    expect:
+      name: "Day after Thanksgiving"
+  - given:
+      date: '2013-11-29'
+      regions: ["us", "us_ca"]
+    expect:
+      name: "Day after Thanksgiving"

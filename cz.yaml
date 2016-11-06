@@ -55,19 +55,83 @@ months:
   - name: 2. svátek vánoční
     regions: [cz]
     mday: 26
-tests: |
-    {Date.civil(2010,1,1) => 'Den obnovy samostatného českého státu',
-     Date.civil(2016,3,25) => 'Velký pátek',
-     Date.civil(2010,4,5) => 'Velikonoční pondělí',
-     Date.civil(2010,5,1) => 'Svátek práce',
-     Date.civil(2010,5,8) => 'Den vítězství',
-     Date.civil(2010,7,5) => 'Den slovanských věrozvěstů Cyrila a Metoděje',
-     Date.civil(2010,7,6) => 'Den upálení mistra Jana Husa',
-     Date.civil(2010,9,28) => 'Den české státnosti',
-     Date.civil(2010,10,28) => 'Den vzniku samostatného československého státu',
-     Date.civil(2010,11,17) => 'Den boje za svobodu a demokracii',
-     Date.civil(2010,12,24) => 'Štědrý den',
-     Date.civil(2010,12,25) => '1. svátek vánoční',
-     Date.civil(2010,12,26) => '2. svátek vánoční'}.each do |date, name|
-      assert_equal name, (Holidays.on(date, :cz, :informal)[0] || {})[:name]
-    end
+
+tests:
+  - given:
+      date: '2010-01-01'
+      regions: ["cz"]
+      options: ["informal"]
+    expect:
+      name: "Den obnovy samostatného českého státu"
+  - given:
+      date: '2016-03-25'
+      regions: ["cz"]
+      options: ["informal"]
+    expect:
+      name: "Velký pátek"
+  - given:
+      date: '2010-04-05'
+      regions: ["cz"]
+      options: ["informal"]
+    expect:
+      name: "Velikonoční pondělí"
+  - given:
+      date: '2010-05-01'
+      regions: ["cz"]
+      options: ["informal"]
+    expect:
+      name: "Svátek práce"
+  - given:
+      date: '2010-05-08'
+      regions: ["cz"]
+      options: ["informal"]
+    expect:
+      name: "Den vítězství"
+  - given:
+      date: '2010-07-05'
+      regions: ["cz"]
+      options: ["informal"]
+    expect:
+      name: "Den slovanských věrozvěstů Cyrila a Metoděje"
+  - given:
+      date: '2010-07-06'
+      regions: ["cz"]
+      options: ["informal"]
+    expect:
+      name: "Den upálení mistra Jana Husa"
+  - given:
+      date: '2010-09-28'
+      regions: ["cz"]
+      options: ["informal"]
+    expect:
+      name: "Den české státnosti"
+  - given:
+      date: '2010-10-28'
+      regions: ["cz"]
+      options: ["informal"]
+    expect:
+      name: "Den vzniku samostatného československého státu"
+  - given:
+      date: '2010-11-17'
+      regions: ["cz"]
+      options: ["informal"]
+    expect:
+      name: "Den boje za svobodu a demokracii"
+  - given:
+      date: '2010-12-24'
+      regions: ["cz"]
+      options: ["informal"]
+    expect:
+      name: "Štědrý den"
+  - given:
+      date: '2010-12-25'
+      regions: ["cz"]
+      options: ["informal"]
+    expect:
+      name: "1. svátek vánoční"
+  - given:
+      date: '2010-12-26'
+      regions: ["cz"]
+      options: ["informal"]
+    expect:
+      name: "2. svátek vánoční"
