@@ -128,7 +128,7 @@ months:
     wday: 1
   - name: Discovery Day
     week: 3
-    regions: [ca_yk]
+    regions: [ca_yt]
     wday: 1
   9:
   - name: Labour Day
@@ -142,7 +142,7 @@ months:
     wday: 1
   11:
   - name: Remembrance Day
-    regions: [ ca_ab, ca_sk, ca_bc, ca_pe, ca_nl, ca_nt, ca_nu, ca_nb, ca_yk]
+    regions: [ ca_ab, ca_sk, ca_bc, ca_pe, ca_nl, ca_nt, ca_nu, ca_nb, ca_yt]
     mday: 11
     observed: to_monday_if_weekend(date)
   12:
@@ -315,7 +315,7 @@ tests: |
       :ca_nt,
       :ca_nu,
       :ca_nb,
-      :ca_yk
+      :ca_yt
     ].each do |province|
       # Remembrance Day observed
       [Date.civil(2010, 11, 11), Date.civil(2012, 11, 12), Date.civil(2017, 11, 13)].each do |date|
