@@ -1,13 +1,10 @@
 # German holiday definitions for the Ruby Holiday gem.
 #
-# Updated: 2016-03-16
+# Updated: 2016-11-27
 #
-# Changes 2016-03-16:
-# - Add Ostersonntag, Pfingstsonntag, Heilig Abend and Silvester as informal holidays.
-# - Add Fronleichnam for de_sn_aux, de_th_aux
-# - Add Reformationstag as informal holiday for de_bw (it is school free)
-# - Add Reformationstag for 2017 (500 years)
-# - Correction in test for :de_by_aux
+# Changes 2016-11-27:
+# - Change de_sn_aux, de_th_aux to de_sn_bz (Bautzen) and de_th_eic (Eichsfeld), to reflect region
+# - Change de_sn_aux to de_by_a to reflect only Augsburg
 #
 # Sources:
 # - http://en.wikipedia.org/wiki/Holidays_in_Germany
@@ -46,7 +43,7 @@ months:
     function: easter(year)
     function_modifier: 60
   - name: Fronleichnam
-    regions: [de_sn_aux, de_th_aux]
+    regions: [de_sn_bz, de_th_eic]
     function: easter(year)
     function_modifier: 60
   - name: Weiberfastnacht
@@ -80,7 +77,7 @@ months:
     regions: [de_by, de_sl]
     mday: 15
   - name: Friedensfest
-    regions: [de_by_aux]
+    regions: [de_by_a]
     mday: 8
   10:
   - name: Tag der Deutschen Einheit
@@ -155,7 +152,7 @@ tests: |
       assert_equal 'Heilige Drei Könige', Holidays.on(Date.civil(2009,1,6), r)[0][:name]
     end
 
-    [:de_bw, :de_by, :de_he, :de_nw, :de_rp, :de_sl, :de_].each do |r|
+    [:de_bw, :de_by, :de_he, :de_nw, :de_rp, :de_sl, :de_sn_bz, de_th_eic, :de_].each do |r|
       assert_equal 'Fronleichnam', Holidays.on(Date.civil(2009,6,11), r)[0][:name]
     end
 
@@ -181,7 +178,7 @@ tests: |
       assert_equal 'Allerheiligen', Holidays.on(Date.civil(2009,11,1), r)[0][:name]
     end
 
-    [:de_by_aux].each do |r|
+    [:de_by_a].each do |r|
       assert_equal 'Friedensfest', Holidays.on(Date.civil(2015,8,8),r)[0][:name]
     end
 
