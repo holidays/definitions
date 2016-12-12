@@ -367,8 +367,8 @@ tests: |
     assert_equal "Boxing Day", Date.civil(2016, 12, 27).holidays(:au_sa)[0][:name]
 
     # CHRISTMAS DAY - Victoria and NT now observe both 25th and 27th if weekend
-    assert_equal "Christmas Day", Date.civil(2016, 12, 27).holidays(:au_vic)[0][:name]
-    assert_equal "Christmas Day", Date.civil(2016, 12, 27).holidays(:au_nt)[0][:name]
+    assert_equal "Christmas Day", Date.civil(2016, 12, 25).holidays(:au_vic)[0][:name]
+    assert_equal "Christmas Day", Date.civil(2016, 12, 25).holidays(:au_nt)[0][:name]
     assert_equal "Boxing Day", Date.civil(2016, 12, 26).holidays(:au_vic)[0][:name]
     assert_equal "Boxing Day", Date.civil(2016, 12, 26).holidays(:au_nt)[0][:name]
     assert_equal "Christmas Day", Date.civil(2016, 12, 27).holidays(:au_vic)[0][:name]
