@@ -5,7 +5,7 @@
 # - http://www.docep.wa.gov.au/lr/LabourRelations/Content/Wages%20and%20Conditions/Public%20Holidays/Public_Holidays.html
 # - http://www.wst.tas.gov.au/employment_info/public_holidays
 # - https://www.fairwork.gov.au/leave/public-holidays/list-of-public-holidays
---- 
+---
 months:
   0:
   - name: Good Friday
@@ -371,8 +371,8 @@ tests: |
     assert_equal "Christmas Day", Date.civil(2016, 12, 25).holidays(:au_nt)[0][:name]
     assert_equal "Boxing Day", Date.civil(2016, 12, 26).holidays(:au_vic)[0][:name]
     assert_equal "Boxing Day", Date.civil(2016, 12, 26).holidays(:au_nt)[0][:name]
-    assert_equal "Christmas Day", Date.civil(2016, 12, 27).holidays(:au_vic)[0][:name]
-    assert_equal "Christmas Day", Date.civil(2016, 12, 27).holidays(:au_nt)[0][:name]
+    assert_equal "Christmas Day", Date.civil(2016, 12, 27).holidays(:au_vic, :observed)[0][:name]
+    assert_equal "Christmas Day", Date.civil(2016, 12, 27).holidays(:au_nt, :observed)[0][:name]
 
     # NEW YEAR'S DAY - observed on both 1st and 2nd of Jan for 2017
     regions = [:au_qld, :au_nsw, :au_act, :au_vic, :au_tas, :au_sa, :au_wa, :au_nt]
