@@ -50,17 +50,7 @@ months:
   - name: St. Stephen's Day
     regions: [ie]
     mday: 26
-    observed: ie_st_stephens_day(date)
-methods:
-  ie_st_stephens_day:
-    # Ireland - Stephens Day is always the day after christmas day
-    arguments: date
-    source: |
-      case date.wday
-      when 6, 0 then date + 2
-      when 1 then date + 1
-      else date
-      end
+    observed: to_weekday_if_boxing_weekend(date)
 tests: |
     {Date.civil(2008,1,1) => 'New Year\'s Day',
      Date.civil(2008,3,17) => 'St. Patrick\'s Day',
