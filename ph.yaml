@@ -26,6 +26,11 @@ months:
   - name: New Year’s Day
     regions: [ph]
     mday: 1
+  2:
+  - name: People Power Anniversary
+    regions: [ph]
+    mday: 25
+    type: informal
   4:
   - name: The Day of Valor
     regions: [ph]
@@ -46,6 +51,10 @@ months:
     regions: [ph]
     function: ph_heroes_day(year)
   11:
+  - name: All Saints Day
+    regions: [ph]
+    mday: 1
+    type: informal
   - name: Bonifacio Day
     regions: [ph]
     mday: 30
