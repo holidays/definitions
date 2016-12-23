@@ -46,6 +46,7 @@ defs:
   PT: ['pt.yaml']
   RO: ['ro.yaml']
   SE: ['se.yaml']
+  TN: ['tn.ymal']
   US: ['us.yaml', 'north_america_informal.yaml']
   United_Nations: ['united_nations.yaml']
   UPS: ['ups.yaml']
