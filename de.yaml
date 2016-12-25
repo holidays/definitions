@@ -152,7 +152,7 @@ tests: |
       assert_equal 'Heilige Drei Könige', Holidays.on(Date.civil(2009,1,6), r)[0][:name]
     end
 
-    [:de_bw, :de_by, :de_he, :de_nw, :de_rp, :de_sl, :de_sn_sorbian, de_th_eichsfeld, :de_].each do |r|
+    [:de_bw, :de_by, :de_he, :de_nw, :de_rp, :de_sl, :de_sn_sorbian, :de_th_eichsfeld, :de_].each do |r|
       assert_equal 'Fronleichnam', Holidays.on(Date.civil(2009,6,11), r)[0][:name]
     end
 
