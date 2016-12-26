@@ -47,6 +47,6 @@ tests: |
      Date.civil(2016,5,1)   => "Fête du travail",
      Date.civil(2016,7,25)  => "Fête de la République",
      Date.civil(2016,8,13)  => "Fête de la Femme et de la Famille",
-     Date.civil(2016,10,15) => "Fête de l'"'Évacuation" }.each do |date, name|
+     Date.civil(2016,10,15) => "Fête de l'Évacuation" }.each do |date, name|
       assert_equal name, (Holidays.on(date, :tn)[0] || {})[:name]
     end
