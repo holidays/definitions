@@ -40,13 +40,13 @@ months:
     regions: [tn]
     mday: 15
 tests: |
-    {Date.civil(2016,1,1)  => 'Jour de l\'an',
-     Date.civil(2016,1,14) => 'Fête de la Révolution et de la Jeunesse',
-     Date.civil(2016,3,20)  => 'Fête de l\'Indépendance',
-     Date.civil(2016,4,9)  => 'Journée des Martyrs',
-     Date.civil(2016,5,1) => 'Fête du travail',
-     Date.civil(2016,7,25) => 'Fête de la République',
-     Date.civil(2016,8,13) => 'Fête de la Femme et de la Famille',
-     Date.civil(2016,10,15) => 'Fête de l'Évacuation' }.each do |date, name|
+    {Date.civil(2016,1,1)   => "Jour de l'an",
+     Date.civil(2016,1,14)  => "Fête de la Révolution et de la Jeunesse",
+     Date.civil(2016,3,20)  => "Fête de l'Indépendance",
+     Date.civil(2016,4,9)   => "Journée des Martyrs",
+     Date.civil(2016,5,1)   => "Fête du travail",
+     Date.civil(2016,7,25)  => "Fête de la République",
+     Date.civil(2016,8,13)  => "Fête de la Femme et de la Famille",
+     Date.civil(2016,10,15) => "Fête de l'"'Évacuation" }.each do |date, name|
       assert_equal name, (Holidays.on(date, :tn)[0] || {})[:name]
     end
