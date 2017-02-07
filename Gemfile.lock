@@ -2,10 +2,9 @@ GEM
   remote: https://rubygems.org/
   specs:
     coderay (1.1.1)
-    diff-lcs (1.2.5)
+    diff-lcs (1.3)
     docile (1.1.5)
-    ffi (1.9.14)
-    json (2.0.2)
+    json (2.0.3)
     method_source (0.8.2)
     pry (0.10.4)
       coderay (~> 1.1.0)
@@ -15,7 +14,7 @@ GEM
       rspec-core (~> 3.5.0)
       rspec-expectations (~> 3.5.0)
       rspec-mocks (~> 3.5.0)
-    rspec-core (3.5.3)
+    rspec-core (3.5.4)
       rspec-support (~> 3.5.0)
     rspec-expectations (3.5.0)
       diff-lcs (>= 1.2.0, < 2.0)
@@ -24,7 +23,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.5.0)
     rspec-support (3.5.0)
-    simplecov (0.12.0)
+    simplecov (0.13.0)
       docile (~> 1.1.0)
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
@@ -32,8 +31,6 @@ GEM
     simplecov-rcov (0.2.3)
       simplecov (>= 0.4.1)
     slop (3.6.0)
-    spoon (0.0.6)
-      ffi
 
 PLATFORMS
   ruby
@@ -42,7 +39,6 @@ DEPENDENCIES
   pry!
   rspec (~> 3.5.0)!
   simplecov-rcov!
-  spoon!
 
 BUNDLED WITH
-   1.12.5
+   1.14.3
