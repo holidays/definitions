@@ -1,4 +1,4 @@
-# Holidays Definitions
+# Holidays Definitions [![Build Status](https://travis-ci.org/holidays/definitions.svg?branch=master)](https://travis-ci.org/holidays/definitions)
 
 This repository contains the 'raw' definitions for the various holidays projects. It should be added a submodule to
 any project that wants to use them.

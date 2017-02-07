@@ -1,10 +1,9 @@
-env: JRUBY_OPTS=--debug
 language: ruby
 
 sudo: false
 
 before_install:
-  - gem install bundler -v 1.13.0
+  - gem install bundler -v 1.14.3
   - bundle --version
 
 script:
@@ -19,5 +18,5 @@ rvm:
   - 2.1.0
   - 2.2.0
   - 2.3.0
-  - jruby-9.0.5.0
+  - 2.4.0
   - ruby-head
