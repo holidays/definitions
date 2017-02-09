@@ -17,7 +17,7 @@ months:
     function: easter(year)
     function_modifier: -1
   - name: Easter Sunday
-    regions: [au_nsw, au_vic]
+    regions: [au_nsw, au_vic, au_qld]
     function: easter(year)
   - name: Easter Monday
     regions: [au]
@@ -390,3 +390,6 @@ tests: |
     # Tasmania is different
     assert_equal [], Date.civil(2017,1,1).holidays(:au_tas)
     assert_equal "New Year's Day", Date.civil(2017, 1, 2).holidays(:au_tas)[0][:name]
+
+    #QLD now celebrates Easter Sunday
+    assert_equal "Easter Sunday", Date.civil(2017, 4, 16).holidays(:au_qld)[0][:name]
