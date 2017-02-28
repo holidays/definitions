@@ -5,25 +5,25 @@
 ---
 months:
   1:
-  - name: New Year
+  - name: Tết dương lịch
     regions: [vi]
     mday: 1
   4:
-  - name: Liberation Day
+  - name: "Ngày Giải phóng miền Nam, thống nhất đất nước"
     regions: [vi]
     mday: 30
   5:
-  - name: International Workers' Day
+  - name: Ngày Quốc tế Lao động
     regions: [vi]
     mday: 1
   9:
-  - name: National Day
+  - name: Quốc khánh
     regions: [vi]
     mday: 2
 tests: |
-    {Date.civil(2014,1,1) => 'New Year',
-     Date.civil(2014,4,30) => 'Liberation Day',
-     Date.civil(2014,5,1) => "International Workers' Day",
-     Date.civil(2014,9,2) => 'National Day'}.each do |date, name|
+    {Date.civil(2014,1,1) => 'Tết dương lịch',
+     Date.civil(2014,4,30) => 'Ngày Giải phóng miền Nam, thống nhất đất nước',
+     Date.civil(2014,5,1) => "Ngày Quốc tế Lao động",
+     Date.civil(2014,9,2) => 'Quốc khánh'}.each do |date, name|
       assert_equal name, (Holidays.on(date, :vi)[0] || {})[:name]
     end
