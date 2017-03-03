@@ -8,6 +8,11 @@ months:
   - name: New Year
     regions: [vi]
     mday: 1
+  3:
+  - name: "Giỗ tổ Hùng Vương"
+    regions: [vi]
+    function: lunar_to_solar(year, month, day)
+    mday: 10
   4:
   - name: Liberation Day
     regions: [vi]
@@ -24,6 +29,8 @@ tests: |
     {Date.civil(2014,1,1) => 'New Year',
      Date.civil(2014,4,30) => 'Liberation Day',
      Date.civil(2014,5,1) => "International Workers' Day",
-     Date.civil(2014,9,2) => 'National Day'}.each do |date, name|
+     Date.civil(2014,9,2) => 'National Day',
+     Date.civil(2017,4,6) => "Giỗ tổ Hùng Vương",
+     Date.civil(2018,3,27) => "Giỗ tổ Hùng Vương"}.each do |date, name|
       assert_equal name, (Holidays.on(date, :vi)[0] || {})[:name]
     end
