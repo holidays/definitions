@@ -62,6 +62,10 @@ months:
   - name: March Public Holiday
     regions: [au_sa]
     function: march_pub_hol_sa(year)
+  - name: Canberra Day
+    regions: [au_act]
+    week: 2
+    wday: 1
   4:
   - name: ANZAC Day
     regions: [au]
