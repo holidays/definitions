@@ -147,3 +147,9 @@ tests:
       options: ["informal"]
     expect:
       name: "크리스마스"
+  - given:
+      date: '2017-01-28'
+      regions: ["kr"]
+      options: ["informal"]
+    expect:
+      name: "설날"

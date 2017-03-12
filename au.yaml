@@ -744,7 +744,22 @@ tests:
 
   - given:
       date: '2017-01-02'
-      regions: ["au_qld", "au_nsw", "au_act", "au_vic", "au_tas", "au_sa", "au_wa", "au_nt"]
+      regions: ["au_qld", "au_nsw", "au_act", "au_vic", "au_sa", "au_wa", "au_nt"]
       options: ["observed"]
     expect:
       name: "New Year's Day"
+  - given:
+      date: '2017-01-01'
+      regions: ["au_tas"]
+    expect:
+      holiday: false
+  - given:
+      date: '2017-01-02'
+      regions: ["au_tas"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: '2017-04-16'
+      regions: ["au_qld"]
+    expect:
+      name: "Easter Sunday"
