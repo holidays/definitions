@@ -61,6 +61,12 @@ tests:
     expect:
       name: "New Year's Day"
   - given:
+      date: ['2017-01-02', '2012-01-02', '2011-01-01', '2006-01-02']
+      regions: ["nyse"]
+      options: ["observed"]
+    expect:
+      name: "New Year's Day"
+  - given:
       date: '2008-01-21'
       regions: ["nyse"]
     expect:
