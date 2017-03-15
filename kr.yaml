@@ -11,7 +11,7 @@ months:
   1:
   - name: Korean New Year
     regions: [kr]
-    function: lunar_to_solar(year, month, day)
+    function: lunar_to_solar(year, month, day, :ko)
     mday: 1
   - name: New Year's Day
     regions: [kr]
@@ -23,7 +23,7 @@ months:
   4:
   - name: Buddah's Birthday
     regions: [kr]
-    function: lunar_to_solar(year, month, day)
+    function: lunar_to_solar(year, month, day, :ko)
     mday: 8
   5:
   - name: Children's Day
@@ -41,7 +41,7 @@ months:
   8:
   - name: Korean Thanksgiving
     regions: [kr]
-    function: lunar_to_solar(year, month, day)
+    function: lunar_to_solar(year, month, day, :ko)
     mday: 15
   - name: Liberation Day
     regions: [kr]
