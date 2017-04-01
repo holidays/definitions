@@ -729,7 +729,7 @@ tests:
       name: 'Christmas Day'
   - given:
       date: '2017-01-01'
-      regions: ["au_qld", "au_nsw", "au_act", "au_vic", "au_sa", "au_wa", "au_nt"]
+      regions: ["au", "au_qld", "au_nsw", "au_act", "au_vic", "au_sa", "au_wa", "au_nt"]
     expect:
       name: "New Year's Day"
 
@@ -744,7 +744,7 @@ tests:
 
   - given:
       date: '2017-01-02'
-      regions: ["au_qld", "au_nsw", "au_act", "au_vic", "au_sa", "au_wa", "au_nt"]
+      regions: ["au", "au_qld", "au_nsw", "au_act", "au_vic", "au_sa", "au_wa", "au_nt"]
       options: ["observed"]
     expect:
       name: "New Year's Day"
