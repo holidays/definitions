@@ -11,7 +11,7 @@ months:
   3:
   - name: "Giỗ tổ Hùng Vương"
     regions: [vi]
-    function: lunar_to_solar(year, month, day, :vi)
+    function: lunar_to_solar(year, month, day, region)
     mday: 10
   4:
   - name: "Ngày Giải phóng miền Nam, thống nhất đất nước"
