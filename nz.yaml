@@ -9,10 +9,6 @@ months:
     regions: [nz]
     function: easter(year)
     function_modifier: -2
-  - name: Easter Saturday
-    regions: [nz]
-    function: easter(year)
-    function_modifier: -1
   - name: Easter Monday
     regions: [nz]
     function: easter(year)
