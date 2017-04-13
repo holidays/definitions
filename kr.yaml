@@ -72,7 +72,7 @@ months:
 
 tests: |
   {Date.civil(2016,2,8) => "설날",
-   Date.civil(2017,2,9) => "설날 연휴",
+   Date.civil(2017,1,29) => "설날 연휴",
    Date.civil(2016,5,14) => "석가탄신일",
    Date.civil(2016,9,15) => "추석",
    Date.civil(2016,1,1) => "신정",
@@ -84,7 +84,6 @@ tests: |
    Date.civil(2016,10,3) => "개천절",
    Date.civil(2016,10,9) => "한글날",
    Date.civil(2016,12,25) => "크리스마스",
-   Date.civil(2017,1,27) => "설날 연휴",
    Date.civil(2017,1,28) => "설날"
   }.each do |date, name|
     assert_equal name, (Holidays.on(date, :kr, :informal)[0] || {})[:name]
