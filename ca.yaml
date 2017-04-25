@@ -103,7 +103,7 @@ months:
     regions: [ca_nu]
     mday: 9
   8:
-  - name: BC Day
+  - name: B.C. Day
     week: 1
     regions: [ca_bc]
     wday: 1
