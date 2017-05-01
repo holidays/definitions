@@ -2,7 +2,7 @@ env: JRUBY_OPTS=--debug
 language: ruby
 
 cache:
-  bundler: false
+  bundler: true
 
 sudo: false
 
