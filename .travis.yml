@@ -1,10 +1,14 @@
+env: JRUBY_OPTS=--debug
 language: ruby
+
+cache:
+  bundler: true
 
 sudo: false
 
 before_install:
-  - gem install bundler -v 1.14.3
-  - bundle --version
+  - bundler --version
+  - gem --version
 
 script:
   - make test
@@ -19,4 +23,5 @@ rvm:
   - 2.2.0
   - 2.3.0
   - 2.4.0
+  - jruby-head
   - ruby-head
