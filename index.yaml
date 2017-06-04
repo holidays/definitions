@@ -16,6 +16,7 @@ defs:
   DK: ['dk.yaml']
   DE: ['de.yaml']
   ECB_TARGET: ['ecb_target.yaml']
+  EE: ['ee.yaml']
   EL: ['el.yaml']
   ES: ['es.yaml']
   Federal_Reserve: ['federal_reserve.yaml']
