@@ -14,7 +14,6 @@ months:
   - name: New Year's Day
     regions: [my]
     mday: 1
-    observed: to_weekday_if_weekend(date)
   5:
   - name: Labour Day
     regions: [my]
@@ -22,8 +21,11 @@ months:
   6:
   - name: Agong's Birthday
     regions: [my]
-    mday: 4
-    observed: to_weekday_if_weekend(date)
+    function: agong_birthday_june(year)
+  7:
+  - name: Agong's Birthday
+    regions: [my]
+    function: agong_birthday_july(year)
   8:
   - name: Independence Day
     regions: [my]
@@ -33,19 +35,40 @@ months:
   - name: Malaysia Day
     regions: [my]
     mday: 16
-    observed: to_weekday_if_weekend(date)
   12:
   - name: Christmas Day
     regions: [my]
     mday: 25
     observed: to_weekday_if_weekend(date)
 
+methods:
+  agong_birthday_june:
+    arguments: year
+    source: |
+      if year <= 2016
+        Date.new(year, 6, 4)
+      else
+        nil
+      end
+  agong_birthday_july:
+    arguments: year
+    source: |
+      if year >= 2017
+        Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 7, :last, :saturday)
+      else
+        nil
+      end
+
 tests: |
     {Date.civil(2016,1,1) => "New Year's Day",
      Date.civil(2016,5,1) => 'Labour Day',
      Date.civil(2016,6,4) => "Agong's Birthday",
+     Date.civil(2017,7,29) => "Agong's Birthday",
      Date.civil(2016,8,31) => 'Independence Day',
      Date.civil(2016,9,16) => 'Malaysia Day',
      Date.civil(2016,12,25) => 'Christmas Day'}.each do |date, name|
       assert_equal name, (Holidays.on(date, :my, :informal)[0] || {})[:name]
     end
+
+    assert_nil Date.civil(2017, 9, 15).holidays(:my, :observed)[0]
+    assert_nil Date.civil(2017, 1, 2).holidays(:my, :observed)[0]
