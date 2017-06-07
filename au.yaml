@@ -259,8 +259,7 @@ methods:
       end
 
 tests: |
-    {Date.civil(2007,1,1) => 'New Year\'s Day',
-     Date.civil(2007,1,26) => 'Australia Day',
+    {Date.civil(2007,1,26) => 'Australia Day',
      Date.civil(2007,4,6) => 'Good Friday',
      Date.civil(2007,4,9) => 'Easter Monday',
      Date.civil(2007,4,25) => 'ANZAC Day'}.each do |date, name|
