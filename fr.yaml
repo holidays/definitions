@@ -1,12 +1,21 @@
 # French holiday definitions for the Ruby Holiday gem.
 #
 # Updated: 2013-10-2*.
+#
+# Changes 2017-05-31:
+# - Add additional holidays for Alsace (fr_a) and Moselle (fr_m)
+#
 # Sources:
 # - http://fr.wikipedia.org/wiki/Jours_f%C3%A9ri%C3%A9s_en_France#Les_f.C3.AAtes_f.C3.A9ri.C3.A9es
 # - http://vosdroits.service-public.fr/particuliers/F2405.xhtml
+# - https://en.wikipedia.org/wiki/Public_holidays_in_France
 ---
 months:
   0:
+  - name: Vendredi saint
+    regions: [fr_a, fr_m]
+    function: easter(year)
+    function_modifier: -2
   - name: Pâques
     regions: [fr]
     function: easter(year)
@@ -58,22 +67,33 @@ months:
   - name: Noël
     regions: [fr]
     mday: 25
+  - name: Saint-Étienne
+    regions: [fr_a, fr_m]
+    mday: 26
 tests: |
-    {Date.civil(2007,1,1) => 'Jour de l\'an',
-     Date.civil(2007,4,9) => 'Lundi de Pâques',
-     Date.civil(2007,5,1) => 'Fête du travail',
-     Date.civil(2007,5,8) => 'Victoire 1945',
-     Date.civil(2007,5,17) => 'Ascension',
-     Date.civil(2007,5,28) => 'Lundi de Pentecôte',
-     Date.civil(2007,7,14) => 'Fête nationale',
-     Date.civil(2007,8,15) => 'Assomption',
-     Date.civil(2007,11,1) => 'Toussaint',
-     Date.civil(2007,11,11) => 'Armistice 1918',
-     Date.civil(2007,12,25) => 'Noël'}.each do |date, name|
+    { Date.civil(2007, 1, 1) => 'Jour de l\'an',
+      Date.civil(2007, 4, 9) => 'Lundi de Pâques',
+      Date.civil(2007, 5, 1) => 'Fête du travail',
+      Date.civil(2007, 5, 8) => 'Victoire 1945',
+      Date.civil(2007, 5, 17) => 'Ascension',
+      Date.civil(2007, 5, 28) => 'Lundi de Pentecôte',
+      Date.civil(2007, 7, 14) => 'Fête nationale',
+      Date.civil(2007, 8, 15) => 'Assomption',
+      Date.civil(2007, 11, 1) => 'Toussaint',
+      Date.civil(2007, 11, 11) => 'Armistice 1918',
+      Date.civil(2007, 12, 25) => 'Noël' }.each do |date, name|
       assert_equal name, (Holidays.on(date, :fr)[0] || {})[:name]
     end
-    {Date.civil(2007,4,8) => 'Pâques',
-     Date.civil(2007,5,27) => 'Pentecôte'}.each do |date, name|
+    { Date.civil(2007, 4, 8) => 'Pâques',
+      Date.civil(2007, 5, 27) => 'Pentecôte' }.each do |date, name|
       assert_nil (Holidays.on(date, :fr)[0] || {})[:name]
       assert_equal name, (Holidays.on(date, :fr, :informal)[0] || {})[:name]
     end
+
+    [Date.civil(2017, 4, 14), Date.civil(2018, 3, 30), Date.civil(2019, 4, 19)].each do |date|
+      assert_nil (Holidays.on(date, :fr)[0] || {})[:name]
+      assert_equal 'Vendredi saint', Holidays.on(date, [:fr_a, :fr_m])[0][:name]
+    end
+
+    assert_nil Holidays.on(Date.civil(2017, 12, 26), [:fr])[0] || {}[:name]
+    assert_equal 'Saint-Étienne', Holidays.on(Date.civil(2017, 12, 26), [:fr_a, :fr_m])[0][:name]
