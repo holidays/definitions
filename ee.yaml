@@ -1,70 +1,83 @@
 # Estonian holiday definitions for the Ruby Holiday gem.
 #
-# Updated: 2017-06-04.
-# Source:  https://en.wikipedia.org/wiki/Public_holidays_in_Estonia
+# Updated: 2017-05-25
+#
+# Changes 2017-06-08:
+# - Use small initial letters
+# - Good Friday and Easter Sunday aren't informal
+# - New Year's Day is always on January 1st
+# - Correct Spring Day definition
+
+# - Enhance tests
+# Sources:
+# - https://en.wikipedia.org/wiki/Public_holidays_in_Estonia
+# - https://www.riigiteataja.ee/akt/13276841?leiaKehtiv
 ---
 months:
   0:
-  - name: Suur reede #Good Friday
+  - name: suur reede # Good Friday
     regions: [ee]
     function: easter(year)
     function_modifier: -2
-    type: informal
-  - name: Ülestõusmispühade 1. püha #Easter Sunday
+  - name: ülestõusmispühade 1. püha # Easter Sunday
     regions: [ee]
     function: easter(year)
-    type: informal
-  - name: Nelipühade 1. püha #Whitsunday
+  - name: nelipühade 1. püha
     regions: [ee]
     function: easter(year)
     function_modifier: 49
   1:
-  - name: Uusaasta #New Year's Day
+  - name: uusaasta # New Year's Day
     regions: [ee]
     mday: 1
-    observed: to_weekday_if_weekend(date)
   2:
-  - name: Iseseisvuspäev #Independence Day
-    mday: 24
+  - name: iseseisvuspäev # Independence Day
     regions: [ee]
+    mday: 24
   5:
-  - name: Kevadpüha #Spring Day
-    week: 1
+  - name: kevadpüha # Spring Day
     regions: [ee]
-    wday: 1
+    mday: 1
   6:
-  - name: Võidupüha ja jaanilaupäev #Victory Day
+  - name: võidupüha ja jaanilaupäev # Victory Day
+    regions: [ee]
     mday: 23
+  - name: jaanipäev # Jaan's Day
     regions: [ee]
-  - name: Jaanipäev #Jaan's Day
     mday: 24
-    regions: [ee]
   8:
-  - name: Taasiseseisvumispäev #Day of Restoration of Independence
-    mday: 20
+  - name: taasiseseisvumispäev # Day of Restoration of Independence
     regions: [ee]
+    mday: 20
   12:
-  - name: Jõululaupäev #Christmas eve
+  - name: jõululaupäev # Christmas Eve
     regions: [ee]
     mday: 24
-  - name: Esimene jõulupüha #Christmas Day
+  - name: esimene jõulupüha # Christmas Day
     regions: [ee]
     mday: 25
-  - name: Teine jõulupüha #Boxing Day
+  - name: teine jõulupüha # Boxing Day
     regions: [ee]
     mday: 26
 tests: |
-    {Date.civil(2017,1,1) => 'Uusaasta',
-     Date.civil(2017,2,24) => 'Iseseisvuspäev',
-     Date.civil(2017,4,14) => 'Suur reede',
-     Date.civil(2017,4,16) => 'Ülestõusmispühade 1. püha',
-     Date.civil(2017,5,1) => 'Kevadpüha',
-     Date.civil(2017,6,4) => 'Nelipühade 1. püha',
-     Date.civil(2017,6,23) => 'Võidupüha ja jaanilaupäev',
-     Date.civil(2017,6,24) => 'Jaanipäev',
-     Date.civil(2017,8,20) => 'Taasiseseisvumispäev',
-     Date.civil(2008,12,24) => 'Jõululaupäev',
-     Date.civil(2008,12,25) => 'Esimene jõulupüha',
-     Date.civil(2008,12,26) => 'Teine jõulupüha'}.each do |date, name|
-      assert_equal name, (Holidays.on(date, :ee, :informal)[0] || {})[:name]
+    { Date.civil(2017, 1, 1) => 'uusaasta',
+      Date.civil(2017, 2, 24) => 'iseseisvuspäev',
+      Date.civil(2017, 5, 1) => 'kevadpüha',
+      Date.civil(2017, 6, 23) => 'võidupüha ja jaanilaupäev',
+      Date.civil(2017, 6, 24) => 'jaanipäev',
+      Date.civil(2017, 8, 20) => 'taasiseseisvumispäev',
+      Date.civil(2017, 12, 24) => 'jõululaupäev',
+      Date.civil(2017, 12, 25) => 'esimene jõulupüha',
+      Date.civil(2017, 12, 26) => 'teine jõulupüha' }.each do |date, name|
+      assert_equal name, (Holidays.on(date, :ee)[0] || {})[:name]
+    end
+
+    [Date.civil(2017, 4, 14), Date.civil(2018, 3, 30), Date.civil(2019, 4, 19)].each do |date|
+      assert_equal 'suur reede', Holidays.on(date, :ee)[0][:name]
+    end
+    [Date.civil(2017, 4, 16), Date.civil(2018, 4, 01), Date.civil(2019, 4, 21)].each do |date|
+      assert_equal 'ülestõusmispühade 1. püha', Holidays.on(date, :ee)[0][:name]
+    end
+    [Date.civil(2017, 6, 4), Date.civil(2018, 5, 20), Date.civil(2019, 6, 9)].each do |date|
+      assert_equal 'nelipühade 1. püha', Holidays.on(date, :ee)[0][:name]
     end
