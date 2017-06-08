@@ -34,6 +34,8 @@ defs:
   LI: ['li.yaml']
   LT: ['lt.yaml']
   MA: ['ma.yaml']
+  MT_MT: ['mt_mt.yaml']
+  MT_EN: ['mt_en.yaml']
   MX: ['mx.yaml', 'north_america_informal.yaml']
   NERC: ['nerc.yaml']
   NL: ['nl.yaml']
