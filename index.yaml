@@ -46,6 +46,8 @@ defs:
   PL: ['pl.yaml']
   PT: ['pt.yaml']
   RO: ['ro.yaml']
+  RS_CYRL: ['rs_cyrl']
+  RS_LA: ['rs_la']
   SE: ['se.yaml']
   TN: ['tn.yaml']
   US: ['us.yaml', 'north_america_informal.yaml']
