@@ -48,6 +48,7 @@ defs:
   PL: ['pl.yaml']
   PT: ['pt.yaml']
   RO: ['ro.yaml']
+  RU: ['ru.yaml']
   SE: ['se.yaml']
   TN: ['tn.yaml']
   US: ['us.yaml', 'north_america_informal.yaml']
