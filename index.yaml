@@ -51,6 +51,7 @@ defs:
   RU: ['ru.yaml']
   SE: ['se.yaml']
   TN: ['tn.yaml']
+  TR: ['tr.yaml']
   US: ['us.yaml', 'north_america_informal.yaml']
   United_Nations: ['united_nations.yaml']
   UPS: ['ups.yaml']
