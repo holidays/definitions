@@ -1,0 +1,80 @@
+# Maltese holiday definitions for the Ruby Holiday gem.  In English.
+#
+# Updated: 2017-06-08
+# Sources:
+# - https://en.wikipedia.org/wiki/Public_holidays_in_Malta
+---
+months:
+  0:
+  - name: Good Friday # Il-Ġimgħa l-Kbira
+    regions: [mt_en]
+    function: easter(year)
+    function_modifier: -2
+  1:
+  - name: New Year's Day # L-Ewwel tas-Sena
+    regions: [mt_en]
+    mday: 1
+  2:
+  - name: Feast of Saint Paul's Shipwreck in Malta # Nawfraġju ta' San Pawl
+    regions: [mt_en]
+    mday: 10
+  3:
+  - name: Feast of Saint Joseph # San Ġużepp
+    regions: [mt_en]
+    mday: 19
+  - name: Freedom Day # Jum il-Ħelsien
+    regions: [mt_en]
+    mday: 31
+  5:
+  - name: Worker's Day # Jum il-Ħaddiem
+    regions: [mt_en]
+    mday: 1
+  6:
+  - name: Sette Giugno
+    regions: [mt_en]
+    mday: 7
+  - name: Feast of Saint Peter & Saint Paul # L-Imnarja
+    regions: [mt_en]
+    mday: 29
+  8:
+  - name: Feast of the Assumption of Our Lady # Santa Marija
+    regions: [mt_en]
+    mday: 15
+  9:
+  - name: Victory Day # Jum il-Vitorja
+    regions: [mt_en]
+    mday: 8
+  - name: Independence Day # Jum l-Indipendenza
+    regions: [mt_en]
+    mday: 21
+  12:
+  - name: Feast of the Immaculate Conception # Il-Kunċizzjoni
+    regions: [mt_en]
+    mday: 8
+  - name: Republic Day # Jum ir-Repubblika
+    regions: [mt_en]
+    mday: 13
+  - name: Christmas Day # Il-Milied
+    regions: [mt_en]
+    mday: 25
+tests: |
+    { Date.civil(2017, 1, 1) => "New Year's Day",
+      Date.civil(2017, 2, 10) => "Feast of Saint Paul's Shipwreck in Malta",
+      Date.civil(2017, 3, 19) => 'Feast of Saint Joseph',
+      Date.civil(2017, 3, 31) => 'Freedom Day',
+      Date.civil(2017, 5, 1) => "Worker's Day",
+      Date.civil(2017, 6, 7) => 'Sette Giugno',
+      Date.civil(2017, 6, 29) => 'Feast of Saint Peter & Saint Paul',
+      Date.civil(2017, 8, 15) => 'Feast of the Assumption of Our Lady',
+      Date.civil(2017, 9, 8) => 'Victory Day',
+      Date.civil(2017, 9, 21) => 'Independence Day',
+      Date.civil(2017, 12, 8) => 'Feast of the Immaculate Conception',
+      Date.civil(2017, 12, 13) => 'Republic Day',
+      Date.civil(2017, 12, 25) => 'Christmas Day',
+    }.each do |date, name|
+      assert_equal name, (Holidays.on(date, :mt_en)[0] || {})[:name]
+    end
+
+    [Date.civil(2017, 4, 14), Date.civil(2018, 3, 30), Date.civil(2019, 4, 19)].each do |date|
+      assert_equal 'Good Friday', Holidays.on(date, :mt_en)[0][:name]
+    end
