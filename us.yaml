@@ -210,10 +210,10 @@ months:
   - name: Independence Day # fixed
     regions: [us]
     mday: 4
-  - name: Independence Day (Holiday) # Note: If Independence Day didn't match
+  - name: Independence Day (Holiday)
     regions: [us_va]
     mday: 4
-    observed: to_weekday_if_weekend(date)
+    function: to_weekday_if_weekend(date) # Note: Always if Independence Day don't match
   - name: Pioneer Day # fixed
     regions: [us_ut]
     mday: 24
@@ -295,10 +295,10 @@ months:
   - name: Christmas Eve
     regions: [us_ar, us_mi, us_nc, us_sc, us_tx, us_wi]
     mday: 24
-  - name: Christmas Eve (Holiday) # Note: If Christmas Eve didn't match
+  - name: Christmas Eve (Holiday) # Note: Always if Christmas Eve don't match
     regions: [us_mi, us_sc, us_va]
     mday: 24
-    observed: to_weekday_if_weekend(date)
+    function: to_weekday_if_weekend(date)
   - name: Christmas Day
     regions: [us]
     mday: 25
@@ -509,7 +509,7 @@ tests: |
     end
     [Date.civil(2020, 7, 3), Date.civil(2021, 7, 5), Date.civil(2026, 7, 3)].each do |date|
       assert_equal [], Holidays.on(date, [:us])
-      assert_equal 'Independence Day (Holiday)', Holidays.on(date, [:us_va], :observed)[0][:name]
+      assert_equal 'Independence Day (Holiday)', Holidays.on(date, [:us_va])[0][:name]
     end
 
     assert_equal 'Pioneer Day', Holidays.on(Date.civil(2017, 7, 24), [:us_ut])[0][:name]
@@ -597,7 +597,7 @@ tests: |
     states_xmas_eve = %i{us_ar us_mi us_nc us_sc us_tx us_wi}
     states_xmas_eve_holiday = %i{us_mi us_sc us_va}
     [Date.civil(2022, 12, 23), Date.civil(2023, 12, 25), Date.civil(2028, 12, 25)].each do |date|
-      assert_equal 'Christmas Eve (Holiday)', Holidays.on(date, states_xmas_eve_holiday, :observed)[0][:name]
+      assert_equal 'Christmas Eve (Holiday)', Holidays.on(date, states_xmas_eve_holiday)[0][:name]
     end
     assert_equal 'Christmas Eve', Holidays.on(Date.civil(2017, 12, 24), states_xmas_eve)[0][:name]
     assert_equal 'Christmas Eve', Holidays.on(Date.civil(2017, 12, 24), states_xmas_eve_holiday)[0][:name]
