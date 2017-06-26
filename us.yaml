@@ -607,7 +607,7 @@ tests: |
     assert_equal 'Christmas Eve', Holidays.on(Date.civil(2017, 12, 24), states_xmas_eve)[0][:name]
     assert_equal 'Christmas Eve', Holidays.on(Date.civil(2017, 12, 24), states_xmas_eve_holiday)[0][:name]
 
-    [Date.civil(2021, 12, 24), Date.civil(2022, 12, 26), Date.civil(2027, 12, 24)].each do |date|
+    [Date.civil(2021, 12, 27), Date.civil(2022, 12, 26), Date.civil(2027, 12, 27)].each do |date|
       assert_equal [], Holidays.on(date, [:us])
       assert_equal 'Christmas Day', Holidays.on(date, [:us], :observed)[0][:name]
     end
