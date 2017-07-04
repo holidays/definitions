@@ -167,7 +167,7 @@ months:
   - name: Boxing Day
     regions: [au_tas, au_nt]
     function: to_weekday_if_boxing_weekend_from_year(year)
-  - name: Boxing Day
+  - name: Proclamation Day
     regions: [au_sa]
     function: to_weekday_if_boxing_weekend_from_year_or_to_tuesday_if_monday(year)
   - name: Christmas Day # CHRISTMAS DAY - SA observes on 26th if 25th is a Sunday (Boxing Day goes to 27th)
@@ -350,7 +350,7 @@ tests: |
 
     # BOXING DAY - SA gets monday only. same for TAS and NT.
     assert_nil Date.civil(2015, 12, 26).holidays(:au_sa)[0]
-    assert_equal "Boxing Day", Date.civil(2015, 12, 28).holidays(:au_sa)[0][:name]
+    assert_equal "Proclamation Day", Date.civil(2015, 12, 28).holidays(:au_sa)[0][:name]
     assert_nil Date.civil(2015, 12, 26).holidays(:au_tas)[0]
     assert_equal "Boxing Day", Date.civil(2015, 12, 28).holidays(:au_tas)[0][:name]
     assert_nil Date.civil(2015, 12, 26).holidays(:au_nt)[0]
