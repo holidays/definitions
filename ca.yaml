@@ -13,6 +13,7 @@ months:
   - name: Easter Sunday
     regions: [ca]
     function: easter(year)
+    type: informal
   - name: Easter Monday
     regions: [ca]
     function: easter(year)
@@ -75,7 +76,7 @@ months:
     mday: 23
   5:
   - name: Victoria Day
-    regions: [ca]
+    regions: [ca_ab, ca_bc, ca_mb, ca_nt, ca_nu, ca_on, ca_sk, ca_yt]
     function: ca_victoria_day(year)
   - name: National Patriotes Day
     regions: [ca_qc]
@@ -102,7 +103,7 @@ months:
     regions: [ca_nu]
     mday: 9
   8:
-  - name: BC Day
+  - name: B.C. Day
     week: 1
     regions: [ca_bc]
     wday: 1
@@ -120,8 +121,13 @@ months:
     wday: 1
   - name: Civic Holiday
     week: 1
-    regions: [ca_on, ca_nt, ca_nu, ca_pe] # Appears to be a holiday in Ontario by convention
+    regions: [ca_nt, ca_nu, ca_pe]
     wday: 1
+  - name: Civic Holiday
+    week: 1
+    regions: [ca_on]
+    wday: 1
+    type: informal
   - name: New Brunswick Day
     week: 1
     regions: [ca_nb]
@@ -138,11 +144,11 @@ months:
   10:
   - name: Thanksgiving
     week: 2
-    regions: [ca]
+    regions: [ca_ab, ca_bc, ca_mb, ca_nt, ca_nu, ca_on, ca_sk, ca_yt]
     wday: 1
   11:
   - name: Remembrance Day
-    regions: [ ca_ab, ca_sk, ca_bc, ca_pe, ca_nl, ca_nt, ca_nu, ca_nb, ca_yt]
+    regions: [ca_ab, ca_sk, ca_bc, ca_pe, ca_nl, ca_nt, ca_nu, ca_nb, ca_yt]
     mday: 11
     observed: to_monday_if_weekend(date)
   12:
@@ -151,9 +157,14 @@ months:
     mday: 25
     observed: to_monday_if_weekend(date)
   - name: Boxing Day
-    regions: [ca]
+    regions: [ca_on]
     mday: 26
     observed: to_weekday_if_boxing_weekend(date)
+  - name: Boxing Day
+    regions: [ca_ab, ca_bc, ca_mb, ca_nb, ca_nl, ca_nt, ca_ns, ca_nu, ca_pe, ca_sk, ca_yt]
+    mday: 26
+    observed: to_weekday_if_boxing_weekend(date)
+    type: informal
 methods:
   ca_victoria_day:
     # Monday on or before May 24
@@ -289,8 +300,7 @@ tests:
       regions: ["ca_sk"]
     expect:
       name: "Family Day"
-
-  # Family Day in Saskatchewan - should not be active before 2007
+# Family Day in Saskatchewan - should not be active before 2007
   - given:
       date: '1970-02-16'
       regions: ["ca_sk"]

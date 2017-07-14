@@ -1,12 +1,21 @@
 # French holiday definitions for the Ruby Holiday gem.
 #
 # Updated: 2013-10-2*.
+#
+# Changes 2017-05-31:
+# - Add additional holidays for Alsace (fr_a) and Moselle (fr_m)
+#
 # Sources:
 # - http://fr.wikipedia.org/wiki/Jours_f%C3%A9ri%C3%A9s_en_France#Les_f.C3.AAtes_f.C3.A9ri.C3.A9es
 # - http://vosdroits.service-public.fr/particuliers/F2405.xhtml
+# - https://en.wikipedia.org/wiki/Public_holidays_in_France
 ---
 months:
   0:
+  - name: Vendredi saint
+    regions: [fr_a, fr_m]
+    function: easter(year)
+    function_modifier: -2
   - name: Pâques
     regions: [fr]
     function: easter(year)
@@ -58,6 +67,9 @@ months:
   - name: Noël
     regions: [fr]
     mday: 25
+  - name: Saint-Étienne
+    regions: [fr_a, fr_m]
+    mday: 26
 
 tests:
   - given:
@@ -137,3 +149,9 @@ tests:
       options: ["informal"]
     expect:
       name: "Pentecôte"
+  - given:
+      date: '2017-12-26'
+      regions: ["fr_a", "fr_m"]
+      options: ["informal"]
+    expect:
+      name: "Saint-Étienne"

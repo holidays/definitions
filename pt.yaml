@@ -9,6 +9,9 @@
 # - http://en.wikipedia.org/wiki/Portugal_Day
 # - http://www.timeanddate.com/calendar/custom.html?year=2008&country=15
 # - http://en.wikipedia.org/wiki/Public_holidays_in_Portugal
+#
+# Changes 2017-05-31:
+# - Add additional holidays for Porto (pt_po) and Lisbon (pt_li)
 ---
 months:
   0:
@@ -44,6 +47,12 @@ months:
   - name: Dia de Portugal
     regions: [pt]
     mday: 10
+  - name: Dia de Santo António
+    regions: [pt_li]
+    mday: 13
+  - name: Dia de São João
+    regions: [pt_po]
+    mday: 24
   8:
   - name: Assunção de Nossa Senhora
     regions: [pt]
