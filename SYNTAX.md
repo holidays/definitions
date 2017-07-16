@@ -328,26 +328,53 @@ If a user does not specify `observed` when calling the gem then 1/1 will be the 
 
 ## Tests
 
-All definition files should have tests included.  In the YAML file, tests are just a block of Ruby code:
+All definition files should have tests included. At this time we do not enforce any rules on coverage or numbers of tests.
+However, in general, PRs will not be accepted if they are devoid of tests that cover the changes in question.
 
-```
-tests: |
-  {Date.civil(2008,1,1) => 'New Year\'s Day',
-   Date.civil(2008,3,21) => 'Good Friday',
-   Date.civil(2008,3,24) => 'Easter Monday',
-   Date.civil(2008,9,1) => 'Labour Day',
-   Date.civil(2008,12,25) => 'Christmas Day',
-   Date.civil(2008,12,26) => 'Boxing Day'}.each do |date, name|
-    assert_equal name, (Holidays.on(date, :ca, :informal)[0] || {})[:name]
-  end
+The format is a straightforward 'given then expect'. Here is a simple example:
 
-  # Victoria Day
-  [Date.civil(2004,5,24), Date.civil(2005,5,23), Date.civil(2006,5,22),
-   Date.civil(2007,5,21), Date.civil(2008,5,19)].each do |date|
-    assert_equal 'Victoria Day', Holidays.on(date, :ca)[0][:name]
-  end
+```yaml
+- given:
+    date: '2018-1-1'
+    regions: ["ex"]
+  expect:
+    name: "Example Holiday"
 ```
 
-These tests will be picked up by the `generate` process and written into actual Test::Unit tests that are run when a user executes the test suite.
+Here are format details:
+
+* given (required)
+** date (required) - all dates must be in 'YYYY-MM-DD' format. Either a single day or an array of dates can be used.
+** regions (required) - an array of strings (NOT symbols). Multiple regions can be passed. Even a single region must be in an array.
+** options (optional) - an array of options to use for this test. Can be either 'informal' or 'observed'. Must be an array of strings, e.g. `['informal', 'observed']`
+* expect (required)
+** name (optional) - the name of the holiday you are expecting. Must be a string.
+** holiday (optional) - a boolean indicating whether the given values result in a holiday. Defaults to 'true' if not present. Must be true or false.
+
+One or the other of the `expect` keys is required. If you do not specify a `name` then you should set `holiday: false`.
+
+Here are some more examples. First example shows multiple dates, multiple regions, additional options, and an expectation that the result will be the named holiday.
+
+```yaml
+- given:
+    date: ['2018-1-1', '2019-3-5']
+    regions: ["ex", "ex2", "ex3"]
+    options: ["informal"]
+  expect:
+    name: "Example Holiday"
+```
+
+Second example shows multiple dates, a single region, multiple options, and an expectation that the given values will *not* result in a found holiday. No name is required because...no holiday is expected to be found.
+
+```yaml
+- given:
+    date: ['2022-12-1', '2019-4-1', '2046-8-8]
+    regions: ["ex"]
+    options: ["informal", "observed"]
+  expect:
+    holiday: false
+```
+
+These tests will be picked up by the `generate` process in the client repositories and written into actual tests in the given language that are run when a user executes the test suite.
 
 Please please please include tests. Your PR won't be accepted if tests are not included with your changes.
