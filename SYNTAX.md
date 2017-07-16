@@ -344,12 +344,12 @@ The format is a straightforward 'given then expect'. Here is a simple example:
 Here are format details:
 
 * given (required)
-** date (required) - all dates must be in 'YYYY-MM-DD' format. Either a single day or an array of dates can be used.
-** regions (required) - an array of strings (NOT symbols). Multiple regions can be passed. Even a single region must be in an array.
-** options (optional) - an array of options to use for this test. Can be either 'informal' or 'observed'. Must be an array of strings, e.g. `['informal', 'observed']`
+  * date (required) - all dates must be in 'YYYY-MM-DD' format. Either a single day or an array of dates can be used.
+  * regions (required) - an array of strings (NOT symbols). Multiple regions can be passed. Even a single region must be in an array.
+  * options (optional) - an array of options to use for this test. Can be either 'informal' or 'observed'. Must be an array of strings, e.g. `['informal', 'observed']`
 * expect (required)
-** name (optional) - the name of the holiday you are expecting. Must be a string.
-** holiday (optional) - a boolean indicating whether the given values result in a holiday. Defaults to 'true' if not present. Must be true or false.
+  * name (optional) - the name of the holiday you are expecting. Must be a string.
+  * holiday (optional) - a boolean indicating whether the given values result in a holiday. Defaults to 'true' if not present. Must be true or false.
 
 One or the other of the `expect` keys is required. If you do not specify a `name` then you should set `holiday: false`.
 
