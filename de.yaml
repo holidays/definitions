@@ -6,10 +6,20 @@
 # - Change de_sn_aux, de_th_aux to de_sn_sorbian (because it only is celebrated in Sorbian regions in Sachsen) and de_th_eichsfeld, to reflect region of Eichsfeld
 # - Change de_sn_aux to de_by_augsburg to reflect only City of Augsburg
 #
+# Changes 2017-06-08:
+# - Add Berlin, Bremen, Hamburg, Niedersachsen, Schleswig-Holstein
+# - Change de_th_eichsfeld to de_th_cath because it affects the catholic communities Eichsfeld, Unstrut-Hainich-Kreis and Wartburgkreis
+# - Merge Fronleichnam entry
+# - Add de_by_cath for catholic communities in Bavaria; Maria Himmelfahrt is not a Bavaria-wide holiday
+# - Mariä Himmelfahrt is celebrated in the community of Augsburg (de_by_augsburg)
+# - Enhance tests
+#
 # Sources:
 # - http://en.wikipedia.org/wiki/Holidays_in_Germany
 # - http://www.timeanddate.com/calendar/index.html?country=8
 # - http://www.germany.info/relaunch/welcome/travel/holidays.html
+# - https://www.statistik.bayern.de/statistik/bevoelkerungsstand/00141.php
+# - http://www.thueringen.de/mam/th3/tim/verwaltungsrecht/fronleichnam_gemeindeschluesselzahlen.pdf
 ---
 months:
   0:
@@ -39,11 +49,7 @@ months:
     function: easter(year)
     function_modifier: 50
   - name: Fronleichnam
-    regions: [de_bw, de_by, de_he, de_nw, de_rp, de_sl]
-    function: easter(year)
-    function_modifier: 60
-  - name: Fronleichnam
-    regions: [de_sn_sorbian, de_th_eichsfeld]
+    regions: [de_bw, de_by, de_he, de_nw, de_rp, de_sl, de_sn_sorbian, de_th_cath]
     function: easter(year)
     function_modifier: 60
   - name: Weiberfastnacht
@@ -74,7 +80,7 @@ months:
     mday: 1
   8:
   - name: Mariä Himmelfahrt
-    regions: [de_by, de_sl]
+    regions: [de_by_cath, de_by_augsburg, de_sl]
     mday: 15
   - name: Friedensfest
     regions: [de_by_augsburg]
@@ -84,7 +90,7 @@ months:
     regions: [de]
     mday: 3
   - name: Reformationstag
-    regions: [de_bb, de_mv, de_sn, de_st, de_th]
+    regions: [de_sh, de_ni, de_hh, de_hb, de_be, de_bb, de_mv, de_sn, de_st, de_th]
     mday: 31
   - name: Reformationstag
     regions: [de_bw]
