@@ -14,6 +14,7 @@
 # - https://de.wikipedia.org/wiki/Islamisches_Opferfest#Opferfest-Termine
 # - https://translate.yandex.com/?lang=en-tr
 # - https://de.wikibooks.org/wiki/Türkisch:_Zahlen
+# - https://en.wikipedia.org/wiki/Democracy_and_National_Unity_Day
 ---
 months:
   0:
@@ -58,6 +59,10 @@ months:
   - name: Atatürk'ü Anma Gençlik ve Spor Bayramı # Commemoration of Atatürk, Youth and Sports Day
     regions: [tr]
     mday: 19
+  7:
+  - name: Demokrasi ve Milli Birlik Günü # Democracy and National Unity Day
+    regions: [tr]
+    mday: 15
   8:
   - name: Zafer Bayramı # Victory Day
     regions: [tr]
@@ -92,7 +97,6 @@ methods:
           '2019' => Date.civil(2019, 8, 11)
       }
       begin_of_sacrifice_feast[year.to_s]
-
 tests:
   - given:
       date: '2017-1-1'
