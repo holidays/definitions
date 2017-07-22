@@ -375,12 +375,12 @@ methods:
 tests:
   - given:
       date: ['2017-2-28', '2018-2-13', '2019-3-5']
-      regions: ["us_fl", "us_la"]
+      regions: ["us_fl"]
     expect:
       name: 'Shrove Tuesday'
   - given:
       date: ['2017-2-28', '2018-2-13', '2019-3-5']
-      regions: ["us_fl", "us_la"]
+      regions: ["us_la"]
     expect:
       name: 'Mardi Gras Day'
   - given:
@@ -464,7 +464,7 @@ tests:
       holiday: false
   - given:
       date: ['2017-1-20', '2021-1-20']
-      regions: ["us_tx us_dc us_la us_md us_va"]
+      regions: ["us_tx", "us_dc", "us_la", "us_md", "us_va"]
     expect:
       name: "Inauguration Day"
 
@@ -607,6 +607,7 @@ tests:
   - given:
       date: ['2015-4-27', '2020-4-27', '2026-4-27']
       regions: ["us_fl"]
+      options: ["observed"]
     expect:
       name: "Confederate Memorial Day"
 
@@ -657,7 +658,7 @@ tests:
       date: ['2017-6-5', '2018-6-4', '2019-6-3']
       regions: ["us"]
     expect:
-      holkiday: false
+      holiday: false
   - given:
       date: ['2017-6-5', '2018-6-4', '2019-6-3']
       regions: ["us_al"]
@@ -676,7 +677,7 @@ tests:
       holiday: false
   - given:
       date: ['2017-6-12', '2018-6-11', '2022-6-10']
-      regions: ["us"]
+      regions: ["us_hi"]
       options: ["observed"]
     expect:
       name: "King Kamehameha I Day"
@@ -784,12 +785,12 @@ tests:
       date: ['2017-8-27']
       regions: ["us_tx"]
     expect:
-      name: "Lyndon Baines Johnson Day'"
+      name: "Lyndon Baines Johnson Day"
   - given:
       date: ['2017-9-4', '2018-9-3', '2019-9-2']
       regions: ["us"]
     expect:
-      name: "Labor Day'"
+      name: "Labor Day"
 
   - given:
       date: ['2017-9-21', '2018-9-10', '2019-9-30']
@@ -858,7 +859,7 @@ tests:
     expect:
       holiday: false
   - given:
-      date: ['2017-10-27', '2018-10-26', '2019-10-25']
+      date: ['2017-11-7', '2018-11-6', '2021-11-2']
       regions: ["us_de", "us_hi", "us_il", "us_in", "us_mt", "us_nj", "us_ny", "us_pa", "us_ri"]
     expect:
       name: "Election Day"
@@ -921,13 +922,8 @@ tests:
     expect:
       name: "Christmas Eve (Holiday)"
   - given:
-      date: ['2022-12-23']
-      regions: ["us_ar", "us_mi", "us_nc", "us_sc", "us_tx", "us_wi"]
-    expect:
-      name: "Christmas Eve"
-  - given:
       date: ['2017-12-24']
-      regions: ["us_mi", "us_sc", "us_va"]
+      regions: ["us_ar", "us_mi", "us_nc", "us_va", "us_sc", "us_tx", "us_wi"]
     expect:
       name: "Christmas Eve"
 
