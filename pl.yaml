@@ -782,8 +782,3 @@ tests:
       regions: ["pl"]
     expect:
       name: "Wniebowzięcie Najświętszej Maryi Panny"
-  - given:
-      date: '2011-08-15'
-      regions: ["pl"]
-    expect:
-      name: "Święto Wojska Polskiego"
