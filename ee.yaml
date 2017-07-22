@@ -60,7 +60,7 @@ months:
     regions: [ee]
     mday: 26
 
-test:
+tests:
   - given:
       date: '2017-01-01'
       regions: ["ee"]
