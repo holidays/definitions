@@ -70,7 +70,7 @@ months:
     regions: [ge]
     mday: 23
 
-test:
+tests:
   - given:
       date: '2017-1-1'
       regions: ["ge"]
