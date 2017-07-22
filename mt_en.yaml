@@ -58,7 +58,7 @@ months:
     regions: [mt_en]
     mday: 25
 
-test:
+tests:
   - given:
       date: '2017-1-1'
       regions: ["mt_en"]
