@@ -209,6 +209,11 @@ tests:
   - given:
       date: '2019-11-30'
       regions: ["gb_sct"]
+    expect:
+      name: "St. Andrew's Day"
+  - given:
+      date: '2019-12-2'
+      regions: ["gb_sct"]
       options: ["observed"]
     expect:
       name: "St. Andrew's Day"
