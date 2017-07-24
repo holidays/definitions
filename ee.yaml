@@ -105,7 +105,7 @@ tests:
       date: '2017-12-26'
       regions: ["ee"]
     expect:
-      name: "ne jõulupüha"
+      name: "teine jõulupüha"
   - given:
       date: ['2017-4-14', '2018-3-30', '2019-4-19']
       regions: ["ee"]
