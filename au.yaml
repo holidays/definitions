@@ -280,42 +280,12 @@ tests:
     expect:
       name: 'Labour Day'
   - given:
-      date: '2012-06-11'
+      date: ['2012-06-11', '2012-10-01', '2013-6-10', '2015-6-8', '2016-10-3']
       regions: ["au_qld"]
     expect:
       name: "Queen's Birthday"
   - given:
-      date: '2012-10-01'
-      regions: ["au_qld"]
-    expect:
-      name: "Queen's Birthday"
-  - given:
-      date: '2015-06-10'
-      regions: ["au_qld"]
-    expect:
-      name: "Queen's Birthday"
-  - given:
-      date: '2015-06-08'
-      regions: ["au_qld"]
-    expect:
-      name: "Queen's Birthday"
-  - given:
-      date: '2016-10-03'
-      regions: ["au_qld"]
-    expect:
-      name: "Queen's Birthday"
-  - given:
-      date: '2014-09-29'
-      regions: ["au_wa"]
-    expect:
-      name: "Queen's Birthday"
-  - given:
-      date: '2015-09-28'
-      regions: ["au_wa"]
-    expect:
-      name: "Queen's Birthday"
-  - given:
-      date: '2016-09-26'
+      date: ['2014-09-29', '2015-09-28', '2016-09-26']
       regions: ["au_wa"]
     expect:
       name: "Queen's Birthday"
@@ -410,6 +380,11 @@ tests:
       regions: ["au_nt"]
     expect:
       holiday: false
+  - given:
+      date: '2016-12-27'
+      regions: ["au_sa"]
+    expect:
+      name: 'Proclamation Day'
   - given:
       date: '2016-12-25'
       regions: ["au_nt"]
@@ -519,56 +494,45 @@ tests:
       name: 'ANZAC Day'
   - given:
       date: '2015-12-26'
-      regions: ["au"]
-    expect:
-      name: 'Boxing Day'
-  - given:
-      date: '2015-12-26'
-      regions: ["au"]
-      options: ["observed"]
-    expect:
-      name: 'Boxing Day'
-  - given:
-      date: '2015-12-26'
       regions: ["au_qld"]
     expect:
-      name: 'Boxing Day'
+      name: "Boxing Day"
   - given:
       date: '2015-12-28'
       regions: ["au_qld"]
       options: ["observed"]
     expect:
-      name: 'Boxing Day'
+      name: "Boxing Day"
+  - given:
+      date: '2015-12-26'
+      regions: ["au_sa"]
+    expect:
+      holiday: false
   - given:
       date: '2015-12-28'
       regions: ["au_sa"]
     expect:
-      name: 'Boxing Day'
+      name: "Proclamation Day"
   - given:
-      date: '2016-12-27'
-      regions: ["au_sa"]
+      date: '2015-12-26'
+      regions: ["au_tas"]
     expect:
-      name: 'Boxing Day'
+      holiday: false
   - given:
       date: '2015-12-28'
       regions: ["au_tas"]
     expect:
-      name: 'Boxing Day'
+      name: "Boxing Day"
+  - given:
+      date: '2015-12-26'
+      regions: ["au_nt"]
+    expect:
+      holiday: false
   - given:
       date: '2015-12-28'
       regions: ["au_nt"]
     expect:
-      name: 'Boxing Day'
-  - given:
-      date: '2016-12-26'
-      regions: ["au_nt"]
-    expect:
-      name: 'Boxing Day'
-  - given:
-      date: '2016-12-26'
-      regions: ["au_vic"]
-    expect:
-      name: 'Boxing Day'
+      name: "Boxing Day"
   - given:
       date: '2012-02-13'
       regions: ["au_tas_south"]
@@ -589,20 +553,10 @@ tests:
       regions: ["au_tas_south"]
     expect:
       name: 'Royal Hobart Regatta'
+
   - given:
       date: '2016-12-25'
       regions: ["au_qld"]
-    expect:
-      name: 'Christmas Day'
-  - given:
-      date: '2016-12-25'
-      regions: ["au"]
-    expect:
-      name: 'Christmas Day'
-  - given:
-      date: '2016-12-25'
-      regions: ["au"]
-      options: ["observed"]
     expect:
       name: 'Christmas Day'
   - given:
@@ -658,6 +612,12 @@ tests:
   - given:
       date: '2016-12-25'
       regions: ["au_sa"]
+    expect:
+      name: 'Christmas Day'
+  - given:
+      date: '2016-12-26'
+      regions: ["au_sa"]
+      options: ["observed"]
     expect:
       name: 'Christmas Day'
   - given:
@@ -748,11 +708,6 @@ tests:
       options: ["observed"]
     expect:
       name: "New Year's Day"
-  - given:
-      date: '2017-01-01'
-      regions: ["au_tas"]
-    expect:
-      holiday: false
   - given:
       date: '2017-01-02'
       regions: ["au_tas"]
