@@ -378,11 +378,6 @@ tests:
     expect:
       name: "Día de Castilla y León"
   - given:
-      date: '2009-04-23'
-      regions: ["es_"]
-    expect:
-      name: "San Jorge, Día de Aragón"
-  - given:
       date: '2009-10-09'
       regions: ["es_vc"]
     expect:
