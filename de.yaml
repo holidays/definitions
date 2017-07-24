@@ -223,7 +223,7 @@ tests:
       name: "Heilige Drei Könige"
   - given:
       date: '2009-06-11'
-      regions: ["de_bw", "de_by", "de_he", "de_nw", "de_rp", "de_sl", "de_sn_sorbian", "de_th_eichsfeld", "de_"]
+      regions: ["de_bw", "de_by", "de_he", "de_nw", "de_rp", "de_sl", "de_sn_sorbian", "de_th_cath"]
     expect:
       name: "Fronleichnam"
   - given:
