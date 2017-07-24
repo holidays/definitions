@@ -111,76 +111,76 @@ months:
 tests:
   - given:
       date: '2015-01-01'
-      regions: ["be_en"]
+      regions: ["bg_en"]
     expect:
       name: "New Year's Day"
   - given:
       date: '2015-03-03'
-      regions: ["be_en"]
+      regions: ["bg_en"]
     expect:
       name: 'Liberation Day'
   - given:
       date: '2015-03-28'
-      regions: ["be_en"]
+      regions: ["bg_en"]
     expect:
       name: 'Good Friday'
   - given:
       date: '2015-03-29'
-      regions: ["be_en"]
+      regions: ["bg_en"]
     expect:
       name: 'Holy Saturday'
   - given:
       date: '2015-03-30'
-      regions: ["be_en"]
+      regions: ["bg_en"]
     expect:
       name: 'Easter Sunday'
   - given:
       date: '2015-03-31'
-      regions: ["be_en"]
+      regions: ["bg_en"]
     expect:
       name: 'Easter Monday'
   - given:
       date: '2015-05-01'
-      regions: ["be_en"]
+      regions: ["bg_en"]
     expect:
       name: 'Labour Day'
   - given:
       date: '2015-05-06'
-      regions: ["be_en"]
+      regions: ["bg_en"]
     expect:
       name: "St. George's Day"
   - given:
       date: '2015-05-24'
-      regions: ["be_en"]
+      regions: ["bg_en"]
     expect:
       name: 'Slavic Literacy Day'
   - given:
       date: '2015-09-06'
-      regions: ["be_en"]
+      regions: ["bg_en"]
     expect:
       name: 'Unification Day'
   - given:
       date: '2015-09-22'
-      regions: ["be_en"]
+      regions: ["bg_en"]
     expect:
       name: 'The Independence Day'
   - given:
       date: '2015-11-01'
-      regions: ["be_en"]
+      regions: ["bg_en"]
     expect:
       name: "Revival Leader's Day"
   - given:
       date: '2015-12-24'
-      regions: ["be_en"]
+      regions: ["bg_en"]
     expect:
       name: 'Christmas Eve'
   - given:
       date: '2015-12-25'
-      regions: ["be_en"]
+      regions: ["bg_en"]
     expect:
       name: 'Christmas'
   - given:
       date: '2015-12-26'
-      regions: ["be_en"]
+      regions: ["bg_en"]
     expect:
       name: 'Christmas'
