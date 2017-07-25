@@ -41,16 +41,59 @@ months:
   - name: Stiefesdag
     regions: [lu]
     mday: 26
-tests: |
-    {Date.civil(2008,1,1) => 'Neijoerschdag',
-    Date.civil(2008,3,24) => 'Ouschterméindeg',
-    Date.civil(2008,5,1) => 'Christi Himmelfaart', # Ascension, Easter+39
-    Date.civil(2008,6,23) => 'Nationalfeierdag',
-    Date.civil(2008,8,15) => 'Léiffrawëschdag',
-    Date.civil(2008,11,1) => 'Allerhellgen',
-    Date.civil(2008,12,25) => 'Chrëschtdag',
-    Date.civil(2008,12,26) => 'Stiefesdag',
-    Date.civil(2008,5,11) => 'Péngschtméindeg'
-    }.each do |date, name|
-      assert_equal name, (Holidays.on(date, :lu, :informal)[0] || {})[:name]
-    end
+
+tests:
+  - given:
+      date: '2008-01-01'
+      regions: ["lu"]
+      options: ["informal"]
+    expect:
+      name: "Neijoerschdag"
+  - given:
+      date: '2008-03-24'
+      regions: ["lu"]
+      options: ["informal"]
+    expect:
+      name: "Ouschterméindeg"
+  - given:
+      date: '2008-05-01'
+      regions: ["lu"]
+      options: ["informal"]
+    expect:
+      name: "Christi Himmelfaart"
+  - given:
+      date: '2008-06-23'
+      regions: ["lu"]
+      options: ["informal"]
+    expect:
+      name: "Nationalfeierdag"
+  - given:
+      date: '2008-08-15'
+      regions: ["lu"]
+      options: ["informal"]
+    expect:
+      name: "Léiffrawëschdag"
+  - given:
+      date: '2008-11-01'
+      regions: ["lu"]
+      options: ["informal"]
+    expect:
+      name: "Allerhellgen"
+  - given:
+      date: '2008-12-25'
+      regions: ["lu"]
+      options: ["informal"]
+    expect:
+      name: "Chrëschtdag"
+  - given:
+      date: '2008-12-26'
+      regions: ["lu"]
+      options: ["informal"]
+    expect:
+      name: "Stiefesdag"
+  - given:
+      date: '2008-05-11'
+      regions: ["lu"]
+      options: ["informal"]
+    expect:
+      name: "Péngschtméindeg"

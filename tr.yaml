@@ -66,6 +66,7 @@ months:
   - name: Cumhuriyet Bayramı # Republic Day
     regions: [tr]
     mday: 29
+
 methods:
   ramadan_feast:
     arguments: year
@@ -91,36 +92,70 @@ methods:
           '2019' => Date.civil(2019, 8, 11)
       }
       begin_of_sacrifice_feast[year.to_s]
-tests: |
-    { Date.civil(2017, 1, 1) => 'Yılbaşı',
-      Date.civil(2017, 4, 23) => 'Ulusal Egemenlik ve Çocuk Bayramı',
-      Date.civil(2017, 5, 1) => 'Emek ve Dayanışma Günü',
-      Date.civil(2017, 5, 19) => "Atatürk'ü Anma Gençlik ve Spor Bayramı",
-      Date.civil(2017, 8, 30) => 'Zafer Bayramı',
-      Date.civil(2017, 10, 29) => 'Cumhuriyet Bayramı'
-    }.each do |date, name|
-      assert_equal name, (Holidays.on(date, :tr)[0] || {})[:name]
-    end
 
-    [Date.civil(2017, 6, 25), Date.civil(2018, 6, 15), Date.civil(2019, 6, 4)].each do |date|
-      assert_equal 'Ramazan Bayramı', Holidays.on(date, :tr)[0][:name]
-    end
-    [Date.civil(2017, 6, 26), Date.civil(2018, 6, 16), Date.civil(2019, 6, 5)].each do |date|
-      assert_equal 'Ramazan Bayramı (ikinci tatil)', Holidays.on(date, :tr)[0][:name]
-    end
-    [Date.civil(2017, 6, 27), Date.civil(2018, 6, 17), Date.civil(2019, 6, 6)].each do |date|
-      assert_equal 'Ramazan Bayramı (üçüncü tatil)', Holidays.on(date, :tr)[0][:name]
-    end
-
-    [Date.civil(2017, 9, 1), Date.civil(2018, 8, 21), Date.civil(2019, 8, 11)].each do |date|
-      assert_equal 'Kurban Bayramı', Holidays.on(date, :tr)[0][:name]
-    end
-    [Date.civil(2017, 9, 2), Date.civil(2018, 8, 22), Date.civil(2019, 8, 12)].each do |date|
-      assert_equal 'Kurban Bayramı (ikinci tatil)', Holidays.on(date, :tr)[0][:name]
-    end
-    [Date.civil(2017, 9, 3), Date.civil(2018, 8, 23), Date.civil(2019, 8, 13)].each do |date|
-      assert_equal 'Kurban Bayramı (üçüncü tatil)', Holidays.on(date, :tr)[0][:name]
-    end
-    [Date.civil(2017, 9, 4), Date.civil(2018, 8, 24), Date.civil(2019, 8, 14)].each do |date|
-      assert_equal 'Kurban Bayramı (dördüncü tatil)', Holidays.on(date, :tr)[0][:name]
-    end
+tests:
+  - given:
+      date: '2017-1-1'
+      regions: ["tr"]
+    expect:
+      name: "Yılbaşı"
+  - given:
+      date: '2017-4-23'
+      regions: ["tr"]
+    expect:
+      name: "Ulusal Egemenlik ve Çocuk Bayramı"
+  - given:
+      date: '2017-5-1'
+      regions: ["tr"]
+    expect:
+      name: "Emek ve Dayanışma Günü"
+  - given:
+      date: '2017-5-19'
+      regions: ["tr"]
+    expect:
+      name: "Atatürk'ü Anma Gençlik ve Spor Bayramı"
+  - given:
+      date: '2017-8-30'
+      regions: ["tr"]
+    expect:
+      name: "Zafer Bayramı"
+  - given:
+      date: '2017-10-29'
+      regions: ["tr"]
+    expect:
+      name: "Cumhuriyet Bayramı"
+  - given:
+      date: ['2017-6-25', '2018-6-15', '2019-6-4']
+      regions: ["tr"]
+    expect:
+      name: "Ramazan Bayramı"
+  - given:
+      date: ['2017-6-26', '2018-6-16', '2019-6-5']
+      regions: ["tr"]
+    expect:
+      name: "Ramazan Bayramı (ikinci tatil)"
+  - given:
+      date: ['2017-6-27', '2018-6-17', '2019-6-6']
+      regions: ["tr"]
+    expect:
+      name: "Ramazan Bayramı (üçüncü tatil)"
+  - given:
+      date: ['2017-9-1', '2018-8-21', '2019-8-11']
+      regions: ["tr"]
+    expect:
+      name: "Kurban Bayramı"
+  - given:
+      date: ['2017-9-2', '2018-8-22', '2019-8-12']
+      regions: ["tr"]
+    expect:
+      name: "Kurban Bayramı (ikinci tatil)"
+  - given:
+      date: ['2017-9-3', '2018-8-23', '2019-8-13']
+      regions: ["tr"]
+    expect:
+      name: "Kurban Bayramı (üçüncü tatil)"
+  - given:
+      date: ['2017-9-4', '2018-8-24', '2019-8-14']
+      regions: ["tr"]
+    expect:
+      name: "Kurban Bayramı (dördüncü tatil)"

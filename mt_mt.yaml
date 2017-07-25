@@ -57,24 +57,75 @@ months:
   - name: Il-Milied # Christmas Day
     regions: [mt_mt]
     mday: 25
-tests: |
-    { Date.civil(2017, 1, 1) => 'L-Ewwel tas-Sena',
-      Date.civil(2017, 2, 10) => "Nawfraġju ta' San Pawl",
-      Date.civil(2017, 3, 19) => 'San Ġużepp',
-      Date.civil(2017, 3, 31) => 'Jum il-Ħelsien',
-      Date.civil(2017, 5, 1) => 'Jum il-Ħaddiem',
-      Date.civil(2017, 6, 7) => 'Sette Giugno',
-      Date.civil(2017, 6, 29) => 'L-Imnarja',
-      Date.civil(2017, 8, 15) => 'Santa Marija',
-      Date.civil(2017, 9, 8) => 'Jum il-Vitorja',
-      Date.civil(2017, 9, 21) => 'Jum l-Indipendenza',
-      Date.civil(2017, 12, 8) => 'Il-Kunċizzjoni',
-      Date.civil(2017, 12, 13) => 'Jum ir-Repubblika',
-      Date.civil(2017, 12, 25) => 'Il-Milied',
-    }.each do |date, name|
-      assert_equal name, (Holidays.on(date, :mt_mt)[0] || {})[:name]
-    end
 
-    [Date.civil(2017, 4, 14), Date.civil(2018, 3, 30), Date.civil(2019, 4, 19)].each do |date|
-      assert_equal 'Il-Ġimgħa l-Kbira', Holidays.on(date, :mt_mt)[0][:name]
-    end
+tests:
+  - given:
+      date: '2017-1-1'
+      regions: ["mt_mt"]
+    expect:
+      name: "L-Ewwel tas-Sena"
+  - given:
+      date: '2017-2-10'
+      regions: ["mt_mt"]
+    expect:
+      name: "Nawfraġju ta' San Pawl"
+  - given:
+      date: '2017-3-19'
+      regions: ["mt_mt"]
+    expect:
+      name: "San Ġużepp"
+  - given:
+      date: '2017-3-31'
+      regions: ["mt_mt"]
+    expect:
+      name: "Jum il-Ħelsien"
+  - given:
+      date: '2017-5-1'
+      regions: ["mt_mt"]
+    expect:
+      name: "Jum il-Ħaddiem"
+  - given:
+      date: '2017-6-7'
+      regions: ["mt_mt"]
+    expect:
+      name: "Sette Giugno"
+  - given:
+      date: '2017-6-29'
+      regions: ["mt_mt"]
+    expect:
+      name: "L-Imnarja"
+  - given:
+      date: '2017-8-15'
+      regions: ["mt_mt"]
+    expect:
+      name: "Santa Marija"
+  - given:
+      date: '2017-9-8'
+      regions: ["mt_mt"]
+    expect:
+      name: "Jum il-Vitorja"
+  - given:
+      date: '2017-9-21'
+      regions: ["mt_mt"]
+    expect:
+      name: "Jum l-Indipendenza"
+  - given:
+      date: '2017-12-8'
+      regions: ["mt_mt"]
+    expect:
+      name: "Il-Kunċizzjoni"
+  - given:
+      date: '2017-12-13'
+      regions: ["mt_mt"]
+    expect:
+      name: "Jum ir-Repubblika"
+  - given:
+      date: '2017-12-25'
+      regions: ["mt_mt"]
+    expect:
+      name: "Il-Milied"
+  - given:
+      date: ['2017-4-14', '2018-3-30', '2019-4-19']
+      regions: ["mt_mt"]
+    expect:
+      name: "Il-Ġimgħa l-Kbira"

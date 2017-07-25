@@ -85,31 +85,149 @@ methods:
       date = Date.civil(year,10,31)
       date += (6 - date.wday)
       date
-tests: |
-    {Date.civil(2008,1,1) => 'Uudenvuodenpäivä',
-     Date.civil(2008,1,6) => 'Loppiainen',
-     Date.civil(2008,3,21) => 'Pitkäperjantai',
-     Date.civil(2008,3,23) => 'Pääsiäispäivä',
-     Date.civil(2008,3,24) => '2. Pääsiäispäivä',
-     Date.civil(2008,5,1) => 'Vappu',
-     Date.civil(2008,5,1) => 'Helatorstai',
-     Date.civil(2008,5,11) => 'Helluntaipäivä',
-     Date.civil(2009,6,19) => 'Juhannusaatto',
-     Date.civil(2010,6,25) => 'Juhannusaatto',
-     Date.civil(2011,6,24) => 'Juhannusaatto',
-     Date.civil(2012,6,22) => 'Juhannusaatto',
-     Date.civil(2013,6,21) => 'Juhannusaatto',
-     Date.civil(2005,6,25) => 'Juhannuspäivä',
-     Date.civil(2006,6,24) => 'Juhannuspäivä',
-     Date.civil(2007,6,23) => 'Juhannuspäivä',
-     Date.civil(2008,6,21) => 'Juhannuspäivä',
-     Date.civil(2005,11,5) => 'Pyhäinpäivä',
-     Date.civil(2006,11,4) => 'Pyhäinpäivä',
-     Date.civil(2007,11,3) => 'Pyhäinpäivä',
-     Date.civil(2008,11,1) => 'Pyhäinpäivä',
-     Date.civil(2008,12,6) => 'Itsenäisyyspäivä',
-     Date.civil(2008,12,24) => 'Jouluaatto',
-     Date.civil(2008,12,25) => 'Joulupäivä',
-     Date.civil(2008,12,26) => 'Tapaninpäivä'}.each do |date, name|
-      assert_equal name, (Holidays.on(date, :fi, :informal)[0] || {})[:name]
-    end
+
+tests:
+  - given:
+      date: '2008-01-01'
+      regions: ["fi"]
+      options: ["informal"]
+    expect:
+      name: "Uudenvuodenpäivä"
+  - given:
+      date: '2008-01-06'
+      regions: ["fi"]
+      options: ["informal"]
+    expect:
+      name: "Loppiainen"
+  - given:
+      date: '2008-03-21'
+      regions: ["fi"]
+      options: ["informal"]
+    expect:
+      name: "Pitkäperjantai"
+  - given:
+      date: '2008-03-23'
+      regions: ["fi"]
+      options: ["informal"]
+    expect:
+      name: "Pääsiäispäivä"
+  - given:
+      date: '2008-03-24'
+      regions: ["fi"]
+      options: ["informal"]
+    expect:
+      name: "2. Pääsiäispäivä"
+  - given:
+      date: '2008-05-01'
+      regions: ["fi"]
+      options: ["informal"]
+    expect:
+      name: "Helatorstai"
+  - given:
+      date: '2008-05-11'
+      regions: ["fi"]
+      options: ["informal"]
+    expect:
+      name: "Helluntaipäivä"
+  - given:
+      date: '2009-06-19'
+      regions: ["fi"]
+      options: ["informal"]
+    expect:
+      name: "Juhannusaatto"
+  - given:
+      date: '2010-06-25'
+      regions: ["fi"]
+      options: ["informal"]
+    expect:
+      name: "Juhannusaatto"
+  - given:
+      date: '2011-06-24'
+      regions: ["fi"]
+      options: ["informal"]
+    expect:
+      name: "Juhannusaatto"
+  - given:
+      date: '2012-06-22'
+      regions: ["fi"]
+      options: ["informal"]
+    expect:
+      name: "Juhannusaatto"
+  - given:
+      date: '2013-06-21'
+      regions: ["fi"]
+      options: ["informal"]
+    expect:
+      name: "Juhannusaatto"
+  - given:
+      date: '2005-06-25'
+      regions: ["fi"]
+      options: ["informal"]
+    expect:
+      name: "Juhannuspäivä"
+  - given:
+      date: '2006-06-24'
+      regions: ["fi"]
+      options: ["informal"]
+    expect:
+      name: "Juhannuspäivä"
+  - given:
+      date: '2007-06-23'
+      regions: ["fi"]
+      options: ["informal"]
+    expect:
+      name: "Juhannuspäivä"
+  - given:
+      date: '2008-06-21'
+      regions: ["fi"]
+      options: ["informal"]
+    expect:
+      name: "Juhannuspäivä"
+  - given:
+      date: '2005-11-05'
+      regions: ["fi"]
+      options: ["informal"]
+    expect:
+      name: "Pyhäinpäivä"
+  - given:
+      date: '2006-11-04'
+      regions: ["fi"]
+      options: ["informal"]
+    expect:
+      name: "Pyhäinpäivä"
+  - given:
+      date: '2007-11-03'
+      regions: ["fi"]
+      options: ["informal"]
+    expect:
+      name: "Pyhäinpäivä"
+  - given:
+      date: '2008-11-01'
+      regions: ["fi"]
+      options: ["informal"]
+    expect:
+      name: "Pyhäinpäivä"
+  - given:
+      date: '2008-12-06'
+      regions: ["fi"]
+      options: ["informal"]
+    expect:
+      name: "Itsenäisyyspäivä"
+  - given:
+      date: '2008-12-24'
+      regions: ["fi"]
+      options: ["informal"]
+    expect:
+      name: "Jouluaatto"
+  - given:
+      date: '2008-12-25'
+      regions: ["fi"]
+      options: ["informal"]
+    expect:
+      name: "Joulupäivä"
+  - given:
+      date: '2008-12-26'
+      regions: ["fi"]
+      options: ["informal"]
+    expect:
+      name: "Tapaninpäivä"

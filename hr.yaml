@@ -57,23 +57,101 @@ months:
   - name: Sveti Stjepan
     regions: [hr]
     mday: 26
-tests: |
-  {Date.civil(2012,1,1) => 'Nova godina',
-   Date.civil(2012,1,6) => 'Sveta tri kralja',
-   Date.civil(2012,5,1) => 'Međunarodni praznik rada',
-   Date.civil(2012,6,22) => 'Dan antifašističke borbe',
-   Date.civil(2012,6,25) => 'Dan državnosti',
-   Date.civil(2012,8,5) => 'Dan pobjede i domovinske zahvalnosti i dan hrvatskih branitelja',
-   Date.civil(2012,8,15) => 'Velika Gospa',
-   Date.civil(2012,10,8) => 'Dan neovisnosti',
-   Date.civil(2012,11,1) => 'Dan svih svetih',
-   Date.civil(2012,12,25) => 'Božić',
-   Date.civil(2012,12,26) => 'Sveti Stjepan'}.each do |date, name|
-    assert_equal name, (Holidays.on(date, :hr, :informal)[0] || {})[:name]
-  end
 
-  # Tijelovo
-  [Date.civil(2008,5,22), Date.civil(2009,6,11), Date.civil(2010,6,3),
-   Date.civil(2012,6,7), Date.civil(2013,5,30), Date.civil(2014,6,19)].each do |date|
-    assert_equal 'Tijelovo', Holidays.on(date, :hr)[0][:name]
-  end
+tests:
+  - given:
+      date: '2012-01-01'
+      regions: ["hr"]
+      options: ["informal"]
+    expect:
+      name: "Nova godina"
+  - given:
+      date: '2012-01-06'
+      regions: ["hr"]
+      options: ["informal"]
+    expect:
+      name: "Sveta tri kralja"
+  - given:
+      date: '2012-05-01'
+      regions: ["hr"]
+      options: ["informal"]
+    expect:
+      name: "Međunarodni praznik rada"
+  - given:
+      date: '2012-06-22'
+      regions: ["hr"]
+      options: ["informal"]
+    expect:
+      name: "Dan antifašističke borbe"
+  - given:
+      date: '2012-06-25'
+      regions: ["hr"]
+      options: ["informal"]
+    expect:
+      name: "Dan državnosti"
+  - given:
+      date: '2012-08-05'
+      regions: ["hr"]
+      options: ["informal"]
+    expect:
+      name: "Dan pobjede i domovinske zahvalnosti i dan hrvatskih branitelja"
+  - given:
+      date: '2012-08-15'
+      regions: ["hr"]
+      options: ["informal"]
+    expect:
+      name: "Velika Gospa"
+  - given:
+      date: '2012-10-08'
+      regions: ["hr"]
+      options: ["informal"]
+    expect:
+      name: "Dan neovisnosti"
+  - given:
+      date: '2012-11-01'
+      regions: ["hr"]
+      options: ["informal"]
+    expect:
+      name: "Dan svih svetih"
+  - given:
+      date: '2012-12-25'
+      regions: ["hr"]
+      options: ["informal"]
+    expect:
+      name: "Božić"
+  - given:
+      date: '2012-12-26'
+      regions: ["hr"]
+      options: ["informal"]
+    expect:
+      name: "Sveti Stjepan"
+  - given:
+      date: '2008-05-22'
+      regions: ["hr"]
+    expect:
+      name: "Tijelovo"
+  - given:
+      date: '2009-06-11'
+      regions: ["hr"]
+    expect:
+      name: "Tijelovo"
+  - given:
+      date: '2010-06-03'
+      regions: ["hr"]
+    expect:
+      name: "Tijelovo"
+  - given:
+      date: '2012-06-07'
+      regions: ["hr"]
+    expect:
+      name: "Tijelovo"
+  - given:
+      date: '2013-05-30'
+      regions: ["hr"]
+    expect:
+      name: "Tijelovo"
+  - given:
+      date: '2014-06-19'
+      regions: ["hr"]
+    expect:
+      name: "Tijelovo"

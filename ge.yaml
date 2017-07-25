@@ -69,33 +69,90 @@ months:
   - name: გიორგობა # Saint George's Day
     regions: [ge]
     mday: 23
-tests: |
-    { Date.civil(2017, 1, 1) => 'ახალი წელი',
-      Date.civil(2017, 1, 2) => 'ბედობა',
-      Date.civil(2017, 1, 7) => 'ქრისტეშობა',
-      Date.civil(2017, 1, 19) => 'ნათლისღება',
-      Date.civil(2017, 3, 3) => 'დედის დღე',
-      Date.civil(2017, 3, 8) => 'ქალთა საერთაშორისო დღე',
-      Date.civil(2017, 4, 9) => 'ეროვნული ერთიანობის დღე',
-      Date.civil(2017, 5, 9) => 'ფაშიზმზე გამარჯვების დღე',
-      Date.civil(2017, 5, 12) => 'წმინდა მოციქულის ანდრია პირველწოდებულის საქართველოში შემოსვლის დღე',
-      Date.civil(2017, 5, 26) => 'დამოუკიდებლობის დღე',
-      Date.civil(2017, 8, 28) => 'მარიამობა',
-      Date.civil(2017, 10, 14) => 'სვეტიცხოვლობა',
-      Date.civil(2017, 11, 23) => 'გიორგობა'
-    }.each do |date, name|
-      assert_equal name, (Holidays.on(date, :ge)[0] || {})[:name]
-    end
 
-    [Date.civil(2017, 4, 14), Date.civil(2018, 4, 6), Date.civil(2019, 4, 26)].each do |date|
-      assert_equal 'დიდი პარასკევი', Holidays.on(date, :ge)[0][:name]
-    end
-    [Date.civil(2017, 4, 15), Date.civil(2018, 4, 7), Date.civil(2019, 4, 27)].each do |date|
-      assert_equal 'დიდი შაბათი', Holidays.on(date, :ge)[0][:name]
-    end
-    [Date.civil(2017, 4, 16), Date.civil(2018, 4, 8), Date.civil(2019, 4, 28)].each do |date|
-      assert_equal 'ბრწყინვალე აღდგომის დღე', Holidays.on(date, :ge)[0][:name]
-    end
-    [Date.civil(2017, 4, 17), Date.civil(2018, 4, 9), Date.civil(2019, 4, 29)].each do |date|
-      assert_equal 'მიცვალებულთა', Holidays.on(date, :ge)[0][:name]
-    end
+tests:
+  - given:
+      date: '2017-1-1'
+      regions: ["ge"]
+    expect:
+      name: "ახალი წელი"
+  - given:
+      date: '2017-1-2'
+      regions: ["ge"]
+    expect:
+      name: "ბედობა"
+  - given:
+      date: '2017-1-7'
+      regions: ["ge"]
+    expect:
+      name: "ქრისტეშობა"
+  - given:
+      date: '2017-1-19'
+      regions: ["ge"]
+    expect:
+      name: "ნათლისღება"
+  - given:
+      date: '2017-3-3'
+      regions: ["ge"]
+    expect:
+      name: "დედის დღე"
+  - given:
+      date: '2017-3-8'
+      regions: ["ge"]
+    expect:
+      name: "ქალთა საერთაშორისო დღე"
+  - given:
+      date: '2017-4-9'
+      regions: ["ge"]
+    expect:
+      name: "ეროვნული ერთიანობის დღე"
+  - given:
+      date: '2017-5-9'
+      regions: ["ge"]
+    expect:
+      name: "ფაშიზმზე გამარჯვების დღე"
+  - given:
+      date: '2017-5-12'
+      regions: ["ge"]
+    expect:
+      name: "წმინდა მოციქულის ანდრია პირველწოდებულის საქართველოში შემოსვლის დღე"
+  - given:
+      date: '2017-5-26'
+      regions: ["ge"]
+    expect:
+      name: "დამოუკიდებლობის დღე"
+  - given:
+      date: '2017-8-28'
+      regions: ["ge"]
+    expect:
+      name: "მარიამობა"
+  - given:
+      date: '2017-10-14'
+      regions: ["ge"]
+    expect:
+      name: "სვეტიცხოვლობა"
+  - given:
+      date: '2017-11-23'
+      regions: ["ge"]
+    expect:
+      name: "გიორგობა"
+  - given:
+      date: ['2017-4-14', '2018-4-6', '2019-4-26']
+      regions: ["ge"]
+    expect:
+      name: "დიდი პარასკევი"
+  - given:
+      date: ['2017-4-15', '2018-4-7', '2019-4-27']
+      regions: ["ge"]
+    expect:
+      name: "დიდი შაბათი"
+  - given:
+      date: ['2017-4-16', '2018-4-8', '2019-4-28']
+      regions: ["ge"]
+    expect:
+      name: "ბრწყინვალე აღდგომის დღე"
+  - given:
+      date: ['2017-4-17', '2018-4-9', '2019-4-29']
+      regions: ["ge"]
+    expect:
+      name: "მიცვალებულთა"

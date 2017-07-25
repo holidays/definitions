@@ -63,31 +63,65 @@ months:
   - name: Дан примирја # Armistice Day
     regions: [rs_cyrl]
     mday: 11
-tests: |
-    { Date.civil(2017, 1, 1) => 'Нова Година',
-      Date.civil(2017, 1, 2) => 'Нова Година',
-      Date.civil(2017, 1, 7) => 'Божић',
-      Date.civil(2017, 1, 27) => 'Свети Сава (Савиндан)',
-      Date.civil(2017, 2, 15) => 'Дан државности Србије',
-      Date.civil(2017, 2, 16) => 'Дан државности Србије',
-      Date.civil(2017, 5, 1) => 'Празник рада',
-      Date.civil(2017, 5, 2) => 'Празник рада',
-      Date.civil(2017, 5, 9) => 'Дан победе над фашизмом',
-      Date.civil(2017, 6, 28) => 'Видовдан',
-      Date.civil(2017, 11, 11) => 'Дан примирја'
-    }.each do |date, name|
-      assert_equal name, (Holidays.on(date, :rs_cyrl)[0] || {})[:name]
-    end
 
-    [Date.civil(2017, 4, 14), Date.civil(2018, 4, 6), Date.civil(2019, 4, 26)].each do |date|
-      assert_equal 'Велики петак', Holidays.on(date, :rs_cyrl)[0][:name]
-    end
-    [Date.civil(2017, 4, 15), Date.civil(2018, 4, 7), Date.civil(2019, 4, 27)].each do |date|
-      assert_equal 'Велика Субота', Holidays.on(date, :rs_cyrl)[0][:name]
-    end
-    [Date.civil(2017, 4, 16), Date.civil(2018, 4, 8), Date.civil(2019, 4, 28)].each do |date|
-      assert_equal 'Васкрс', Holidays.on(date, :rs_cyrl)[0][:name]
-    end
-    [Date.civil(2017, 4, 17), Date.civil(2018, 4, 9), Date.civil(2019, 4, 29)].each do |date|
-      assert_equal 'Васкрсни понедељак', Holidays.on(date, :rs_cyrl)[0][:name]
-    end
+tests:
+  - given:
+      date: ['2017-1-1', '2017-1-2']
+      regions: ["rs_cyrl"]
+    expect:
+      name: "Нова Година"
+  - given:
+      date: '2017-1-7'
+      regions: ["rs_cyrl"]
+    expect:
+      name: "Божић"
+  - given:
+      date: '2017-1-27'
+      regions: ["rs_cyrl"]
+    expect:
+      name: "Свети Сава (Савиндан)"
+  - given:
+      date: ['2017-2-15', '2017-2-16']
+      regions: ["rs_cyrl"]
+    expect:
+      name: "Дан државности Србије"
+  - given:
+      date: ['2017-5-1', '2017-5-2']
+      regions: ["rs_cyrl"]
+    expect:
+      name: "Празник рада"
+  - given:
+      date: '2017-5-9'
+      regions: ["rs_cyrl"]
+    expect:
+      name: "Дан победе над фашизмом"
+  - given:
+      date: '2017-6-28'
+      regions: ["rs_cyrl"]
+    expect:
+      name: "Видовдан"
+  - given:
+      date: '2017-11-11'
+      regions: ["rs_cyrl"]
+    expect:
+      name: "Дан примирја"
+  - given:
+      date: ['2017-4-14', '2018-4-6', '2019-4-26']
+      regions: ["rs_cyrl"]
+    expect:
+      name: "Велики петак"
+  - given:
+      date: ['2017-4-15', '2018-4-7', '2019-4-27']
+      regions: ["rs_cyrl"]
+    expect:
+      name: "Велика Субота"
+  - given:
+      date: ['2017-4-16', '2018-4-8', '2019-4-28']
+      regions: ["rs_cyrl"]
+    expect:
+      name: "Васкрс"
+  - given:
+      date: ['2017-4-17', '2018-4-9', '2019-4-29']
+      regions: ["rs_cyrl"]
+    expect:
+      name: "Васкрсни понедељак"
