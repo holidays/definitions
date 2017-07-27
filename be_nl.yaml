@@ -126,3 +126,28 @@ tests:
       options: ["informal"]
     expect:
       name: 'Kerstmis'
+  - given:
+      date: '2017-4-1'
+      regions: ['be_nl']
+    expect:
+      name: 'Pasen'
+  - given:
+      date: '2017-4-2'
+      regions: ['be_fr']
+    expect:
+      name: 'Paasmaandag'
+  - given:
+      date: '2017-5-10'
+      regions: ['be_fr']
+    expect:
+      name: 'O.H. Hemelvaart'
+  - given:
+      date: '2017-5-20'
+      regions: ['be_fr']
+    expect:
+      name: 'Pinksteren'
+  - given:
+      date: '2017-5-21'
+      regions: ['be_fr']
+    expect:
+      name: 'Pinkstermaandag'

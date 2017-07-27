@@ -184,6 +184,7 @@ months:
     mday: 26
     observed: to_weekday_if_boxing_weekend(date)
     type: informal
+
 methods:
   ca_victoria_day:
     # Monday on or before May 24

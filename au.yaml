@@ -260,6 +260,26 @@ methods:
 
 tests:
   - given:
+      date: "2017-04-14"
+      regions: ["au"]
+    expect:
+      name: "Good Friday"
+  - given:
+      date: "2017-04-15"
+      regions: ["au_nsw"]
+    expect:
+      name: "Easter Saturday"
+  - given:
+      date: ['2010-4-4', "2017-04-16"]
+      regions: ["au_nsw"]
+    expect:
+      name: "Easter Sunday"
+  - given:
+      date: ['2010-4-5', "2017-04-18"]
+      regions: ["au"]
+    expect:
+      name: "Easter Monday"
+  - given:
       date: '2013-10-07'
       regions: ["au_qld"]
     expect:
@@ -714,7 +734,17 @@ tests:
     expect:
       name: "New Year's Day"
   - given:
+      date: '2016-03-27'
+      regions: ["au_qld"]
+    expect:
+      holiday: false
+  - given:
       date: '2017-04-16'
       regions: ["au_qld"]
     expect:
       name: "Easter Sunday"
+  - given:
+      date: "2014-11-14"
+      regions: ["au_qld_brisbane"]
+    expect:
+      name: "G20 Day"

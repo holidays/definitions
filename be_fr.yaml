@@ -126,3 +126,28 @@ tests:
       options: ["informal"]
     expect:
       name: 'Noël'
+  - given:
+      date: '2017-4-1'
+      regions: ['be_fr']
+    expect:
+      name: 'Pâques'
+  - given:
+      date: '2017-4-2'
+      regions: ['be_fr']
+    expect:
+      name: 'Lundi de Pâques'
+  - given:
+      date: '2017-5-10'
+      regions: ['be_fr']
+    expect:
+      name: 'Ascension'
+  - given:
+      date: '2017-5-20'
+      regions: ['be_fr']
+    expect:
+      name: 'Pentecôte'
+  - given:
+      date: '2017-5-21'
+      regions: ['be_fr']
+    expect:
+      name: 'Lundi de Pentecôte'

@@ -125,6 +125,7 @@ months:
   - name: Restauration de la République
     regions: [ch_ge]
     mday: 31
+
 methods:
   ch_vd_lundi_du_jeune_federal:
     # Monday after the third Sunday of September
