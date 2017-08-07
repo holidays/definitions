@@ -22,16 +22,15 @@ months:
   - name: Agong's Birthday
     regions: [my]
     function: agong_birthday_june(year)
-  7:
-  - name: Agong's Birthday
-    regions: [my]
-    function: agong_birthday_july(year)
   8:
   - name: Independence Day
     regions: [my]
     mday: 31
     observed: to_weekday_if_weekend(date)
   9:
+  - name: Agong's Birthday
+    regions: [my]
+    function: agong_birthday_september(year)
   - name: Malaysia Day
     regions: [my]
     mday: 16
@@ -50,11 +49,11 @@ methods:
       else
         nil
       end
-  agong_birthday_july:
+  agong_birthday_september:
     arguments: year
     source: |
       if year >= 2017
-        Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 7, :last, :saturday)
+        Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 9, :second, :saturday)
       else
         nil
       end
@@ -63,7 +62,7 @@ tests: |
     {Date.civil(2016,1,1) => "New Year's Day",
      Date.civil(2016,5,1) => 'Labour Day',
      Date.civil(2016,6,4) => "Agong's Birthday",
-     Date.civil(2017,7,29) => "Agong's Birthday",
+     Date.civil(2017,9,09) => "Agong's Birthday",
      Date.civil(2016,8,31) => 'Independence Day',
      Date.civil(2016,9,16) => 'Malaysia Day',
      Date.civil(2016,12,25) => 'Christmas Day'}.each do |date, name|
