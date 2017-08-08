@@ -114,6 +114,7 @@ months:
   - name: Heritage Day
     week: 1
     regions: [ca_ab]
+    type: informal
     wday: 1
   - name: Natal Day
     week: 1
