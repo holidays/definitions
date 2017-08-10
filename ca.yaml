@@ -463,6 +463,7 @@ tests:
   - given:
       date: '2013-08-05'
       regions: ["ca_ab"]
+      options: ["informal"]
     expect:
       name: "Heritage Day"
   - given:
