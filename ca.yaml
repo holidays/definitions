@@ -510,6 +510,7 @@ tests:
   - given:
       date: '2014-08-04'
       regions: ["ca_ab"]
+      options: ["informal"]
     expect:
       name: "Heritage Day"
   - given:
@@ -550,6 +551,7 @@ tests:
   - given:
       date: '2015-08-03'
       regions: ["ca_ab"]
+      options: ["informal"]
     expect:
       name: "Heritage Day"
   - given:
