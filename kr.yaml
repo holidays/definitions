@@ -1,7 +1,7 @@
 # Republic of Korea holiday definitions for the Ruby Holiday gem.
 # Provided by Jonathan Pike
 #
-# Updated: 2017-04-27.
+# Updated: 2017-08-09.
 # Sources:
 # - https://en.wikipedia.org/wiki/List_of_public_holidays_in_South_Korea
 # - http://www.hko.gov.hk/gts/time/conversion.htm (for Lunar Calendar Conversions)
@@ -45,10 +45,18 @@ months:
     mday: 17
     type: informal
   8:
+  - name: 추석 연휴
+    regions: [kr]
+    function: lunar_to_solar(year, month, day, region)
+    mday: 14
   - name: 추석
     regions: [kr]
     function: lunar_to_solar(year, month, day, region)
     mday: 15
+  - name: 추석 연휴
+    regions: [kr]
+    function: lunar_to_solar(year, month, day, region)
+    mday: 16
   - name: 광복절
     regions: [kr]
     mday: 15
@@ -66,7 +74,7 @@ months:
   - name: 설날 연휴
     regions: [kr]
     function: lunar_to_solar(year, month, day, region)
-    mday: 29
+    mday: 30
 
 tests:
   - given:
@@ -147,3 +155,9 @@ tests:
       options: ["informal"]
     expect:
       name: "설날"
+  - given:
+      date: '2017-10-04'
+      regions: ["kr"]
+      options: ["informal"]
+    expect:
+      name: "추석"
