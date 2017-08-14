@@ -58,9 +58,13 @@ months:
   - name: Encuentro de Dos Mundos
     regions: [cl]
     mday: 12
-  - name: Día de las Iglesias Evangélicas y Protestantes
+    year_ranges:
+      - before: 1999
+  - name: Encuentro de Dos Mundos
     regions: [cl]
-    mday: 31
+    year_ranges:
+      - after: 2000
+    function: columbus_day_cl(year) 
   11:
   - name: Día de Todos los Santos
     regions: [cl]
@@ -78,6 +82,18 @@ methods:
     # Nearest monday
     source: |
       date = Date.civil(year, 6, 29)
+      if [2,3,4].include?(date.wday)
+        date -= (date.wday - 1)
+      elsif date.wday == 5
+        date += 3
+      end
+
+      date
+  columbus_day_cl:
+    arguments: year
+    # Nearest monday
+    source: |
+      date = Date.civil(year, 10, 12)
       if [2,3,4].include?(date.wday)
         date -= (date.wday - 1)
       elsif date.wday == 5
@@ -226,7 +242,13 @@ tests:
     expect:
       name: "Día de las Glorias del Ejército"
   - given:
-      date: '2014-10-12'
+      date: '1999-10-12'
+      regions: ["cl"]
+      options: ["informal"]
+    expect:
+      name: "Encuentro de Dos Mundos"
+  - given:
+      date: '2017-10-9'
       regions: ["cl"]
       options: ["informal"]
     expect:
