@@ -1,9 +1,10 @@
 # Chilean holiday definitions for the Ruby Holiday gem.
 #
-# Updated: 2014-10-08
+# Updated: 2014-8-9
 #
 # Sources:
 # - http://www.feriados.cl
+# - http://www.feriadoschilenos.cl
 #
 ---
 months:
@@ -16,6 +17,11 @@ months:
     regions: [cl]
     function: easter(year)
     function_modifier: -1
+  - name: San Pedro y San Pablo
+    regions: [cl]
+    function: st_peter_st_paul_cl(year)
+    year_ranges:
+      - after: 2000
   1:
   - name: Año Nuevo
     regions: [cl]
@@ -31,6 +37,8 @@ months:
   - name: San Pedro y San Pablo
     regions: [cl]
     mday: 29
+    year_ranges:
+      - before: 1999
   7:
   - name: Día de la Virgen del Carmen
     regions: [cl]
@@ -64,6 +72,19 @@ months:
   - name: Navidad
     regions: [cl]
     mday: 25
+methods:
+  st_peter_st_paul_cl:
+    arguments: year
+    # Nearest monday
+    source: |
+      date = Date.civil(year, 6, 29)
+      if [2,3,4].include?(date.wday)
+        date -= (date.wday - 1)
+      elsif date.wday == 5
+        date += 3
+      end
+
+      date
 
 tests:
   - given:
@@ -157,7 +178,25 @@ tests:
     expect:
       name: "Día de las Glorias Navales"
   - given:
-      date: '2014-06-29'
+      date: '1999-06-29'
+      regions: ["cl"]
+      options: ["informal"]
+    expect:
+      name: "San Pedro y San Pablo"
+  - given:
+      date: '2000-06-26'
+      regions: ["cl"]
+      options: ["informal"]
+    expect:
+      name: "San Pedro y San Pablo"
+  - given:
+      date: '2017-06-26'
+      regions: ["cl"]
+      options: ["informal"]
+    expect:
+      name: "San Pedro y San Pablo"
+  - given:
+      date: '2018-07-2'
       regions: ["cl"]
       options: ["informal"]
     expect:
