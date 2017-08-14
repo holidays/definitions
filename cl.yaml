@@ -22,6 +22,11 @@ months:
     function: st_peter_st_paul_cl(year)
     year_ranges:
       - after: 2000
+  - name: Día de las Iglesias Evangélicas y Protestantes
+    regions: [cl]
+    function: other_churches_day_cl(year)
+    year_ranges:
+      - after: 2008
   1:
   - name: Año Nuevo
     regions: [cl]
@@ -101,7 +106,18 @@ methods:
       end
 
       date
+  other_churches_day_cl:
+    arguments: year
+    # If on tuesday, friday before, if on wednesday, next friday
+    source: |
+      date = Date.civil(year, 10, 31)
+      if date.wday == 2
+        date -= 4
+      elsif date.wday == 3
+        date += 2
+      end
 
+      date
 tests:
   - given:
       date: '2014-01-01'
@@ -254,7 +270,7 @@ tests:
     expect:
       name: "Encuentro de Dos Mundos"
   - given:
-      date: '2014-10-31'
+      date: '2017-10-27'
       regions: ["cl"]
       options: ["informal"]
     expect:
