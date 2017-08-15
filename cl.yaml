@@ -1,9 +1,10 @@
 # Chilean holiday definitions for the Ruby Holiday gem.
 #
-# Updated: 2014-10-08
+# Updated: 2014-8-9
 #
 # Sources:
 # - http://www.feriados.cl
+# - http://www.feriadoschilenos.cl
 #
 ---
 months:
@@ -16,6 +17,16 @@ months:
     regions: [cl]
     function: easter(year)
     function_modifier: -1
+  - name: San Pedro y San Pablo
+    regions: [cl]
+    function: st_peter_st_paul_cl(year)
+    year_ranges:
+      - after: 2000
+  - name: Día de las Iglesias Evangélicas y Protestantes
+    regions: [cl]
+    function: other_churches_day_cl(year)
+    year_ranges:
+      - after: 2008
   1:
   - name: Año Nuevo
     regions: [cl]
@@ -31,6 +42,8 @@ months:
   - name: San Pedro y San Pablo
     regions: [cl]
     mday: 29
+    year_ranges:
+      - before: 1999
   7:
   - name: Día de la Virgen del Carmen
     regions: [cl]
@@ -50,9 +63,13 @@ months:
   - name: Encuentro de Dos Mundos
     regions: [cl]
     mday: 12
-  - name: Día de las Iglesias Evangélicas y Protestantes
+    year_ranges:
+      - before: 1999
+  - name: Encuentro de Dos Mundos
     regions: [cl]
-    mday: 31
+    year_ranges:
+      - after: 2000
+    function: columbus_day_cl(year) 
   11:
   - name: Día de Todos los Santos
     regions: [cl]
@@ -64,7 +81,43 @@ months:
   - name: Navidad
     regions: [cl]
     mday: 25
+methods:
+  st_peter_st_paul_cl:
+    arguments: year
+    # Nearest monday
+    source: |
+      date = Date.civil(year, 6, 29)
+      if [2,3,4].include?(date.wday)
+        date -= (date.wday - 1)
+      elsif date.wday == 5
+        date += 3
+      end
 
+      date
+  columbus_day_cl:
+    arguments: year
+    # Nearest monday
+    source: |
+      date = Date.civil(year, 10, 12)
+      if [2,3,4].include?(date.wday)
+        date -= (date.wday - 1)
+      elsif date.wday == 5
+        date += 3
+      end
+
+      date
+  other_churches_day_cl:
+    arguments: year
+    # If on tuesday, friday before, if on wednesday, next friday
+    source: |
+      date = Date.civil(year, 10, 31)
+      if date.wday == 2
+        date -= 4
+      elsif date.wday == 3
+        date += 2
+      end
+
+      date
 tests:
   - given:
       date: '2014-01-01'
@@ -157,7 +210,25 @@ tests:
     expect:
       name: "Día de las Glorias Navales"
   - given:
-      date: '2014-06-29'
+      date: '1999-06-29'
+      regions: ["cl"]
+      options: ["informal"]
+    expect:
+      name: "San Pedro y San Pablo"
+  - given:
+      date: '2000-06-26'
+      regions: ["cl"]
+      options: ["informal"]
+    expect:
+      name: "San Pedro y San Pablo"
+  - given:
+      date: '2017-06-26'
+      regions: ["cl"]
+      options: ["informal"]
+    expect:
+      name: "San Pedro y San Pablo"
+  - given:
+      date: '2018-07-2'
       regions: ["cl"]
       options: ["informal"]
     expect:
@@ -187,13 +258,19 @@ tests:
     expect:
       name: "Día de las Glorias del Ejército"
   - given:
-      date: '2014-10-12'
+      date: '1999-10-12'
       regions: ["cl"]
       options: ["informal"]
     expect:
       name: "Encuentro de Dos Mundos"
   - given:
-      date: '2014-10-31'
+      date: '2017-10-9'
+      regions: ["cl"]
+      options: ["informal"]
+    expect:
+      name: "Encuentro de Dos Mundos"
+  - given:
+      date: '2017-10-27'
       regions: ["cl"]
       options: ["informal"]
     expect:
