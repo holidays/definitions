@@ -1,5 +1,53 @@
 # Holiday definitions
 
+## 2.1.0
+
+Update the following regions:
+
+* `ca_ab` - change 'Heritage Day' to informal
+* `kr` - Update '추석 연휴' and `설날 연휴` for accuracy
+* `cl` - Add 'San Pedro y San Pablo', update 'Encuentro de Dos Mundos', and add 'Día de las Iglesias Evangélicas y Protestantes'
+
+## 2.0.0
+
+* Update `tr`, `fedex` for accuracy
+* Completely change the test format to no longer use ruby source code! Hooray! This should cause no behavior differences,
+  any differences or changes in behavior should be considered a regression.
+
+## 1.7.1
+
+A small bugfix that resolves the naming issues of two regions in the 'index.yaml' file. No other outward changes.
+
+## 1.7.0
+
+Here are the changes:
+
+* Add Estonian definitions
+* Enhance France definitions
+* Correct and enhance German definitions
+* Enhance Portuguese definitions
+* Add Malta definitions
+* Add Serbian definitions
+* Add Georgian definitions
+* Use Orthodox easter calculations in appropriate regions
+* Add Russian definitions
+* Add Turkey definitions
+* Enhance US definitions (lots of individual US states!)
+* Update South Australian definitions
+
+## 1.6.1
+
+* Update `ca` test for correctness. See below for more information.
+
+Unfortunately due to our current setup it is possible for definitions/tests in this repository to appear 'valid' but only
+fail when we run them in the actual ruby holidays repo. This is a known issue (#42) and needs to be addressed.
+
+In the meantime, this is a bugfix release to ensure we can release v5.6.0 of the ruby repo.
+
+## 1.6.0
+
+Updates to the following Canadian regions: `ca_ab, ca_bc, ca_mb, ca_nt, ca_nu, ca_on, ca_sk, ca_yt, ca_pe`
+
 ## 1.5.1
 
 * Fix error in `fedex` custom method `day_after_thanksgiving`
