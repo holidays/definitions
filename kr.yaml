@@ -155,9 +155,12 @@ tests:
       options: ["informal"]
     expect:
       name: "설날"
-  - given:
-      date: '2017-10-04'
-      regions: ["kr"]
-      options: ["informal"]
-    expect:
-      name: "추석"
+
+# These are commented out until I can have a discussion and better understand these holidays.
+# Please see [issue 69](https://github.com/holidays/definitions/issues/69) (nice) for more information.
+#  - given:
+#      date: '2017-10-04'
+#      regions: ["kr"]
+#      options: ["informal"]
+#    expect:
+#      name: "추석"

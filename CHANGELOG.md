@@ -1,5 +1,9 @@
 # Holiday definitions
 
+## 2.1.1
+
+* Comment out test for `추석` until a discussion can be had in [issue 69](https://github.com/holidays/definitions/issues/69) (nice)
+
 ## 2.1.0
 
 Update the following regions:
