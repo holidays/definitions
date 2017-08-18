@@ -131,7 +131,7 @@ months:
     wday: 1
   - name: Civic Holiday
     week: 1
-    regions: [ca_on]
+    regions: [ca_on, ca_pe]
     wday: 1
     type: informal
   - name: New Brunswick Day
