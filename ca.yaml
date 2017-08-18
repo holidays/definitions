@@ -70,10 +70,12 @@ months:
   - name: St. Patrick's Day
     regions: [ca_nl]
     mday: 17
+    type: informal
   3:
   - name: St. George's Day
     regions: [ca_nl]
     mday: 23
+    type: informal
   5:
   - name: Victoria Day
     regions: [ca_ab, ca_bc, ca_mb, ca_nt, ca_nu, ca_on, ca_sk, ca_yt]
@@ -85,6 +87,7 @@ months:
   - name: Discovery Day
     regions: [ca_nl]
     mday: 24
+    type: informal
   - name: Fête Nationale
     regions: [ca_qc]
     mday: 24
@@ -99,6 +102,7 @@ months:
   - name: Orangemen's Day
     regions: [ca_nl]
     mday: 12
+    type: informal
   - name: Nunavut Day
     regions: [ca_nu]
     mday: 9
@@ -120,9 +124,10 @@ months:
     week: 1
     regions: [ca_ns]
     wday: 1
+    type: informal
   - name: Civic Holiday
     week: 1
-    regions: [ca_nt, ca_nu, ca_pe]
+    regions: [ca_nt, ca_nu]
     wday: 1
   - name: Civic Holiday
     week: 1
