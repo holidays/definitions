@@ -47,16 +47,55 @@ methods:
     arguments: year
     source: |
       Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 11, 4, 4) + 1
-tests: |
-    {Date.civil(2015,1,1) => 'New Year\'s Day',
-     Date.civil(2015,5,25) => 'Memorial Day',
-     Date.civil(2015,7,4) => 'Independence Day',
-     Date.civil(2015,9,7) => 'Labor Day',
-     Date.civil(2015,11,26) => 'Thanksgiving',
-     Date.civil(2015,11,27) => 'Day After Thanksgiving',
-     Date.civil(2013,11,28) => 'Thanksgiving',
-     Date.civil(2013,11,29) => 'Day After Thanksgiving',
-     Date.civil(2015,12,25) => 'Christmas Day',
-     Date.civil(2015,12,31) => 'New Year\'s Eve',}.each do |date, name|
-      assert_equal name, (Holidays.on(date, :ups)[0] || {})[:name]
-    end
+
+tests:
+  - given:
+      date: '2015-01-01'
+      regions: ["ups"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: '2015-05-25'
+      regions: ["ups"]
+    expect:
+      name: "Memorial Day"
+  - given:
+      date: '2015-07-04'
+      regions: ["ups"]
+    expect:
+      name: "Independence Day"
+  - given:
+      date: '2015-09-07'
+      regions: ["ups"]
+    expect:
+      name: "Labor Day"
+  - given:
+      date: '2015-11-26'
+      regions: ["ups"]
+    expect:
+      name: "Thanksgiving"
+  - given:
+      date: '2015-11-27'
+      regions: ["ups"]
+    expect:
+      name: "Day After Thanksgiving"
+  - given:
+      date: '2013-11-28'
+      regions: ["ups"]
+    expect:
+      name: "Thanksgiving"
+  - given:
+      date: '2013-11-29'
+      regions: ["ups"]
+    expect:
+      name: "Day After Thanksgiving"
+  - given:
+      date: '2015-12-25'
+      regions: ["ups"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: '2015-12-31'
+      regions: ["ups"]
+    expect:
+      name: "New Year's Eve"

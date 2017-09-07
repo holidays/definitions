@@ -9,12 +9,12 @@ months:
     regions: [vi]
     mday: 1
   3:
-  - name: "Giỗ tổ Hùng Vương"
+  - name: Giỗ tổ Hùng Vương
     regions: [vi]
     function: lunar_to_solar(year, month, day, region)
     mday: 10
   4:
-  - name: "Ngày Giải phóng miền Nam, thống nhất đất nước"
+  - name: Ngày Giải phóng miền Nam, thống nhất đất nước
     regions: [vi]
     mday: 30
   5:
@@ -25,12 +25,30 @@ months:
   - name: Quốc khánh
     regions: [vi]
     mday: 2
-tests: |
-    {Date.civil(2014,1,1) => 'Tết dương lịch',
-     Date.civil(2014,4,30) => 'Ngày Giải phóng miền Nam, thống nhất đất nước',
-     Date.civil(2014,5,1) => "Ngày Quốc tế Lao động",
-     Date.civil(2014,9,2) => 'Quốc khánh',
-     Date.civil(2017,4,6) => "Giỗ tổ Hùng Vương",
-     Date.civil(2018,3,27) => "Giỗ tổ Hùng Vương"}.each do |date, name|
-      assert_equal name, (Holidays.on(date, :vi)[0] || {})[:name]
-    end
+
+tests:
+  - given:
+      date: '2014-01-01'
+      regions: ["vi"]
+    expect:
+      name: "Tết dương lịch"
+  - given:
+      date: '2014-04-30'
+      regions: ["vi"]
+    expect:
+      name: "Ngày Giải phóng miền Nam, thống nhất đất nước"
+  - given:
+      date: '2014-05-01'
+      regions: ["vi"]
+    expect:
+      name: "Ngày Quốc tế Lao động"
+  - given:
+      date: '2014-09-02'
+      regions: ["vi"]
+    expect:
+      name: "Quốc khánh"
+  - given:
+      date: ['2017-04-06', '2018-03-27']
+      regions: ["vi"]
+    expect:
+      name: "Giỗ tổ Hùng Vương"

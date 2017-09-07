@@ -55,20 +55,64 @@ months:
     regions: [ve]
     mday: 25
 
-tests: |
-    {
-    Date.civil(2013, 1, 1) => "Año Nuevo",
-    Date.civil(2013, 2, 11) => "Lunes Carnaval",
-    Date.civil(2013, 2, 12) => "Martes Carnaval",
-    Date.civil(2013, 3, 28) => "Jueves Santo",
-    Date.civil(2013, 3, 29) => "Viernes Santo",
-    Date.civil(2013, 4, 19) => "Declaración Independencia",
-    Date.civil(2013, 5, 1) => "Día del Trabajador",
-    Date.civil(2013, 6, 24) => "Aniversario Batalla de Carabobo",
-    Date.civil(2013, 7, 5) => "Día de la Independencia",
-    Date.civil(2013, 7, 24) => "Natalicio de Simón Bolívar",
-    Date.civil(2013, 10, 12) => "Día de la Resistencia Indígena",
-    Date.civil(2013, 12, 25) => "Día de Navidad"
-    }.each do |date, name|
-      assert_equal name, (Holidays.on(date, :ve)[0] || {})[:name]
-    end
+tests:
+  - given:
+      date: '2013-01-01'
+      regions: ["ve"]
+    expect:
+      name: "Año Nuevo"
+  - given:
+      date: '2013-02-11'
+      regions: ["ve"]
+    expect:
+      name: "Lunes Carnaval"
+  - given:
+      date: '2013-02-12'
+      regions: ["ve"]
+    expect:
+      name: "Martes Carnaval"
+  - given:
+      date: '2013-03-28'
+      regions: ["ve"]
+    expect:
+      name: "Jueves Santo"
+  - given:
+      date: '2013-03-29'
+      regions: ["ve"]
+    expect:
+      name: "Viernes Santo"
+  - given:
+      date: '2013-04-19'
+      regions: ["ve"]
+    expect:
+      name: "Declaración Independencia"
+  - given:
+      date: '2013-05-01'
+      regions: ["ve"]
+    expect:
+      name: "Día del Trabajador"
+  - given:
+      date: '2013-06-24'
+      regions: ["ve"]
+    expect:
+      name: "Aniversario Batalla de Carabobo"
+  - given:
+      date: '2013-07-05'
+      regions: ["ve"]
+    expect:
+      name: "Día de la Independencia"
+  - given:
+      date: '2013-07-24'
+      regions: ["ve"]
+    expect:
+      name: "Natalicio de Simón Bolívar"
+  - given:
+      date: '2013-10-12'
+      regions: ["ve"]
+    expect:
+      name: "Día de la Resistencia Indígena"
+  - given:
+      date: '2013-12-25'
+      regions: ["ve"]
+    expect:
+      name: "Día de Navidad"

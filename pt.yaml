@@ -9,6 +9,9 @@
 # - http://en.wikipedia.org/wiki/Portugal_Day
 # - http://www.timeanddate.com/calendar/custom.html?year=2008&country=15
 # - http://en.wikipedia.org/wiki/Public_holidays_in_Portugal
+#
+# Changes 2017-05-31:
+# - Add additional holidays for Porto (pt_po) and Lisbon (pt_li)
 ---
 months:
   0:
@@ -44,6 +47,12 @@ months:
   - name: Dia de Portugal
     regions: [pt]
     mday: 10
+  - name: Dia de Santo António
+    regions: [pt_li]
+    mday: 13
+  - name: Dia de São João
+    regions: [pt_po]
+    mday: 24
   8:
   - name: Assunção de Nossa Senhora
     regions: [pt]
@@ -55,7 +64,7 @@ months:
   11:
   - name: Dia de Todos-os-Santos
     regions: [pt]
-    mday: 1   
+    mday: 1
   12:
   - name: Restauração da Independência
     regions: [pt]
@@ -66,24 +75,113 @@ months:
   - name: Natal
     regions: [pt]
     mday: 25
-tests: |
-    {Date.civil(2008,1,1) => 'Ano Novo',
-     Date.civil(2005,2,8) => 'Carnaval',
-     Date.civil(2006,2,28) => 'Carnaval',
-     Date.civil(2007,2,20) => 'Carnaval',
-     Date.civil(2008,2,5) => 'Carnaval',
-     Date.civil(2008,3,21) => 'Sexta-feira Santa',
-     Date.civil(2008,3,23) => 'Páscoa',
-     Date.civil(2016,3,27) => 'Páscoa',
-     Date.civil(2008,4,25) => 'Dia da Liberdade',
-     Date.civil(2008,5,1) => 'Dia do Trabalhador',
-     Date.civil(2016,5,26) => 'Corpo de Deus',
-     Date.civil(2008,6,10) => 'Dia de Portugal',
-     Date.civil(2008,8,15) => 'Assunção de Nossa Senhora',
-     Date.civil(2008,10,5) => 'Dia da República',
-     Date.civil(2008,11,1) => 'Dia de Todos-os-Santos',
-     Date.civil(2008,12,1) => 'Restauração da Independência',
-     Date.civil(2008,12,8) => 'Imaculada Conceição',
-     Date.civil(2008,12,25) => 'Natal'}.each do |date, name|
-      assert_equal name, (Holidays.on(date, :pt, :informal)[0] || {})[:name]
-    end
+
+tests:
+  - given:
+      date: '2008-01-01'
+      regions: ["pt"]
+      options: ["informal"]
+    expect:
+      name: "Ano Novo"
+  - given:
+      date: '2005-02-08'
+      regions: ["pt"]
+      options: ["informal"]
+    expect:
+      name: "Carnaval"
+  - given:
+      date: '2006-02-28'
+      regions: ["pt"]
+      options: ["informal"]
+    expect:
+      name: "Carnaval"
+  - given:
+      date: '2007-02-20'
+      regions: ["pt"]
+      options: ["informal"]
+    expect:
+      name: "Carnaval"
+  - given:
+      date: '2008-02-05'
+      regions: ["pt"]
+      options: ["informal"]
+    expect:
+      name: "Carnaval"
+  - given:
+      date: '2008-03-21'
+      regions: ["pt"]
+      options: ["informal"]
+    expect:
+      name: "Sexta-feira Santa"
+  - given:
+      date: '2008-03-23'
+      regions: ["pt"]
+      options: ["informal"]
+    expect:
+      name: "Páscoa"
+  - given:
+      date: '2016-03-27'
+      regions: ["pt"]
+      options: ["informal"]
+    expect:
+      name: "Páscoa"
+  - given:
+      date: '2008-04-25'
+      regions: ["pt"]
+      options: ["informal"]
+    expect:
+      name: "Dia da Liberdade"
+  - given:
+      date: '2008-05-01'
+      regions: ["pt"]
+      options: ["informal"]
+    expect:
+      name: "Dia do Trabalhador"
+  - given:
+      date: '2016-05-26'
+      regions: ["pt"]
+      options: ["informal"]
+    expect:
+      name: "Corpo de Deus"
+  - given:
+      date: '2008-06-10'
+      regions: ["pt"]
+      options: ["informal"]
+    expect:
+      name: "Dia de Portugal"
+  - given:
+      date: '2008-08-15'
+      regions: ["pt"]
+      options: ["informal"]
+    expect:
+      name: "Assunção de Nossa Senhora"
+  - given:
+      date: '2008-10-05'
+      regions: ["pt"]
+      options: ["informal"]
+    expect:
+      name: "Dia da República"
+  - given:
+      date: '2008-11-01'
+      regions: ["pt"]
+      options: ["informal"]
+    expect:
+      name: "Dia de Todos-os-Santos"
+  - given:
+      date: '2008-12-01'
+      regions: ["pt"]
+      options: ["informal"]
+    expect:
+      name: "Restauração da Independência"
+  - given:
+      date: '2008-12-08'
+      regions: ["pt"]
+      options: ["informal"]
+    expect:
+      name: "Imaculada Conceição"
+  - given:
+      date: '2008-12-25'
+      regions: ["pt"]
+      options: ["informal"]
+    expect:
+      name: "Natal"

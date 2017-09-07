@@ -163,31 +163,90 @@ methods:
         date += 7
       end
       date
-tests: |
-    { Date.civil(2012,8,1) => 'Bundesfeiertag',
-      Date.civil(2012,12,25) => 'Weihnachten',
-      Date.civil(2012,05,17) => 'Auffahrt'
-    }.each do |date, name|
-      assert_equal name, (Holidays.on(date, :ch)[0] || {})[:name]
-    end
 
-    { Date.civil(2012,8,1) => 'Bundesfeiertag',
-      Date.civil(2012,12,25) => 'Weihnachten',
-      Date.civil(2012,05,17) => 'Auffahrt',
-      Date.civil(2012,5,1) => 'Tag der Arbeit',
-      Date.civil(2012,12,26) => 'Stefanstag'
-    }.each do |date, name|
-      assert_equal name, (Holidays.on(date, :ch_zh)[0] || {})[:name]
-    end
-
-    [Date.civil(2012,9,17), Date.civil(2013,9,16), Date.civil(2014,9,22)].each do |date|
-      assert_equal 'Lundi du Jeûne fédéral', (Holidays.on(date, :ch_vd)[0] || {})[:name]
-    end
-
-    [Date.civil(2012,9,6), Date.civil(2013,9,5), Date.civil(2014,9,11)].each do |date|
-      assert_equal 'Jeûne genevois', (Holidays.on(date, :ch_ge)[0] || {})[:name]
-    end
-
-    [Date.civil(2012,4,12), Date.civil(2013,4,4), Date.civil(2014,4,3)].each do |date|
-      assert_equal 'Näfelser Fahrt', (Holidays.on(date, :ch_gl)[0] || {})[:name]
-    end
+tests:
+  - given:
+      date: '2012-08-01'
+      regions: ["ch"]
+    expect:
+      name: "Bundesfeiertag"
+  - given:
+      date: '2012-12-25'
+      regions: ["ch"]
+    expect:
+      name: "Weihnachten"
+  - given:
+      date: '2012-05-17'
+      regions: ["ch"]
+    expect:
+      name: "Auffahrt"
+  - given:
+      date: '2012-08-01'
+      regions: ["ch_zh"]
+    expect:
+      name: "Bundesfeiertag"
+  - given:
+      date: '2012-12-25'
+      regions: ["ch_zh"]
+    expect:
+      name: "Weihnachten"
+  - given:
+      date: '2012-05-17'
+      regions: ["ch_zh"]
+    expect:
+      name: "Auffahrt"
+  - given:
+      date: '2012-05-01'
+      regions: ["ch_zh"]
+    expect:
+      name: "Tag der Arbeit"
+  - given:
+      date: '2012-12-26'
+      regions: ["ch_zh"]
+    expect:
+      name: "Stefanstag"
+  - given:
+      date: '2012-09-17'
+      regions: ["ch_vd"]
+    expect:
+      name: "Lundi du Jeûne fédéral"
+  - given:
+      date: '2013-09-16'
+      regions: ["ch_vd"]
+    expect:
+      name: "Lundi du Jeûne fédéral"
+  - given:
+      date: '2014-09-22'
+      regions: ["ch_vd"]
+    expect:
+      name: "Lundi du Jeûne fédéral"
+  - given:
+      date: '2012-09-06'
+      regions: ["ch_ge"]
+    expect:
+      name: "Jeûne genevois"
+  - given:
+      date: '2013-09-05'
+      regions: ["ch_ge"]
+    expect:
+      name: "Jeûne genevois"
+  - given:
+      date: '2014-09-11'
+      regions: ["ch_ge"]
+    expect:
+      name: "Jeûne genevois"
+  - given:
+      date: '2012-04-12'
+      regions: ["ch_gl"]
+    expect:
+      name: "Näfelser Fahrt"
+  - given:
+      date: '2013-04-04'
+      regions: ["ch_gl"]
+    expect:
+      name: "Näfelser Fahrt"
+  - given:
+      date: '2014-04-03'
+      regions: ["ch_gl"]
+    expect:
+      name: "Näfelser Fahrt"

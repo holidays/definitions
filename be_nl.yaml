@@ -52,18 +52,77 @@ months:
   - name: Kerstmis
     regions: [be_nl]
     mday: 25
-tests: |
-    {Date.civil(2007,1,1) => 'Nieuwjaar',
-     Date.civil(2007,4,8) => 'Pasen',
-     Date.civil(2007,4,9) => 'Paasmaandag',
-     Date.civil(2007,5,1) => 'Feest van de Arbeid',
-     Date.civil(2007,5,17) => 'O.H. Hemelvaart',
-     Date.civil(2007,5,27) => 'Pinksteren',
-     Date.civil(2007,5,28) => 'Pinkstermaandag',
-     Date.civil(2007,7,21) => 'Nationale Feestdag',
-     Date.civil(2007,8,15) => 'O.L.V. Hemelvaart',
-     Date.civil(2007,11,1) => 'Allerheiligen',
-     Date.civil(2007,11,11) => 'Wapenstilstand 1918',
-     Date.civil(2007,12,25) => 'Kerstmis'}.each do |date, name|
-      assert_equal name, (Holidays.on(date, :be_nl, :informal)[0] || {})[:name]
-    end
+
+tests:
+  - given:
+      date: '2007-01-01'
+      regions: ["be_nl"]
+      options: ["informal"]
+    expect:
+      name: 'Nieuwjaar'
+  - given:
+      date: '2007-04-08'
+      regions: ["be_nl"]
+      options: ["informal"]
+    expect:
+      name: 'Pasen'
+  - given:
+      date: '2007-04-09'
+      regions: ["be_nl"]
+      options: ["informal"]
+    expect:
+      name: 'Paasmaandag'
+  - given:
+      date: '2007-05-01'
+      regions: ["be_nl"]
+      options: ["informal"]
+    expect:
+      name: 'Feest van de Arbeid'
+  - given:
+      date: '2007-05-17'
+      regions: ["be_nl"]
+      options: ["informal"]
+    expect:
+      name: 'O.H. Hemelvaart'
+  - given:
+      date: '2007-05-27'
+      regions: ["be_nl"]
+      options: ["informal"]
+    expect:
+      name: 'Pinksteren'
+  - given:
+      date: '2007-05-28'
+      regions: ["be_nl"]
+      options: ["informal"]
+    expect:
+      name: 'Pinkstermaandag'
+  - given:
+      date: '2007-07-21'
+      regions: ["be_nl"]
+      options: ["informal"]
+    expect:
+      name: 'Nationale Feestdag'
+  - given:
+      date: '2007-08-15'
+      regions: ["be_nl"]
+      options: ["informal"]
+    expect:
+      name: 'O.L.V. Hemelvaart'
+  - given:
+      date: '2007-11-01'
+      regions: ["be_nl"]
+      options: ["informal"]
+    expect:
+      name: 'Allerheiligen'
+  - given:
+      date: '2007-11-11'
+      regions: ["be_nl"]
+      options: ["informal"]
+    expect:
+      name: 'Wapenstilstand 1918'
+  - given:
+      date: '2007-12-25'
+      regions: ["be_nl"]
+      options: ["informal"]
+    expect:
+      name: 'Kerstmis'

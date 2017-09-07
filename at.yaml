@@ -57,16 +57,51 @@ months:
   - name: 2. Weihnachtstag
     regions: [at]
     mday: 26
-tests: |
-    {Date.civil(2009,1,1) => 'Neujahrstag',
-     Date.civil(2009,4,13) => 'Ostermontag',
-     Date.civil(2009,5,1) => 'Staatsfeiertag',
-     Date.civil(2009,5,21) => 'Christi Himmelfahrt',
-     Date.civil(2009,6,1) => 'Pfingstmontag',
-     Date.civil(2009,10,26) => 'Nationalfeiertag',
-     Date.civil(2009,12,25) => '1. Weihnachtstag',
-     Date.civil(2009,12,26) => '2. Weihnachtstag'}.each do |date, name|
-      assert_equal name, (Holidays.on(date, :at, :informal)[0] || {})[:name]
-    end
-
-    assert_equal [], Holidays.on(Date.civil(2010,5,8), :at), '2010-05-08 is not a holiday in Austria'
+tests:
+  - given:
+      date: '2009-01-01'
+      regions: ['at']
+      options: 'informal'
+    expect:
+      name: 'Neujahrstag'
+  - given:
+      date: '2009-04-13'
+      regions: ['at']
+      options: 'informal'
+    expect:
+      name: 'Ostermontag'
+  - given:
+      date: '2009-05-21'
+      regions: ['at']
+      options: 'informal'
+    expect:
+      name: 'Christi Himmelfahrt'
+  - given:
+      date: '2009-06-01'
+      regions: ['at']
+      options: 'informal'
+    expect:
+      name: 'Pfingstmontag'
+  - given:
+      date: '2009-10-26'
+      regions: ['at']
+      options: 'informal'
+    expect:
+      name: 'Nationalfeiertag'
+  - given:
+      date: '2009-12-25'
+      regions: ['at']
+      options: 'informal'
+    expect:
+      name: '1. Weihnachtstag'
+  - given:
+      date: '2009-12-26'
+      regions: ['at']
+      options: 'informal'
+    expect:
+      name: '2. Weihnachtstag'
+  - given:
+      date: '2010-05-08'
+      regions: ['at']
+    expect:
+      holiday: false

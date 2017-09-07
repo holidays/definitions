@@ -39,14 +39,45 @@ months:
   - name: Fête de l'Évacuation
     regions: [tn]
     mday: 15
-tests: |
-    {Date.civil(2016,1,1)   => "Jour de l'an",
-     Date.civil(2016,1,14)  => "Fête de la Révolution et de la Jeunesse",
-     Date.civil(2016,3,20)  => "Fête de l'Indépendance",
-     Date.civil(2016,4,9)   => "Journée des Martyrs",
-     Date.civil(2016,5,1)   => "Fête du travail",
-     Date.civil(2016,7,25)  => "Fête de la République",
-     Date.civil(2016,8,13)  => "Fête de la Femme et de la Famille",
-     Date.civil(2016,10,15) => "Fête de l'Évacuation" }.each do |date, name|
-      assert_equal name, (Holidays.on(date, :tn)[0] || {})[:name]
-    end
+
+tests:
+  - given:
+      date: '2016-01-01'
+      regions: ["tn"]
+    expect:
+      name: "Jour de l'an"
+  - given:
+      date: '2016-01-14'
+      regions: ["tn"]
+    expect:
+      name: "Fête de la Révolution et de la Jeunesse"
+  - given:
+      date: '2016-03-20'
+      regions: ["tn"]
+    expect:
+      name: "Fête de l'Indépendance"
+  - given:
+      date: '2016-04-09'
+      regions: ["tn"]
+    expect:
+      name: "Journée des Martyrs"
+  - given:
+      date: '2016-05-01'
+      regions: ["tn"]
+    expect:
+      name: "Fête du travail"
+  - given:
+      date: '2016-07-25'
+      regions: ["tn"]
+    expect:
+      name: "Fête de la République"
+  - given:
+      date: '2016-08-13'
+      regions: ["tn"]
+    expect:
+      name: "Fête de la Femme et de la Famille"
+  - given:
+      date: '2016-10-15'
+      regions: ["tn"]
+    expect:
+      name: "Fête de l'Évacuation"

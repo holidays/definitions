@@ -108,35 +108,149 @@ months:
     regions: [nz]
     mday: 26
     observed: to_weekday_if_boxing_weekend(date)
-tests: |
-    {Date.civil(2007,1,1) => 'New Year\'s Day',
-     Date.civil(2007,1,2) => 'Day after New Year\'s Day',
-     Date.civil(2007,2,6) => 'Waitangi Day',
-     Date.civil(2007,4,6) => 'Good Friday',
-     Date.civil(2007,4,9) => 'Easter Monday',
-     Date.civil(2007,4,25) => 'ANZAC Day',
-     Date.civil(2007,12,25) => 'Christmas Day',
-     Date.civil(2007,12,26) => 'Boxing Day'}.each do |date, name|
-      assert_equal name, (Holidays.on(date, :nz, :informal)[0] || {})[:name]
-    end
-    assert_equal 'ANZAC Day', Holidays.on(Date.civil(2015, 4, 25), :nz)[0][:name]
-    assert_equal 'ANZAC Day', Holidays.on(Date.civil(2015, 4, 27), :nz, :observed)[0][:name]
-    assert_equal 'ANZAC Day', Holidays.on(Date.civil(2016, 4, 25), :nz)[0][:name]
-    assert_equal 'ANZAC Day', Holidays.on(Date.civil(2016, 4, 25), :nz, :observed)[0][:name]
-    assert_equal 'Waitangi Day', Holidays.on(Date.civil(2015, 2, 6), :nz)[0][:name]
-    assert_equal 'Waitangi Day', Holidays.on(Date.civil(2015, 2, 6), :nz, :observed)[0][:name]
-    assert_equal 'Waitangi Day', Holidays.on(Date.civil(2016, 2, 6), :nz)[0][:name]
-    assert_equal 'Waitangi Day', Holidays.on(Date.civil(2016, 2, 8), :nz, :observed)[0][:name]
 
-    assert_equal 'Nelson Anniversary Day', Holidays.on(Date.civil(2016, 2, 1), :nz_ne, :observed)[0][:name]
-    assert_equal 'Nelson Anniversary Day', Holidays.on(Date.civil(2017, 1, 30), :nz_ne, :observed)[0][:name]
-    assert_equal 'Nelson Anniversary Day', Holidays.on(Date.civil(2018, 1, 29), :nz_ne, :observed)[0][:name]
-    assert_equal 'Nelson Anniversary Day', Holidays.on(Date.civil(2019, 2, 4), :nz_ne, :observed)[0][:name]
+tests:
+  - given:
+      date: '2007-01-01'
+      regions: ["nz"]
+      options: ["informal"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: '2007-01-02'
+      regions: ["nz"]
+      options: ["informal"]
+    expect:
+      name: "Day after New Year's Day"
+  - given:
+      date: '2007-02-06'
+      regions: ["nz"]
+      options: ["informal"]
+    expect:
+      name: "Waitangi Day"
+  - given:
+      date: '2007-04-06'
+      regions: ["nz"]
+      options: ["informal"]
+    expect:
+      name: "Good Friday"
+  - given:
+      date: '2007-04-09'
+      regions: ["nz"]
+      options: ["informal"]
+    expect:
+      name: "Easter Monday"
+  - given:
+      date: '2007-04-25'
+      regions: ["nz"]
+      options: ["informal"]
+    expect:
+      name: "ANZAC Day"
+  - given:
+      date: '2007-12-25'
+      regions: ["nz"]
+      options: ["informal"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: '2007-12-26'
+      regions: ["nz"]
+      options: ["informal"]
+    expect:
+      name: "Boxing Day"
+  - given:
+      date: '2015-04-25'
+      regions: ["nz"]
+    expect:
+      name: "ANZAC Day"
+  - given:
+      date: '2015-04-27'
+      regions: ["nz"]
+      options: ["observed"]
+    expect:
+      name: "ANZAC Day"
+  - given:
+      date: '2016-04-25'
+      regions: ["nz"]
+    expect:
+      name: "ANZAC Day"
+  - given:
+      date: '2016-04-25'
+      regions: ["nz"]
+      options: ["observed"]
+    expect:
+      name: "ANZAC Day"
+  - given:
+      date: '2015-02-06'
+      regions: ["nz"]
+    expect:
+      name: "Waitangi Day"
+  - given:
+      date: '2015-02-06'
+      regions: ["nz"]
+      options: ["observed"]
+    expect:
+      name: "Waitangi Day"
+  - given:
+      date: '2016-02-06'
+      regions: ["nz"]
+    expect:
+      name: "Waitangi Day"
+  - given:
+      date: '2016-02-08'
+      regions: ["nz"]
+      options: ["observed"]
+    expect:
+      name: "Waitangi Day"
+  - given:
+      date: '2016-02-01'
+      regions: ["nz_ne"]
+      options: ["observed"]
+    expect:
+      name: "Nelson Anniversary Day"
+  - given:
+      date: '2017-01-30'
+      regions: ["nz_ne"]
+      options: ["observed"]
+    expect:
+      name: "Nelson Anniversary Day"
+  - given:
+      date: '2018-01-29'
+      regions: ["nz_ne"]
+      options: ["observed"]
+    expect:
+      name: "Nelson Anniversary Day"
+  - given:
+      date: '2019-02-04'
+      regions: ["nz_ne"]
+      options: ["observed"]
+    expect:
+      name: "Nelson Anniversary Day"
+  - given:
+      date: '2016-03-14'
+      regions: ["nz_ta"]
+      options: ["observed"]
+    expect:
+      name: "Taranaki Anniversary Day"
+  - given:
+      date: '2017-03-13'
+      regions: ["nz_ta"]
+      options: ["observed"]
+    expect:
+      name: "Taranaki Anniversary Day"
+  - given:
+      date: '2018-03-12'
+      regions: ["nz_ta"]
+      options: ["observed"]
+    expect:
+      name: "Taranaki Anniversary Day"
+  - given:
+      date: '2019-03-11'
+      regions: ["nz_ta"]
+      options: ["observed"]
+    expect:
+      name: "Taranaki Anniversary Day"
 
-    assert_equal 'Taranaki Anniversary Day', Holidays.on(Date.civil(2016, 3, 14), :nz_ta, :observed)[0][:name]
-    assert_equal 'Taranaki Anniversary Day', Holidays.on(Date.civil(2017, 3, 13), :nz_ta, :observed)[0][:name]
-    assert_equal 'Taranaki Anniversary Day', Holidays.on(Date.civil(2018, 3, 12), :nz_ta, :observed)[0][:name]
-    assert_equal 'Taranaki Anniversary Day', Holidays.on(Date.civil(2019, 3, 11), :nz_ta, :observed)[0][:name]
 methods:
   closest_monday:
     arguments: date

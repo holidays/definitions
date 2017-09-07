@@ -36,16 +36,59 @@ months:
     regions: [nerc]
     mday: 25
     observed: to_monday_if_sunday(date)
-methods:
-tests: |
-    {Date.civil(2013,1,1) => 'New Year\'s Day',
-     Date.civil(2017,1,2) => 'New Year\'s Day',
-     Date.civil(2013,5,27) => 'Memorial Day',
-     Date.civil(2013,7,4) => 'Independence Day',
-     Date.civil(2010,7,5) => 'Independence Day',
-     Date.civil(2013,9,2) => 'Labor Day',
-     Date.civil(2013,11,28) => 'Thanksgiving',
-     Date.civil(2013,12,25) => 'Christmas Day',
-     Date.civil(2011,12,26) => 'Christmas Day'}.each do |date, name|
-      assert_equal name, (Holidays.on(date, :nerc, :observed)[0] || {})[:name]
-    end
+
+tests:
+  - given:
+      date: '2013-01-01'
+      regions: ["nerc"]
+      options: ["observed"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: '2017-01-02'
+      regions: ["nerc"]
+      options: ["observed"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: '2013-05-27'
+      regions: ["nerc"]
+      options: ["observed"]
+    expect:
+      name: "Memorial Day"
+  - given:
+      date: '2013-07-04'
+      regions: ["nerc"]
+      options: ["observed"]
+    expect:
+      name: "Independence Day"
+  - given:
+      date: '2010-07-05'
+      regions: ["nerc"]
+      options: ["observed"]
+    expect:
+      name: "Independence Day"
+  - given:
+      date: '2013-09-02'
+      regions: ["nerc"]
+      options: ["observed"]
+    expect:
+      name: "Labor Day"
+  - given:
+      date: '2013-11-28'
+      regions: ["nerc"]
+      options: ["observed"]
+    expect:
+      name: "Thanksgiving"
+  - given:
+      date: '2013-12-25'
+      regions: ["nerc"]
+      options: ["observed"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: '2011-12-26'
+      regions: ["nerc"]
+      options: ["observed"]
+    expect:
+      name: "Christmas Day"

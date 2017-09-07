@@ -34,6 +34,10 @@ module Definitions
         begin
           definition_file = YAML.load(File.open(target))
           validate!(definition_file)
+        rescue Psych::SyntaxError => e
+          puts "Failed on file '#{target}', YAML parse error: #{e}"
+          puts "This means your YAML is somehow invalid. Test your file on something like yamllint.com to find the issue."
+          exit
         rescue => e
           puts "Failed on file '#{target}', error: #{e}"
           exit

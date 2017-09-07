@@ -51,29 +51,122 @@ months:
     regions: [ie]
     mday: 26
     observed: to_weekday_if_boxing_weekend(date)
-tests: |
-    {Date.civil(2008,1,1) => 'New Year\'s Day',
-     Date.civil(2008,3,17) => 'St. Patrick\'s Day',
-     Date.civil(2008,3,24) => 'Easter Monday',
-     Date.civil(2008,5,5) => 'May Day',
-     Date.civil(2008,6,2) => 'June Bank Holiday',
-     Date.civil(2008,8,4) => 'August Bank Holiday',
-     Date.civil(2008,10,27) => 'October Bank Holiday',
-     Date.civil(2008,12,25) => 'Christmas Day',
-     Date.civil(2008,12,26) => 'St. Stephen\'s Day'}.each do |date, name|
-      assert_equal name, (Holidays.on(date, :ie)[0] || {})[:name]
-    end
-    {Date.civil(2012,1,2) => 'New Year\'s Day',
-     Date.civil(2012,3,19) => 'St. Patrick\'s Day',
-     Date.civil(2012,4,9) => 'Easter Monday',
-     Date.civil(2012,5,7) => 'May Day',
-     Date.civil(2012,6,4) => 'June Bank Holiday',
-     Date.civil(2012,8,6) => 'August Bank Holiday',
-     Date.civil(2012,10,29) => 'October Bank Holiday',
-     Date.civil(2011,12,26) => 'Christmas Day',
-     Date.civil(2011,12,27) => 'St. Stephen\'s Day',
-     Date.civil(2012,12,25) => 'Christmas Day',
-     Date.civil(2012,12,26) => 'St. Stephen\'s Day',
-     Date.civil(2015,12,28) => 'St. Stephen\'s Day'}.each do |date, name|
-      assert_equal name, (Holidays.on(date, :ie, :observed)[0] || {})[:name]
-    end
+
+tests:
+  - given:
+      date: '2008-01-01'
+      regions: ["ie"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: '2008-03-17'
+      regions: ["ie"]
+    expect:
+      name: "St. Patrick's Day"
+  - given:
+      date: '2008-03-24'
+      regions: ["ie"]
+    expect:
+      name: "Easter Monday"
+  - given:
+      date: '2008-05-05'
+      regions: ["ie"]
+    expect:
+      name: "May Day"
+  - given:
+      date: '2008-06-02'
+      regions: ["ie"]
+    expect:
+      name: "June Bank Holiday"
+  - given:
+      date: '2008-08-04'
+      regions: ["ie"]
+    expect:
+      name: "August Bank Holiday"
+  - given:
+      date: '2008-10-27'
+      regions: ["ie"]
+    expect:
+      name: "October Bank Holiday"
+  - given:
+      date: '2008-12-25'
+      regions: ["ie"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: '2008-12-26'
+      regions: ["ie"]
+    expect:
+      name: "St. Stephen's Day"
+  - given:
+      date: '2012-01-02'
+      regions: ["ie"]
+      options: ["observed"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: '2012-03-19'
+      regions: ["ie"]
+      options: ["observed"]
+    expect:
+      name: "St. Patrick's Day"
+  - given:
+      date: '2012-04-09'
+      regions: ["ie"]
+      options: ["observed"]
+    expect:
+      name: "Easter Monday"
+  - given:
+      date: '2012-05-07'
+      regions: ["ie"]
+      options: ["observed"]
+    expect:
+      name: "May Day"
+  - given:
+      date: '2012-06-04'
+      regions: ["ie"]
+      options: ["observed"]
+    expect:
+      name: "June Bank Holiday"
+  - given:
+      date: '2012-08-06'
+      regions: ["ie"]
+      options: ["observed"]
+    expect:
+      name: "August Bank Holiday"
+  - given:
+      date: '2012-10-29'
+      regions: ["ie"]
+      options: ["observed"]
+    expect:
+      name: "October Bank Holiday"
+  - given:
+      date: '2011-12-26'
+      regions: ["ie"]
+      options: ["observed"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: '2011-12-27'
+      regions: ["ie"]
+      options: ["observed"]
+    expect:
+      name: "St. Stephen's Day"
+  - given:
+      date: '2012-12-25'
+      regions: ["ie"]
+      options: ["observed"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: '2012-12-26'
+      regions: ["ie"]
+      options: ["observed"]
+    expect:
+      name: "St. Stephen's Day"
+  - given:
+      date: '2015-12-28'
+      regions: ["ie"]
+      options: ["observed"]
+    expect:
+      name: "St. Stephen's Day"

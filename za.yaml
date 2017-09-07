@@ -63,18 +63,77 @@ months:
     regions: [za]
     mday: 26
     observed: to_weekday_if_boxing_weekend(date)
-tests: |
-    {Date.civil(2007,1,1) => 'New Year\'s Day',
-     Date.civil(2007,3,21) => 'Human Rights Day',
-     Date.civil(2007,4,6) => 'Good Friday',
-     Date.civil(2007,4,9) => 'Family Day',
-     Date.civil(2007,4,27) => 'Freedom Day',
-     Date.civil(2007,5,1) => 'Workers Day',
-     Date.civil(2007,6,16) => 'Youth Day',
-     Date.civil(2007,8,9) => 'National Women\'s Day',
-     Date.civil(2007,9,24) => 'Heritage Day',
-     Date.civil(2007,12,16) => 'Day of Reconciliation',
-     Date.civil(2007,12,25) => 'Christmas Day',
-     Date.civil(2007,12,26) => 'Day of Goodwill'}.each do |date, name|
-      assert_equal name, (Holidays.on(date, :za, :informal)[0] || {})[:name]
-    end
+
+tests:
+  - given:
+      date: '2007-01-01'
+      regions: ["za"]
+      options: ["informal"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: '2007-03-21'
+      regions: ["za"]
+      options: ["informal"]
+    expect:
+      name: "Human Rights Day"
+  - given:
+      date: '2007-04-06'
+      regions: ["za"]
+      options: ["informal"]
+    expect:
+      name: "Good Friday"
+  - given:
+      date: '2007-04-09'
+      regions: ["za"]
+      options: ["informal"]
+    expect:
+      name: "Family Day"
+  - given:
+      date: '2007-04-27'
+      regions: ["za"]
+      options: ["informal"]
+    expect:
+      name: "Freedom Day"
+  - given:
+      date: '2007-05-01'
+      regions: ["za"]
+      options: ["informal"]
+    expect:
+      name: "Workers Day"
+  - given:
+      date: '2007-06-16'
+      regions: ["za"]
+      options: ["informal"]
+    expect:
+      name: "Youth Day"
+  - given:
+      date: '2007-08-09'
+      regions: ["za"]
+      options: ["informal"]
+    expect:
+      name: "National Women's Day"
+  - given:
+      date: '2007-09-24'
+      regions: ["za"]
+      options: ["informal"]
+    expect:
+      name: "Heritage Day"
+  - given:
+      date: '2007-12-16'
+      regions: ["za"]
+      options: ["informal"]
+    expect:
+      name: "Day of Reconciliation"
+  - given:
+      date: '2007-12-25'
+      regions: ["za"]
+      options: ["informal"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: '2007-12-26'
+      regions: ["za"]
+      options: ["informal"]
+    expect:
+      name: "Day of Goodwill"

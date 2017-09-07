@@ -172,6 +172,7 @@ months:
     regions: [pl]
     mday: 31
     type: informal
+
 methods:
   pl_trzech_kroli:
     # Poland: January 6 is holiday since 2011
@@ -183,138 +184,601 @@ methods:
     arguments: year
     source: |
       year < 2011 ? 6 : nil
-tests: |
-    {Date.civil(2011,1,1) => 'Nowy Rok',
-    Date.civil(2011,5,1) => 'Święto Państwowe (Święto Pracy)',
-    Date.civil(2011,5,3) => 'Święto Narodowe Trzeciego Maja',
-    Date.civil(2011,11,1) => 'Wszystkich Świętych',
-    Date.civil(2011,11,11) => 'Narodowe Święto Niepodległości',
-    Date.civil(2011,12,25) => 'pierwszy dzień Bożego Narodzenia',
-    Date.civil(2011,12,26) => 'drugi dzień Bożego Narodzenia'}.each do |date, name|
-      assert_equal name, (Holidays.on(date, :pl)[0] || {})[:name]
-    end
 
-    # informal
-    {Date.civil(2011,1,21) => 'Dzień Babci',
-    Date.civil(2011,1,22) => 'Dzień Dziadka',
-    Date.civil(2011,2,2) => 'Ofiarowanie Pańskie (Matki Boskiej Gromnicznej)',
-    Date.civil(2011,2,14) => 'Dzień Zakochanych (Walentynki)',
-    Date.civil(2010,3,8) => 'Dzień Kobiet',
-    Date.civil(2011,3,10) => 'Dzień Mężczyzn',
-    Date.civil(2011,4,1) => 'Prima Aprilis',
-    Date.civil(2010,4,22) => 'Międzynarodowy Dzień Ziemi',
-    Date.civil(2011,5,2) => 'Dzień Flagi Rzeczpospolitej Polskiej',
-    Date.civil(2010,6,23) => 'Dzień Ojca',
-    Date.civil(2011,9,30) => 'Dzień Chłopaka',
-    Date.civil(2011,10,14) => 'Dzień Nauczyciela (Dzień Edukacji Narodowej)',
-    Date.civil(2011,11,2) => 'Dzień Zaduszny',
-    Date.civil(2011,11,29) => 'Andrzejki',
-    Date.civil(2011,12,4) => 'Barbórka (Dzień Górnika, Naftowca i Gazownika)',
-    Date.civil(2011,12,6) => 'Mikołajki',
-    Date.civil(2011,12,24) => 'Wigilia Bożego Narodzenia',
-    Date.civil(2011,12,31) => 'Sylwester'}.each do |date, name|
-      assert_equal name, (Holidays.on(date, :pl, :informal)[0] || {})[:name]
-    end
-
-    # informal
-    {Date.civil(2011,1,21) => 'Dzień Babci',
-    Date.civil(2011,1,22) => 'Dzień Dziadka',
-    Date.civil(2011,2,2) => 'Ofiarowanie Pańskie (Matki Boskiej Gromnicznej)',
-    Date.civil(2011,2,14) => 'Dzień Zakochanych (Walentynki)',
-    Date.civil(2010,3,8) => 'Dzień Kobiet',
-    Date.civil(2011,3,10) => 'Dzień Mężczyzn',
-    Date.civil(2011,4,1) => 'Prima Aprilis',
-    Date.civil(2010,4,22) => 'Międzynarodowy Dzień Ziemi',
-    Date.civil(2011,5,2) => 'Dzień Flagi Rzeczpospolitej Polskiej',
-    Date.civil(2010,6,23) => 'Dzień Ojca',
-    Date.civil(2011,9,30) => 'Dzień Chłopaka',
-    Date.civil(2011,10,14) => 'Dzień Nauczyciela (Dzień Edukacji Narodowej)',
-    Date.civil(2011,11,2) => 'Dzień Zaduszny',
-    Date.civil(2011,11,29) => 'Andrzejki',
-    Date.civil(2011,12,4) => 'Barbórka (Dzień Górnika, Naftowca i Gazownika)',
-    Date.civil(2011,12,6) => 'Mikołajki',
-    Date.civil(2011,12,24) => 'Wigilia Bożego Narodzenia',
-    Date.civil(2011,12,31) => 'Sylwester'}.each do |date, name|
-      assert_equal nil, (Holidays.on(date, :pl)[0] || {})[:name]
-    end
-
-    # Objawienie Pańskie (święto Trzech Króli) -- formal since 2011
-    [Date.civil(2008,1,6), Date.civil(2009,1,6), Date.civil(2010,1,6)].each do |date|
-      assert_equal nil, (Holidays.on(date, :pl)[0] || {})[:name]
-    end
-    [Date.civil(2008,1,6), Date.civil(2009,1,6), Date.civil(2010,1,6)].each do |date|
-      assert_equal 'Objawienie Pańskie (święto Trzech Króli)', (Holidays.on(date, :pl, :informal)[0] || {})[:name]
-    end
-    [Date.civil(2011,1,6), Date.civil(2012,1,6), Date.civil(2013,1,6)].each do |date|
-      assert_equal 'Objawienie Pańskie (święto Trzech Króli)', (Holidays.on(date, :pl)[0] || {})[:name]
-    end
-
-    # Tłusty Czwartek
-    [Date.civil(2008,1,31), Date.civil(2009,2,19), Date.civil(2010,2,11),
-     Date.civil(2011,3,3), Date.civil(2012,2,16)].each do |date|
-      assert_equal 'Tłusty Czwartek', (Holidays.on(date, :pl, :informal)[0] || {})[:name]
-    end
-
-    # Ostatki
-    [Date.civil(2008,2,5), Date.civil(2009,2,24), Date.civil(2010,2,16),
-     Date.civil(2011,3,8), Date.civil(2012,2,21)].each do |date|
-      assert_equal 'Ostatki', (Holidays.on(date, :pl, :informal)[0] || {})[:name]
-    end
-
-    # Środa Popielcowa
-    [Date.civil(2008,2,6), Date.civil(2009,2,25), Date.civil(2010,2,17),
-     Date.civil(2011,3,9), Date.civil(2012,2,22)].each do |date|
-      assert_equal 'Środa Popielcowa', (Holidays.on(date, :pl, :informal)[0] || {})[:name]
-    end
-
-    # Niedziela Palmowa
-    [Date.civil(2008,3,16), Date.civil(2009,4,5), Date.civil(2010,3,28),
-     Date.civil(2011,4,17), Date.civil(2012,4,1)].each do |date|
-      assert_equal 'Niedziela Palmowa', (Holidays.on(date, :pl, :informal)[0] || {})[:name]
-    end
-
-    # Wielki Czwartek
-    [Date.civil(2008,3,20), Date.civil(2009,4,9), Date.civil(2010,4,1),
-     Date.civil(2011,4,21), Date.civil(2012,4,5)].each do |date|
-      assert_equal 'Wielki Czwartek', (Holidays.on(date, :pl, :informal)[0] || {})[:name]
-    end
-
-    # Wielki Piątek
-    [Date.civil(2008,3,21), Date.civil(2009,4,10), Date.civil(2010,4,2),
-     Date.civil(2011,4,22), Date.civil(2012,4,6)].each do |date|
-      assert_equal 'Wielki Piątek', (Holidays.on(date, :pl, :informal)[0] || {})[:name]
-    end
-
-    # Wielka Sobota
-    [Date.civil(2008,3,22), Date.civil(2009,4,11), Date.civil(2010,4,3),
-     Date.civil(2011,4,23), Date.civil(2012,4,7)].each do |date|
-      assert_equal 'Wielka Sobota', (Holidays.on(date, :pl, :informal)[0] || {})[:name]
-    end
-
-    # Niedziela Wielkanocna
-    [Date.civil(2008,3,23), Date.civil(2009,4,12), Date.civil(2010,4,4),
-     Date.civil(2011,4,24), Date.civil(2012,4,8)].each do |date|
-      assert_equal 'Niedziela Wielkanocna', (Holidays.on(date, :pl)[0] || {})[:name]
-    end
-
-    # Poniedziałek Wielkanocny (Lany Poniedziałek)
-    [Date.civil(2008,3,24), Date.civil(2009,4,13), Date.civil(2010,4,5),
-     Date.civil(2011,4,25), Date.civil(2012,4,9)].each do |date|
-      assert_equal 'Poniedziałek Wielkanocny (Lany Poniedziałek)', (Holidays.on(date, :pl)[0] || {})[:name]
-    end
-
-    # Zesłanie Ducha Świętego (Zielone Świątki)
-    [Date.civil(2008,5,11), Date.civil(2009,5,31), Date.civil(2010,5,23),
-     Date.civil(2011,6,12), Date.civil(2012,5,27)].each do |date|
-      assert_equal 'Zesłanie Ducha Świętego (Zielone Świątki)', (Holidays.on(date, :pl)[0] || {})[:name]
-    end
-
-    # Uroczystość Najświętszego Ciała i Krwi Pańskiej (Boże Ciało)
-    [Date.civil(2008,5,22), Date.civil(2009,6,11), Date.civil(2010,6,3),
-     Date.civil(2011,6,23), Date.civil(2012,6,7)].each do |date|
-      assert_equal 'Uroczystość Najświętszego Ciała i Krwi Pańskiej (Boże Ciało)', (Holidays.on(date, :pl)[0] || {})[:name]
-    end
-
-    # Wniebowzięcie Najświętszej Maryi Panny & Święto Wojska Polskiego
-      assert_equal 'Wniebowzięcie Najświętszej Maryi Panny', (Holidays.on(Date.civil(2011,8,15), :pl)[0] || {})[:name]
-      assert_equal 'Święto Wojska Polskiego', (Holidays.on(Date.civil(2011,8,15), :pl)[1] || {})[:name]
+tests:
+  - given:
+      date: '2011-01-01'
+      regions: ["pl"]
+    expect:
+      name: "Nowy Rok"
+  - given:
+      date: '2011-05-01'
+      regions: ["pl"]
+    expect:
+      name: "Święto Państwowe (Święto Pracy)"
+  - given:
+      date: '2011-05-03'
+      regions: ["pl"]
+    expect:
+      name: "Święto Narodowe Trzeciego Maja"
+  - given:
+      date: '2011-11-01'
+      regions: ["pl"]
+    expect:
+      name: "Wszystkich Świętych"
+  - given:
+      date: '2011-11-11'
+      regions: ["pl"]
+    expect:
+      name: "Narodowe Święto Niepodległości"
+  - given:
+      date: '2011-12-25'
+      regions: ["pl"]
+    expect:
+      name: "pierwszy dzień Bożego Narodzenia"
+  - given:
+      date: '2011-12-26'
+      regions: ["pl"]
+    expect:
+      name: "drugi dzień Bożego Narodzenia"
+  - given:
+      date: '2011-01-21'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Dzień Babci"
+  - given:
+      date: '2011-01-22'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Dzień Dziadka"
+  - given:
+      date: '2011-02-02'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Ofiarowanie Pańskie (Matki Boskiej Gromnicznej)"
+  - given:
+      date: '2011-02-14'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Dzień Zakochanych (Walentynki)"
+  - given:
+      date: '2010-03-08'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Dzień Kobiet"
+  - given:
+      date: '2011-03-10'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Dzień Mężczyzn"
+  - given:
+      date: '2011-04-01'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Prima Aprilis"
+  - given:
+      date: '2010-04-22'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Międzynarodowy Dzień Ziemi"
+  - given:
+      date: '2011-05-02'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Dzień Flagi Rzeczpospolitej Polskiej"
+  - given:
+      date: '2010-06-23'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Dzień Ojca"
+  - given:
+      date: '2011-09-30'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Dzień Chłopaka"
+  - given:
+      date: '2011-10-14'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Dzień Nauczyciela (Dzień Edukacji Narodowej)"
+  - given:
+      date: '2011-11-02'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Dzień Zaduszny"
+  - given:
+      date: '2011-11-29'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Andrzejki"
+  - given:
+      date: '2011-12-04'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Barbórka (Dzień Górnika, Naftowca i Gazownika)"
+  - given:
+      date: '2011-12-06'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Mikołajki"
+  - given:
+      date: '2011-12-24'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Wigilia Bożego Narodzenia"
+  - given:
+      date: '2011-12-31'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Sylwester"
+  - given:
+      date: '2011-01-21'
+      regions: ["pl"]
+    expect:
+      holiday: false
+  - given:
+      date: '2011-01-22'
+      regions: ["pl"]
+    expect:
+      holiday: false
+  - given:
+      date: '2011-02-02'
+      regions: ["pl"]
+    expect:
+      holiday: false
+  - given:
+      date: '2011-02-14'
+      regions: ["pl"]
+    expect:
+      holiday: false
+  - given:
+      date: '2010-03-08'
+      regions: ["pl"]
+    expect:
+      holiday: false
+  - given:
+      date: '2011-03-10'
+      regions: ["pl"]
+    expect:
+      holiday: false
+  - given:
+      date: '2011-04-01'
+      regions: ["pl"]
+    expect:
+      holiday: false
+  - given:
+      date: '2010-04-22'
+      regions: ["pl"]
+    expect:
+      holiday: false
+  - given:
+      date: '2011-05-02'
+      regions: ["pl"]
+    expect:
+      holiday: false
+  - given:
+      date: '2010-06-23'
+      regions: ["pl"]
+    expect:
+      holiday: false
+  - given:
+      date: '2011-09-30'
+      regions: ["pl"]
+    expect:
+      holiday: false
+  - given:
+      date: '2011-10-14'
+      regions: ["pl"]
+    expect:
+      holiday: false
+  - given:
+      date: '2011-11-02'
+      regions: ["pl"]
+    expect:
+      holiday: false
+  - given:
+      date: '2011-11-29'
+      regions: ["pl"]
+    expect:
+      holiday: false
+  - given:
+      date: '2011-12-04'
+      regions: ["pl"]
+    expect:
+      holiday: false
+  - given:
+      date: '2011-12-06'
+      regions: ["pl"]
+    expect:
+      holiday: false
+  - given:
+      date: '2011-12-24'
+      regions: ["pl"]
+    expect:
+      holiday: false
+  - given:
+      date: '2011-12-31'
+      regions: ["pl"]
+    expect:
+      holiday: false
+  - given:
+      date: '2008-01-06'
+      regions: ["pl"]
+    expect:
+      holiday: false
+  - given:
+      date: '2009-01-06'
+      regions: ["pl"]
+    expect:
+      holiday: false
+  - given:
+      date: '2010-01-06'
+      regions: ["pl"]
+    expect:
+      holiday: false
+  - given:
+      date: '2008-01-06'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Objawienie Pańskie (święto Trzech Króli)"
+  - given:
+      date: '2009-01-06'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Objawienie Pańskie (święto Trzech Króli)"
+  - given:
+      date: '2010-01-06'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Objawienie Pańskie (święto Trzech Króli)"
+  - given:
+      date: '2011-01-06'
+      regions: ["pl"]
+    expect:
+      name: "Objawienie Pańskie (święto Trzech Króli)"
+  - given:
+      date: '2012-01-06'
+      regions: ["pl"]
+    expect:
+      name: "Objawienie Pańskie (święto Trzech Króli)"
+  - given:
+      date: '2013-01-06'
+      regions: ["pl"]
+    expect:
+      name: "Objawienie Pańskie (święto Trzech Króli)"
+  - given:
+      date: '2008-01-31'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Tłusty Czwartek"
+  - given:
+      date: '2009-02-19'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Tłusty Czwartek"
+  - given:
+      date: '2010-02-11'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Tłusty Czwartek"
+  - given:
+      date: '2011-03-03'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Tłusty Czwartek"
+  - given:
+      date: '2012-02-16'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Tłusty Czwartek"
+  - given:
+      date: '2008-02-05'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Ostatki"
+  - given:
+      date: '2009-02-24'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Ostatki"
+  - given:
+      date: '2010-02-16'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Ostatki"
+  - given:
+      date: '2011-03-08'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Ostatki"
+  - given:
+      date: '2012-02-21'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Ostatki"
+  - given:
+      date: '2008-02-06'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Środa Popielcowa"
+  - given:
+      date: '2009-02-25'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Środa Popielcowa"
+  - given:
+      date: '2010-02-17'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Środa Popielcowa"
+  - given:
+      date: '2011-03-09'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Środa Popielcowa"
+  - given:
+      date: '2012-02-22'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Środa Popielcowa"
+  - given:
+      date: '2008-03-16'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Niedziela Palmowa"
+  - given:
+      date: '2009-04-05'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Niedziela Palmowa"
+  - given:
+      date: '2010-03-28'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Niedziela Palmowa"
+  - given:
+      date: '2011-04-17'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Niedziela Palmowa"
+  - given:
+      date: '2012-04-01'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Niedziela Palmowa"
+  - given:
+      date: '2008-03-20'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Wielki Czwartek"
+  - given:
+      date: '2009-04-09'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Wielki Czwartek"
+  - given:
+      date: '2010-04-01'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Wielki Czwartek"
+  - given:
+      date: '2011-04-21'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Wielki Czwartek"
+  - given:
+      date: '2012-04-05'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Wielki Czwartek"
+  - given:
+      date: '2008-03-21'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Wielki Piątek"
+  - given:
+      date: '2009-04-10'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Wielki Piątek"
+  - given:
+      date: '2010-04-02'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Wielki Piątek"
+  - given:
+      date: '2011-04-22'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Wielki Piątek"
+  - given:
+      date: '2012-04-06'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Wielki Piątek"
+  - given:
+      date: '2008-03-22'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Wielka Sobota"
+  - given:
+      date: '2009-04-11'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Wielka Sobota"
+  - given:
+      date: '2010-04-03'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Wielka Sobota"
+  - given:
+      date: '2011-04-23'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Wielka Sobota"
+  - given:
+      date: '2012-04-07'
+      regions: ["pl"]
+      options: ["informal"]
+    expect:
+      name: "Wielka Sobota"
+  - given:
+      date: '2008-03-23'
+      regions: ["pl"]
+    expect:
+      name: "Niedziela Wielkanocna"
+  - given:
+      date: '2009-04-12'
+      regions: ["pl"]
+    expect:
+      name: "Niedziela Wielkanocna"
+  - given:
+      date: '2010-04-04'
+      regions: ["pl"]
+    expect:
+      name: "Niedziela Wielkanocna"
+  - given:
+      date: '2011-04-24'
+      regions: ["pl"]
+    expect:
+      name: "Niedziela Wielkanocna"
+  - given:
+      date: '2012-04-08'
+      regions: ["pl"]
+    expect:
+      name: "Niedziela Wielkanocna"
+  - given:
+      date: '2008-03-24'
+      regions: ["pl"]
+    expect:
+      name: "Poniedziałek Wielkanocny (Lany Poniedziałek)"
+  - given:
+      date: '2009-04-13'
+      regions: ["pl"]
+    expect:
+      name: "Poniedziałek Wielkanocny (Lany Poniedziałek)"
+  - given:
+      date: '2010-04-05'
+      regions: ["pl"]
+    expect:
+      name: "Poniedziałek Wielkanocny (Lany Poniedziałek)"
+  - given:
+      date: '2011-04-25'
+      regions: ["pl"]
+    expect:
+      name: "Poniedziałek Wielkanocny (Lany Poniedziałek)"
+  - given:
+      date: '2012-04-09'
+      regions: ["pl"]
+    expect:
+      name: "Poniedziałek Wielkanocny (Lany Poniedziałek)"
+  - given:
+      date: '2008-05-11'
+      regions: ["pl"]
+    expect:
+      name: "Zesłanie Ducha Świętego (Zielone Świątki)"
+  - given:
+      date: '2009-05-31'
+      regions: ["pl"]
+    expect:
+      name: "Zesłanie Ducha Świętego (Zielone Świątki)"
+  - given:
+      date: '2010-05-23'
+      regions: ["pl"]
+    expect:
+      name: "Zesłanie Ducha Świętego (Zielone Świątki)"
+  - given:
+      date: '2011-06-12'
+      regions: ["pl"]
+    expect:
+      name: "Zesłanie Ducha Świętego (Zielone Świątki)"
+  - given:
+      date: '2012-05-27'
+      regions: ["pl"]
+    expect:
+      name: "Zesłanie Ducha Świętego (Zielone Świątki)"
+  - given:
+      date: '2008-05-22'
+      regions: ["pl"]
+    expect:
+      name: "Uroczystość Najświętszego Ciała i Krwi Pańskiej (Boże Ciało)"
+  - given:
+      date: '2009-06-11'
+      regions: ["pl"]
+    expect:
+      name: "Uroczystość Najświętszego Ciała i Krwi Pańskiej (Boże Ciało)"
+  - given:
+      date: '2010-06-03'
+      regions: ["pl"]
+    expect:
+      name: "Uroczystość Najświętszego Ciała i Krwi Pańskiej (Boże Ciało)"
+  - given:
+      date: '2011-06-23'
+      regions: ["pl"]
+    expect:
+      name: "Uroczystość Najświętszego Ciała i Krwi Pańskiej (Boże Ciało)"
+  - given:
+      date: '2012-06-07'
+      regions: ["pl"]
+    expect:
+      name: "Uroczystość Najświętszego Ciała i Krwi Pańskiej (Boże Ciało)"
+  - given:
+      date: '2011-08-15'
+      regions: ["pl"]
+    expect:
+      name: "Wniebowzięcie Najświętszej Maryi Panny"

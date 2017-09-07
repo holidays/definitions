@@ -47,15 +47,59 @@ months:
     regions: [us, ca]
     mday: 31
     type: informal
-tests: |
-    {Date.civil(2013,2,2) => 'Groundhog Day',
-     Date.civil(2013,2,14) => 'Valentine\'s Day',
-     Date.civil(2013,3,17) => 'St. Patrick\'s Day',
-     Date.civil(2013,4,1) => 'April Fool\'s Day',
-     Date.civil(2013,4,22) => 'Earth Day',
-     Date.civil(2013,5,12) => 'Mother\'s Day',
-     Date.civil(2013,5,18) => 'Armed Forces Day',
-     Date.civil(2013,6,16) => 'Father\'s Day',
-     Date.civil(2013,10,31) => 'Halloween'}.each do |date, name|
-      assert_equal name, (Holidays.on(date, :us, :informal)[0] || {})[:name]
-    end
+
+tests:
+  - given:
+      date: '2013-02-02'
+      regions: ["us"]
+      options: ["informal"]
+    expect:
+      name: "Groundhog Day"
+  - given:
+      date: '2013-02-14'
+      regions: ["us"]
+      options: ["informal"]
+    expect:
+      name: "Valentine's Day"
+  - given:
+      date: '2013-03-17'
+      regions: ["us"]
+      options: ["informal"]
+    expect:
+      name: "St. Patrick's Day"
+  - given:
+      date: '2013-04-01'
+      regions: ["us"]
+      options: ["informal"]
+    expect:
+      name: "April Fool's Day"
+  - given:
+      date: '2013-04-22'
+      regions: ["us"]
+      options: ["informal"]
+    expect:
+      name: "Earth Day"
+  - given:
+      date: '2013-05-12'
+      regions: ["us"]
+      options: ["informal"]
+    expect:
+      name: "Mother's Day"
+  - given:
+      date: '2013-05-18'
+      regions: ["us"]
+      options: ["informal"]
+    expect:
+      name: "Armed Forces Day"
+  - given:
+      date: '2013-06-16'
+      regions: ["us"]
+      options: ["informal"]
+    expect:
+      name: "Father's Day"
+  - given:
+      date: '2013-10-31'
+      regions: ["us"]
+      options: ["informal"]
+    expect:
+      name: "Halloween"

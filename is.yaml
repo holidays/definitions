@@ -109,6 +109,7 @@ months:
   - name: Gamlárskvöld
     regions: [is]
     mday: 31
+
 methods:
   is_sumardagurinn_fyrsti:
     # Iceland: first day of summer (Thursday after 18 April)
@@ -121,26 +122,126 @@ methods:
         date += (11 - date.wday)
       end
       date
-tests: |
-    {Date.civil(2007,1,1) => 'Nýársdagur',
-     Date.civil(2007,1,6) => 'Þrettándinn',
-     Date.civil(2007,1,19) => 'Bóndadagur',
-     Date.civil(2007,2,18) => 'Konudagur',
-     Date.civil(2007,4,5) => 'Skírdagur',
-     Date.civil(2007,4,6) => 'Föstudaginn langi',
-     Date.civil(2007,4,8) => 'Páskadagur',
-     Date.civil(2007,4,9) => 'Annar í páskum',
-     Date.civil(2007,4,19) => 'Sumardagurinn fyrsti',
-     Date.civil(2007,5,1) => 'Verkalýðsdagurinn',
-     Date.civil(2007,5,17) => 'Uppstigningardagur',
-     Date.civil(2007,5,27) => 'Hvítasunnudagur',
-     Date.civil(2007,5,28) => 'Annar í hvítasunnu',
-     Date.civil(2007,6,3) => 'Sjómannadagurinn',
-     Date.civil(2007,6,17) => 'Lýðveldisdagurinn',
-     Date.civil(2007,8,6) => 'Frídagur verslunarmanna',
-     Date.civil(2007,12,24) => 'Jól',
-     Date.civil(2007,12,25) => 'Jól',
-     Date.civil(2007,12,26) => 'Jól',
-     Date.civil(2007,12,31) => 'Gamlárskvöld'}.each do |date, name|
-      assert_equal name, (Holidays.on(date, :is, :informal)[0] || {})[:name]
-    end
+
+tests:
+  - given:
+      date: '2007-01-01'
+      regions: ["is"]
+      options: ["informal"]
+    expect:
+      name: "Nýársdagur"
+  - given:
+      date: '2007-01-06'
+      regions: ["is"]
+      options: ["informal"]
+    expect:
+      name: "Þrettándinn"
+  - given:
+      date: '2007-01-19'
+      regions: ["is"]
+      options: ["informal"]
+    expect:
+      name: "Bóndadagur"
+  - given:
+      date: '2007-02-18'
+      regions: ["is"]
+      options: ["informal"]
+    expect:
+      name: "Konudagur"
+  - given:
+      date: '2007-04-05'
+      regions: ["is"]
+      options: ["informal"]
+    expect:
+      name: "Skírdagur"
+  - given:
+      date: '2007-04-06'
+      regions: ["is"]
+      options: ["informal"]
+    expect:
+      name: "Föstudaginn langi"
+  - given:
+      date: '2007-04-08'
+      regions: ["is"]
+      options: ["informal"]
+    expect:
+      name: "Páskadagur"
+  - given:
+      date: '2007-04-09'
+      regions: ["is"]
+      options: ["informal"]
+    expect:
+      name: "Annar í páskum"
+  - given:
+      date: '2007-04-19'
+      regions: ["is"]
+      options: ["informal"]
+    expect:
+      name: "Sumardagurinn fyrsti"
+  - given:
+      date: '2007-05-01'
+      regions: ["is"]
+      options: ["informal"]
+    expect:
+      name: "Verkalýðsdagurinn"
+  - given:
+      date: '2007-05-17'
+      regions: ["is"]
+      options: ["informal"]
+    expect:
+      name: "Uppstigningardagur"
+  - given:
+      date: '2007-05-27'
+      regions: ["is"]
+      options: ["informal"]
+    expect:
+      name: "Hvítasunnudagur"
+  - given:
+      date: '2007-05-28'
+      regions: ["is"]
+      options: ["informal"]
+    expect:
+      name: "Annar í hvítasunnu"
+  - given:
+      date: '2007-06-03'
+      regions: ["is"]
+      options: ["informal"]
+    expect:
+      name: "Sjómannadagurinn"
+  - given:
+      date: '2007-06-17'
+      regions: ["is"]
+      options: ["informal"]
+    expect:
+      name: "Lýðveldisdagurinn"
+  - given:
+      date: '2007-08-06'
+      regions: ["is"]
+      options: ["informal"]
+    expect:
+      name: "Frídagur verslunarmanna"
+  - given:
+      date: '2007-12-24'
+      regions: ["is"]
+      options: ["informal"]
+    expect:
+      name: "Jól"
+  - given:
+      date: '2007-12-25'
+      regions: ["is"]
+      options: ["informal"]
+    expect:
+      name: "Jól"
+  - given:
+      date: '2007-12-26'
+      regions: ["is"]
+      options: ["informal"]
+    expect:
+      name: "Jól"
+  - given:
+      date: '2007-12-31'
+      regions: ["is"]
+      options: ["informal"]
+    expect:
+      name: "Gamlárskvöld"
+
