@@ -14,6 +14,7 @@ months:
   - name: New Year's Day
     regions: [my]
     mday: 1
+    observed: to_weekday_if_weekend(date)
   5:
   - name: Labour Day
     regions: [my]
@@ -21,24 +22,24 @@ months:
   6:
   - name: Agong's Birthday
     regions: [my]
-    function: agong_birthday_june(year)
+    mday: 4
+    observed: to_weekday_if_weekend(date)
   8:
   - name: Independence Day
     regions: [my]
     mday: 31
     observed: to_weekday_if_weekend(date)
   9:
-  - name: Agong's Birthday
-    regions: [my]
-    function: agong_birthday_september(year)
   - name: Malaysia Day
     regions: [my]
     mday: 16
+    observed: to_weekday_if_weekend(date)
   12:
   - name: Christmas Day
     regions: [my]
     mday: 25
     observed: to_weekday_if_weekend(date)
+
 tests:
   - given:
       date: '2016-01-01'
