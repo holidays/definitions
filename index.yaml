@@ -46,6 +46,7 @@ defs:
   NZ: ['nz.yaml']
   PE: ['pe.yaml']
   PH: ['ph.yaml']
+  PK: ['pk.yaml']
   PL: ['pl.yaml']
   PT: ['pt.yaml']
   RO: ['ro.yaml']
