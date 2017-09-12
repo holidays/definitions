@@ -474,6 +474,7 @@ tests:
   - given:
       date: '2013-08-05'
       regions: ["ca_ns"]
+      options: ["informal"]
     expect:
       name: "Natal Day"
   - given:
@@ -495,6 +496,7 @@ tests:
   - given:
       date: '2013-08-05'
       regions: ["ca_pe"]
+      options: ["informal"]
     expect:
       name: "Civic Holiday"
   - given:
@@ -521,6 +523,7 @@ tests:
   - given:
       date: '2014-08-04'
       regions: ["ca_ns"]
+      options: ["informal"]
     expect:
       name: "Natal Day"
   - given:
@@ -536,6 +539,7 @@ tests:
   - given:
       date: '2014-08-04'
       regions: ["ca_pe"]
+      options: ["informal"]
     expect:
       name: "Civic Holiday"
   - given:
@@ -562,6 +566,7 @@ tests:
   - given:
       date: '2015-08-03'
       regions: ["ca_ns"]
+      options: ["informal"]
     expect:
       name: "Natal Day"
   - given:
@@ -577,6 +582,7 @@ tests:
   - given:
       date: '2015-08-03'
       regions: ["ca_pe"]
+      options: ["informal"]
     expect:
       name: "Civic Holiday"
   - given:
