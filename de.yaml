@@ -90,7 +90,7 @@ months:
     regions: [de]
     mday: 3
   - name: Reformationstag
-    regions: [de_sh, de_ni, de_hh, de_hb, de_be, de_bb, de_mv, de_sn, de_st, de_th]
+    regions: [de_bb, de_mv, de_sn, de_st, de_th]
     mday: 31
   - name: Reformationstag
     regions: [de_bw]
@@ -257,6 +257,16 @@ tests:
       regions: ["de"]
     expect:
       holiday: false
+  - given:
+      date: '2019-10-31'
+      regions: ["de_sh", "de_ni", "de_hh", "de_hb", "de_be"]
+    expect:
+      holiday: false
+  - given:
+      date: '2019-10-31'
+      regions: ["de_bb", "de_mv", "de_sn", "de_st", "de_th"]
+    expect:
+      name: "Reformationstag"
   - given:
       date: '2009-11-01'
       regions: ["de_bw", "de_by", "de_nw", "de_rp", "de_sl", "de_"]
