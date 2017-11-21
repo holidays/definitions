@@ -1,12 +1,21 @@
 # French holiday definitions for the Ruby Holiday gem.
 #
 # Updated: 2013-10-2*.
+#
+# Changes 2017-05-31:
+# - Add additional holidays for Alsace (fr_a) and Moselle (fr_m)
+#
 # Sources:
 # - http://fr.wikipedia.org/wiki/Jours_f%C3%A9ri%C3%A9s_en_France#Les_f.C3.AAtes_f.C3.A9ri.C3.A9es
 # - http://vosdroits.service-public.fr/particuliers/F2405.xhtml
+# - https://en.wikipedia.org/wiki/Public_holidays_in_France
 ---
 months:
   0:
+  - name: Vendredi saint
+    regions: [fr_a, fr_m]
+    function: easter(year)
+    function_modifier: -2
   - name: Pâques
     regions: [fr]
     function: easter(year)
@@ -58,22 +67,91 @@ months:
   - name: Noël
     regions: [fr]
     mday: 25
-tests: |
-    {Date.civil(2007,1,1) => 'Jour de l\'an',
-     Date.civil(2007,4,9) => 'Lundi de Pâques',
-     Date.civil(2007,5,1) => 'Fête du travail',
-     Date.civil(2007,5,8) => 'Victoire 1945',
-     Date.civil(2007,5,17) => 'Ascension',
-     Date.civil(2007,5,28) => 'Lundi de Pentecôte',
-     Date.civil(2007,7,14) => 'Fête nationale',
-     Date.civil(2007,8,15) => 'Assomption',
-     Date.civil(2007,11,1) => 'Toussaint',
-     Date.civil(2007,11,11) => 'Armistice 1918',
-     Date.civil(2007,12,25) => 'Noël'}.each do |date, name|
-      assert_equal name, (Holidays.on(date, :fr)[0] || {})[:name]
-    end
-    {Date.civil(2007,4,8) => 'Pâques',
-     Date.civil(2007,5,27) => 'Pentecôte'}.each do |date, name|
-      assert_nil (Holidays.on(date, :fr)[0] || {})[:name]
-      assert_equal name, (Holidays.on(date, :fr, :informal)[0] || {})[:name]
-    end
+  - name: Saint-Étienne
+    regions: [fr_a, fr_m]
+    mday: 26
+
+tests:
+  - given:
+      date: '2007-01-01'
+      regions: ["fr"]
+    expect:
+      name: "Jour de l'an"
+  - given:
+      date: '2007-04-09'
+      regions: ["fr"]
+    expect:
+      name: "Lundi de Pâques"
+  - given:
+      date: '2007-05-01'
+      regions: ["fr"]
+    expect:
+      name: "Fête du travail"
+  - given:
+      date: '2007-05-08'
+      regions: ["fr"]
+    expect:
+      name: "Victoire 1945"
+  - given:
+      date: '2007-05-17'
+      regions: ["fr"]
+    expect:
+      name: "Ascension"
+  - given:
+      date: '2007-05-28'
+      regions: ["fr"]
+    expect:
+      name: "Lundi de Pentecôte"
+  - given:
+      date: '2007-07-14'
+      regions: ["fr"]
+    expect:
+      name: "Fête nationale"
+  - given:
+      date: '2007-08-15'
+      regions: ["fr"]
+    expect:
+      name: "Assomption"
+  - given:
+      date: '2007-11-01'
+      regions: ["fr"]
+    expect:
+      name: "Toussaint"
+  - given:
+      date: '2007-11-11'
+      regions: ["fr"]
+    expect:
+      name: "Armistice 1918"
+  - given:
+      date: '2007-12-25'
+      regions: ["fr"]
+    expect:
+      name: "Noël"
+  - given:
+      date: '2007-04-08'
+      regions: ["fr"]
+    expect:
+      holiday: false
+  - given:
+      date: '2007-05-27'
+      regions: ["fr"]
+    expect:
+      holiday: false
+  - given:
+      date: '2007-04-08'
+      regions: ["fr"]
+      options: ["informal"]
+    expect:
+      name: "Pâques"
+  - given:
+      date: '2007-05-27'
+      regions: ["fr"]
+      options: ["informal"]
+    expect:
+      name: "Pentecôte"
+  - given:
+      date: '2017-12-26'
+      regions: ["fr_a", "fr_m"]
+      options: ["informal"]
+    expect:
+      name: "Saint-Étienne"

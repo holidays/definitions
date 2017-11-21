@@ -1,0 +1,31 @@
+# Pakistan holiday definitions for the Ruby Holiday gem.
+#
+# https://trello-attachments.s3.amazonaws.com/561af80c433ec5f6175b74ba/59b1156ea7e691f048c08b2b/d5c0513eca7d33141d76615b15d1d58b/Public_holidays_2017_(1).pdf
+# Excluded holidays that are dependent on the moon appearing, and holidays that are only for Christians.
+#
+# https://en.wikipedia.org/wiki/Kashmir_Solidarity_Day
+# https://en.wikipedia.org/wiki/Pakistan_Day
+# https://www.timeanddate.com/holidays/pakistan/labour-day
+# https://en.wikipedia.org/wiki/Independence_Day_(Pakistan)
+
+months:
+  2:
+  - name: Kashmir Day
+    regions: [pk]
+    mday: 4
+  3:
+  - name: Pakistan Day
+    regions: [pk]
+    mday: 23
+  5:
+  - name: Labour Day
+    regions: [pk]
+    mday: 1
+  8:
+  - name: Independence Day
+    regions: [pk]
+    mday: 14
+  12:
+  - name: Quaid-i-Azam Day
+    regions: [pk]
+    mday: 25

@@ -81,27 +81,74 @@ months:
   - name: Silvester
     regions: [li]
     mday: 31
-tests: |
-    {Date.civil(2009,1,1) => 'Neujahrstag',
-     Date.civil(2011,3,8) => 'Fasnachtsdienstag',
-     Date.civil(2009,4,10) => 'Karfreitag',
-     Date.civil(2009,4,12) => 'Ostern',
-     Date.civil(2009,4,13) => 'Ostermontag',
-     Date.civil(2009,5,21) => 'Auffahrt',
-     Date.civil(2009,6,1) => 'Pfingstmontag',
-     Date.civil(2009,12,25) => 'Weihnachten',
-     Date.civil(2009,12,26) => 'Stefanstag'}.each do |date, name|
-      assert_equal name, Holidays.on(date, :li, :informal)[0][:name]
-    end
 
-    [:li].each do |r|
-      assert_equal 'Fronleichnam', Holidays.on(Date.civil(2009,6,11), r)[0][:name]
-    end
-
-    [:li].each do |r|
-      assert_equal 'Staatsfeiertag', Holidays.on(Date.civil(2009,8,15), r)[0][:name]
-    end
-
-    [:li].each do |r|
-      assert_equal 'Allerheiligen', Holidays.on(Date.civil(2009,11,1), r)[0][:name]
-    end
+tests:
+  - given:
+      date: '2009-01-01'
+      regions: ["li"]
+      options: ["informal"]
+    expect:
+      name: "Neujahrstag"
+  - given:
+      date: '2011-03-08'
+      regions: ["li"]
+      options: ["informal"]
+    expect:
+      name: "Fasnachtsdienstag"
+  - given:
+      date: '2009-04-10'
+      regions: ["li"]
+      options: ["informal"]
+    expect:
+      name: "Karfreitag"
+  - given:
+      date: '2009-04-12'
+      regions: ["li"]
+      options: ["informal"]
+    expect:
+      name: "Ostern"
+  - given:
+      date: '2009-04-13'
+      regions: ["li"]
+      options: ["informal"]
+    expect:
+      name: "Ostermontag"
+  - given:
+      date: '2009-05-21'
+      regions: ["li"]
+      options: ["informal"]
+    expect:
+      name: "Auffahrt"
+  - given:
+      date: '2009-06-01'
+      regions: ["li"]
+      options: ["informal"]
+    expect:
+      name: "Pfingstmontag"
+  - given:
+      date: '2009-12-25'
+      regions: ["li"]
+      options: ["informal"]
+    expect:
+      name: "Weihnachten"
+  - given:
+      date: '2009-12-26'
+      regions: ["li"]
+      options: ["informal"]
+    expect:
+      name: "Stefanstag"
+  - given:
+      date: '2009-06-11'
+      regions: ["li"]
+    expect:
+      name: "Fronleichnam"
+  - given:
+      date: '2009-08-15'
+      regions: ["li"]
+    expect:
+      name: "Staatsfeiertag"
+  - given:
+      date: '2009-11-01'
+      regions: ["li"]
+    expect:
+      name: "Allerheiligen"

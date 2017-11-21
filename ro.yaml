@@ -51,28 +51,124 @@ months:
   - name: Sărbătoarea Nașterii Domnului
     regions: [ro]
     mday: 26
-tests: |
-    {
-     Date.civil(1961,4,9) => 'Paștele - duminică',
-     Date.civil(1961,4,10) => 'Paștele - luni',
-     Date.civil(2013,5,5) => 'Paștele - duminică',
-     Date.civil(2013,5,6) => 'Paștele - luni',
-     Date.civil(2027,5,2) => 'Paștele - duminică',
-     Date.civil(2027,5,3) => 'Paștele - luni',
-     Date.civil(2012,6,4) => 'Rusaliile - 51',
-     Date.civil(2013,6,23) => 'Rusaliile - 50',
-     Date.civil(2013,6,24) => 'Rusaliile - 51',
-     Date.civil(1986,6,22) => 'Rusaliile - 50',
-     Date.civil(1986,6,23) => 'Rusaliile - 51',
-     Date.civil(2009,1,1) => 'Anul nou',
-     Date.civil(2014,1,2) => 'Anul nou',
-     Date.civil(2009,5,1) => 'Ziua muncii',
-     Date.civil(2012,8,15) => 'Adormirea Maicii Domnului',
-     Date.civil(2013,11,30) => 'Sfântul Apostol Andrei',
-     Date.civil(2013,12,1) => 'Ziua Națională',
-     Date.civil(2013,12,25) => 'Sărbătoarea Nașterii Domnului',
-     Date.civil(2013,12,26) => 'Sărbătoarea Nașterii Domnului'}.each do |date, name|
-      assert_equal name, (Holidays.on(date, :ro, :informal)[0] || {})[:name]
-     end
 
-     assert_equal [], Holidays.on(Date.civil(2013,7,23), :ro), '2013-07-23 is not a holiday in Romania'
+tests:
+  - given:
+      date: '1961-04-09'
+      regions: ["ro"]
+      options: ["informal"]
+    expect:
+      name: "Paștele - duminică"
+  - given:
+      date: '1961-04-10'
+      regions: ["ro"]
+      options: ["informal"]
+    expect:
+      name: "Paștele - luni"
+  - given:
+      date: '2013-05-05'
+      regions: ["ro"]
+      options: ["informal"]
+    expect:
+      name: "Paștele - duminică"
+  - given:
+      date: '2013-05-06'
+      regions: ["ro"]
+      options: ["informal"]
+    expect:
+      name: "Paștele - luni"
+  - given:
+      date: '2027-05-02'
+      regions: ["ro"]
+      options: ["informal"]
+    expect:
+      name: "Paștele - duminică"
+  - given:
+      date: '2027-05-03'
+      regions: ["ro"]
+      options: ["informal"]
+    expect:
+      name: "Paștele - luni"
+  - given:
+      date: '2012-06-04'
+      regions: ["ro"]
+      options: ["informal"]
+    expect:
+      name: "Rusaliile - 51"
+  - given:
+      date: '2013-06-23'
+      regions: ["ro"]
+      options: ["informal"]
+    expect:
+      name: "Rusaliile - 50"
+  - given:
+      date: '2013-06-24'
+      regions: ["ro"]
+      options: ["informal"]
+    expect:
+      name: "Rusaliile - 51"
+  - given:
+      date: '1986-06-22'
+      regions: ["ro"]
+      options: ["informal"]
+    expect:
+      name: "Rusaliile - 50"
+  - given:
+      date: '1986-06-23'
+      regions: ["ro"]
+      options: ["informal"]
+    expect:
+      name: "Rusaliile - 51"
+  - given:
+      date: '2009-01-01'
+      regions: ["ro"]
+      options: ["informal"]
+    expect:
+      name: "Anul nou"
+  - given:
+      date: '2014-01-02'
+      regions: ["ro"]
+      options: ["informal"]
+    expect:
+      name: "Anul nou"
+  - given:
+      date: '2009-05-01'
+      regions: ["ro"]
+      options: ["informal"]
+    expect:
+      name: "Ziua muncii"
+  - given:
+      date: '2012-08-15'
+      regions: ["ro"]
+      options: ["informal"]
+    expect:
+      name: "Adormirea Maicii Domnului"
+  - given:
+      date: '2013-11-30'
+      regions: ["ro"]
+      options: ["informal"]
+    expect:
+      name: "Sfântul Apostol Andrei"
+  - given:
+      date: '2013-12-01'
+      regions: ["ro"]
+      options: ["informal"]
+    expect:
+      name: "Ziua Națională"
+  - given:
+      date: '2013-12-25'
+      regions: ["ro"]
+      options: ["informal"]
+    expect:
+      name: "Sărbătoarea Nașterii Domnului"
+  - given:
+      date: '2013-12-26'
+      regions: ["ro"]
+      options: ["informal"]
+    expect:
+      name: "Sărbătoarea Nașterii Domnului"
+  - given:
+      date: '2013-07-23'
+      regions: ["ro"]
+    expect:
+      holiday: false

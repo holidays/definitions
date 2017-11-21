@@ -92,15 +92,59 @@ months:
   - name: Los Santos Inocentes
     regions: [mx]
     mday: 28
-tests: |
-    {Date.civil(2007,1,1) => 'Año nuevo',
-     Date.civil(2007,2,5) => 'Día de la Constitución',
-     Date.civil(2007,5,1) => 'Día del Trabajo',
-     Date.civil(2007,5,5) => 'Cinco de Mayo',
-     Date.civil(2007,9,16) => 'Día de la Independencia',
-     Date.civil(2007,11,1) => 'Todos los Santos',
-     Date.civil(2007,11,2) => 'Los Fieles Difuntos',
-     Date.civil(2007,11,19) => 'Día de la Revolución',
-     Date.civil(2007,12,25) => 'Navidad'}.each do |date, name|
-      assert_equal name, (Holidays.on(date, :mx, :informal)[0] || {})[:name]
-    end
+
+tests:
+  - given:
+      date: '2007-01-01'
+      regions: ["mx"]
+      options: ["informal"]
+    expect:
+      name: "Año nuevo"
+  - given:
+      date: '2007-02-05'
+      regions: ["mx"]
+      options: ["informal"]
+    expect:
+      name: "Día de la Constitución"
+  - given:
+      date: '2007-05-01'
+      regions: ["mx"]
+      options: ["informal"]
+    expect:
+      name: "Día del Trabajo"
+  - given:
+      date: '2007-05-05'
+      regions: ["mx"]
+      options: ["informal"]
+    expect:
+      name: "Cinco de Mayo"
+  - given:
+      date: '2007-09-16'
+      regions: ["mx"]
+      options: ["informal"]
+    expect:
+      name: "Día de la Independencia"
+  - given:
+      date: '2007-11-01'
+      regions: ["mx"]
+      options: ["informal"]
+    expect:
+      name: "Todos los Santos"
+  - given:
+      date: '2007-11-02'
+      regions: ["mx"]
+      options: ["informal"]
+    expect:
+      name: "Los Fieles Difuntos"
+  - given:
+      date: '2007-11-19'
+      regions: ["mx"]
+      options: ["informal"]
+    expect:
+      name: "Día de la Revolución"
+  - given:
+      date: '2007-12-25'
+      regions: ["mx"]
+      options: ["informal"]
+    expect:
+      name: "Navidad"
