@@ -1,0 +1,59 @@
+# Mozambique holiday definitions for the Holidays gem!
+
+# Source:
+# http://www.officeholidays.com/countries/mozambique/2017.php
+
+months:
+  1:
+  - name: New Year's Day
+    regions: [mz]
+    mday: 1
+    observed: to_monday_if_weekend(date)
+  2:
+  - name: Heroes' Day
+    regions: [mz]
+    mday: 3
+  4:
+  - name: Women's Day
+    regions: [mz]
+    mday: 7
+  5:
+  - name: Worker's Day
+    regions: [mz]
+    mday: 1
+  6:
+  - name: Independence Day
+    regions: [mz]
+    mday: 25
+  9:
+  - name: Victory Day
+    regions: [mz]
+    mday: 7
+  - name: Revolution Day
+    regions: [mz]
+    mday: 25
+  10:
+  - name: Day of Peace and Reconciliation
+    regions: [mz]
+    mday: 4
+  12:
+  - name: Family Day
+    regions: [mz]
+    mday: 25
+
+tests: |
+    {Date.civil(2017,1,1) => "New Year's Day",
+     Date.civil(2017,2,1) => "New Year's Day",
+     Date.civil(2017,2,3) => "Heroes' Day",
+     Date.civil(2017,4,7) => "Women's Day",
+     Date.civil(2017,5,1) => "Worker's Day",
+     Date.civil(2017,6,25) => "Independence Day",
+     Date.civil(2017,9,7) => "Victory Day",
+     Date.civil(2017,9,25) => "Revolution Day",
+     Date.civil(2017,10,4) => "Day of Peace and Reconciliation",
+     Date.civil(2017,12,25) => 'Family Day'}.each do |date, name|
+      assert_equal name, (Holidays.on(date, :my, :informal)[0] || {})[:name]
+    end
+
+    assert_nil Date.civil(2017, 9, 15).holidays(:my, :observed)[0]
+    assert_nil Date.civil(2017, 1, 2).holidays(:my, :observed)[0]
