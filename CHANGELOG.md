@@ -1,5 +1,11 @@
 # Holiday definitions
 
+## 2.2.0
+
+* Audit provincial holidays in Canada (thanks to https://github.com/slucaskim)
+* Add civic holiday for `ca_pe`  (thanks to https://github.com/slucaskim)
+* Correct reformation day for `de` (thanks to https://github.com/spaceneedle2019)
+
 ## 2.1.1
 
 * Comment out test for `추석` until a discussion can be had in [issue 69](https://github.com/holidays/definitions/issues/69) (nice)
