@@ -178,65 +178,82 @@ months:
 methods:
   afl_grand_final:
     arguments: year
-    source: |
-      case year
-      when 2015
-        Date.civil(2015, 10, 2)
-      when 2016
-        Date.civil(2016, 9, 30)
-      when 2017
-        Date.civil(2017, 9, 29)
-      end
+    logic:
+      if:
+        condition: year == 2015
+          result: '2015-10-2'
+        condition: year == 2016
+          result: '2016-9-30'
+        condition: year == 2017
+          result: '2017-9-29'
+
   qld_queens_bday_october:
     # http://www.justice.qld.gov.au/fair-and-safe-work/industrial-relations/public-holidays/dates
     # celebrated twice in 2012
     # in october again from 2016
     arguments: year
-    source: |
-      if year >= 2016
-        Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 10, 1, 1)
-      elsif year == 2012
-        1
-      else
-        nil
-      end
+    logic:
+      if:
+        condition: year >= 2016
+          function: day_of_month(year, 10, 1, 1) # This is a problem, it just returns a single integer, should we return a date?
+        condition: year == 2012
+          result: 1 #TODO Same here?
+      else:
+        result: null
+
   qld_queens_birthday_june:
     # http://www.justice.qld.gov.au/fair-and-safe-work/industrial-relations/public-holidays/dates
     # in june until 2015
     arguments: year
-    source: |
-      if year <= 2015
-        Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 6, 2, 1)
-      end
+    logic:
+        if:
+          condition: year <= 2015
+            result: day_of_month(year, 6, 1, 1)
+
   qld_labour_day_may:
     # http://www.justice.qld.gov.au/fair-and-safe-work/industrial-relations/public-holidays/dates
     # for 2013 to 2016 it was in October, otherwise it's in May
     arguments: year
-    source: |
-      if year < 2013 || year >= 2016
-        Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 5, 1, 1)
-      end
+    logic:
+      if:
+        condition: year < 2013 || year >= 2016
+          function: day_of_month(year, 5, 1, 1)
+
   qld_labour_day_october:
     # http://www.justice.qld.gov.au/fair-and-safe-work/industrial-relations/public-holidays/dates
     # for 2013 to 2016 it was in October, otherwise it's in May
     arguments: year
-    source: |
-      if year >= 2013 && year < 2016
-        Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 10, 1, 1)
-      end
+    logic:
+      if:
+        condition: year >= 2013 && year < 2016
+          function: day_of_month(year, 10, 1, 1)
+
   g20_day_2014_only:
     # http://www.justice.qld.gov.au/fair-and-safe-work/industrial-relations/public-holidays/dates
     # G20 day in brisbane, in 2014, on november 14
     arguments: year
-    source: |
-      year == 2014 ? 14 : nil
+    logic:
+      if:
+        condition: year == 2014
+          result: 14
+      else:
+        result: null
+
   hobart_show_day:
     # http://worksafe.tas.gov.au/__data/assets/pdf_file/0008/287036/Public_Holidays_2014.pdf
     # The Thursday before the fourth Saturday in October.
     arguments: year
+    logic:
+      function: day_of_month(year, 10, 4, :saturday)
+      function_modifier: -2 # the thursday before
+
+      fourth_sat_in_oct = Date.civil(year, 10, Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 10, 4, :saturday))
+      fourth_sat_in_oct - 2 # the thursday before
+
     source: |
       fourth_sat_in_oct = Date.civil(year, 10, Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 10, 4, :saturday))
       fourth_sat_in_oct - 2 # the thursday before
+
   march_pub_hol_sa:
     # http://www.safework.sa.gov.au/show_page.jsp?id=2483#.VQ9Mfmb8-8E
     # The Holidays Act 1910 provides for the third Monday in May to be a public holiday. Since 2006 this public holiday has been observed on the second Monday in March through the issuing of a special Proclamation by the Governor.
