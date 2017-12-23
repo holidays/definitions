@@ -86,7 +86,7 @@ methods:
   st_peter_st_paul_cl:
     arguments: year
     # Nearest monday
-    source: |
+    ruby: |
       date = Date.civil(year, 6, 29)
       if [2,3,4].include?(date.wday)
         date -= (date.wday - 1)
@@ -97,7 +97,7 @@ methods:
   columbus_day_cl:
     arguments: year
     # Nearest monday
-    source: |
+    ruby: |
       date = Date.civil(year, 10, 12)
       if [2,3,4].include?(date.wday)
         date -= (date.wday - 1)
@@ -108,7 +108,7 @@ methods:
   other_churches_day_cl:
     arguments: year
     # If on tuesday, friday before, if on wednesday, next friday
-    source: |
+    ruby: |
       date = Date.civil(year, 10, 31)
       if date.wday == 2
         date -= 4

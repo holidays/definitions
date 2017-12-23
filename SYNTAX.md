@@ -236,7 +236,7 @@ For example, Canada celebrates Victoria Day, which falls on the Monday on or bef
 methods:
   ca_victoria_day:
     arguments: year
-    source: |
+    ruby: |
       date = Date.civil(year, 5, 24)
       if date.wday > 1
         date -= (date.wday - 1)
