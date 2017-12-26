@@ -1,5 +1,15 @@
 # Holiday definitions
 
+## 2.3.0
+
+* Fix typo in `:at` definitions (thanks to https://github.com/AlexMarold)
+* Add holidays for Jersey and Guernsey (thanks to https://github.com/timkrins)
+* Update Travis config to fix build issues related to imminent release of ruby 2.5
+
+## 2.2.1
+
+* Small updates to tests in the `:de` regions. No behavior changes.
+
 ## 2.2.0
 
 * Audit provincial holidays in Canada (thanks to https://github.com/slucaskim)
