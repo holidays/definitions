@@ -3,6 +3,7 @@
 #
 # Notes:
 #  - 'Family Day' in various provinces are only celebrated after certain years: http://www.timeanddate.com/holidays/canada/family-day
+#  - 'National Aboriginal Day for Yukon' Bill 2 received Royal Assent on May 8, 2017. http://www.gov.yk.ca/news/17-075.html
 ---
 months:
   0:
@@ -94,6 +95,11 @@ months:
   - name: National Aboriginal Day
     regions: [ca_nt]
     mday: 21
+  - name: National Aboriginal Day
+    regions: [ca_yt]
+    mday: 21
+    year_ranges:
+    - after: 2017    
   7:
   - name: Canada Day
     regions: [ca]
@@ -671,3 +677,26 @@ tests:
       options: ["observed"]
     expect:
       name: "Boxing Day"
+
+  # Yukon National Aboriginal Day - should not be active before 2017
+  - given:
+      date: '2015-06-21'
+      regions: ['ca_yt']
+    expect:
+      holiday: false
+  - given:
+      date: '2016-06-21'
+      regions: ['ca_yt']
+    expect:
+      holiday: false
+
+  - given:
+      date: '2017-06-21'
+      regions: ['ca_yt']
+    expect:
+      name: 'National Aboriginal Day'
+  - given:
+      date: '2018-06-21'
+      regions: ['ca_yt']
+    expect:
+      name: 'National Aboriginal Day'
