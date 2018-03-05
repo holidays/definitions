@@ -1,3 +1,4 @@
+require 'date'
 require_relative 'error'
 
 module Definitions

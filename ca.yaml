@@ -1,8 +1,10 @@
 # Canadian holiday definitions for the Ruby Holiday gem.
-# Updated 2016-04-29.
+# Updated 2018-03-02.
 #
 # Notes:
 #  - 'Family Day' in various provinces are only celebrated after certain years: http://www.timeanddate.com/holidays/canada/family-day
+#  - 'Family Day' for New Brunswick after 2018  http://www.gnb.ca/legis/bill/FILE/58/3/Bill-67-e.htm
+#  - 'National Aboriginal Day for Yukon' Bill 2 received Royal Assent on May 8, 2017. http://www.gov.yk.ca/news/17-075.html
 ---
 months:
   0:
@@ -52,6 +54,12 @@ months:
     week: 2
     year_ranges:
     - after: 2013
+  - name: Family Day
+    regions: [ca_nb]
+    wday: 1
+    week: 3
+    year_ranges:
+    - after: 2018
   - name: Louis Riel Day
     regions: [ca_mb]
     wday: 1
@@ -94,6 +102,11 @@ months:
   - name: National Aboriginal Day
     regions: [ca_nt]
     mday: 21
+  - name: National Aboriginal Day
+    regions: [ca_yt]
+    mday: 21
+    year_ranges:
+    - after: 2017    
   7:
   - name: Canada Day
     regions: [ca]
@@ -393,6 +406,29 @@ tests:
     expect:
       holiday: false
 
+  # Family Day in NB - Should only be active on 2018 or later
+  - given:
+      date: '2018-02-19'
+      regions: ['ca_nb']
+    expect:
+      name: 'Family Day'
+  - given:
+      date: '2019-02-18'
+      regions: ['ca_nb']
+    expect:
+      name: 'Family Day'
+  # Family Day in NB - should not be active before 2018
+  - given:
+      date: '2016-02-18'
+      regions: ['ca_nb']
+    expect:
+      holiday: false
+  - given:
+      date: '2017-02-20'
+      regions: ['ca_nb']
+    expect:
+      holiday: false
+
   # Nova Scotia Heritage Day - should only be active on 2015 and later
   - given:
       date: '2015-02-16'
@@ -671,3 +707,26 @@ tests:
       options: ["observed"]
     expect:
       name: "Boxing Day"
+
+  # Yukon National Aboriginal Day - should not be active before 2017
+  - given:
+      date: '2015-06-21'
+      regions: ['ca_yt']
+    expect:
+      holiday: false
+  - given:
+      date: '2016-06-21'
+      regions: ['ca_yt']
+    expect:
+      holiday: false
+  # Yukon National Aboriginal Day - should be active after 2017
+  - given:
+      date: '2017-06-21'
+      regions: ['ca_yt']
+    expect:
+      name: 'National Aboriginal Day'
+  - given:
+      date: '2018-06-21'
+      regions: ['ca_yt']
+    expect:
+      name: 'National Aboriginal Day'
