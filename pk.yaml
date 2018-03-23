@@ -12,7 +12,7 @@ months:
   2:
   - name: Kashmir Day
     regions: [pk]
-    mday: 4
+    mday: 5
   3:
   - name: Pakistan Day
     regions: [pk]
@@ -29,3 +29,79 @@ months:
   - name: Quaid-i-Azam Day
     regions: [pk]
     mday: 25
+tests:
+  - given:
+      date: '2017-02-05'
+      regions: ["pk"]
+    expect:
+      name: 'Kashmir Day'
+  - given:
+      date: '2018-02-05'
+      regions: ["pk"]
+    expect:
+      name: 'Kashmir Day'
+  - given:
+      date: '2019-02-05'
+      regions: ["pk"]
+    expect:
+      name: 'Kashmir Day'
+  - given:
+      date: '2017-03-23'
+      regions: ["pk"]
+    expect:
+      name: 'Pakistan Day'
+  - given:
+      date: '2018-03-23'
+      regions: ["pk"]
+    expect:
+      name: 'Pakistan Day'
+  - given:
+      date: '2019-03-23'
+      regions: ["pk"]
+    expect:
+      name: 'Pakistan Day'
+  - given:
+      date: '2017-05-01'
+      regions: ["pk"]
+    expect:
+      name: 'Labour Day'
+  - given:
+      date: '2018-05-01'
+      regions: ["pk"]
+    expect:
+      name: 'Labour Day'
+  - given:
+      date: '2019-05-01'
+      regions: ["pk"]
+    expect:
+      name: 'Labour Day'
+  - given:
+      date: '2017-08-14'
+      regions: ["pk"]
+    expect:
+      name: 'Independence Day'
+  - given:
+      date: '2018-08-14'
+      regions: ["pk"]
+    expect:
+      name: 'Independence Day'
+  - given:
+      date: '2019-08-14'
+      regions: ["pk"]
+    expect:
+      name: 'Independence Day'
+  - given:
+      date: '2017-12-25'
+      regions: ["pk"]
+    expect:
+      name: 'Quaid-i-Azam Day'
+  - given:
+      date: '2018-12-25'
+      regions: ["pk"]
+    expect:
+      name: 'Quaid-i-Azam Day'
+  - given:
+      date: '2019-12-25'
+      regions: ["pk"]
+    expect:
+      name: 'Quaid-i-Azam Day'
