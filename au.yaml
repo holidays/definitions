@@ -89,6 +89,11 @@ months:
   - name: May Public Holiday
     regions: [au_sa]
     function: may_pub_hol_sa(year)
+  - name: ACT Reconciliation Day
+    regions: [au_act]
+    mday: 28
+    year_ranges:
+      - after: 2018
   6:
   - name: Foundation Day
     regions: [au_wa]
@@ -124,6 +129,8 @@ months:
     regions: [au_act]
     week: -1
     wday: 1
+    year_ranges:
+      - before: 2017
   10:
   - name: Friday before the AFL Grand Final
     regions: [au_vic]
@@ -304,6 +311,11 @@ tests:
       regions: ["au_act"]
     expect:
       name: 'Family & Community Day'
+  - given:
+      date: ['2018-05-28']
+      regions: ["au_act"]
+    expect:
+      name: 'ACT Reconciliation Day'
   - given:
       date: '2014-01-26'
       regions: ["au_qld"]
