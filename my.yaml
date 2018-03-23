@@ -33,7 +33,6 @@ months:
   - name: Malaysia Day
     regions: [my]
     mday: 16
-    observed: to_weekday_if_weekend(date)
   12:
   - name: Christmas Day
     regions: [my]

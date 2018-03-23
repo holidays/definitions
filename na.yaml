@@ -1,0 +1,49 @@
+# Namibia holiday definitions for the Ruby Holiday gem.
+#
+# 
+# http://www.gov.na/holidays - shows list of days recognised as public holidays but dates haven't been updated since 2014
+# https://www.timeanddate.com/holidays/namibia/ - shows current dates
+# Note that Ascension Day as that is Easter Sunday + 39 days which in 2017 landed on the same day as Africa Day - https://en.wikipedia.org/wiki/Public_holidays_in_Namibia
+months:
+  1:
+  - name: New Years Days
+    regions: [na]
+    mday: 1
+  3:
+  - name: Independence Day
+    regions: [na]
+    mday: 21
+  4:
+  - name: Good Friday
+    regions: [na]
+    mday: 14
+  - name: Easter Monday
+    regions: [na]
+    mday: 17
+  5:
+  - name: May Day
+    regions: [na]
+    mday: 1
+  - name: Cassinga Day
+    regions: [na]
+    mday: 4
+  - name: Ascendion Day
+    regions: [na]
+    mday: 25
+  - name: Africa Day
+    regions: [na]
+    mday: 25
+  8:
+  - name: Heroes' Day
+    regions: [na]
+    mday: 26
+  12:
+  - name: International Human Rights Day
+    regions: [na]
+    mday: 10
+  - name: Christmas Day
+    regions: [na]
+    mday: 25
+  - name: Day of Goodwill
+    regions: [na]
+    mday: 26
