@@ -89,6 +89,9 @@ months:
   - name: May Public Holiday
     regions: [au_sa]
     function: may_pub_hol_sa(year)
+  - name: ACT Reconciliation Day
+    regions: [au_act]
+    mday: 28
   6:
   - name: Foundation Day
     regions: [au_wa]
@@ -118,10 +121,6 @@ months:
   9:
   - name: Queen's Birthday
     regions: [au_wa]
-    week: -1
-    wday: 1
-  - name: "Family & Community Day"
-    regions: [au_act]
     week: -1
     wday: 1
   10:
