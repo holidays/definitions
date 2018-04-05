@@ -13,17 +13,17 @@ months:
     # calculates Easter Sunday
     function: easter(year)
     # goes 2 days back from Easter Sunday
-    function_modifer: -2
+    function_modifier: -2
   - name: Easter Monday
     regions: [na]
     # calculates Easter Sunday
     function: easter(year)
     # goes 1 day forward from Easter Sunday
-    function_modifer: 1
+    function_modifier: 1
   - name: Ascension Day
     regions: [na]
     function: easter(year)
-    function_modifer: 39
+    function_modifier: 39
   1:
   - name: New Years Days
     regions: [na]
@@ -57,3 +57,25 @@ months:
   - name: Family Day
     regions: [na]
     mday: 26
+
+tests:
+  - given:
+      date: '2018-1-1'
+      regions: [na]
+    expect:
+      name: New Years Days
+  - given:
+      date: '2018-03-30'
+      regions: [na]
+    expect:
+      name: Good Friday
+  - given:
+      date: '2018-04-02'
+      regions: [na]
+    expect:
+      name: Easter Monday
+  - given:
+      date: '2018-05-10'
+      regions: [na]
+    expect:
+      name: Ascension Day
