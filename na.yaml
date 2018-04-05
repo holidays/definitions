@@ -79,3 +79,23 @@ tests:
       regions: [na]
     expect:
       name: Ascension Day
+  - given:
+      date: '2018-08-27'
+      regions: [na]
+    expect:
+      name: Heroes' Day
+  - given:
+      date: '2019-04-22'
+      regions: [na]
+    expect:
+      name: Easter Monday
+  - given:
+      date: '2019-05-30'
+      regions: [na]
+    expect:
+      name: Ascension Day
+  - given:
+      date: '2019-08-26'
+      regions: [na]
+    expect:
+      name: Heroes' Day
