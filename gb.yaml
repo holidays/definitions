@@ -18,9 +18,6 @@ months:
     regions: [gb]
     function: easter(year)
     function_modifier: -2
-  - name: Easter Sunday
-    regions: [gb]
-    function: easter(year)
   - name: Easter Monday
     regions: [gb_eng, gb_wls, gb_eaw, gb_nir]
     function: easter(year)
@@ -104,12 +101,6 @@ tests:
       options: ["informal"]
     expect:
       name: "Good Friday"
-  - given:
-      date: '2008-03-23'
-      regions: ["gb"]
-      options: ["informal"]
-    expect:
-      name: "Easter Sunday"
   - given:
       date: '2008-05-05'
       regions: ["gb"]
