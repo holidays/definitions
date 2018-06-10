@@ -12,17 +12,18 @@ months:
     regions: [ar]
     function: easter(year)
     function_modifier: -2
+  - name: Carnaval Lunes
+    regions: [ar]
+    function: easter(year)
+    function_modifier: -48
+  - name: Carnaval Martes
+    regions: [ar]
+    function: easter(year)
+    function_modifier: -47
   1:
   - name: Año Nuevo
     regions: [ar]
     mday: 1
-  2:
-  - name: Carnaval
-    regions: [ar]
-    mday: 8
-  - name: Carnaval
-    regions: [ar]
-    mday: 9
   3:
   - name: Día Nacional de la Memoria por la Verdad y la Justicia
     regions: [ar]
@@ -83,13 +84,37 @@ tests:
       regions: ['ar']
       options: 'informal'
     expect:
-      name: 'Carnaval'
+      name: 'Carnaval Lunes'
   - given:
       date: '2016-02-09'
       regions: ['ar']
       options: 'informal'
     expect:
-      name: 'Carnaval'
+      name: 'Carnaval Martes'
+  - given:
+      date: '2017-02-27'
+      regions: ['ar']
+      options: 'informal'
+    expect:
+      name: 'Carnaval Lunes'
+  - given:
+      date: '2017-02-28'
+      regions: ['ar']
+      options: 'informal'
+    expect:
+      name: 'Carnaval Martes'
+  - given:
+      date: '2018-02-12'
+      regions: ['ar']
+      options: 'informal'
+    expect:
+      name: 'Carnaval Lunes'
+  - given:
+      date: '2018-02-13'
+      regions: ['ar']
+      options: 'informal'
+    expect:
+      name: 'Carnaval Martes'
   - given:
       date: '2016-03-24'
       regions: ['ar']

@@ -1,5 +1,9 @@
 # Holiday definitions
 
+## 2.4.0
+
+* Add new holidays for Canada (thanks to https://github.com/alejandrok5)
+
 ## 2.3.0
 
 * Fix typo in `:at` definitions (thanks to https://github.com/AlexMarold)
