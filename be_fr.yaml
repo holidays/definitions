@@ -81,12 +81,6 @@ tests:
     expect:
       name: 'Ascension'
   - given:
-      date: '2007-05-27'
-      regions: ['be_fr']
-      options: ["informal"]
-    expect:
-      name: 'Pentecôte'
-  - given:
       date: '2007-05-28'
       regions: ['be_fr']
       options: ["informal"]
