@@ -1,5 +1,25 @@
 # Holiday definitions
 
+## 2.4.0
+
+* Add new holidays for Canada (thanks to https://github.com/alejandrok5)
+
+## 2.3.0
+
+* Fix typo in `:at` definitions (thanks to https://github.com/AlexMarold)
+* Add holidays for Jersey and Guernsey (thanks to https://github.com/timkrins)
+* Update Travis config to fix build issues related to imminent release of ruby 2.5
+
+## 2.2.1
+
+* Small updates to tests in the `:de` regions. No behavior changes.
+
+## 2.2.0
+
+* Audit provincial holidays in Canada (thanks to https://github.com/slucaskim)
+* Add civic holiday for `ca_pe`  (thanks to https://github.com/slucaskim)
+* Correct reformation day for `de` (thanks to https://github.com/spaceneedle2019)
+
 ## 2.1.1
 
 * Comment out test for `추석` until a discussion can be had in [issue 69](https://github.com/holidays/definitions/issues/69) (nice)

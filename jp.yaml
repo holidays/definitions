@@ -44,6 +44,17 @@ months:
     regions: [jp]
     mday: 11
     function: jp_substitute_holiday(year, month, day)
+  - name: 天皇誕生日
+    regions: [jp]
+    mday: 23
+    year_ranges:
+      - after: 2020
+  - name: 振替休日
+    regions: [jp]
+    mday: 23
+    function: jp_substitute_holiday(year, month, day)
+    year_ranges:
+      - after: 2020
   3:
   - name: 春分の日
     regions: [jp]
@@ -155,10 +166,14 @@ months:
   - name: 天皇誕生日
     regions: [jp]
     mday: 23
+    year_ranges:
+      - before: 2018
   - name: 振替休日
     regions: [jp]
     mday: 23
     function: jp_substitute_holiday(year, month, day)
+    year_ranges:
+      - before: 2018
 
 methods:
   jp_health_sports_day_substitute:
@@ -572,3 +587,23 @@ tests:
       regions: ["jp"]
     expect:
       holiday: false
+  - given:
+      date: '2018-12-23'
+      regions: ["jp"]
+    expect:
+      name: "天皇誕生日"
+  - given:
+      date: '2019-02-23'
+      regions: ["jp"]
+    expect:
+      holiday: false
+  - given:
+      date: '2019-12-23'
+      regions: ["jp"]
+    expect:
+      holiday: false
+  - given:
+      date: '2020-02-23'
+      regions: ["jp"]
+    expect:
+      name: "天皇誕生日"

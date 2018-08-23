@@ -48,7 +48,7 @@ months:
     regions: [at]
     mday: 1
   12:
-  - name: Mariä Empfägnis
+  - name: Mariä Empfängnis
     regions: [at]
     mday: 8
   - name: 1. Weihnachtstag
@@ -88,6 +88,12 @@ tests:
       options: 'informal'
     expect:
       name: 'Nationalfeiertag'
+  - given:
+      date: '2009-12-08'
+      regions: ['at']
+      options: 'informal'
+    expect:
+      name: 'Mariä Empfängnis'
   - given:
       date: '2009-12-25'
       regions: ['at']
