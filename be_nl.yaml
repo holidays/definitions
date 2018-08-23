@@ -17,10 +17,6 @@ months:
     regions: [be_nl]
     function: easter(year)
     function_modifier: 39
-  - name: Pinksteren
-    regions: [be_nl]
-    function: easter(year)
-    function_modifier: 49
   - name: Pinkstermaandag
     regions: [be_nl]
     function: easter(year)
