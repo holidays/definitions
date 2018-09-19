@@ -5,6 +5,7 @@
 # - http://www.docep.wa.gov.au/lr/LabourRelations/Content/Wages%20and%20Conditions/Public%20Holidays/Public_Holidays.html
 # - http://www.wst.tas.gov.au/employment_info/public_holidays
 # - https://www.fairwork.gov.au/leave/public-holidays/list-of-public-holidays
+# - http://www.business.vic.gov.au/victorian-public-holidays-and-daylight-saving/victorian-public-holidays
 ---
 months:
   0:
@@ -28,6 +29,9 @@ months:
     regions: [au]
     function: easter(year)
     function_modifier: 1
+  - name: Friday before the AFL Grand Final
+    regions: [au_vic]
+    function: afl_grand_final(year)
   1:
   - name: New Year's Day
     regions: [au, au_nsw, au_vic, au_act, au_sa, au_wa, au_nt, au_qld]
@@ -132,9 +136,6 @@ months:
     year_ranges:
       - before: 2017
   10:
-  - name: Friday before the AFL Grand Final
-    regions: [au_vic]
-    function: afl_grand_final(year)
   - name: Labour Day
     regions: [au_act, au_nsw, au_sa]
     week: 1
@@ -193,6 +194,8 @@ methods:
         Date.civil(2016, 9, 30)
       when 2017
         Date.civil(2017, 9, 29)
+      when 2018
+        Date.civil(2018, 9, 28)
       end
   qld_queens_bday_october:
     # http://www.justice.qld.gov.au/fair-and-safe-work/industrial-relations/public-holidays/dates
@@ -465,6 +468,11 @@ tests:
       name: 'Friday before the AFL Grand Final'
   - given:
       date: '2017-09-29'
+      regions: ["au_vic"]
+    expect:
+      name: 'Friday before the AFL Grand Final'
+  - given:
+      date: '2018-09-28'
       regions: ["au_vic"]
     expect:
       name: 'Friday before the AFL Grand Final'
