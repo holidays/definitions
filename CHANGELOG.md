@@ -1,5 +1,9 @@
 # Holiday definitions
 
+## 2.5.2
+
+* Fix `de` issue cause by undefined `year_ranges` behavior in syntax
+
 ## 2.5.1
 
 * Fix Federal Reserve Independence Day tests

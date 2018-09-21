@@ -139,8 +139,11 @@ Holidays.on(Date.civil(2016, 7, 1), :jp)
 
 #### `after`
 
+
 The 'after' selector will only find a match if the supplied date takes place
 after or equal to the holiday.
+
+A single number *must* be supplied. An array of integers will result in an error.
 
 Example:
 

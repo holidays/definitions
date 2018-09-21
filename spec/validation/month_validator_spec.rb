@@ -67,5 +67,33 @@ describe Definitions::Validation::Month do
         expect(e.message).to eq("A month must contain at least one region, received: #{months}")
       }
     end
+
+    it 'returns error if year_ranges contains unknown subkey' do
+      months = { 1 => [{"name"=>"Test Holiday", "regions"=>["test"], "mday"=>1, "year_ranges" => [{"blah" => [2018]}] }] }
+      expect { subject.call(months) }.to raise_error(Definitions::Errors::InvalidMonth) { |e|
+        expect(e.message).to eq("The :year_ranges value only accepts the following: :before, :after, :limited, :between, received: #{months}")
+      }
+    end
+
+    it 'returns error if :after value is not a single integer' do
+      months = { 1 => [{"name"=>"Test Holiday", "regions"=>["test"], "mday"=>1, "year_ranges" => [{"after" => [2018]}] }] }
+      expect { subject.call(months) }.to raise_error(Definitions::Errors::InvalidMonth) { |e|
+        expect(e.message).to eq("The year_ranges.after value must contain a single 'year' integer, ex. 2018, received: #{months}")
+      }
+    end
+
+    it 'returns error if :limited value is not an array' do
+      months = { 1 => [{"name"=>"Test Holiday", "regions"=>["test"], "mday"=>1, "year_ranges" => [{"limited" => 2018}] }] }
+      expect { subject.call(months) }.to raise_error(Definitions::Errors::InvalidMonth) { |e|
+        expect(e.message).to eq("The year_ranges.limited value must contain an array of 'year' integers, ex. [2018], received: #{months}")
+      }
+    end
+
+    it 'returns error if :limited value is not an array of integers' do
+      months = { 1 => [{"name"=>"Test Holiday", "regions"=>["test"], "mday"=>1, "year_ranges" => [{"limited" => ["blah"]}] }] }
+      expect { subject.call(months) }.to raise_error(Definitions::Errors::InvalidMonth) { |e|
+        expect(e.message).to eq("The year_ranges.limited value must contain an array of 'year' integers, ex. [2018], received: #{months}")
+      }
+    end
   end
 end
