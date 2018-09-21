@@ -87,7 +87,7 @@ tests:
     expect:
       name: "Independence Day"
   - given:
-      date: '2020-04-03'
+      date: '2020-07-03'
       regions: ["federal_reserve"]
       options: ["observed"]
     expect:
@@ -267,7 +267,7 @@ tests:
     expect:
       name: "Memorial Day"
   - given:
-      date: '2015-07-04'
+      date: '2015-07-03'
       regions: ["federal_reserve"]
       options: ["observed"]
     expect:
