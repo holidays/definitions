@@ -1,5 +1,14 @@
 # Holiday definitions
 
+## 2.5.0
+
+* Change Emperor's Birthday for `jp` definitions (thanks to https://github.com/ttwo32)
+* Add German Reformation  to four more states starting in 2018 (thanks to https://github.com/jensberke)
+* Add 'La Mercè' to official holidays in Catalunya, Spain (thanks to https://github.com/fabersky)
+* Fix Federal Reserve Saturday holidays (thanks to https://github.com/mikecanann)
+* Fix the CoC link in CONTRIBUTING doc
+* Remove ruby 2.2 and add ruby 2.5 to travis tests
+
 ## 2.4.0
 
 * Add new holidays for Canada (thanks to https://github.com/alejandrok5)
