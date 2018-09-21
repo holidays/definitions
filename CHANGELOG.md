@@ -1,5 +1,9 @@
 # Holiday definitions
 
+## 2.5.1
+
+* Fix Federal Reserve Independence Day tests
+
 ## 2.5.0
 
 * Change Emperor's Birthday for `jp` definitions (thanks to https://github.com/ttwo32)
