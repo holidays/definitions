@@ -4,7 +4,7 @@ In this repository we have all of the definitions that are used in holiday calcu
 
 ## Code of Conduct
 
-Please read our [Code of Conduct](CODE_OF_CONDUCT.md) before contributing. Everyone interacting with this project (or associated projects) is expected to abide by its terms.
+Please read our [Code of Conduct](https://github.com/holidays/holidays/blob/master/CODE_OF_CONDUCT.md) before contributing. Everyone interacting with this project (or associated projects) is expected to abide by its terms.
 
 ## For definition updates
 
