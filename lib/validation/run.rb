@@ -44,8 +44,8 @@ module Definitions
         end
       end
 
-      puts "Success!"
-      puts "Definition count: #{definition_count}"
+      puts "All definitions validated! Definition count: #{definition_count}"
+      puts
     end
 
     private

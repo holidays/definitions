@@ -3,3 +3,4 @@
 coverage/
 Gemfile.lock
 tmp/
+test_run/
