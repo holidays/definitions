@@ -1,5 +1,9 @@
 # Holiday definitions
 
+## 2.5.3
+
+* Add missing `observed` logic for 'St. Patricks Day' in `gb_nir`
+
 ## 2.5.2
 
 * Fix `de` issue cause by undefined `year_ranges` behavior in syntax
