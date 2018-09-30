@@ -236,7 +236,7 @@ One thing to note is that these methods are _language specific_ at this time, me
 
 Please feel free to only add the custom method source in the language that you choose. It will be up to downstream maintainers to ensure that their language has an implementation. So if you only want to add it in ruby please just do that!
 
-### Example
+### Method Example
 
 Canada celebrates Victoria Day, which falls on the Monday on or before May 24. Under the `methods` property we would create a custom method for ruby that returns a Date object:
 
@@ -372,7 +372,7 @@ Here are format details:
 
 One or the other of the `expect` keys is required. If you do not specify a `name` then you should set `holiday: false`.
 
-### Examples
+#### Test Examples
 
 First example shows multiple dates, multiple regions, additional options, and an expectation that the result will be the named holiday:
 
