@@ -139,7 +139,7 @@ methods:
   de_buss_und_bettag:
     # Germany: Wednesday before November 23
     arguments: year
-    source: |
+    ruby: |
       date = Date.civil(year,11,23)
       if date.wday > 3
         date -= (date.wday - 3)

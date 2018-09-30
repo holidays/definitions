@@ -59,11 +59,12 @@ months:
   - name: Tapaninpäivä
     regions: [fi]
     mday: 26
+
 methods:
   fi_juhannusaatto:
     # Finland: Mid-summer eve (Friday between June 19–25)
     arguments: year
-    source: |
+    ruby: |
       date = Date.civil(year,6,19)
       if date.wday > 5 #if 19.6 is saturday
         date += 6
@@ -74,14 +75,14 @@ methods:
   fi_juhannuspaiva:
     # Finland: Mid-summer (Saturday between June 20–26)
     arguments: year
-    source: |
+    ruby: |
       date = Date.civil(year,6,20)
       date += (6 - date.wday)
       date
   fi_pyhainpaiva:
     # Finland: All Saint's Day (Saturday between Oct 31 and Nov 6)
     arguments: year
-    source: |
+    ruby: |
       date = Date.civil(year,10,31)
       date += (6 - date.wday)
       date

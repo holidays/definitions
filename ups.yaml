@@ -46,7 +46,7 @@ months:
 methods:
   day_after_thanksgiving:
     arguments: year
-    source: |
+    ruby: |
       Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 11, 4, 4) + 1
 
 tests:

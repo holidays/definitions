@@ -1,0 +1,26 @@
+---
+methods:
+  easter:
+    arguments: year
+  orthodox_easter:
+    arguments: year
+  orthodox_easter_julian:
+    arguments: year
+  to_monday_if_sunday:
+    arguments: date
+  to_monday_if_weekend:
+    arguments: date
+  to_weekday_if_boxing_weekend:
+    arguments: date
+  to_weekday_if_boxing_weekend_from_year:
+    arguments: year
+  to_weekday_if_weekend:
+    arguments: date
+  calculate_day_of_month:
+    arguments: year, month, day, wday
+  to_weekday_if_boxing_weekend_from_year_or_to_tuesday_if_monday:
+    arguments: year
+  to_tuesday_if_sunday_or_monday_if_saturday:
+    arguments: date
+  lunar_to_solar:
+    arguments: year, month, day, region

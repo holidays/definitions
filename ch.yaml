@@ -125,11 +125,12 @@ months:
   - name: Restauration de la République
     regions: [ch_ge]
     mday: 31
+
 methods:
   ch_vd_lundi_du_jeune_federal:
     # Monday after the third Sunday of September
     arguments: year
-    source: |
+    ruby: |
       date = Date.civil(year,9,1)
       # Find the first Sunday of September
       until date.wday.eql? 0 do
@@ -141,7 +142,7 @@ methods:
   ch_ge_jeune_genevois:
     # Thursday after the first Sunday of September
     arguments: year
-    source: |
+    ruby: |
       date = Date.civil(year,9,1)
       # Find the first Sunday of September
       until date.wday.eql? 0 do
@@ -152,7 +153,7 @@ methods:
   ch_gl_naefelser_fahrt:
     # First Thursday of April. If the first Thursday of April is in the week before easter, then a week later.
     arguments: year
-    source: |
+    ruby: |
       date = Date.civil(year,4,1)
       # Find the first Thursday of April
       until date.wday.eql? 4 do
