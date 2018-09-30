@@ -32,14 +32,8 @@ will need to investigate further (contact a core member for assistance).
 that has the new version and associated changes. This is pretty open-ended! Include the information that you feel is
 important. Use past CHANGELOG updates as a guide.
 * Open a PR against the CHANGELOG branch and merge it (this may require another maintainer for safety)
-* Once the updated CHANGELOG is merged, go to the [releases](https://github.com/holidays/definitions/blob/master/CHANGELOG.md) page
-and create a new release. The release should point at the latest commit that contains the changes that you want included in
-this release. If you just merged then you can just point at master.  All release versions follow this
-format: `vMAJOR.MINOR.PATCH`. This follows the normal [semver](https://github.com/holidays/definitions/blob/master/CHANGELOG.md)
-rules. Look at recent releases to figure out what the new version should be.
+* Once the updated CHANGELOG is merged, go to [releases](https://github.com/holidays/definitions/releases) and create a new release. It should point at the latest commit that contains the changes that you want included in this release. If you just merged then you can just point at master.  All release versions follow this format: `vMAJOR.MINOR.PATCH`. This should follow normal [semver rules](https://semver.org/).
 
-You don't need to list out the specific changes that were made on the release, you can just give a general overview. You can link to the
-updated CHANGELOG that you did in a previous step. Example: [v2.2.0](https://github.com/holidays/definitions/releases/tag/v2.2.0)
+You don't need to list out the specific changes that were made on the release description. You can just give a general overview and then link to the updated CHANGELOG that you did in a previous step. Example: [v2.2.0](https://github.com/holidays/definitions/releases/tag/v2.2.0)
 
-Once the release is created in Github you are done! The definitions have been 'released' and downstream projects (right now just ruby)
-can reference them without issues. See the downstream maintainers guides for information on how to release updates.
+Once the release is created in Github you are done! The definitions have been 'released' and downstream projects (right now just ruby) can reference them without issues. See the maintainers guides in downstream projects for information on how to release updates for each language.

@@ -1,6 +1,6 @@
-# Holiday Gem Definition Syntax
+# Holiday Definition Syntax
 
-All holidays are defined in these YAML files. These definition files have three main top-level properties:
+The definition syntax is a custom format developed over the life of this project. All holidays are defined in these YAML files. These definition files have three main top-level properties:
 
 * `months` - this is the meat! All definitions for months 1-12 are defined here
 * `methods` - this contains any custom logic that your definitions require
