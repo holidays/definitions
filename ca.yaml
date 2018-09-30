@@ -106,7 +106,7 @@ months:
     regions: [ca_yt]
     mday: 21
     year_ranges:
-    - after: 2017    
+    - after: 2017
   7:
   - name: Canada Day
     regions: [ca]
@@ -188,7 +188,7 @@ months:
 methods:
   ca_victoria_day:
     # Monday on or before May 24
-    arguments: year, month, day
+    arguments: year
     ruby: |
       date = Date.civil(year,5,24)
       if date.wday > 1
