@@ -353,7 +353,7 @@ methods:
     # Friday before Martin Luther King, Jr. Day
     arguments: year, month
     ruby: |
-      day_of_holiday = %{CALCULATE_DAY_OF_MONTH}(year, month, 3, 1)
+      day_of_holiday = Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, month, 3, 1)
       beginning_of_month = Date.civil(year, month, 1)
       king_day = Date.civil(year, month, day_of_holiday)
       king_day.downto(beginning_of_month).find {|date| date if date.wday == 5 }
@@ -361,7 +361,7 @@ methods:
     # Tuesday after the first Monday of November
     arguments: year
     ruby: |
-       %{CALCULATE_DAY_OF_MONTH}(year, 11, 1, 1) + 1
+       Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 11, 1, 1) + 1
   us_inauguration_day:
     # January 20, every fourth year, following Presidential election
     arguments: year
@@ -370,7 +370,7 @@ methods:
   day_after_thanksgiving:
     arguments: year
     ruby: |
-      %{CALCULATE_DAY_OF_MONTH}(year, 11, 4, 4) + 1
+      Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 11, 4, 4) + 1
 
 tests:
   - given:

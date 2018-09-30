@@ -1,5 +1,5 @@
 # Australian holiday definitions for the Ruby Holiday gem.
-# Updated: 2008-11-29.
+# Updated: 2018-08-30
 # Sources:
 # - http://en.wikipedia.org/wiki/Australian_public_holidays
 # - http://www.docep.wa.gov.au/lr/LabourRelations/Content/Wages%20and%20Conditions/Public%20Holidays/Public_Holidays.html
@@ -194,7 +194,7 @@ methods:
     arguments: year
     ruby: |
       if year >= 2016
-        %{CALCULATE_DAY_OF_MONTH}(year, 10, 1, 1)
+        Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 10, 1, 1)
       elsif year == 2012
         1
       else
@@ -206,7 +206,7 @@ methods:
     arguments: year
     ruby: |
       if year <= 2015
-        %{CALCULATE_DAY_OF_MONTH}(year, 6, 2, 1)
+        Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 6, 2, 1)
       end
   qld_labour_day_may:
     # http://www.justice.qld.gov.au/fair-and-safe-work/industrial-relations/public-holidays/dates
@@ -214,7 +214,7 @@ methods:
     arguments: year
     ruby: |
       if year < 2013 || year >= 2016
-        %{CALCULATE_DAY_OF_MONTH}(year, 5, 1, 1)
+        Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 5, 1, 1)
       end
   qld_labour_day_october:
     # http://www.justice.qld.gov.au/fair-and-safe-work/industrial-relations/public-holidays/dates
@@ -222,7 +222,7 @@ methods:
     arguments: year
     ruby: |
       if year >= 2013 && year < 2016
-        %{CALCULATE_DAY_OF_MONTH}(year, 10, 1, 1)
+        Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 10, 1, 1)
       end
   g20_day_2014_only:
     # http://www.justice.qld.gov.au/fair-and-safe-work/industrial-relations/public-holidays/dates
@@ -245,7 +245,7 @@ methods:
       if year < 2006
         nil
       else
-        Date.civil(year, 3, %{CALCULATE_DAY_OF_MONTH}(year, 3, :second, :monday))
+        Date.civil(year, 3, Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 3, :second, :monday))
       end
   may_pub_hol_sa:
     # http://www.safework.sa.gov.au/show_page.jsp?id=2483#.VQ9Mfmb8-8E
@@ -255,7 +255,7 @@ methods:
       if year >= 2006
         nil
       else
-        Date.civil(year, 5, %{CALCULATE_DAY_OF_MONTH}(year, 5, :third, :monday))
+        Date.civil(year, 5, Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 5, :third, :monday))
       end
 
 tests:
