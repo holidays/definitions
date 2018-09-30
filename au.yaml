@@ -275,11 +275,6 @@ tests:
     expect:
       name: "Easter Sunday"
   - given:
-      date: ['2010-4-5', "2017-04-18"]
-      regions: ["au"]
-    expect:
-      name: "Easter Monday"
-  - given:
       date: '2013-10-07'
       regions: ["au_qld"]
     expect:
