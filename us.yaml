@@ -65,7 +65,9 @@
 # - http://www.kleiner-kalender.de/event/rosch-ha-schana/0651c.html
 # - http://www.kaldix.com/united-states/calendar/virginia/holidays/independence-day/year-2017/
 # - https://publicholidays.us/independence-day/
+
 ---
+
 months:
   0:
   - name: Shrove Tuesday
