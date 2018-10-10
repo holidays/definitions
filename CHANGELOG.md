@@ -1,5 +1,10 @@
 # Holiday definitions
 
+## 3.1.0
+
+* Update `ch` to apply 'Neujahrstag' to overall region (thanks to https://github.com/phylor)
+* Cosmetic spacing update for `us` definition, no behavior change
+
 ## 3.0.0
 
 Major semver bump as the format for custom methods has been changed to complete [issue-24](https://github.com/holidays/definitions/issues/24). Downstream consumers will need to update to be able to parse them. However there are **no behavior changes** with this update.
