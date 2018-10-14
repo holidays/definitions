@@ -103,17 +103,43 @@ months:
     wday: 1
     week: 3
     year_ranges:
-      - after: 2003
+      - between: 2003..2019
+  - name: 海の日
+    regions: [jp]
+    mday: 23
+    year_ranges:
+      - limited: [2020]
+  - name: 海の日
+    regions: [jp]
+    wday: 1
+    week: 3
+    year_ranges:
+      - after: 2021
   - name: 振替休日
     regions: [jp]
     function: jp_marine_day_substitute(year)
     year_ranges:
       - between: 1996..2002
+  - name: スポーツの日
+    regions: [jp]
+    mday: 24
+    year_ranges:
+      - limited: [2020]
   8:
   - name: 山の日
     regions: [jp]
     year_ranges:
-      - after: 2016
+      - between: 2016..2019
+    function: jp_mountain_holiday(year)
+  - name: 山の日
+    regions: [jp]
+    mday: 10
+    year_ranges:
+      - limited: [2020]
+  - name: 山の日
+    regions: [jp]
+    year_ranges:
+      - after: 2021
     function: jp_mountain_holiday(year)
   - name: 振替休日
     regions: [jp]
@@ -144,6 +170,14 @@ months:
     regions: [jp]
     wday: 1
     week: 2
+    year_ranges:
+      - before: 2019
+  - name: スポーツの日
+    regions: [jp]
+    wday: 1
+    week: 2
+    year_ranges:
+      - after: 2021
   - name: 振替休日
     regions: [jp]
     function: jp_health_sports_day_substitute(year)
@@ -555,6 +589,26 @@ tests:
     expect:
       name: "海の日"
   - given:
+      date: '2019-07-15'
+      regions: ["jp"]
+    expect:
+      name: "海の日"
+  - given:
+      date: '2020-07-20'
+      regions: ["jp"]
+    expect:
+      holiday: false
+  - given:
+      date: '2020-07-23'
+      regions: ["jp"]
+    expect:
+      name: "海の日"
+  - given:
+      date: '2021-07-19'
+      regions: ["jp"]
+    expect:
+      name: "海の日"
+  - given:
       date: '2016-08-11'
       regions: ["jp"]
     expect:
@@ -575,10 +629,15 @@ tests:
     expect:
       name: "山の日"
   - given:
-      date: '2020-08-11'
+      date: '2020-08-10'
       regions: ["jp"]
     expect:
       name: "山の日"
+  - given:
+      date: '2020-08-11'
+      regions: ["jp"]
+    expect:
+      holiday: false
   - given:
       date: '2021-08-11'
       regions: ["jp"]
@@ -619,3 +678,23 @@ tests:
       regions: ["jp"]
     expect:
       name: "天皇誕生日"
+  - given:
+      date: '2019-10-14'
+      regions: ["jp"]
+    expect:
+      name: "体育の日"
+  - given:
+      date: '2020-07-24'
+      regions: ["jp"]
+    expect:
+      name: "スポーツの日"
+  - given:
+      date: '2020-10-12'
+      regions: ["jp"]
+    expect:
+      holiday: false
+  - given:
+      date: '2021-10-11'
+      regions: ["jp"]
+    expect:
+      name: "スポーツの日"
