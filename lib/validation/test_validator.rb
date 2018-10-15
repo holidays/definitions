@@ -10,12 +10,7 @@ module Definitions
         err!("Tests must be an array") unless tests.is_a?(Array)
 
         tests.each do |t|
-          begin
-            validate_given!(t["given"])
-            validate_expect!(t["expect"])
-          rescue Errors::InvalidTest => e
-            raise Errors::InvalidTest.new("#{e.message} - #{t.inspect}")
-          end
+          validate!(t)
         end
 
         true
@@ -25,6 +20,13 @@ module Definitions
 
       def err!(msg)
         raise Errors::InvalidTest.new(msg)
+      end
+
+      def validate!(t)
+        validate_given!(t["given"])
+        validate_expect!(t["expect"])
+      rescue Errors::InvalidTest => e
+        raise Errors::InvalidTest.new("#{e.message} - #{t.inspect}")
       end
 
       def validate_given!(g)
@@ -59,12 +61,14 @@ module Definitions
         given["date"] = [ given["date"] ] unless given["date"].is_a?(Array)
 
         given["date"].each do |d|
-          begin
-            DateTime.parse(d)
-          rescue TypeError, ArgumentError, NoMethodError
-            err!("Test must contain valid date, date value was: '#{d}")
-          end
+          parse_date!(d)
         end
+      end
+
+      def parse_date!(d)
+        DateTime.parse(d)
+      rescue TypeError, ArgumentError, NoMethodError
+        err!("Test must contain valid date, date value was: '#{d}")
       end
 
       def validate_expect!(e)

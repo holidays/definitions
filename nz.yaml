@@ -254,7 +254,7 @@ tests:
 methods:
   closest_monday:
     arguments: date
-    source: |
+    ruby: |
       if [1, 2, 3, 4].include?(date.wday)
         date -= (date.wday - 1)
       elsif 0 == date.wday
@@ -265,9 +265,9 @@ methods:
       date
   previous_friday:
     arguments: date
-    source: |
+    ruby: |
       date - 3
   next_week:
     arguments: date
-    source: |
+    ruby: |
       date + 7

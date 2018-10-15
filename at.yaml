@@ -57,6 +57,7 @@ months:
   - name: 2. Weihnachtstag
     regions: [at]
     mday: 26
+
 tests:
   - given:
       date: '2009-01-01'
@@ -67,19 +68,16 @@ tests:
   - given:
       date: '2009-04-13'
       regions: ['at']
-      options: 'informal'
     expect:
       name: 'Ostermontag'
   - given:
       date: '2009-05-21'
       regions: ['at']
-      options: 'informal'
     expect:
       name: 'Christi Himmelfahrt'
   - given:
       date: '2009-06-01'
       regions: ['at']
-      options: 'informal'
     expect:
       name: 'Pfingstmontag'
   - given:
@@ -111,3 +109,8 @@ tests:
       regions: ['at']
     expect:
       holiday: false
+  - given:
+      date: '2017-06-15'
+      regions: ['at']
+    expect:
+      name: "Fronleichnam"

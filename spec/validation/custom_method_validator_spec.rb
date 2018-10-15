@@ -6,7 +6,7 @@ describe Definitions::Validation::CustomMethod do
     {
       'test' => {
         'arguments' => "date,year,month,day",
-        'source' => "some source",
+        'ruby' => "some source",
       }
     }
   }
@@ -47,12 +47,12 @@ describe Definitions::Validation::CustomMethod do
 
     context 'source' do
       it 'returns false if nil' do
-        methods['test']['source'] = nil
+        methods['test']['ruby'] = nil
         expect { subject.call(methods) }.to raise_error(Definitions::Errors::InvalidCustomMethod)
       end
 
       it 'returns false if empty' do
-        methods['test']['source'] = ""
+        methods['test']['ruby'] = ""
         expect { subject.call(methods) }.to raise_error(Definitions::Errors::InvalidCustomMethod)
       end
     end

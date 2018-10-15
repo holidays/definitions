@@ -1,5 +1,41 @@
 # Holiday definitions
 
+## 3.1.0
+
+* Update `ch` to apply 'Neujahrstag' to overall region (thanks to https://github.com/phylor)
+* Cosmetic spacing update for `us` definition, no behavior change
+
+## 3.0.0
+
+Major semver bump as the format for custom methods has been changed to complete [issue-24](https://github.com/holidays/definitions/issues/24). Downstream consumers will need to update to be able to parse them. However there are **no behavior changes** with this update.
+
+In summary: we have switched to language-specific custom methods. Instead of a plain `source` field you will need a specific language implementation, e.g. `ruby`, `golang`, etc.
+
+Currently we only have `ruby` but we can now expand these definitions for use in other languages. Please see the [custom methods ADR](doc/architecture/adr-001.md) for more in-depth information on why this change was made.
+
+You can also view the updated ['Methods' section in the SYNTAX doc](doc/SYNTAX.md#methods) for more info and examples.
+
+## 2.5.3
+
+* Add missing `observed` logic for 'St. Patricks Day' in `gb_nir`
+
+## 2.5.2
+
+* Fix `de` issue cause by undefined `year_ranges` behavior in syntax
+
+## 2.5.1
+
+* Fix Federal Reserve Independence Day tests
+
+## 2.5.0
+
+* Change Emperor's Birthday for `jp` definitions (thanks to https://github.com/ttwo32)
+* Add German Reformation  to four more states starting in 2018 (thanks to https://github.com/jensberke)
+* Add 'La Mercè' to official holidays in Catalunya, Spain (thanks to https://github.com/fabersky)
+* Fix Federal Reserve Saturday holidays (thanks to https://github.com/mikecanann)
+* Fix the CoC link in CONTRIBUTING doc
+* Remove ruby 2.2 and add ruby 2.5 to travis tests
+
 ## 2.4.0
 
 * Add new holidays for Canada (thanks to https://github.com/alejandrok5)

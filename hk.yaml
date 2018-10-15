@@ -71,7 +71,7 @@ months:
 methods:
   cn_new_lunar_day:
     arguments: year
-    source: |
+    ruby: |
       month_day = case year
         when 1930, 1949, 1987, 2025, 2063, 2082, 2101, 2112, 2131, 2150, 2207, 2245, 2253, 2283, 2321
           [1, 29]
