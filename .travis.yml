@@ -6,11 +6,6 @@ cache:
 
 sudo: false
 
-before_install:
-  - gem install bundler
-  - bundler --version
-  - gem --version
-
 script:
   - make test
   - make validate
@@ -24,4 +19,3 @@ rvm:
   - 2.3.0
   - 2.4.0
   - jruby-head
-  - ruby-head
