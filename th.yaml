@@ -1,0 +1,144 @@
+# Thai holiday definitions for the Ruby Holiday gem.
+#
+# Updated: 2018-10-17.
+# Sources:
+# - Photo in this trello card https://trello.com/c/zSDdA4Zy/39-add-public-holidays
+---
+months:
+  1:
+  - name: New Year's Day
+    regions: [th]
+    mday: 1
+    observed: to_monday_if_weekend(date)
+  3:
+  - name: Makha Bucha Day
+    regions: [th]
+    mday: 1
+  4:
+  - name: Chakri Memorial Day
+    regions: [th]
+    wday: 6
+  - name: Songkran Day
+    regions: [th]
+    mday: 13
+  - name: Songkran Festival
+    regions: [th]
+    wday: 16
+  5:
+  - name: National Labour Day
+    regions: [th]
+    mday: 1
+  - name: Wisakha Bucha Day
+    regions: [th]
+    mday: 29
+  7:
+  - name: Asarnha Bucha Day
+    regions: [th]
+    wday: 27
+  - name: H.M. King Maha Vajiralongkorn Bodindradebayavarangkun's Birthday
+    regions: [th]
+    wday: 28
+    observed: to_monday_if_weekend(date)
+  8:
+  - name: H.M. Queen Sirikit's Birthday
+    regions: [th]
+    mday: 12
+    observed: to_monday_if_weekend(date)
+  10:
+  - name: Commemoration of the Passing King Bhumibol
+    regions: [th]
+    mday: 13
+    observed: to_monday_if_weekend(date)
+  - name: Chulalongkorn Day
+    regions: [th]
+    mday: 23
+  12:
+  - name: Late King Bhumibol Adulyadej's Birthday, National Day and National Father's Day
+    regions: [th]
+    mday: 5
+  - name: Constitution Day
+    regions: [th]
+    mday: 10
+  - name: Year's End Day
+    regions: [th]
+    mday: 31
+
+tests:
+  - given:
+      date: '2008-01-01'
+      regions: ["th"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: '2008-03-01'
+      regions: ["th"]
+    expect:
+      name: "Makha Bucha Day"
+  - given:
+      date: '2008-04-06'
+      regions: ["th"]
+    expect:
+      name: "Chakri Memorial Day"
+  - given:
+      date: '2008-04-13'
+      regions: ["th"]
+    expect:
+      name: "Songkran Day"
+  - given:
+      date: '2008-04-16'
+      regions: ["th"]
+    expect:
+      name: "Songkran Festival"
+  - given:
+      date: '2008-05-01'
+      regions: ["th"]
+    expect:
+      name: "National Labour Day"
+  - given:
+      date: '2008-05-29'
+      regions: ["th"]
+    expect:
+      name: "Wisakha Bucha Day"
+  - given:
+      date: '2008-07-27'
+      regions: ["th"]
+    expect:
+      name: "Asarnha Bucha Day"
+  - given:
+      date: '2008-07-28'
+      regions: ["th"]
+      options: ["observed"]
+    expect:
+      name: "H.M. King Maha Vajiralongkorn Bodindradebayavarangkun's Birthday"
+  - given:
+      date: '2008-08-12'
+      regions: ["th"]
+      options: ["observed"]
+    expect:
+      name: "H.M. Queen Sirikit's Birthday"
+  - given:
+      date: '2008-10-13'
+      regions: ["th"]
+      options: ["observed"]
+    expect:
+      name: "Commemoration of the Passing King Bhumibol"
+  - given:
+      date: '2008-10-23'
+      regions: ["th"]
+    expect:
+      name: "Chulalongkorn Day"
+  - given:
+      date: '2008-12-05'
+      regions: ["th"]
+    expect:
+      name: "Late King Bhumibol Adulyadej's Birthday, National Day and National Father's Day"
+  - given:
+      date: '2008-12-10'
+      regions: ["th"]
+    expect:
+      name: "Constitution Day"
+  - given:
+      date: '2008-12-31'
+      regions: ["th"]
+    expect:
+      name: "Year's End Day"
