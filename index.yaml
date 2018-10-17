@@ -56,6 +56,7 @@ defs:
   RS_LA: ['rs_la.yaml']
   RU: ['ru.yaml']
   SE: ['se.yaml']
+  TH: ['th.yaml']
   TN: ['tn.yaml']
   TR: ['tr.yaml']
   US: ['us.yaml', 'north_america_informal.yaml']
