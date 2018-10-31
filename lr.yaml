@@ -1,0 +1,73 @@
+# Liberian holiday definitions for the Ruby Holiday gem.
+#
+# Updated: 2018-10-31.
+#
+# Sources:
+# - https://www.officeholidays.com/countries/liberia/2018
+# - https://en.wikipedia.org/wiki/Public_holidays_in_Liberia
+---
+months:
+  1:
+  - name: New Year's Day
+    regions: [lr]
+    mday: 1
+  2:
+  - name: Armed Forces Day
+    regions: [lr]
+    mday: 11
+  3:
+  - name: J.J. Roberts' Birthday
+    regions: [lr]
+    mday: 15
+  - name: Decoration Day
+    regions: [lr]
+    week: 2
+    wday: 3
+  4:
+  - name: National Redemption Day
+    regions: [lr]
+    mday: 12
+  - name: Fast and Prayer Day
+    regions: [lr]
+    week: 2
+    wday: 5
+  5:
+  - name: National Unification Day
+    regions: [lr]
+    mday: 14
+  7:
+  - name: Independence Day
+    regions: [lr]
+    mday: 26
+  8:
+  - name: Flag Day
+    regions: [lr]
+    mday: 24
+  11:
+  - name: William Tubman's Birthday
+    regions: [lr]
+    mday: 29
+  - name: National Thanksgiving Day
+    regions: [lr]
+    week: 1
+    wday: 4
+  12:
+  - name: Christmas Day
+    regions: [lr]
+    mday: 25
+tests:
+  - given:
+      date: ['2018-03-14', '2019-03-13']
+      regions: ['lr']
+    expect:
+      name: 'Decoration Day'
+  - given:
+      date: ['2018-04-13', '2020-04-10']
+      regions: ['lr']
+    expect:
+      name: 'Fast and Prayer Day'
+  - given:
+      date: ['2018-11-01', '2019-11-07']
+      regions: ['lr']
+    expect:
+      name: 'National Thanksgiving Day'
