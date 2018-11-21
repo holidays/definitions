@@ -76,3 +76,4 @@ defs:
   SG: ['sg.yaml']
   MY: ['my.yaml']
   NA: ['na.yaml']
+  NF: ['nf.yaml']
