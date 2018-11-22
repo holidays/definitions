@@ -53,7 +53,13 @@ months:
     wday: 1
     week: 2
     year_ranges:
-    - after: 2013
+    - between: 2013..2018
+  - name: Family Day
+    regions: [ca_bc]
+    wday: 1
+    week: 3
+    year_ranges:
+    - after: 2019
   - name: Family Day
     regions: [ca_nb]
     wday: 1
