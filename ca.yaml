@@ -53,7 +53,13 @@ months:
     wday: 1
     week: 2
     year_ranges:
-    - after: 2013
+    - between: 2013..2018
+  - name: Family Day
+    regions: [ca_bc]
+    wday: 1
+    week: 3
+    year_ranges:
+    - after: 2019
   - name: Family Day
     regions: [ca_nb]
     wday: 1
@@ -302,7 +308,7 @@ tests:
       regions: ["ca_sk"]
     expect:
       name: "Family Day"
-# Family Day in Saskatchewan - should not be active before 2007
+  # Family Day in Saskatchewan - should not be active before 2007
   - given:
       date: '1970-02-16'
       regions: ["ca_sk"]
@@ -373,7 +379,7 @@ tests:
     expect:
       holiday: false
 
-  # Family Day in BC - Should only be active on 2013 or later
+  # Family Day in BC on 2nd week - Should only be active between 2013 and 2018
   - given:
       date: '2013-02-11'
       regions: ["ca_bc"]
@@ -385,12 +391,12 @@ tests:
     expect:
       name: "Family Day"
   - given:
-      date: '2044-02-08'
+      date: '2018-02-12'
       regions: ["ca_bc"]
     expect:
       name: "Family Day"
 
-  # Family Day in BC - should not be active before 2013
+  # Family Day in BC on 2nd week - Should not be active before 2013 and after 2018
   - given:
       date: '2000-02-14'
       regions: ["ca_bc"]
@@ -403,6 +409,50 @@ tests:
       holiday: false
   - given:
       date: '2012-02-13'
+      regions: ["ca_bc"]
+    expect:
+      holiday: false
+  - given:
+      date: '2019-02-11'
+      regions: ["ca_bc"]
+    expect:
+      holiday: false
+  - given:
+      date: '2044-02-08'
+      regions: ["ca_bc"]
+    expect:
+      holiday: false
+
+  # Family Day in BC on 3nd week - Should only be active after 2018
+  - given:
+      date: '2019-02-18'
+      regions: ["ca_bc"]
+    expect:
+      name: "Family Day"
+  - given:
+      date: '2020-02-17'
+      regions: ["ca_bc"]
+    expect:
+      name: "Family Day"
+  - given:
+      date: '2044-02-15'
+      regions: ["ca_bc"]
+    expect:
+      name: "Family Day"
+
+  # Family Day in BC on 3nd week - Should not be active before 2019
+  - given:
+      date: '2000-02-21'
+      regions: ["ca_bc"]
+    expect:
+      holiday: false
+  - given:
+      date: '2011-02-21'
+      regions: ["ca_bc"]
+    expect:
+      holiday: false
+  - given:
+      date: '2018-02-19'
       regions: ["ca_bc"]
     expect:
       holiday: false
