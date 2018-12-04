@@ -272,7 +272,7 @@ tests:
       regions: ["federalreservebanks"]
       options: ["observed"]
     expect:
-      holiday: false
+      name: "Independence Day"
   - given:
       date: '2015-09-07'
       regions: ["federalreservebanks"]
