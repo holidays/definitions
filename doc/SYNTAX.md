@@ -34,7 +34,7 @@ Some sub-regions do not have a matching ISO 3116 entry. In these cases we attemp
 
 Before version v1.1.0 of the original ruby gem the compliance with ISO 3166 was not as strict. There might be cases where an existing region symbol does not match the ISO standard.
 
-Non-standard regions (e.g. `ecb-target`, `federal-reserve`, etc) should use hyphens in their names rather than underscores or spaces.
+Non-standard regions (e.g. `ecbtarget`, `federalreserve`, etc) must be all one work, just like a normal region. They must not use underscores or hyphens.
 
 #### `formal`/`informal`
 
