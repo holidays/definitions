@@ -30,7 +30,7 @@ months:
   - name: Independence Day
     regions: [federalreservebanks]
     mday: 4
-    observed: to_weekday_if_sunday(date)
+    observed: to_weekday_if_weekend(date)
   9:
   - name: Labor Day
     week: 1
