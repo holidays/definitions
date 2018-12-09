@@ -20,8 +20,7 @@ A region is a symbol that denotes the geographic or cultural region for that hol
 
 ##### Sub-region
 
-We also have a concept of a `sub-region`. These regions exist inside of a 'parent' region and inherit the parent's holidays.
-We use an underscore to specify a subregion.
+We also have a concept of a `sub-region`. These regions exist inside of a 'parent' region and inherit the parent's holidays. We use an underscore to specify a subregion.
 
 Examples:
 
@@ -34,7 +33,7 @@ Some sub-regions do not have a matching ISO 3116 entry. In these cases we attemp
 
 Before version v1.1.0 of the original ruby gem the compliance with ISO 3166 was not as strict. There might be cases where an existing region symbol does not match the ISO standard.
 
-Non-standard regions (e.g. `ecbtarget`, `federalreserve`, etc) must be all one work, just like a normal region. They must not use underscores or hyphens.
+Non-standard regions (e.g. `ecbtarget`, `federalreserve`, etc) must be all one word, just like a normal region. They must not use underscores or hyphens.
 
 #### `formal`/`informal`
 
