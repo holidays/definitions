@@ -18,11 +18,22 @@ There are some terms that you should be familiar with before we dive into each s
 
 A region is a symbol that denotes the geographic or cultural region for that holiday. In general these symbols will be the [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166) code for a country or region.
 
-Please note that before version v1.1.0 the compliance with ISO 3166 was not as strict. There might be cases where an existing region symbol does not match the standard.
+##### Sub-region
 
-In addition, some sub-regions do not have a matching ISO 3116 entry. In those cases we attempt to choose symbols that are reasonably clear.
+We also have a concept of a `sub-region`. These regions exist inside of a 'parent' region and inherit the parent's holidays. We use an underscore to specify a subregion.
 
-Examples: `:us` for USA, `:fr` for France, `:us_dc` for Washington, D.C in USA
+Examples:
+
+* `:us_dc` for Washington, D.C in `:us`
+* `:ca_bc` for British Columbia in `:ca`
+
+Some sub-regions do not have a matching ISO 3116 entry. In these cases we attempt to choose symbols that are reasonably clear.
+
+##### Non-standard regions
+
+Before version v1.1.0 of the original ruby gem the compliance with ISO 3166 was not as strict. There might be cases where an existing region symbol does not match the ISO standard.
+
+Non-standard regions (e.g. `ecbtarget`, `federalreserve`, etc) must be all one word, just like a normal region. They must not use underscores or hyphens.
 
 #### `formal`/`informal`
 

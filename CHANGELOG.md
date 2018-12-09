@@ -1,5 +1,27 @@
 # Holiday definitions
 
+## 4.0.0
+
+Major semver bump due to changes in how non-standard regions will be handled going forward. Please see [issue-110](https://github.com/holidays/definitions/issues/110) for more details on this edge case and please also see the updates to our [SYNTAX guide](doc/SYNTAX.md#non-standard-regions) for the specified behavior going forward.
+
+The following non-standard regions have been changed:
+
+* `ecb_target` region changed to `ecbtarget`
+* `federal_reserve` region changed to `federalreserve`
+* `federalreservebanks` region changed to `federalreservebanks`
+* `north_america_informal` region changed to `northamericainformal`
+* `united_nations` region changed to `unitednations`
+* `north_america` region changed to `northamerica`
+* `south_america` region changed to `southamerica`
+
+This change also includes updates to various other regions:
+
+* Rename national sports day of `:jp` region from "体育の日" to "スポーツの日" (thanks to https://github.com/kunitoo)
+* Fix 2020 `:jp` region holidays related tokyo olympics (thanks to https://github.com/kunitoo)
+* Update Family Day date in `:ca_bc` region (thanks to https://github.com/roman-ih)
+* Add Ukrainian holidays (`:ua` region code) (thanks to https://github.com/roman-ih)
+* Add `federalreservebanks` region for observed bank holidays (thanks to Matt Hickman)
+
 ## 3.1.0
 
 * Update `ch` to apply 'Neujahrstag' to overall region (thanks to https://github.com/phylor)
