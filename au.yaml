@@ -1,5 +1,5 @@
 # Australian holiday definitions for the Ruby Holiday gem.
-# Updated: 2008-11-29.
+# Updated: 2018-08-30
 # Sources:
 # - http://en.wikipedia.org/wiki/Australian_public_holidays
 # - http://www.docep.wa.gov.au/lr/LabourRelations/Content/Wages%20and%20Conditions/Public%20Holidays/Public_Holidays.html
@@ -178,7 +178,7 @@ months:
 methods:
   afl_grand_final:
     arguments: year
-    source: |
+    ruby: |
       case year
       when 2015
         Date.civil(2015, 10, 2)
@@ -192,7 +192,7 @@ methods:
     # celebrated twice in 2012
     # in october again from 2016
     arguments: year
-    source: |
+    ruby: |
       if year >= 2016
         Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 10, 1, 1)
       elsif year == 2012
@@ -204,7 +204,7 @@ methods:
     # http://www.justice.qld.gov.au/fair-and-safe-work/industrial-relations/public-holidays/dates
     # in june until 2015
     arguments: year
-    source: |
+    ruby: |
       if year <= 2015
         Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 6, 2, 1)
       end
@@ -212,7 +212,7 @@ methods:
     # http://www.justice.qld.gov.au/fair-and-safe-work/industrial-relations/public-holidays/dates
     # for 2013 to 2016 it was in October, otherwise it's in May
     arguments: year
-    source: |
+    ruby: |
       if year < 2013 || year >= 2016
         Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 5, 1, 1)
       end
@@ -220,7 +220,7 @@ methods:
     # http://www.justice.qld.gov.au/fair-and-safe-work/industrial-relations/public-holidays/dates
     # for 2013 to 2016 it was in October, otherwise it's in May
     arguments: year
-    source: |
+    ruby: |
       if year >= 2013 && year < 2016
         Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 10, 1, 1)
       end
@@ -228,20 +228,20 @@ methods:
     # http://www.justice.qld.gov.au/fair-and-safe-work/industrial-relations/public-holidays/dates
     # G20 day in brisbane, in 2014, on november 14
     arguments: year
-    source: |
+    ruby: |
       year == 2014 ? 14 : nil
   hobart_show_day:
     # http://worksafe.tas.gov.au/__data/assets/pdf_file/0008/287036/Public_Holidays_2014.pdf
     # The Thursday before the fourth Saturday in October.
     arguments: year
-    source: |
+    ruby: |
       fourth_sat_in_oct = Date.civil(year, 10, Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 10, 4, :saturday))
       fourth_sat_in_oct - 2 # the thursday before
   march_pub_hol_sa:
     # http://www.safework.sa.gov.au/show_page.jsp?id=2483#.VQ9Mfmb8-8E
     # The Holidays Act 1910 provides for the third Monday in May to be a public holiday. Since 2006 this public holiday has been observed on the second Monday in March through the issuing of a special Proclamation by the Governor.
     arguments: year
-    source: |
+    ruby: |
       if year < 2006
         nil
       else
@@ -251,7 +251,7 @@ methods:
     # http://www.safework.sa.gov.au/show_page.jsp?id=2483#.VQ9Mfmb8-8E
     # The Holidays Act 1910 provides for the third Monday in May to be a public holiday. Since 2006 this public holiday has been observed on the second Monday in March through the issuing of a special Proclamation by the Governor.
     arguments: year
-    source: |
+    ruby: |
       if year >= 2006
         nil
       else
@@ -259,6 +259,21 @@ methods:
       end
 
 tests:
+  - given:
+      date: "2017-04-14"
+      regions: ["au"]
+    expect:
+      name: "Good Friday"
+  - given:
+      date: "2017-04-15"
+      regions: ["au_nsw"]
+    expect:
+      name: "Easter Saturday"
+  - given:
+      date: ['2010-4-4', "2017-04-16"]
+      regions: ["au_nsw"]
+    expect:
+      name: "Easter Sunday"
   - given:
       date: '2013-10-07'
       regions: ["au_qld"]
@@ -714,7 +729,17 @@ tests:
     expect:
       name: "New Year's Day"
   - given:
+      date: '2016-03-27'
+      regions: ["au_qld"]
+    expect:
+      holiday: false
+  - given:
       date: '2017-04-16'
       regions: ["au_qld"]
     expect:
       name: "Easter Sunday"
+  - given:
+      date: "2014-11-14"
+      regions: ["au_qld_brisbane"]
+    expect:
+      name: "G20 Day"

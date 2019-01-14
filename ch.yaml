@@ -1,6 +1,6 @@
 # Swiss holiday definitions for the Ruby Holiday gem.
 #
-# Updated: 2012-03-16.
+# Updated: 2018-10-10.
 # Sources:
 #  http://www.bj.admin.ch/content/dam/data/staat_buerger/zivilprozessrecht/kant-feiertage.pdf
 #
@@ -24,12 +24,6 @@
 # * ch_ai: - 22nd of September is celebrated only in part of the state.
 #          - 26th of December is not celebrated in case the 25th is a Monday or a Friday.
 # * ch_ne: 26th of December and 2nd of January are only celebrated in case 25th of December and 1st of January are Sundays
-#
-#
-#
-# all regions [ch_zh, ch_be, ch_lu, ch_ur, ch_sz, ch_ow, ch_nw, ch_gl, ch_zg, ch_fr, ch_so, ch_bs, ch_bl,
-# ch_sh, ch_ar, ch_ai, ch_sg, ch_gr, ch_ag, ch_tg, ch_ti, ch_vd, ch_vs, ch_ne, ch_ge, ch_ju]
-#
 ---
 months:
   0:
@@ -62,7 +56,7 @@ months:
     function: ch_ge_jeune_genevois(year)
   1:
   - name: Neujahrstag
-    regions: [ch_zh, ch_be, ch_lu, ch_ur, ch_sz, ch_ow, ch_nw, ch_gl, ch_zg, ch_fr, ch_so, ch_bs, ch_bl, ch_sh, ch_ar, ch_ai, ch_sg, ch_gr, ch_ag, ch_tg, ch_vd, ch_vs, ch_ne, ch_ge, ch_ju, ch_ti]
+    regions: [ch]
     mday: 1
   - name: Berchtoldstag
     regions: [ch_zh, ch_be, ch_lu, ch_ow, ch_nw, ch_gl, ch_zg, ch_fr, ch_so, ch_sh, ch_sg, ch_ag, ch_tg, ch_vd, ch_vs, ch_ne, ch_ju]
@@ -125,11 +119,12 @@ months:
   - name: Restauration de la République
     regions: [ch_ge]
     mday: 31
+
 methods:
   ch_vd_lundi_du_jeune_federal:
     # Monday after the third Sunday of September
     arguments: year
-    source: |
+    ruby: |
       date = Date.civil(year,9,1)
       # Find the first Sunday of September
       until date.wday.eql? 0 do
@@ -141,7 +136,7 @@ methods:
   ch_ge_jeune_genevois:
     # Thursday after the first Sunday of September
     arguments: year
-    source: |
+    ruby: |
       date = Date.civil(year,9,1)
       # Find the first Sunday of September
       until date.wday.eql? 0 do
@@ -152,7 +147,7 @@ methods:
   ch_gl_naefelser_fahrt:
     # First Thursday of April. If the first Thursday of April is in the week before easter, then a week later.
     arguments: year
-    source: |
+    ruby: |
       date = Date.civil(year,4,1)
       # Find the first Thursday of April
       until date.wday.eql? 4 do
@@ -165,6 +160,11 @@ methods:
       date
 
 tests:
+  - given:
+      date: '2018-01-01'
+      regions: ["ch"]
+    expect:
+      name: "Neujahrstag"
   - given:
       date: '2012-08-01'
       regions: ["ch"]

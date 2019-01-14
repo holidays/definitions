@@ -65,7 +65,9 @@
 # - http://www.kleiner-kalender.de/event/rosch-ha-schana/0651c.html
 # - http://www.kaldix.com/united-states/calendar/virginia/holidays/independence-day/year-2017/
 # - https://publicholidays.us/independence-day/
+
 ---
+
 months:
   0:
   - name: Shrove Tuesday
@@ -313,12 +315,12 @@ months:
 methods:
   christmas_eve_holiday:
     arguments: date
-    source: |
+    ruby: |
       beginning_of_month = Date.civil(date.year, date.month, 1)
       (date.saturday? || date.sunday?) ? date.downto(beginning_of_month).find {|d| d if d.wday == 5} : date
   rosh_hashanah:
     arguments: year
-    source: |
+    ruby: |
       rosh_hashanah_dates = {
           '2014' => Date.civil(2014, 9, 25),
           '2015' => Date.civil(2015, 9, 14),
@@ -331,7 +333,7 @@ methods:
       rosh_hashanah_dates[year.to_s]
   yom_kippur:
     arguments: year
-    source: |
+    ruby: |
       yom_kippur_dates = {
           '2014' => Date.civil(2014, 10, 4),
           '2015' => Date.civil(2015, 9, 23),
@@ -345,14 +347,14 @@ methods:
   georgia_state_holiday:
     # Monday before that holiday
     arguments: year, month
-    source: |
+    ruby: |
       beginning_of_month = Date.civil(year, month, 1)
       state_holiday = Date.civil(year, month, 26)
       state_holiday.downto(beginning_of_month).find {|date| date if date.wday == 1 }
   lee_jackson_day:
     # Friday before Martin Luther King, Jr. Day
     arguments: year, month
-    source: |
+    ruby: |
       day_of_holiday = Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, month, 3, 1)
       beginning_of_month = Date.civil(year, month, 1)
       king_day = Date.civil(year, month, day_of_holiday)
@@ -360,16 +362,16 @@ methods:
   election_day:
     # Tuesday after the first Monday of November
     arguments: year
-    source: |
+    ruby: |
        Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 11, 1, 1) + 1
   us_inauguration_day:
     # January 20, every fourth year, following Presidential election
     arguments: year
-    source: |
+    ruby: |
       year % 4 == 1 ? 20 : nil
   day_after_thanksgiving:
     arguments: year
-    source: |
+    ruby: |
       Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 11, 4, 4) + 1
 
 tests:

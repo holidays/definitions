@@ -108,6 +108,9 @@ months:
     regions: [es_ct]
     mday: 11
     observed: to_monday_if_sunday(date)
+  - name: La Mercè
+    regions: [es_ct]
+    mday: 24
   10:
   - name: Día de Valencia
     regions: [es_vc, es_v]

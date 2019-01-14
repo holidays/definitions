@@ -41,6 +41,7 @@ months:
   - name: St. Patrick's Day
     regions: [gb_nir]
     mday: 17
+    observed: to_monday_if_weekend(date)
   5:
   - name: May Day
     regions: [gb]
@@ -144,6 +145,30 @@ tests:
       date: '2008-03-17'
       regions: ["gb_nir"]
       options: ["informal"]
+    expect:
+      name: "St. Patrick's Day"
+  - given:
+      date: '2018-03-17'
+      regions: ["gb_nir"]
+      options: ["informal"]
+    expect:
+      name: "St. Patrick's Day"
+  - given:
+      date: '2018-03-19'
+      regions: ["gb_nir"]
+      options: ["observed", "informal"]
+    expect:
+      name: "St. Patrick's Day"
+  - given:
+      date: '2019-03-17'
+      regions: ["gb_nir"]
+      options: ["informal"]
+    expect:
+      name: "St. Patrick's Day"
+  - given:
+      date: '2019-03-18'
+      regions: ["gb_nir"]
+      options: ["observed", "informal"]
     expect:
       name: "St. Patrick's Day"
   - given:

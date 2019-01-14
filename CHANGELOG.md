@@ -1,5 +1,63 @@
 # Holiday definitions
 
+## 4.0.0
+
+Major semver bump due to changes in how non-standard regions will be handled going forward. Please see [issue-110](https://github.com/holidays/definitions/issues/110) for more details on this edge case and please also see the updates to our [SYNTAX guide](doc/SYNTAX.md#non-standard-regions) for the specified behavior going forward.
+
+The following non-standard regions have been changed:
+
+* `ecb_target` region changed to `ecbtarget`
+* `federal_reserve` region changed to `federalreserve`
+* `federalreservebanks` region changed to `federalreservebanks`
+* `north_america_informal` region changed to `northamericainformal`
+* `united_nations` region changed to `unitednations`
+* `north_america` region changed to `northamerica`
+* `south_america` region changed to `southamerica`
+
+This change also includes updates to various other regions:
+
+* Rename national sports day of `:jp` region from "体育の日" to "スポーツの日" (thanks to https://github.com/kunitoo)
+* Fix 2020 `:jp` region holidays related tokyo olympics (thanks to https://github.com/kunitoo)
+* Update Family Day date in `:ca_bc` region (thanks to https://github.com/roman-ih)
+* Add Ukrainian holidays (`:ua` region code) (thanks to https://github.com/roman-ih)
+* Add `federalreservebanks` region for observed bank holidays (thanks to Matt Hickman)
+
+## 3.1.0
+
+* Update `ch` to apply 'Neujahrstag' to overall region (thanks to https://github.com/phylor)
+* Cosmetic spacing update for `us` definition, no behavior change
+
+## 3.0.0
+
+Major semver bump as the format for custom methods has been changed to complete [issue-24](https://github.com/holidays/definitions/issues/24). Downstream consumers will need to update to be able to parse them. However there are **no behavior changes** with this update.
+
+In summary: we have switched to language-specific custom methods. Instead of a plain `source` field you will need a specific language implementation, e.g. `ruby`, `golang`, etc.
+
+Currently we only have `ruby` but we can now expand these definitions for use in other languages. Please see the [custom methods ADR](doc/architecture/adr-001.md) for more in-depth information on why this change was made.
+
+You can also view the updated ['Methods' section in the SYNTAX doc](doc/SYNTAX.md#methods) for more info and examples.
+
+## 2.5.3
+
+* Add missing `observed` logic for 'St. Patricks Day' in `gb_nir`
+
+## 2.5.2
+
+* Fix `de` issue cause by undefined `year_ranges` behavior in syntax
+
+## 2.5.1
+
+* Fix Federal Reserve Independence Day tests
+
+## 2.5.0
+
+* Change Emperor's Birthday for `jp` definitions (thanks to https://github.com/ttwo32)
+* Add German Reformation  to four more states starting in 2018 (thanks to https://github.com/jensberke)
+* Add 'La Mercè' to official holidays in Catalunya, Spain (thanks to https://github.com/fabersky)
+* Fix Federal Reserve Saturday holidays (thanks to https://github.com/mikecanann)
+* Fix the CoC link in CONTRIBUTING doc
+* Remove ruby 2.2 and add ruby 2.5 to travis tests
+
 ## 2.4.0
 
 * Add new holidays for Canada (thanks to https://github.com/alejandrok5)
