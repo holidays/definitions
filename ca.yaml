@@ -157,6 +157,10 @@ months:
     week: 1
     regions: [ca_nb]
     wday: 1
+  - name: Terry Fox Day
+    week: 1
+    regions: [ca_mb]
+    wday: 1
   - name: Discovery Day
     week: 3
     regions: [ca_yt]
