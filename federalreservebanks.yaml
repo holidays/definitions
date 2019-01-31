@@ -265,11 +265,21 @@ tests:
     expect:
       name: "Memorial Day"
   - given:
+      # Friday
       date: '2015-07-03'
       regions: ["federalreservebanks"]
       options: ["observed"]
+    # 2015-07-04 is a Saturday, not observed
     expect:
-      name: "Independence Day"
+      holiday: false
+  - given:
+      # Monday
+      date: '2015-07-06'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    # 2015-07-04 is a Saturday, not observed
+    expect:
+      holiday: false
   - given:
       date: '2015-09-07'
       regions: ["federalreservebanks"]
