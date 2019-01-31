@@ -1,7 +1,10 @@
 # Federal reserve holidays definition for the Ruby Holiday gem.
-# Observed option applies to when banks are open.
+# Observed option applies to when banks are open:
 #
-# Updated: 2018-11-26
+#   * If the holiday falls on a Saturday, it is not observed
+#   * If the holiday falls on a Sunday, it is observed on Monday
+#
+# Updated: 2019-01-31
 #
 # Sources:
 #  - http://www.federalreserve.gov/aboutthefed/k8.htm
@@ -30,7 +33,7 @@ months:
   - name: Independence Day
     regions: [federalreservebanks]
     mday: 4
-    observed: to_weekday_if_weekend(date)
+    observed: to_monday_if_sunday(date)
   9:
   - name: Labor Day
     week: 1
@@ -83,12 +86,6 @@ tests:
       name: "Memorial Day"
   - given:
       date: '2012-07-04'
-      regions: ["federalreservebanks"]
-      options: ["observed"]
-    expect:
-      name: "Independence Day"
-  - given:
-      date: '2020-07-03'
       regions: ["federalreservebanks"]
       options: ["observed"]
     expect:
@@ -359,6 +356,376 @@ tests:
       name: "Thanksgiving Day"
   - given:
       date: '2016-12-26'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: '2019-01-01'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: '2019-01-21'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Birthday of Martin Luther King, Jr"
+  - given:
+      date: '2019-02-18'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Washington's Birthday"
+  - given:
+      date: '2019-05-27'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Memorial Day"
+  - given:
+      date: '2019-07-04'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Independence Day"
+  - given:
+      date: '2019-09-02'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Labor Day"
+  - given:
+      date: '2019-10-14'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Columbus Day"
+  - given:
+      date: '2019-11-11'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Veterans Day"
+  - given:
+      date: '2019-11-28'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Thanksgiving Day"
+  - given:
+      date: '2019-12-25'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: '2020-01-01'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: '2020-01-20'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Birthday of Martin Luther King, Jr"
+  - given:
+      date: '2020-02-17'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Washington's Birthday"
+  - given:
+      date: '2020-05-25'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Memorial Day"
+  - given:
+      # Friday
+      date: '2020-07-03'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    # 2020-07-04 is a Saturday, not observed
+    expect:
+      holiday: false
+  - given:
+      # Monday
+      date: '2020-07-06'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    # 2020-07-04 is a Saturday, not observed
+    expect:
+      holiday: false
+  - given:
+      date: '2020-09-07'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Labor Day"
+  - given:
+      date: '2020-10-12'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Columbus Day"
+  - given:
+      date: '2020-11-11'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Veterans Day"
+  - given:
+      date: '2020-11-26'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Thanksgiving Day"
+  - given:
+      date: '2020-12-25'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: '2021-01-01'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: '2021-01-18'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Birthday of Martin Luther King, Jr"
+  - given:
+      date: '2021-02-15'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Washington's Birthday"
+  - given:
+      date: '2021-05-31'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Memorial Day"
+  - given:
+      # Friday
+      date: '2021-07-02'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    # 2021-07-04 is a Sunday, observed on Monday
+    expect:
+      holiday: false
+  - given:
+      # Monday
+      date: '2021-07-05'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    # 2021-07-04 is a Sunday, observed on Monday
+    expect:
+      name: "Independence Day"
+  - given:
+      date: '2021-09-06'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Labor Day"
+  - given:
+      date: '2021-10-11'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Columbus Day"
+  - given:
+      date: '2021-11-11'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Veterans Day"
+  - given:
+      date: '2021-11-25'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Thanksgiving Day"
+  - given:
+      # Friday
+      date: '2021-12-24'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    # 2021-12-25 is a Saturday, not observed
+    expect:
+      holiday: false
+  - given:
+      # Monday
+      date: '2021-12-27'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    # 2021-12-25 is a Saturday, not observed
+    expect:
+      holiday: false
+  - given:
+      # Friday
+      date: '2021-12-31'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    # 2022-01-01 is a Saturday, not observed
+    expect:
+      holiday: false
+  - given:
+      # Monday
+      date: '2022-01-03'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    # 2022-01-01 is a Saturday, not observed
+    expect:
+      holiday: false
+  - given:
+      date: '2022-01-17'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Birthday of Martin Luther King, Jr"
+  - given:
+      date: '2022-02-21'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Washington's Birthday"
+  - given:
+      date: '2022-05-30'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Memorial Day"
+  - given:
+      date: '2022-07-04'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Independence Day"
+  - given:
+      date: '2022-09-05'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Labor Day"
+  - given:
+      date: '2022-10-10'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Columbus Day"
+  - given:
+      date: '2022-11-11'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Veterans Day"
+  - given:
+      date: '2022-11-24'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Thanksgiving Day"
+  - given:
+      # Friday
+      date: '2022-12-23'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    # 2022-12-25 is a Sunday, observed on Monday
+    expect:
+      holiday: false
+  - given:
+      # Monday
+      date: '2022-12-26'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    # 2022-12-25 is a Sunday, observed on Monday
+    expect:
+      name: "Christmas Day"
+  - given:
+      # Friday
+      date: '2022-12-30'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    # 2023-01-01 is a Sunday, observed on Monday
+    expect:
+      holiday: false
+  - given:
+      # Monday
+      date: '2023-01-02'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    # 2023-01-01 is a Sunday, observed on Monday
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: '2023-01-16'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Birthday of Martin Luther King, Jr"
+  - given:
+      date: '2023-02-20'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Washington's Birthday"
+  - given:
+      date: '2023-05-29'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Memorial Day"
+  - given:
+      date: '2023-07-04'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Independence Day"
+  - given:
+      date: '2023-09-04'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Labor Day"
+  - given:
+      date: '2023-10-09'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Columbus Day"
+  - given:
+      # Friday
+      date: '2023-11-10'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    # 2023-11-11 is a Saturday, not observed
+    expect:
+      holiday: false
+  - given:
+      # Monday
+      date: '2023-11-13'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    # 2023-11-11 is a Saturday, not observed
+    expect:
+      holiday: false
+  - given:
+      date: '2023-11-23'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Thanksgiving Day"
+  - given:
+      date: '2023-12-25'
       regions: ["federalreservebanks"]
       options: ["observed"]
     expect:
