@@ -4,6 +4,7 @@
 # Sources:
 # - https://en.wikipedia.org/wiki/Public_holidays_in_Thailand
 ---
+months:
   1:
   - name: วันขึ้นปีใหม่
     regions: [th]
@@ -107,4 +108,4 @@ tests:
       regions: ["th"]
       options: ["informal"]
     expect:
-      name: "วันสิ้นปี "
+      name: "วันสิ้นปี"
