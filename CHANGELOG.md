@@ -1,5 +1,13 @@
 # Holiday definitions
 
+## 4.1.0
+
+* Add new Emperor's Coronation Day holiday to `jp` (thanks to https://github.com/ttwo32)
+* Add Thai Holidays (whoooo) (thanks to https://github.com/fabersky)
+* Add Berlin's New International Women's Day to `de_be` (thanks to https://github.com/iGEL)
+* Add Civic Holiday (Terry Fox Day) to `ca_mb` (thanks to https://github.com/akaspick)
+* Fix Federal Reserve holidays for Independence Day (thanks to https://github.com/chadrschroeder)
+
 ## 4.0.0
 
 Major semver bump due to changes in how non-standard regions will be handled going forward. Please see [issue-110](https://github.com/holidays/definitions/issues/110) for more details on this edge case and please also see the updates to our [SYNTAX guide](doc/SYNTAX.md#non-standard-regions) for the specified behavior going forward.
