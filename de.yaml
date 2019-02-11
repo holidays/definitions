@@ -1,6 +1,6 @@
 # German holiday definitions for the Ruby Holiday gem.
 #
-# Updated: 2016-11-27
+# Updated: 2019-02-10
 #
 # Changes 2016-11-27:
 # - Change de_sn_aux, de_th_aux to de_sn_sorbian (because it only is celebrated in Sorbian regions in Sachsen) and de_th_eichsfeld, to reflect region of Eichsfeld
@@ -19,6 +19,9 @@
 #
 # Changes 2018-09-10:
 #  - Reformation Day has been added as a new holiday in Bremen, Hamburg, Lower Saxony and Schleswig-Holstein, starting in 2018.
+#
+# Change 2019-02-10:
+#  - Changing usage of 'year_ranges.after' to 'year_ranges.from', see https://github.com/holidays/definitions/issues/117
 #
 # Sources:
 # - http://en.wikipedia.org/wiki/Holidays_in_Germany
@@ -85,7 +88,7 @@ months:
       regions: [de_be]
       mday: 8
       year_ranges:
-        - after: 2019
+        - from: 2019
   5:
   - name: Tag der Arbeit
     regions: [de]
@@ -117,7 +120,7 @@ months:
     regions: [de_hb, de_hh, de_ni, de_sh]
     mday: 31
     year_ranges:
-    - after: 2018
+    - from: 2018
   11:
   - name: Allerheiligen
     regions: [de_bw, de_by, de_nw, de_rp, de_sl]

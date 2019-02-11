@@ -22,11 +22,13 @@ module Definitions
             if month_def.key?("year_ranges")
               month_def["year_ranges"].each do |yr|
                 yr.each_pair do |k, v|
-                  raise Errors::InvalidMonth.new("The :year_ranges value only accepts the following: :before, :after, :limited, :between, received: #{months}") unless [:before, :after, :limited, :between].include?(k.to_sym)
+                  raise Errors::InvalidMonth.new("The :year_ranges value only accepts the following: :until, :from, :limited, :between, received: #{months}") unless [:until, :from, :limited, :between].include?(k.to_sym)
 
                   case k
-                  when "after"
-                    raise Errors::InvalidMonth.new("The year_ranges.after value must contain a single 'year' integer, ex. 2018, received: #{months}") unless v.is_a?(Integer)
+                  when "until"
+                    raise Errors::InvalidMonth.new("The year_ranges.until value must contain a single 'year' integer, ex. 2018, received: #{months}") unless v.is_a?(Integer)
+                  when "from"
+                    raise Errors::InvalidMonth.new("The year_ranges.from value must contain a single 'year' integer, ex. 2018, received: #{months}") unless v.is_a?(Integer)
                   when "limited"
                     raise Errors::InvalidMonth.new("The year_ranges.limited value must contain an array of 'year' integers, ex. [2018], received: #{months}") unless v.is_a?(Array)
 

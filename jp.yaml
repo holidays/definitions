@@ -16,8 +16,9 @@
 #  2015-05-10: Non-Monday substitute holidays by Shuhei Kagawa <shuhei.kagawa@gmail.com>
 #  2015-12-15: Added mountain day by Tsuyoshi Sano <ttwo32@gmail.com>
 #  2016-03-26: Updated to match new custom method signature. See below for more. Phil Trimble <philtrimble@gmail.com>
+#  2019-02-10: Changing usage of 'year_ranges.after' to 'year_ranges.from' and 'year_ranges.before' to 'year_ranges.until', see https://github.com/holidays/definitions/issues/117
 #
-# NOTE: This is the most complex set of custom date methods in the entire
+# MAINTAINER NOTE: This is the most complex set of custom date methods in the entire
 # project, mainly surrounding the idea of 'substitute' holidays. Since this is
 # the only one that is this complex I have settled on a less-than-ideal solution.
 # It is overly verbose and not easy to follow. It will be a target for refactoring
@@ -48,13 +49,13 @@ months:
     regions: [jp]
     mday: 23
     year_ranges:
-      - after: 2020
+      - from: 2020
   - name: 振替休日
     regions: [jp]
     mday: 23
     function: jp_substitute_holiday(year, month, day)
     year_ranges:
-      - after: 2020
+      - from: 2020
   3:
   - name: 春分の日
     regions: [jp]
@@ -129,7 +130,7 @@ months:
     wday: 1
     week: 3
     year_ranges:
-      - after: 2021
+      - from: 2021
   - name: 振替休日
     regions: [jp]
     function: jp_marine_day_substitute(year)
@@ -154,12 +155,12 @@ months:
   - name: 山の日
     regions: [jp]
     year_ranges:
-      - after: 2021
+      - from: 2021
     function: jp_mountain_holiday(year)
   - name: 振替休日
     regions: [jp]
     year_ranges:
-      - after: 2016
+      - from: 2016
     function: jp_mountain_holiday_substitute(year)
   9:
   - name: 敬老の日
@@ -172,7 +173,7 @@ months:
   - name: 国民の休日
     regions: [jp]
     year_ranges:
-      - after: 2003
+      - from: 2003
     function: jp_citizens_holiday(year)
   - name: 秋分の日
     regions: [jp]
@@ -186,13 +187,13 @@ months:
     wday: 1
     week: 2
     year_ranges:
-      - before: 2019
+      - until: 2019
   - name: スポーツの日
     regions: [jp]
     wday: 1
     week: 2
     year_ranges:
-      - after: 2021
+      - from: 2021
   - name: 振替休日
     regions: [jp]
     function: jp_health_sports_day_substitute(year)
@@ -221,13 +222,13 @@ months:
     regions: [jp]
     mday: 23
     year_ranges:
-      - before: 2018
+      - until: 2018
   - name: 振替休日
     regions: [jp]
     mday: 23
     function: jp_substitute_holiday(year, month, day)
     year_ranges:
-      - before: 2018
+      - until: 2018
 
 methods:
   jp_health_sports_day_substitute:

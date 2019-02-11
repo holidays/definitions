@@ -1,6 +1,6 @@
 # Turkish holiday definitions for the Ruby Holiday gem.
 #
-# Updated: 2017-06-14
+# Updated: 2019-02-10
 #
 # Note:
 # This holiday definition file contains pre-defined dates
@@ -64,7 +64,7 @@ months:
     regions: [tr]
     mday: 15
     year_ranges:
-    - after: 2016
+    - from: 2016
   8:
   - name: Zafer Bayramı # Victory Day
     regions: [tr]

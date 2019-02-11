@@ -1,6 +1,6 @@
 # Ukrainian holiday definitions for the Ruby Holiday gem.
 #
-# Updated: 2018-11-22.
+# Updated: 2019-02-10.
 # Sources:
 # - https://en.wikipedia.org/wiki/Public_holidays_in_Ukraine
 # - https://uk.wikipedia.org/wiki/%D0%9D%D0%B5%D1%80%D0%BE%D0%B1%D0%BE%D1%87%D1%96_%D0%B4%D0%BD%D1%96_%D0%B2_%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D1%96
@@ -39,7 +39,7 @@ months:
     regions: [ua]
     mday: 2
     year_ranges:
-    - before: 2017
+    - until: 2017
   - name: День перемоги над нацизмом у Другій світовій війні # Victory day over Nazism in World War II
     regions: [ua]
     mday: 9
@@ -50,7 +50,7 @@ months:
     mday: 28
     observed: to_monday_if_weekend(date)
     year_ranges:
-    - after: 1997
+    - from: 1997
   7:
   - name: День Незалежності України # Independence Day
     regions: [ua]
@@ -63,21 +63,21 @@ months:
     mday: 24
     observed: to_monday_if_weekend(date)
     year_ranges:
-    - after: 1992
+    - from: 1992
   10:
   - name: День захисника України # Defender of Ukraine Day
     regions: [ua]
     mday: 14
     observed: to_monday_if_weekend(date)
     year_ranges:
-    - after: 2015
+    - from: 2015
   12:
   - name: Різдво Христове # (Gregorian and Revised Julian) Christmas
     regions: [ua]
     mday: 25
     observed: to_monday_if_weekend(date)
     year_ranges:
-    - after: 2017
+    - from: 2017
 
 tests:
 - given:
