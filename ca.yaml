@@ -157,6 +157,10 @@ months:
     week: 1
     regions: [ca_nb]
     wday: 1
+  - name: Terry Fox Day
+    week: 1
+    regions: [ca_mb]
+    wday: 1
   - name: Discovery Day
     week: 3
     regions: [ca_yt]
@@ -781,3 +785,23 @@ tests:
       regions: ['ca_yt']
     expect:
       name: 'National Aboriginal Day'
+  - given:
+      date: '2019-08-05'
+      regions: ['ca_mb']
+    expect:
+      name: 'Terry Fox Day'
+  - given:
+      date: '2020-08-03'
+      regions: ['ca_mb']
+    expect:
+      name: 'Terry Fox Day'
+  - given:
+      date: '2015-08-03'
+      regions: ['ca_mb']
+    expect:
+      name: 'Terry Fox Day'
+  - given:
+      date: '2045-08-07'
+      regions: ['ca_mb']
+    expect:
+      name: 'Terry Fox Day'
