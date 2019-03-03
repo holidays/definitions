@@ -184,7 +184,7 @@ months:
   - name: Christmas Day
     regions: [ca]
     mday: 25
-    observed: to_monday_if_weekend(date)
+    observed: to_weekday_if_weekend(date)
   - name: Boxing Day
     regions: [ca_on]
     mday: 26
@@ -751,6 +751,12 @@ tests:
       name: "Christmas Day"
   - given:
       date: '2016-12-26'
+      regions: ["ca"]
+      options: ["observed"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: '2021-12-24'
       regions: ["ca"]
       options: ["observed"]
     expect:
