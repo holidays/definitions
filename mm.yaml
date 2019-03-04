@@ -1,0 +1,92 @@
+# Myanmar holiday (incomplete)definitions for the Ruby Holiday gem.
+#
+# Updated: 2019-02-13.
+# Some dates in Islamic Calendar are missing.
+# Sources:
+# - Sourced from client via Alex Holder
+---
+months:
+  1:
+  - name: New Year's Day
+    regions: [mm]
+    mday: 1
+  - name: Independence Day
+    regions: [mm]
+    mday: 4
+  - name: Kayin New Year's Day
+    regions: [mm]
+    mday: 13
+  2:
+  - name: Union Day
+    regions: [mm]
+    mday: 12
+  3:
+  - name: Peasants Day
+    regions: [mm]
+    mday: 2
+  - name: Tabaung Full Moon Day
+    regions: [mm]
+    mday: 20
+  - name: Armed Forces Day
+    regions: [mm]
+    mday: 27
+  4:
+  - name: Thingyan Eve
+    regions: [mm]
+    mday: 13
+  - name: Thingyan (Start of Water Festival)
+    regions: [mm]
+    mday: 14
+  - name: Water Festival Day
+    regions: [mm]
+    mday: 15
+  - name: Water Festival Day
+    regions: [mm]
+    mday: 16
+  - name: Myanmar New Year Day
+    regions: [mm]
+    mday: 17
+  5:
+  - name: Labor Day / May Day
+    regions: [mm]
+    mday: 1
+  - name: Kasone Full Moon Day
+    regions: [mm]
+    mday: 18
+  7:
+  - name: Warso  Full Moon Day
+    regions: [mm]
+    mday: 16
+  - name: Martyrs' Day
+    regions: [mm]
+    mday: 19
+  10:
+  - name: Buddhist Lent Holiday
+    regions: [mm]
+    mday: 12
+  - name: Thadingyut Full Moon Day
+    regions: [mm]
+    mday: 13
+  - name: Buddhist Lent Holiday
+    regions: [mm]
+    mday: 14
+  11:
+  - name: Tazaung Daing Holiday
+    regions: [mm]
+    mday: 10
+  - name: Tazaung Daing Full Moon Day
+    regions: [mm]
+    mday: 11
+  - name: National Day
+    regions: [mm]
+    mday: 21
+  12:
+  - name: Christmas Day
+    regions: [mm]
+    mday: 25
+  - name: Kayin New Year Day
+    regions: [mm]
+    mday: 26
+  - name: New Year Eve
+    regions: [mm]
+    mday: 31
