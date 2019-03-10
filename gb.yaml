@@ -81,13 +81,13 @@ months:
     type: informal
     observed: to_monday_if_weekend(date)
     year_ranges:
-    - until: 2006
+      until: 2006
   - name: St. Andrew's Day
     regions: [gb_sct]
     mday: 30
     observed: to_monday_if_weekend(date)
     year_ranges:
-    - from: 2007
+      from: 2007
   12:
   - name: Christmas Day
     regions: [gb]

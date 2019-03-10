@@ -49,13 +49,13 @@ months:
     regions: [jp]
     mday: 23
     year_ranges:
-      - from: 2020
+      from: 2020
   - name: 振替休日
     regions: [jp]
     mday: 23
     function: jp_substitute_holiday(year, month, day)
     year_ranges:
-      - from: 2020
+      from: 2020
   3:
   - name: 春分の日
     regions: [jp]
@@ -75,18 +75,18 @@ months:
     regions: [jp]
     mday: 30
     year_ranges:
-      - limited: [2019]
+      limited: [2019]
   5:
   - name: 天皇即位
     regions: [jp]
     mday: 1
     year_ranges:
-      - limited: [2019]
+      limited: [2019]
   - name: 休日
     regions: [jp]
     mday: 2
     year_ranges:
-      - limited: [2019]
+      limited: [2019]
   - name: 憲法記念日
     regions: [jp]
     mday: 3
@@ -113,54 +113,62 @@ months:
     regions: [jp]
     mday: 20
     year_ranges:
-      - between: 1996..2002
+      between:
+        start: 1996
+        end: 2002
   - name: 海の日
     regions: [jp]
     wday: 1
     week: 3
     year_ranges:
-      - between: 2003..2019
+      between:
+        start: 2003
+        end: 2019
   - name: 海の日
     regions: [jp]
     mday: 23
     year_ranges:
-      - limited: [2020]
+      limited: [2020]
   - name: 海の日
     regions: [jp]
     wday: 1
     week: 3
     year_ranges:
-      - from: 2021
+      from: 2021
   - name: 振替休日
     regions: [jp]
     function: jp_marine_day_substitute(year)
     year_ranges:
-      - between: 1996..2002
+      between:
+        start: 1996
+        end: 2002
   - name: スポーツの日
     regions: [jp]
     mday: 24
     year_ranges:
-      - limited: [2020]
+      limited: [2020]
   8:
   - name: 山の日
     regions: [jp]
     year_ranges:
-      - between: 2016..2019
+      between:
+        start: 2016
+        end: 2019
     function: jp_mountain_holiday(year)
   - name: 山の日
     regions: [jp]
     mday: 10
     year_ranges:
-      - limited: [2020]
+      limited: [2020]
   - name: 山の日
     regions: [jp]
     year_ranges:
-      - from: 2021
+      from: 2021
     function: jp_mountain_holiday(year)
   - name: 振替休日
     regions: [jp]
     year_ranges:
-      - from: 2016
+      from: 2016
     function: jp_mountain_holiday_substitute(year)
   9:
   - name: 敬老の日
@@ -173,7 +181,7 @@ months:
   - name: 国民の休日
     regions: [jp]
     year_ranges:
-      - from: 2003
+      from: 2003
     function: jp_citizens_holiday(year)
   - name: 秋分の日
     regions: [jp]
@@ -187,13 +195,13 @@ months:
     wday: 1
     week: 2
     year_ranges:
-      - until: 2019
+      until: 2019
   - name: スポーツの日
     regions: [jp]
     wday: 1
     week: 2
     year_ranges:
-      - from: 2021
+      from: 2021
   - name: 振替休日
     regions: [jp]
     function: jp_health_sports_day_substitute(year)
@@ -201,7 +209,7 @@ months:
     regions: [jp]
     mday: 22
     year_ranges:
-      - limited: [2019]
+      limited: [2019]
   11:
   - name: 文化の日
     regions: [jp]
@@ -222,13 +230,13 @@ months:
     regions: [jp]
     mday: 23
     year_ranges:
-      - until: 2018
+      until: 2018
   - name: 振替休日
     regions: [jp]
     mday: 23
     function: jp_substitute_holiday(year, month, day)
     year_ranges:
-      - until: 2018
+      until: 2018
 
 methods:
   jp_health_sports_day_substitute:

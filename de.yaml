@@ -88,7 +88,7 @@ months:
       regions: [de_be]
       mday: 8
       year_ranges:
-        - from: 2019
+        from: 2019
   5:
   - name: Tag der Arbeit
     regions: [de]
@@ -115,12 +115,12 @@ months:
     regions: [de]
     mday: 31
     year_ranges:
-    - limited: [2017]
+      limited: [2017]
   - name: Reformationstag
     regions: [de_hb, de_hh, de_ni, de_sh]
     mday: 31
     year_ranges:
-    - from: 2018
+      from: 2018
   11:
   - name: Allerheiligen
     regions: [de_bw, de_by, de_nw, de_rp, de_sl]

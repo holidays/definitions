@@ -39,7 +39,7 @@ months:
     regions: [ua]
     mday: 2
     year_ranges:
-    - until: 2017
+      until: 2017
   - name: День перемоги над нацизмом у Другій світовій війні # Victory day over Nazism in World War II
     regions: [ua]
     mday: 9
@@ -50,34 +50,34 @@ months:
     mday: 28
     observed: to_monday_if_weekend(date)
     year_ranges:
-    - from: 1997
+      from: 1997
   7:
   - name: День Незалежності України # Independence Day
     regions: [ua]
     mday: 16
     year_ranges:
-    - limited: [1991]
+      limited: [1991]
   8:
   - name: День Незалежності # Independence Day
     regions: [ua]
     mday: 24
     observed: to_monday_if_weekend(date)
     year_ranges:
-    - from: 1992
+      from: 1992
   10:
   - name: День захисника України # Defender of Ukraine Day
     regions: [ua]
     mday: 14
     observed: to_monday_if_weekend(date)
     year_ranges:
-    - from: 2015
+      from: 2015
   12:
   - name: Різдво Христове # (Gregorian and Revised Julian) Christmas
     regions: [ua]
     mday: 25
     observed: to_monday_if_weekend(date)
     year_ranges:
-    - from: 2017
+      from: 2017
 
 tests:
 - given:

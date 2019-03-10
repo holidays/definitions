@@ -64,7 +64,7 @@ months:
     regions: [tr]
     mday: 15
     year_ranges:
-    - from: 2016
+      from: 2016
   8:
   - name: Zafer Bayramı # Victory Day
     regions: [tr]

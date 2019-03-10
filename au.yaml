@@ -23,7 +23,7 @@ months:
     regions: [au_qld, au_act]
     function: easter(year)
     year_ranges:
-      - from: 2017
+      from: 2017
   - name: Easter Monday
     regions: [au]
     function: easter(year)

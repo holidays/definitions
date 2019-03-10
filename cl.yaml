@@ -21,12 +21,12 @@ months:
     regions: [cl]
     function: st_peter_st_paul_cl(year)
     year_ranges:
-      - from: 2000
+      from: 2000
   - name: Día de las Iglesias Evangélicas y Protestantes
     regions: [cl]
     function: other_churches_day_cl(year)
     year_ranges:
-      - from: 2008
+      from: 2008
   1:
   - name: Año Nuevo
     regions: [cl]
@@ -43,7 +43,7 @@ months:
     regions: [cl]
     mday: 29
     year_ranges:
-      - until: 1999
+      until: 1999
   7:
   - name: Día de la Virgen del Carmen
     regions: [cl]
@@ -64,11 +64,11 @@ months:
     regions: [cl]
     mday: 12
     year_ranges:
-      - until: 1999
+      until: 1999
   - name: Encuentro de Dos Mundos
     regions: [cl]
     year_ranges:
-      - from: 2000
+      from: 2000
     function: columbus_day_cl(year)
   11:
   - name: Día de Todos los Santos
