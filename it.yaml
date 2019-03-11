@@ -3,6 +3,14 @@
 # Updated: 2008-11-23.
 # Sources:
 # - http://en.wikipedia.org/wiki/Holidays_in_Italy
+#
+# Changes 2019-11-03
+# - add Rome region (it_rm)
+# - add Festa di San Pietro e Paolo for it_rm region
+#
+# Sources:
+# - https://en.wikipedia.org/wiki/Feast_of_Saints_Peter_and_Paul
+# - https://www.officeholidays.com/countries/global/st_peter_and_paul.php
 ---
 months:
   0:
@@ -32,6 +40,9 @@ months:
   - name: Festa della Repubblica
     regions: [it]
     mday: 2
+  - name: Festa di San Pietro e Paolo
+    regions: [it_rm]
+    mday: 29
   8:
   - name: Assunzione
     regions: [it]
@@ -94,6 +105,17 @@ tests:
       options: ["informal"]
     expect:
       name: "Festa della Repubblica"
+  - given:
+      date: '2019-06-29'
+      regions: ["it_rm"]
+      options: ["informal"]
+    expect:
+      name: "Festa di San Pietro e Paolo"
+  - given:
+      date: '2019-06-29'
+      regions: ["it"]
+    expect:
+      holiday: false
   - given:
       date: '2007-08-15'
       regions: ["it"]
