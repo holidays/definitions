@@ -266,17 +266,17 @@ tests:
       name: 'Día de la Ascensión'
   # Corpus Christi
   - given:
-      date: '2014-06-19'
+      date: '2014-06-23'
       regions: ['co']
     expect:
       name: 'Corpus Christi'
   - given:
-      date: '2016-05-26'
+      date: '2016-05-30'
       regions: ['co']
     expect:
       name: 'Corpus Christi'
   - given:
-      date: '2017-06-15'
+      date: '2017-06-19'
       regions: ['co']
     expect:
       name: 'Corpus Christi'
@@ -297,6 +297,11 @@ tests:
     expect:
       name: 'Sagrado Corazón'
   # San Pedro y San Pablo
+  - given:
+      date: '2014-06-30'
+      regions: ['co']
+    expect:
+      name: 'San Pedro y San Pablo'
   - given:
       date: '2016-07-04'
       regions: ['co']
