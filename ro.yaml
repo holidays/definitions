@@ -81,7 +81,7 @@ months:
 
 tests:
   - given:
-      date: '2017-04-17'
+      date: '2017-04-14'
       regions: ["ro"]
     expect:
       holiday: false
