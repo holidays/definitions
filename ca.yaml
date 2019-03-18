@@ -85,7 +85,6 @@ months:
     regions: [ca_nl]
     mday: 17
     type: informal
-  3:
   - name: St. George's Day
     regions: [ca_nl]
     mday: 23
@@ -312,7 +311,8 @@ tests:
       regions: ["ca_sk"]
     expect:
       name: "Family Day"
-# Family Day in Saskatchewan - should not be active before 2007
+
+  # Family Day in Saskatchewan - should not be active before 2007
   - given:
       date: '1970-02-16'
       regions: ["ca_sk"]
@@ -736,9 +736,32 @@ tests:
     expect:
       name: "Canada Day"
 
-  # Christmas observed date
+  # Christmas Day
   - given:
-      date: '2010-12-27'
+      date: '2010-12-25'
+      regions: ["ca"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: '2018-12-25'
+      regions: ["ca"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: '2022-12-25'
+      regions: ["ca"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: '2022-12-25'
+      regions: ["ca"]
+      options: ["observed"]
+    expect:
+      holiday: false
+
+  # Christmas Day observed date
+  - given:
+      date: '2010-12-24'
       regions: ["ca"]
       options: ["observed"]
     expect:
@@ -757,6 +780,12 @@ tests:
       name: "Christmas Day"
   - given:
       date: '2021-12-24'
+      regions: ["ca"]
+      options: ["observed"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: '2022-12-26'
       regions: ["ca"]
       options: ["observed"]
     expect:
