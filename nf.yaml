@@ -82,8 +82,3 @@ tests:
       regions: ['nf']
     expect:
       name: "Queen's Birthday"
-  - given:
-      date: ['2019-06-10']
-      regions: ['nf']
-    expect:
-      name: "Bounty Day"
