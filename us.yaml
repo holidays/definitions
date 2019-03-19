@@ -144,7 +144,7 @@ months:
     mday: 31
   4:
   - name: Emancipation Day
-    regions: [us_dc, us_ca]
+    regions: [us_dc]
     observed: to_weekday_if_weekend(date)
     mday: 16
   - name: Patriots' Day # Third Monday in April
@@ -557,7 +557,7 @@ tests:
       name: "Emancipation Day"
   - given:
       date: ['2017-4-16']
-      regions: ["us_dc", "us_ca"]
+      regions: ["us_dc"]
     expect:
       name: "Emancipation Day"
 
