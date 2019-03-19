@@ -260,7 +260,7 @@ months:
     wday: 5
   11:
   - name: Election Day
-    regions: [us_de, us_hi, us_il, us_in, us_mt, us_nj, us_ny, us_pa, us_ri]
+    regions: [us_de, us_hi, us_in, us_mt, us_nj, us_ny, us_pa, us_ri]
     function: election_day(year)
   - name: Veterans Day
     regions: [us]
@@ -852,7 +852,7 @@ tests:
       holiday: false
   - given:
       date: ['2017-11-7', '2018-11-6', '2021-11-2']
-      regions: ["us_de", "us_hi", "us_il", "us_in", "us_mt", "us_nj", "us_ny", "us_pa", "us_ri"]
+      regions: ["us_de", "us_hi", "us_in", "us_mt", "us_nj", "us_ny", "us_pa", "us_ri"]
     expect:
       name: "Election Day"
   - given:
