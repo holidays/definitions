@@ -35,7 +35,6 @@
 # - https://en.wikipedia.org/wiki/Washington%27s_Birthday
 # - https://en.wikipedia.org/wiki/Shrove_Tuesday
 # - https://en.wikipedia.org/wiki/Town_meeting#Vermont
-# - https://en.wikipedia.org/wiki/Casimir_Pulaski_Day
 # - https://en.wikipedia.org/wiki/Seward%27s_Day
 # - https://en.wikipedia.org/wiki/Emancipation_Day
 # - https://en.wikipedia.org/wiki/Patriots%27_Day
@@ -125,10 +124,6 @@ months:
     regions: [us]
     wday: 1
   3:
-  - name: Casimir Pulaski Day # First Monday in March
-    regions: [us_il]
-    week: 1
-    wday: 1
   - name: Town Meeting Day # First Tuesday in March
     regions: [us_vt]
     week: 1
@@ -149,7 +144,7 @@ months:
     mday: 31
   4:
   - name: Emancipation Day
-    regions: [us_dc, us_ca]
+    regions: [us_dc]
     observed: to_weekday_if_weekend(date)
     mday: 16
   - name: Patriots' Day # Third Monday in April
@@ -263,7 +258,7 @@ months:
     wday: 5
   11:
   - name: Election Day
-    regions: [us_de, us_hi, us_il, us_in, us_mt, us_nj, us_ny, us_pa, us_ri]
+    regions: [us_de, us_hi, us_in, us_mt, us_nj, us_ny, us_pa, us_ri]
     function: election_day(year)
   - name: Veterans Day
     regions: [us]
@@ -496,11 +491,6 @@ tests:
       regions: ["us"]
     expect:
       holiday: false
-  - given:
-      date: ['2017-3-6', '2018-3-5', '2019-3-4']
-      regions: ["us_il"]
-    expect:
-      name: "Casimir Pulaski Day"
 
   - given:
       date: ['2017-3-7', '2018-3-6', '2019-3-5']
@@ -567,7 +557,7 @@ tests:
       name: "Emancipation Day"
   - given:
       date: ['2017-4-16']
-      regions: ["us_dc", "us_ca"]
+      regions: ["us_dc"]
     expect:
       name: "Emancipation Day"
 
@@ -860,7 +850,7 @@ tests:
       holiday: false
   - given:
       date: ['2017-11-7', '2018-11-6', '2021-11-2']
-      regions: ["us_de", "us_hi", "us_il", "us_in", "us_mt", "us_nj", "us_ny", "us_pa", "us_ri"]
+      regions: ["us_de", "us_hi", "us_in", "us_mt", "us_nj", "us_ny", "us_pa", "us_ri"]
     expect:
       name: "Election Day"
   - given:
