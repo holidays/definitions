@@ -30,9 +30,6 @@ months:
     regions: [nf]
     mday: 6
   4:
-  - name: Easter Monday
-    regions: [nf]
-    mday: 2
   - name: Anzac Day
     regions: [nf]
     mday: 25
