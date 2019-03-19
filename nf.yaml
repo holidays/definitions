@@ -37,6 +37,7 @@ months:
   - name: Bounty Day
     regions: [nf]
     mday: 8
+    observed: to_monday_if_weekend(date)
   - name: Queen's Birthday
     regions: [nf]
     function: monday_after_second_saturday(year)
@@ -81,3 +82,8 @@ tests:
       regions: ['nf']
     expect:
       name: "Queen's Birthday"
+  - given:
+      date: ['2019-06-10']
+      regions: ['nf']
+    expect:
+      name: "Bounty Day"
