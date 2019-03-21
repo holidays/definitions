@@ -298,11 +298,6 @@ tests:
       name: 'Sagrado Corazón'
   # San Pedro y San Pablo
   - given:
-      date: '2014-06-30'
-      regions: ['co']
-    expect:
-      name: 'San Pedro y San Pablo'
-  - given:
       date: '2016-07-04'
       regions: ['co']
     expect:
