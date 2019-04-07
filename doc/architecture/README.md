@@ -12,3 +12,4 @@ Please note that we only began keeping ADRs for this project in October of 2018.
 ## Table of contents
 
  1. [Language specific custom methods](adr-001.md)
+ 1. [Year ranges syntax update](adr-002.md)

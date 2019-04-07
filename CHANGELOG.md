@@ -1,5 +1,14 @@
 # Holiday definitions
 
+## 5.0.0
+
+Major semver bump due to changes related to the `year_ranges` option. The following keys have been renamed:
+
+* `before` is now `until`
+* `after` is now `from`
+
+The behavior of these two options has not changed. To read more about the reasons behind this change please see the [associated ADR](doc/architecture/adr-002.md).
+
 ## 4.1.0
 
 * Add new Emperor's Coronation Day holiday to `jp` (thanks to https://github.com/ttwo32)
