@@ -22,7 +22,7 @@ months:
     function: orthodox_easter(year)
     function_modifier: -2
     year_ranges:
-      - after: 2018
+     from: 2018
   - name: Paștele - duminică
     regions: [ro]
     function: orthodox_easter(year)
@@ -49,7 +49,7 @@ months:
     regions: [ro]
     mday: 24
     year_ranges:
-      - after: 2017
+      from: 2017
   5:
   - name: Ziua muncii
     regions: [ro]
@@ -59,7 +59,7 @@ months:
     regions: [ro]
     mday: 1
     year_ranges:
-      - after: 2017
+     from: 2017
   8:
   - name: Adormirea Maicii Domnului
     regions: [ro]
