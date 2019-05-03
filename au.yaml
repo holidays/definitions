@@ -1,5 +1,5 @@
 # Australian holiday definitions for the Ruby Holiday gem.
-# Updated: 2019-02-10
+# Updated: 2019-05-03
 # Sources:
 # - http://en.wikipedia.org/wiki/Australian_public_holidays
 # - http://www.docep.wa.gov.au/lr/LabourRelations/Content/Wages%20and%20Conditions/Public%20Holidays/Public_Holidays.html
@@ -177,15 +177,16 @@ months:
 
 methods:
   afl_grand_final:
+    # Was not celebrated before 2015
+    # Held on the Friday before the last Saturday every September unless otherwise noted (e.g. 2015)
     arguments: year
     ruby: |
-      case year
-      when 2015
+      if year <= 2014
+        nil
+      elsif year == 2015
         Date.civil(2015, 10, 2)
-      when 2016
-        Date.civil(2016, 9, 30)
-      when 2017
-        Date.civil(2017, 9, 29)
+      else
+        Date.civil(year, 9, -1).downto(0).find(&:saturday?).prev_day
       end
   qld_queens_bday_october:
     # http://www.justice.qld.gov.au/fair-and-safe-work/industrial-relations/public-holidays/dates
@@ -456,6 +457,11 @@ tests:
       regions: ["au_vic_melbourne"]
     expect:
       name: 'Melbourne Cup Day'
+  - given:
+      date: '2014-09-26'
+      regions: ["au_vic"]
+    expect:
+      holiday: false
   - given:
       date: '2015-10-02'
       regions: ["au_vic"]
