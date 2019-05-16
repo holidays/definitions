@@ -95,9 +95,8 @@ months:
     function: may_pub_hol_sa(year)
   - name: ACT Reconciliation Day
     regions: [au_act]
-    mday: 28
-    year_ranges:
-      - after: 2018
+    mday: 27
+    observed: to_next_monday(date)
   6:
   - name: Foundation Day
     regions: [au_wa]
@@ -315,8 +314,9 @@ tests:
     expect:
       name: 'Family & Community Day'
   - given:
-      date: ['2018-05-28']
+      date: ['2017-05-29', '2018-05-28', '2019-05-27', '2020-06-01']
       regions: ["au_act"]
+      options: ["observed"]
     expect:
       name: 'ACT Reconciliation Day'
   - given:
