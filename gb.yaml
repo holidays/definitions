@@ -46,7 +46,7 @@ months:
   - name: Liberation Day
     regions: [je, gb_jsy, gg, gb_gsy]
     mday: 9
-  - name: Bank Holiday
+  - name: Spring Bank Holiday
     regions: [gb]
     week: -1
     wday: 1
@@ -62,7 +62,7 @@ months:
     regions: [gb_sct]
     week: 1
     wday: 1
-  - name: Bank Holiday
+  - name: Summer Bank Holiday
     regions: [gb_eng, gb_wls, gb_eaw, gb_nir, je, gb_jsy, gg, gb_gsy]
     week: -1
     wday: 1
@@ -112,7 +112,7 @@ tests:
       regions: ["gb"]
       options: ["informal"]
     expect:
-      name: "Bank Holiday"
+      name: "Spring Bank Holiday"
   - given:
       date: '2008-11-05'
       regions: ["gb"]
@@ -307,7 +307,7 @@ tests:
       date: '2008-08-25'
       regions: ["gb_wls"]
     expect:
-      name: "Bank Holiday"
+      name: "Summer Bank Holiday"
   - given:
       date: '2008-03-24'
       regions: ["gb_eng"]
@@ -317,7 +317,7 @@ tests:
       date: '2008-08-25'
       regions: ["gb_eng"]
     expect:
-      name: "Bank Holiday"
+      name: "Summer Bank Holiday"
   - given:
       date: '2008-03-24'
       regions: ["gb_nir"]
@@ -327,7 +327,7 @@ tests:
       date: '2008-08-25'
       regions: ["gb_nir"]
     expect:
-      name: "Bank Holiday"
+      name: "Summer Bank Holiday"
   - given:
       date: '2008-03-24'
       regions: ["gb_eaw"]
@@ -337,7 +337,7 @@ tests:
       date: '2008-08-25'
       regions: ["gb_eaw"]
     expect:
-      name: "Bank Holiday"
+      name: "Summer Bank Holiday"
   - given:
       date: '2008-03-24'
       regions: ["gb_"]
@@ -347,7 +347,7 @@ tests:
       date: '2008-08-25'
       regions: ["gb_"]
     expect:
-      name: "Bank Holiday"
+      name: "Summer Bank Holiday"
   - given:
       date: '2018-05-09'
       regions: ["je"]
@@ -362,4 +362,4 @@ tests:
       date: '2018-08-27'
       regions: ["je"]
     expect:
-      name: "Bank Holiday"
+      name: "Summer Bank Holiday"
