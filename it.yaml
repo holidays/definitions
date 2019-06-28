@@ -11,6 +11,14 @@
 # Sources:
 # - https://en.wikipedia.org/wiki/Feast_of_Saints_Peter_and_Paul
 # - https://www.officeholidays.com/countries/global/st_peter_and_paul.php
+#
+# Changes 2019-06-28
+# - add Florence region (it_fi)
+# - add Genoa region (it_ge)
+# - add Turin region (it_to)
+# - add Festa di San Giovanni Battista for it_fi, it_ge, it_to regions
+# Sources:
+# - https://www.officeholidays.com/holidays/italy/st-johns-day
 ---
 months:
   0:
@@ -40,6 +48,9 @@ months:
   - name: Festa della Repubblica
     regions: [it]
     mday: 2
+  - name: Festa di San Giovanni Battista
+    regions: [it_fi, it_ge, it_to]
+    mday: 24
   - name: Festa di San Pietro e Paolo
     regions: [it_rm]
     mday: 29
@@ -105,6 +116,17 @@ tests:
       options: ["informal"]
     expect:
       name: "Festa della Repubblica"
+  - given:
+      date: '2019-06-24'
+      regions: ["it_fi", "it_ge", "it_to"]
+      options: ["informal"]
+    expect:
+      name: "Festa di San Giovanni Battista"
+  - given:
+      date: '2019-06-24'
+      regions: ["it"]
+    expect:
+      holiday: false
   - given:
       date: '2019-06-29'
       regions: ["it_rm"]
