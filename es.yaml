@@ -82,6 +82,9 @@ months:
     regions: [es_lo]
     mday: 9
     observed: to_monday_if_sunday(date)
+  - name: San Juan
+    regions: [es_ct, es_vc]
+    mday: 24
   7:
   - name: Santiago Apostol
     regions: [es_ga]
