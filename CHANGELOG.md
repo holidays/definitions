@@ -9,6 +9,19 @@ Major semver bump due to changes related to the `year_ranges` option. The follow
 
 The behavior of these two options has not changed. To read more about the reasons behind this change please see the [associated ADR](doc/architecture/adr-002.md).
 
+Definitions changes:
+
+* Fix typos and syntax on `th` defs
+* Update Christmas-related holidays in `us` and `ca` (thanks to https://github.com/jonjonw)
+* Add `it_rm` as `it` subregion (thanks to https://github.com/stephane)
+* Update `it` subregions for accuracy (thanks to https://github.com/nolith and https://github.com/NatyDev)
+* Add `ro` region (thanks to https://github.com/stephane)
+* Update `il` and `ca` holidays for accuracy (thanks to https://github.com/ghiculescu)
+* Add `lv` region (thanks to https://github.com/aleksandrs-ledovskis)
+* Update `es` holidays (thanks to https://github.com/thefabbulus)
+* Update `gb` region to fix May Day (thanks to https://github.com/LauraBondini)
+* Update `hu` region for Easter accuracy (thanks to https://github.com/HuBandiT)
+
 ## 4.1.0
 
 * Add new Emperor's Coronation Day holiday to `jp` (thanks to https://github.com/ttwo32)
