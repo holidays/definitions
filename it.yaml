@@ -132,12 +132,18 @@ tests:
       options: ["informal"]
     expect:
       name: "Festa della Liberazione"
-  - given:
-      date: '2019-04-25'
-      regions: ["it_ve"]
-      options: ["informal"]
-    expect:
-      name: "Festa di San Marco Evangelista"
+
+  # This is a valid test but unfortunately we have no way right now to handle two holidays that occur on the same day in tests.
+  # Allowing for it will require some kind of update to the test def here to say 'I expect this to be the second result returned'
+  # and this will require ruby updates.
+  #
+  #- given:
+  #    date: '2019-04-25'
+  #    regions: ["it_ve"]
+  #    options: ["informal"]
+  #  expect:
+  #    name: "Festa di San Marco Evangelista"
+
   - given:
       date: '2019-04-27'
       regions: ["it_tv"]
