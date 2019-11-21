@@ -1,6 +1,6 @@
 # Croatian holiday definitions for the Ruby Holiday gem.
 #
-# Updated: 2012-08-29.
+# Updated: 2019-11-21.
 # Sources:
 #  http://en.wikipedia.org/wiki/Public_holidays_in_Croatia
 ---
@@ -31,10 +31,17 @@ months:
   - name: Dan državnosti
     regions: [hr]
     mday: 30
+    year_ranges:
+      from: 2020
   6:
   - name: Dan antifašističke borbe
     regions: [hr]
     mday: 22
+  - name: Dan državnosti
+    regions: [hr]
+    mday: 25
+    year_ranges:
+      until: 2020
   8:
   - name: Dan pobjede i domovinske zahvalnosti i Dan hrvatskih branitelja
     regions: [hr]
@@ -42,6 +49,12 @@ months:
   - name: Velika Gospa
     regions: [hr]
     mday: 15
+  10:
+  - name: Dan neovisnosti
+    regions: [hr]
+    mday: 8
+    year_ranges:
+      until: 2020
   11:
   - name: Svi sveti
     regions: [hr]
@@ -49,6 +62,8 @@ months:
   - name: Dan sjećanja na žrtve Domovinskog rata i Dan sjećanja na žrtvu Vukovara i Škabrnje
     regions: [hr]
     mday: 18
+    year_ranges:
+      from: 2020
   12:
   - name: Božić
     regions: [hr]
