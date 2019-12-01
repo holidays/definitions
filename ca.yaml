@@ -174,7 +174,7 @@ months:
   10:
   - name: Thanksgiving
     week: 2
-    regions: [ca_ab, ca_bc, ca_mb, ca_nt, ca_nu, ca_on, ca_sk, ca_yt]
+    regions: [ca_ab, ca_bc, ca_mb, ca_nt, ca_nu, ca_on, ca_qc, ca_sk, ca_yt]
     wday: 1
   11:
   - name: Remembrance Day
