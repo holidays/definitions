@@ -68,32 +68,108 @@ describe Definitions::Validation::Month do
       }
     end
 
-    it 'returns error if year_ranges contains unknown subkey' do
-      months = { 1 => [{"name"=>"Test Holiday", "regions"=>["test"], "mday"=>1, "year_ranges" => [{"blah" => [2018]}] }] }
-      expect { subject.call(months) }.to raise_error(Definitions::Errors::InvalidMonth) { |e|
-        expect(e.message).to eq("The :year_ranges value only accepts the following: :before, :after, :limited, :between, received: #{months}")
-      }
-    end
+    context 'year_ranges' do
+      it 'returns error if year_ranges contains unknown subkey' do
+        months = { 1 => [{"name"=>"Test Holiday", "regions"=>["test"], "mday"=>1, "year_ranges" => {"blah" => [2018]} }] }
+        expect { subject.call(months) }.to raise_error(Definitions::Errors::InvalidMonth) { |e|
+          expect(e.message).to eq("The :year_ranges value only accepts the following: :until, :from, :limited, :between, received: #{months}")
+        }
+      end
 
-    it 'returns error if :after value is not a single integer' do
-      months = { 1 => [{"name"=>"Test Holiday", "regions"=>["test"], "mday"=>1, "year_ranges" => [{"after" => [2018]}] }] }
-      expect { subject.call(months) }.to raise_error(Definitions::Errors::InvalidMonth) { |e|
-        expect(e.message).to eq("The year_ranges.after value must contain a single 'year' integer, ex. 2018, received: #{months}")
-      }
-    end
+      it 'returns error if :until value is not a single integer' do
+        months = { 1 => [{"name"=>"Test Holiday", "regions"=>["test"], "mday"=>1, "year_ranges" => {"until" => [2018]} }] }
+        expect { subject.call(months) }.to raise_error(Definitions::Errors::InvalidMonth) { |e|
+          expect(e.message).to eq("The year_ranges.until value must contain a single 'year' integer, ex. 2018, received: #{months}")
+        }
+      end
 
-    it 'returns error if :limited value is not an array' do
-      months = { 1 => [{"name"=>"Test Holiday", "regions"=>["test"], "mday"=>1, "year_ranges" => [{"limited" => 2018}] }] }
-      expect { subject.call(months) }.to raise_error(Definitions::Errors::InvalidMonth) { |e|
-        expect(e.message).to eq("The year_ranges.limited value must contain an array of 'year' integers, ex. [2018], received: #{months}")
-      }
-    end
+      it 'returns error if :from value is not a single integer' do
+        months = { 1 => [{"name"=>"Test Holiday", "regions"=>["test"], "mday"=>1, "year_ranges" => {"from" => [2018]} }] }
+        expect { subject.call(months) }.to raise_error(Definitions::Errors::InvalidMonth) { |e|
+          expect(e.message).to eq("The year_ranges.from value must contain a single 'year' integer, ex. 2018, received: #{months}")
+        }
+      end
 
-    it 'returns error if :limited value is not an array of integers' do
-      months = { 1 => [{"name"=>"Test Holiday", "regions"=>["test"], "mday"=>1, "year_ranges" => [{"limited" => ["blah"]}] }] }
-      expect { subject.call(months) }.to raise_error(Definitions::Errors::InvalidMonth) { |e|
-        expect(e.message).to eq("The year_ranges.limited value must contain an array of 'year' integers, ex. [2018], received: #{months}")
-      }
+      it 'returns error if :limited value is not an array' do
+        months = { 1 => [{"name"=>"Test Holiday", "regions"=>["test"], "mday"=>1, "year_ranges" => {"limited" => 2018} }] }
+        expect { subject.call(months) }.to raise_error(Definitions::Errors::InvalidMonth) { |e|
+          expect(e.message).to eq("The year_ranges.limited value must contain an array of 'year' integers, ex. [2018], received: #{months}")
+        }
+      end
+
+      it 'returns error if :limited value is not an array of integers' do
+        months = { 1 => [{"name"=>"Test Holiday", "regions"=>["test"], "mday"=>1, "year_ranges" => {"limited" => ["blah"]} }] }
+        expect { subject.call(months) }.to raise_error(Definitions::Errors::InvalidMonth) { |e|
+          expect(e.message).to eq("The year_ranges.limited value must contain an array of 'year' integers, ex. [2018], received: #{months}")
+        }
+      end
+
+      context 'between' do
+        it 'returns error if not a hash' do
+          months = { 1 => [{"name"=>"Test Holiday", "regions"=>["test"], "mday"=>1, "year_ranges" => {"between" => "2008..2012" } }] }
+          expect { subject.call(months) }.to raise_error(Definitions::Errors::InvalidMonth) { |e|
+            expect(e.message).to eq("year_ranges.between must contain both a 'start' and 'end' key, received: #{months}")
+          }
+        end
+
+        it 'returns error if start is missing' do
+          months = { 1 => [{"name"=>"Test Holiday", "regions"=>["test"], "mday"=>1, "year_ranges" => {"between" => {"end" => 2018} } }] }
+          expect { subject.call(months) }.to raise_error(Definitions::Errors::InvalidMonth) { |e|
+            expect(e.message).to eq("year_ranges.between must contain both a 'start' and 'end' key, received: #{months}")
+          }
+        end
+
+        it 'returns error if end is missing' do
+          months = { 1 => [{"name"=>"Test Holiday", "regions"=>["test"], "mday"=>1, "year_ranges" => {"between" => {"start" => 2016} } }] }
+          expect { subject.call(months) }.to raise_error(Definitions::Errors::InvalidMonth) { |e|
+            expect(e.message).to eq("year_ranges.between must contain both a 'start' and 'end' key, received: #{months}")
+          }
+        end
+
+        it 'returns an error if start value is not an integer' do
+          months = { 1 => [{"name"=>"Test Holiday", "regions"=>["test"], "mday"=>1, "year_ranges" => {"between" => {"start" => "2016", "end" => 2018} } }] }
+          expect { subject.call(months) }.to raise_error(Definitions::Errors::InvalidMonth) { |e|
+            expect(e.message).to eq("The year_ranges.between.start value must contain a single 'year' integer, ex. 2018, received: #{months}")
+          }
+        end
+
+        it 'returns an error if end value is not an integer' do
+          months = { 1 => [{"name"=>"Test Holiday", "regions"=>["test"], "mday"=>1, "year_ranges" => {"between" => {"start" => 2016, "end" => "2018"} } }] }
+          expect { subject.call(months) }.to raise_error(Definitions::Errors::InvalidMonth) { |e|
+            expect(e.message).to eq("The year_ranges.between.end value must contain a single 'year' integer, ex. 2018, received: #{months}")
+          }
+        end
+
+        it 'returns an error if end value is before start' do
+          months = { 1 => [{"name"=>"Test Holiday", "regions"=>["test"], "mday"=>1, "year_ranges" => {"between" => {"start" => 2016, "end" => 2015} } }] }
+          expect { subject.call(months) }.to raise_error(Definitions::Errors::InvalidMonth) { |e|
+            expect(e.message).to eq("The year_ranges.between.end value cannot be before the start value, received: #{months}")
+          }
+        end
+
+        it 'returns an error if the start and end values are the same' do
+          months = { 1 => [{"name"=>"Test Holiday", "regions"=>["test"], "mday"=>1, "year_ranges" => {"between" => {"start" => 2016, "end" => 2016} } }] }
+          expect { subject.call(months) }.to raise_error(Definitions::Errors::InvalidMonth) { |e|
+            expect(e.message).to eq("The year_ranges.between start and end values cannot be the same, received: #{months}")
+          }
+        end
+      end
+
+      context 'with multiple selectors' do
+        it 'returns an error if provided an array' do
+          months = { 1 => [{"name"=>"Test Holiday", "regions"=>["test"], "mday"=>1, "year_ranges" => [{"from" => 2019}, {"between" => {"start" => 2014, "end" => 2016} }] }] }
+          expect { subject.call(months) }.to raise_error(Definitions::Errors::InvalidMonth) { |e|
+            expect(e.message).to eq("year_ranges only supports a single selector at this time, received: #{months}")
+          }
+        end
+
+        it 'returns an error if there is more than 1 sub key' do
+          months = { 1 => [{"name"=>"Test Holiday", "regions"=>["test"], "mday"=>1, "year_ranges" => {"from" => 2019, "between" => {"start" => 2014, "end" => 2016} } }] }
+          expect { subject.call(months) }.to raise_error(Definitions::Errors::InvalidMonth) { |e|
+            expect(e.message).to eq("year_ranges only supports a single selector at this time, received: #{months}")
+          }
+        end
+      end
     end
   end
 end

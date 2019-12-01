@@ -1,5 +1,35 @@
 # Holiday definitions
 
+## 5.0.1
+
+No behavior change.
+
+Commenting out a failing `it` test due to limitations of the current definition format. Unfortunately a holiday was added to the `it` region that falls on the same day as another existing region and we do not alwayd handle that in a uniform, consistent way. Currently there is no way to test that the _second_ region that is returned on a day is valid. Because of this I'm commenting out the test and moving forward. We'll need to add this functionality later.
+
+I only caught this when releasing the ruby gem. This goes back once again to [this issue](https://github.com/holidays/definitions/issues/42) with how we can test against an actual implementation from this repository.
+
+## 5.0.0
+
+Major semver bump due to changes related to the `year_ranges` option. The following keys have been renamed:
+
+* `before` is now `until`
+* `after` is now `from`
+
+The behavior of these two options has not changed. To read more about the reasons behind this change please see the [associated ADR](doc/architecture/adr-002.md).
+
+Definitions changes:
+
+* Fix typos and syntax on `th` defs
+* Update Christmas-related holidays in `us` and `ca` (thanks to https://github.com/jonjonw)
+* Add `it_rm` as `it` subregion (thanks to https://github.com/stephane)
+* Update `it` subregions for accuracy (thanks to https://github.com/nolith and https://github.com/NatyDev)
+* Add `ro` region (thanks to https://github.com/stephane)
+* Update `il` and `ca` holidays for accuracy (thanks to https://github.com/ghiculescu)
+* Add `lv` region (thanks to https://github.com/aleksandrs-ledovskis)
+* Update `es` holidays (thanks to https://github.com/thefabbulus)
+* Update `gb` region to fix May Day (thanks to https://github.com/LauraBondini)
+* Update `hu` region for Easter accuracy (thanks to https://github.com/HuBandiT)
+
 ## 4.1.0
 
 * Add new Emperor's Coronation Day holiday to `jp` (thanks to https://github.com/ttwo32)

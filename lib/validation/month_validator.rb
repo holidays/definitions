@@ -20,21 +20,32 @@ module Definitions
             end
 
             if month_def.key?("year_ranges")
-              month_def["year_ranges"].each do |yr|
-                yr.each_pair do |k, v|
-                  raise Errors::InvalidMonth.new("The :year_ranges value only accepts the following: :before, :after, :limited, :between, received: #{months}") unless [:before, :after, :limited, :between].include?(k.to_sym)
+              raise Errors::InvalidMonth.new("year_ranges only supports a single selector at this time, received: #{months}") unless month_def["year_ranges"].is_a?(Hash) && month_def["year_ranges"].size == 1
 
-                  case k
-                  when "after"
-                    raise Errors::InvalidMonth.new("The year_ranges.after value must contain a single 'year' integer, ex. 2018, received: #{months}") unless v.is_a?(Integer)
-                  when "limited"
-                    raise Errors::InvalidMonth.new("The year_ranges.limited value must contain an array of 'year' integers, ex. [2018], received: #{months}") unless v.is_a?(Array)
+              selector = month_def["year_ranges"].keys.first
+              value = month_def["year_ranges"][selector]
 
-                    v.each do |j|
-                     raise Errors::InvalidMonth.new("The year_ranges.limited value must contain an array of 'year' integers, ex. [2018], received: #{months}") unless j.is_a?(Integer)
-                    end
-                  end
+              raise Errors::InvalidMonth.new("The :year_ranges value only accepts the following: :until, :from, :limited, :between, received: #{months}") unless [:until, :from, :limited, :between].include?(selector.to_sym)
+
+              case selector
+              when "until"
+                raise Errors::InvalidMonth.new("The year_ranges.until value must contain a single 'year' integer, ex. 2018, received: #{months}") unless value.is_a?(Integer)
+              when "from"
+                raise Errors::InvalidMonth.new("The year_ranges.from value must contain a single 'year' integer, ex. 2018, received: #{months}") unless value.is_a?(Integer)
+              when "limited"
+                raise Errors::InvalidMonth.new("The year_ranges.limited value must contain an array of 'year' integers, ex. [2018], received: #{months}") unless value.is_a?(Array)
+
+                value.each do |j|
+                  raise Errors::InvalidMonth.new("The year_ranges.limited value must contain an array of 'year' integers, ex. [2018], received: #{months}") unless j.is_a?(Integer)
                 end
+              when "between"
+                raise Errors::InvalidMonth.new("year_ranges.between must contain both a 'start' and 'end' key, received: #{months}") unless value.is_a?(Hash) && value.key?("start") && value.key?("end")
+
+                raise Errors::InvalidMonth.new("The year_ranges.between.start value must contain a single 'year' integer, ex. 2018, received: #{months}") unless value["start"].is_a?(Integer)
+                raise Errors::InvalidMonth.new("The year_ranges.between.end value must contain a single 'year' integer, ex. 2018, received: #{months}") unless value["end"].is_a?(Integer)
+
+                raise Errors::InvalidMonth.new("The year_ranges.between.end value cannot be before the start value, received: #{months}") if value["end"] < value["start"]
+                raise Errors::InvalidMonth.new("The year_ranges.between start and end values cannot be the same, received: #{months}") if value["end"] == value["start"]
               end
             end
           end

@@ -4,11 +4,17 @@
 ---
 months:
   0:
-  - name: Húsvét hétfő
+  - name: Nagypéntek
+    regions: [hu]
+    function: easter(year)
+    function_modifier: -2
+    year_ranges:
+      from: 2017
+  - name: Húsvéthétfő
     regions: [hu]
     function: easter(year)
     function_modifier: 1
-  - name: Pünkösd hétfő
+  - name: Pünkösdhétfő
     regions: [hu]
     function: easter(year)
     function_modifier: 50
@@ -68,13 +74,13 @@ tests:
       regions: ["hu"]
       options: ["informal"]
     expect:
-      name: "Húsvét hétfő"
+      name: "Húsvéthétfő"
   - given:
       date: '2012-04-09'
       regions: ["hu"]
       options: ["informal"]
     expect:
-      name: "Húsvét hétfő"
+      name: "Húsvéthétfő"
   - given:
       date: '2012-05-01'
       regions: ["hu"]
@@ -86,13 +92,13 @@ tests:
       regions: ["hu"]
       options: ["informal"]
     expect:
-      name: "Pünkösd hétfő"
+      name: "Pünkösdhétfő"
   - given:
       date: '2012-05-28'
       regions: ["hu"]
       options: ["informal"]
     expect:
-      name: "Pünkösd hétfő"
+      name: "Pünkösdhétfő"
   - given:
       date: '2012-08-20'
       regions: ["hu"]
@@ -128,3 +134,23 @@ tests:
       regions: ["hu"]
     expect:
       holiday: false
+  - given:
+      date: '2016-03-28'
+      regions: ["hu"]
+    expect:
+      name: "Húsvéthétfő"
+  - given:
+      date: '2016-03-25'
+      regions: ["hu"]
+    expect:
+      holiday: false
+  - given:
+      date: '2017-04-17'
+      regions: ["hu"]
+    expect:
+      name: "Húsvéthétfő"
+  - given:
+      date: '2017-04-14'
+      regions: ["hu"]
+    expect:
+      name: "Nagypéntek"

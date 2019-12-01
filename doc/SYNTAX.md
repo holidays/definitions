@@ -114,16 +114,19 @@ Then the holiday will be returned. This is especially useful for holidays like "
 
 ### Year ranges
 
-Certain holidays in various countries are only in effect during specific year ranges. For example, a new holiday might come into effect that is only valid after a specific year (say, 2017).
+Certain holidays in various countries are only in effect during specific year ranges. A few examples of this are:
 
-To address this we have the ability to specify these 'year ranges' in the definition. The gem will then only return a match on a date that adheres to these rules.
+* A new holiday that starts in 2017 and continues into the future
+* An existing holiday that has been cancelled so that the final year in effect is 2019
+* A historical holiday that was only in effect from 2002 through 2006
 
-There are a total of four selectors that can be specified. All must be specified in terms of 'years'.
+To address these kinds of scenarios we have the ability to specify 'year ranges' for individual holiday definitions. There are a total of four selectors that can be specified. All must be specified in terms of 'years'. Only one selector can be used at a time.
 
-#### `before`
+#### `until`
 
-The 'before' selector will only find a match if the supplied date takes place
-before or equal to the holiday.
+The 'until' selector will only return a match if the supplied date takes place in the same year as the holiday or earlier.
+
+A single integer representing a year *must* be supplied. An array of values will result in an error.
 
 Example:
 
@@ -133,28 +136,32 @@ Example:
   regions: [jp]
   mday: 1
   year_ranges:
-    - before: 2002
+    until: 2002
 ```
 
-This will return successfully:
+This will return successfully since the date is before 2002:
 
 ```ruby
 Holidays.on(Date.civil(2000, 7, 1), :jp)
 ```
 
-This will not:
+This will also return successfully since the date takes place on 2002 exactly:
+
+```ruby
+Holidays.on(Date.civil(2002, 7, 1), :jp)
+```
+
+This will not since the date is after 2002:
 
 ```ruby
 Holidays.on(Date.civil(2016, 7, 1), :jp)
 ```
 
-#### `after`
+#### `from`
 
+The 'from' selector will only return a match if the supplied date takes place in the same year as the holiday or later.
 
-The 'after' selector will only find a match if the supplied date takes place
-after or equal to the holiday.
-
-A single number *must* be supplied. An array of integers will result in an error.
+A single integer representing a year *must* be supplied. An array of values will result in an error.
 
 Example:
 
@@ -164,16 +171,22 @@ Example:
   regions: [jp]
   mday: 1
   year_ranges:
-    - after: 2002
+    from: 2002
 ```
 
-This will return successfully:
+This will return successfully since the date is after 2002:
 
 ```ruby
 Holidays.on(Date.civil(2016, 7, 1), :jp)
 ```
 
-This will not:
+This will also return successfully since the date takes place on 2002 exactly:
+
+```ruby
+Holidays.on(Date.civil(2002, 7, 1), :jp)
+```
+
+This will not since the date is before 2002:
 
 ```ruby
 Holidays.on(Date.civil(2000, 7, 1), :jp)
@@ -184,7 +197,9 @@ Holidays.on(Date.civil(2000, 7, 1), :jp)
 The 'limited' selector will only find a match if the supplied date takes place during
 one of the specified years. Multiple years can be specified.
 
-An array of years *must* be supplied. Individual integers will result in an error.
+An array of integers representing years *must* be supplied. Providing anything other than an array of integers will result in an error.
+
+Please note that this is *not* a range! This is an array of specific years during which the holiday is active. If you need a year range please see the `between` selector below.
 
 Example:
 
@@ -194,24 +209,28 @@ Example:
   regions: [jp]
   mday: 1
   year_ranges:
-    - limited: [2002]
+    limited: [2002,2004]
 ```
 
-This will return successfully:
+Both of these examples will return successfully since the dates takes place in 2002 and 2004 exactly:
 
 ```ruby
 Holidays.on(Date.civil(2002, 7, 1), :jp)
+Holidays.on(Date.civil(2004, 7, 1), :jp)
 ```
 
-This will not:
+Neither of these will return since the dates takes place in outside of 2002 and 2004:
 
 ```ruby
 Holidays.on(Date.civil(2000, 7, 1), :jp)
+Holidays.on(Date.civil(2003, 7, 1), :jp)
 ```
 
 #### `between`
 
-The 'between' selector will only find a match if the supplied date takes place during the specified range of years. Only a single range is allowed at this time.
+The 'between' selector will only find a match if the supplied date takes place during the specified _inclusive_ range of years.
+
+To use this selector you *must* provide both a `start` and `end` key. Both values must be integers representing years.
 
 Example:
 
@@ -221,16 +240,20 @@ Example:
   regions: [jp]
   mday: 1
   year_ranges:
-    - between: 1996..2002
+    between:
+      start: 1996
+      end: 2002
 ```
 
-This will return successfully:
+These examples will return successfully since they take place within the specified range:
 
 ```ruby
+Holidays.on(Date.civil(1996, 7, 1), :jp)
 Holidays.on(Date.civil(2000, 7, 1), :jp)
+Holidays.on(Date.civil(2002, 7, 1), :jp)
 ```
 
-This will not:
+These will not since both are outside of the specified start/end range:
 
 ```ruby
 Holidays.on(Date.civil(2003, 7, 1), :jp)
