@@ -159,7 +159,7 @@ months:
     wday: 1
     week: 1
   - name: Melbourne Cup Day
-    regions: [au_vic_melbourne]
+    regions: [au_vic_melbourne, au_vic]
     week: 1
     wday: 2
   12:
@@ -456,6 +456,11 @@ tests:
   - given:
       date: '2015-11-03'
       regions: ["au_vic_melbourne"]
+    expect:
+      name: 'Melbourne Cup Day'
+  - given:
+      date: '2019-11-05'
+      regions: ["au_vic"]
     expect:
       name: 'Melbourne Cup Day'
   - given:
