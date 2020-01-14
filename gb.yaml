@@ -41,8 +41,7 @@ months:
   5:
   - name: May Day
     regions: [gb]
-    week: 1
-    wday: 1
+    mday: 8
   - name: Liberation Day
     regions: [je, gb_jsy, gg, gb_gsy]
     mday: 9
