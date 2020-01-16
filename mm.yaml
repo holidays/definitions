@@ -1,21 +1,31 @@
 # Myanmar holiday (incomplete)definitions for the Ruby Holiday gem.
 #
-# Updated: 2019-02-13.
+# Updated: 2020-01-06.
 # Some dates in Islamic Calendar are missing.
 # Sources:
-# - Sourced from client via Alex Holder
+# - Sourced from client (KBZ BANK) via Alex Holder
+# https://docs.google.com/spreadsheets/d/1S6JzcjLsH9ZeQXEh5x724aHIsuJvdK62qLM7yS-TTQY/edit?usp=sharing
 ---
 months:
   1:
   - name: New Year's Day
     regions: [mm]
     mday: 1
+    year_ranges:
+      - limited: 2019
   - name: Independence Day
     regions: [mm]
     mday: 4
+  - name: Substitute Day
+    regions: [mm]
+    mday: 6
+    year_ranges:
+      - limited: 2020
   - name: Kayin New Year's Day
     regions: [mm]
     mday: 13
+    year_ranges:
+      - limited: 2019
   2:
   - name: Union Day
     regions: [mm]
@@ -24,69 +34,215 @@ months:
   - name: Peasants Day
     regions: [mm]
     mday: 2
+  - name: Full Moon Day of Taboung
+    regions: [mm]
+    mday: 8
+    year_ranges:
+      - limited: 2020
+  - name: Substitute Day
+    regions: [mm]
+    mday: 9
+    year_ranges:
+      - limited: 2020
   - name: Tabaung Full Moon Day
     regions: [mm]
     mday: 20
+    year_ranges:
+      - limited: 2019
   - name: Armed Forces Day
     regions: [mm]
     mday: 27
   4:
+  - name: Myanmar New Year Holiday
+    regions: [mm]
+    mday: 10
+    year_ranges:
+      - limited: 2020
+  - name: Myanmar New Year Holiday
+    regions: [mm]
+    mday: 11
+    year_ranges:
+      - limited: 2020
+  - name: Maha Thingyan (Water Festival)
+    regions: [mm]
+    mday: 12
+    year_ranges:
+      - limited: 2020
   - name: Thingyan Eve
     regions: [mm]
     mday: 13
+    year_ranges:
+      - limited: 2019
+  - name: Maha Thingyan (Water Festival)
+    regions: [mm]
+    mday: 13
+    year_ranges:
+      - limited: 2020
   - name: Thingyan (Start of Water Festival)
     regions: [mm]
     mday: 14
+    year_ranges:
+      - limited: 2019
+  - name: Maha Thingyan (Water Festival)
+    regions: [mm]
+    mday: 14
+    year_ranges:
+      - limited: 2020
   - name: Water Festival Day
     regions: [mm]
     mday: 15
+    year_ranges:
+      - limited: 2019
+  - name: Maha Thingyan (Water Festival)
+    regions: [mm]
+    mday: 15
+    year_ranges:
+      - limited: 2020
   - name: Water Festival Day
     regions: [mm]
     mday: 16
+    year_ranges:
+      - limited: 2019
+  - name: Maha Thingyan (Water Festival)
+    regions: [mm]
+    mday: 16
+    year_ranges:
+      - limited: 2020
   - name: Myanmar New Year Day
     regions: [mm]
     mday: 17
+    year_ranges:
+      - limited: 2019
+  - name: Myanmar New Year Holiday
+    regions: [mm]
+    mday: 17
+    year_ranges:
+      - limited: 2020
   5:
   - name: Labor Day / May Day
     regions: [mm]
     mday: 1
+  - name: Full Moon Day of Kasong
+    regions: [mm]
+    mday: 6
+    year_ranges:
+      - limited: 2020
   - name: Kasone Full Moon Day
     regions: [mm]
     mday: 18
-  7:
+    year_ranges:
+      - limited: 2019
+  6:
   - name: Warso  Full Moon Day
     regions: [mm]
     mday: 16
+    year_ranges:
+      - limited: 2019
   - name: Martyrs' Day
     regions: [mm]
     mday: 19
+  - name: Substitute Day
+    regions: [mm]
+    mday: 20
+    year_ranges:
+      - limited: 2020
+  7:
+  - name: Full Moon Day of Waso (Beginning of Buddhist Lent)
+    regions: [mm]
+    mday: 3
+    year_ranges:
+      - limited: 2020
   10:
   - name: Buddhist Lent Holiday
     regions: [mm]
     mday: 12
+    year_ranges:
+      - limited: 2019
   - name: Thadingyut Full Moon Day
     regions: [mm]
     mday: 13
+    year_ranges:
+      - limited: 2019
   - name: Buddhist Lent Holiday
     regions: [mm]
     mday: 14
+    year_ranges:
+      - limited: 2019
+  - name: Thadingyut Holiday
+    regions: [mm]
+    mday: 29
+    year_ranges:
+      - limited: 2020
+  - name: Thadingyut Holiday
+    regions: [mm]
+    mday: 30
+    year_ranges:
+      - limited: 2020
+  - name: Full Moon Day of Thadingyut (End of Buddhist Lent)
+    regions: [mm]
+    mday: 31
+    year_ranges:
+      - limited: 2020
   11:
+  - name: Thadingyut Holiday
+    regions: [mm]
+    mday: 1
+    year_ranges:
+      - limited: 2020
+  - name: Thadingyut Holiday
+    regions: [mm]
+    mday: 2
+    year_ranges:
+      - limited: 2020
   - name: Tazaung Daing Holiday
     regions: [mm]
     mday: 10
+    year_ranges:
+      - limited: 2019
   - name: Tazaung Daing Full Moon Day
     regions: [mm]
     mday: 11
+    year_ranges:
+      - limited: 2019
   - name: National Day
     regions: [mm]
     mday: 21
+    year_ranges:
+      - limited: 2019
+  - name: Dasaung Taing Holiday
+    regions: [mm]
+    mday: 27
+    year_ranges:
+      - limited: 2020
+  - name: Dasaung Taing Holiday
+    regions: [mm]
+    mday: 28
+    year_ranges:
+      - limited: 2020
+  - name: Dasaung Taing Full Mon Day
+    regions: [mm]
+    mday: 29
+    year_ranges:
+      - limited: 2020
+  - name: Dasaung Taing Holiday
+    regions: [mm]
+    mday: 30
+    year_ranges:
+      - limited: 2020
   12:
+  - name: National Day
+    regions: [mm]
+    mday: 9
+    year_ranges:
+      - limited: 2020
   - name: Christmas Day
     regions: [mm]
     mday: 25
   - name: Kayin New Year Day
     regions: [mm]
     mday: 26
+    year_ranges:
+      - limited: 2019
   - name: New Year Eve
     regions: [mm]
     mday: 31
