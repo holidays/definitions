@@ -29,6 +29,8 @@ months:
   - name: Europadag
     regions: [lu]
     mday: 9
+    year_ranges:
+      from: 2019
   6:
   - name: Nationalfeierdag
     regions: [lu]
@@ -104,3 +106,18 @@ tests:
       options: ["informal"]
     expect:
       name: "Péngschtméindeg"
+  - given:
+      date: '2019-05-01'
+      regions: ["lu"]
+    expect:
+      name: "Dag vun der Aarbecht"
+  - given:
+      date: '2019-05-09'
+      regions: ["lu"]
+    expect:
+      name: "Europadag"
+  - given:
+      date: '2018-05-09'
+      regions: ["lu"]
+    expect:
+      holiday: false
