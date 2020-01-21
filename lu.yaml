@@ -1,6 +1,6 @@
 # Luxembourg holiday definitions for the Ruby Holiday gem.
 #
-# Updated: 2019-07-19.
+# Updated: 2020-01-21.
 # Sources:
 # - https://en.wikipedia.org/wiki/Public_holidays_in_Luxembourg
 ---
@@ -22,6 +22,13 @@ months:
   - name: Neijoerschdag
     regions: [lu]
     mday: 1
+  5:
+  - name: Dag vun der Aarbecht
+    regions: [lu]
+    mday: 1
+  - name: Europadag
+    regions: [lu]
+    mday: 9
   6:
   - name: Nationalfeierdag
     regions: [lu]
