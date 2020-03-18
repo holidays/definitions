@@ -130,6 +130,7 @@ months:
   - name: Nunavut Day
     regions: [ca_nu]
     mday: 9
+    observed: to_monday_if_weekend(date)
     year_ranges:
       from: 2020
   8:
