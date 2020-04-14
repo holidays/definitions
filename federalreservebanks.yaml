@@ -740,3 +740,63 @@ tests:
       options: ["observed"]
     expect:
       name: "Christmas Day"
+  - given:
+      date: '2024-01-01'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: '2024-01-15'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Birthday of Martin Luther King, Jr"
+  - given:
+      date: '2024-02-19'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Washington's Birthday"
+  - given:
+      date: '2024-05-27'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Memorial Day"
+  - given:
+      date: '2024-07-04'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Independence Day"
+  - given:
+      date: '2024-09-02'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Labor Day"
+  - given:
+      date: '2024-10-14'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Columbus Day"
+  - given:
+      date: '2024-11-11'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Veteran's Day"
+  - given:
+      date: '2024-11-28'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Thanksgiving Day"
+  - given:
+      date: '2024-12-25'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Christmas Day"
