@@ -1,10 +1,11 @@
 # Canadian holiday definitions for the Ruby Holiday gem.
-# Updated 2019-02-10.
+# Updated 2020-03-18.
 #
 # Notes:
 #  - 'Family Day' in various provinces are only celebrated after certain years: http://www.timeanddate.com/holidays/canada/family-day
 #  - 'Family Day' for New Brunswick after 2018  http://www.gnb.ca/legis/bill/FILE/58/3/Bill-67-e.htm
 #  - 'National Aboriginal Day for Yukon' Bill 2 received Royal Assent on May 8, 2017. http://www.gov.yk.ca/news/17-075.html
+#  - 'Nunavut’s legislative assembly voted to pass Bill 29 making Nunavut Day', July 9, an officially statutory holiday across the territory. https://www.gov.nu.ca/human-resources/information/public-service-holidays
 ---
 months:
   0:
@@ -126,6 +127,12 @@ months:
   - name: Nunavut Day
     regions: [ca_nu]
     mday: 9
+  - name: Nunavut Day
+    regions: [ca_nu]
+    mday: 9
+    observed: to_monday_if_weekend(date)
+    year_ranges:
+      from: 2020
   8:
   - name: B.C. Day
     week: 1
@@ -842,3 +849,25 @@ tests:
       regions: ['ca_mb']
     expect:
       name: 'Terry Fox Day'
+  # Nunavut Day, July 9 - Should only be active on 2020 or later
+  - given:
+      date: '2020-07-09'
+      regions: ['ca_nu']
+    expect:
+      name: 'Nunavut Day'
+  - given:
+      date: '2021-07-09'
+      regions: ['ca_nu']
+    expect:
+      name: 'Nunavut Day'
+  # Nunavut Day,  July 9 - should NOT be active before 2020
+  - given:
+      date: '2019-07-09'
+      regions: ['ca_nu']
+    expect:
+      holiday: false
+  - given:
+      date: '2018-07-09'
+      regions: ['ca_nu']
+    expect:
+      holiday: false
