@@ -787,7 +787,7 @@ tests:
       regions: ["federalreservebanks"]
       options: ["observed"]
     expect:
-      name: "Veteran's Day"
+      name: "Veterans Day"
   - given:
       date: '2024-11-28'
       regions: ["federalreservebanks"]
