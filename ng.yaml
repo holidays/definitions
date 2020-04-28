@@ -65,7 +65,7 @@ tests:
     expect:
       name: "New Year's Day"
   - given:
-      date: '2008-05-05'
+      date: '2008-05-01'
       regions: ["ng"]
     expect:
       name: "Workers' Day"
