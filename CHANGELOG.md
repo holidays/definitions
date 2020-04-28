@@ -1,5 +1,22 @@
 # Holiday definitions
 
+## 5.1.0
+
+Update many defitnions.
+
+Definitions changes:
+
+* Add Nigerian Holidays(Thanks to https://github.com/osioke)
+* Add 2024 calendar year to Federal Reserve banks(Thanks to https://github.com/JeremiahChurch)
+* Nunavut July 9th new statutory holiday from 2020(Thanks to https://github.com/tabbasi88)
+* Add Ramadan & Sacrafice holidays in 2020(Thanks to https://github.com/saygun)
+* Mark mexicans dates as informal(Thanks to https://github.com/arandilopez)
+* Add May 1 and May 9 holidays for Luxembourg(Thanks to https://github.com/pmor)
+* New Croatian holidays 2020(Thanks to https://github.com/KarloPletesImago)
+* DE: adde new liberation day for Berlin 2020 only(Thanks to https://github.com/estani)
+* Add Québec to provinces observing Canadian Thanksgiving(Thanks to https://github.com/rafbm)
+
+
 ## 5.0.1
 
 No behavior change.
