@@ -41,7 +41,7 @@ months:
     regions: [hr]
     mday: 25
     year_ranges:
-      until: 2020
+      until: 2019
   8:
   - name: Dan pobjede i domovinske zahvalnosti i Dan hrvatskih branitelja
     regions: [hr]
@@ -54,7 +54,7 @@ months:
     regions: [hr]
     mday: 8
     year_ranges:
-      until: 2020
+      until: 2019
   11:
   - name: Svi sveti
     regions: [hr]
