@@ -6,6 +6,7 @@
 #  - 'Family Day' for New Brunswick after 2018  http://www.gnb.ca/legis/bill/FILE/58/3/Bill-67-e.htm
 #  - 'National Aboriginal Day for Yukon' Bill 2 received Royal Assent on May 8, 2017. http://www.gov.yk.ca/news/17-075.html
 #  - 'Nunavut’s legislative assembly voted to pass Bill 29 making Nunavut Day', July 9, an officially statutory holiday across the territory. https://www.gov.nu.ca/human-resources/information/public-service-holidays
+#  - 'According to Manitoba labour standards, Terry Fox Day is not a formal holiday. https://www.gov.mb.ca/labour/standards/doc,gen-holidays-after-april-30-07,factsheet.html#q13'
 ---
 months:
   0:
@@ -169,6 +170,7 @@ months:
     week: 1
     regions: [ca_mb]
     wday: 1
+    type: informal
   - name: Discovery Day
     week: 3
     regions: [ca_yt]
