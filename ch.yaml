@@ -266,3 +266,13 @@ tests:
       regions: ["ch_gl"]
     expect:
       name: "Näfelser Fahrt"
+  - given:
+      date: '2014-11-24'
+      regions: ["ch_be"]
+    expect:
+      name: "Zibelemärit"
+  - given:
+      date: '2020-11-23'
+      regions: ["ch_be"]
+    expect:
+      name: "Zibelemärit"
