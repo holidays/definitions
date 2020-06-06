@@ -24,6 +24,10 @@ months:
     regions: [es_pv, es_ct, es_na, es_v, es_vc]
     function: easter(year)
     function_modifier: 1
+  - name: Lunes de Pascua Granada
+    regions: [es_ct]
+    function: easter(year)
+    function_modifier: 50
   1:
   - name: Año Nuevo
     regions: [es]
@@ -484,3 +488,8 @@ tests:
       regions: ["es_ct"]
     expect:
       name: "Fiesta Nacional de Cataluña"
+  - given:
+      date: '2020-06-01'
+      regions: ["es_ct"]
+    expect:
+      name: "Lunes de Pascua Granada"
