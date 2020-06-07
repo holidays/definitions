@@ -49,7 +49,7 @@ months:
     wday: 1
     year_ranges:
       until: 2019
-  - name: May Day 
+  - name: May Day
     regions: [gb]
     mday: 8
     year_ranges:
@@ -74,6 +74,7 @@ months:
   - name: Battle of the Boyne
     regions: [gb_nir]
     mday: 12
+    observed: to_monday_if_weekend(date)
   8:
   - name: Bank Holiday
     regions: [gb_sct]
@@ -184,6 +185,51 @@ tests:
       options: ["observed", "informal"]
     expect:
       name: "St. Patrick's Day"
+  - given:
+      date: '2020-07-12'
+      regions: ["gb_nir"]
+    expect:
+      name: "Battle of the Boyne"
+  - given:
+      date: '2020-07-12'
+      regions: ["gb_nir"]
+      options: ["observed"]
+    expect:
+      holiday: false
+  - given:
+      date: '2020-07-13'
+      regions: ["gb_nir"]
+      options: ["observed"]
+    expect:
+      name: "Battle of the Boyne"
+  - given:
+      date: '2008-07-12'
+      regions: ["gb_nir"]
+    expect:
+      name: "Battle of the Boyne"
+  - given:
+      date: '2008-07-14'
+      regions: ["gb_nir"]
+      options: ["observed"]
+    expect:
+      name: "Battle of the Boyne"
+  - given:
+      date: '2021-07-12'
+      regions: ["gb_nir"]
+    expect:
+      name: "Battle of the Boyne"
+  - given:
+      date: '2021-07-12'
+      regions: ["gb_nir"]
+      options: ["observed"]
+    expect:
+      name: "Battle of the Boyne"
+  - given:
+      date: '2021-07-13'
+      regions: ["gb_nir"]
+      options: ["observed"]
+    expect:
+      holiday: false
   - given:
       date: '2006-11-30'
       regions: ["gb_sct"]
