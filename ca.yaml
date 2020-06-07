@@ -831,21 +831,30 @@ tests:
   - given:
       date: '2019-08-05'
       regions: ['ca_mb']
+      options: ['informal']
+    expect:
+      name: 'Terry Fox Day'
+  - given:
+      date: '2020-08-03'
+      regions: ['ca_mb']
+      options: ['informal']
     expect:
       name: 'Terry Fox Day'
   - given:
       date: '2020-08-03'
       regions: ['ca_mb']
     expect:
-      name: 'Terry Fox Day'
+      holiday: false
   - given:
       date: '2015-08-03'
       regions: ['ca_mb']
+      options: ['informal']
     expect:
       name: 'Terry Fox Day'
   - given:
       date: '2045-08-07'
       regions: ['ca_mb']
+      options: ['informal']
     expect:
       name: 'Terry Fox Day'
   # Nunavut Day, July 9 - Should only be active on 2020 or later
