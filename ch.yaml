@@ -166,14 +166,13 @@ methods:
     arguments: year
     ruby: |
       date = Date.civil(year,11,1)
-      # Find the first Monday of September
+      # Find the first Monday of November
       until date.wday.eql? 1 do
         date += 1
       end
       # There are 21 days between the first monday
       # and the 4rth Monday after
       date + 21
-    end
 
 tests:
   - given:
