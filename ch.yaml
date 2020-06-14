@@ -102,6 +102,9 @@ months:
     regions: [ch_ow]
     mday: 25
   11:
+  - name: Zibelemärit
+    regions: [ch_be]
+    function: ch_be_zibelemaerit(year)
   - name: Allerheiligen
     regions: [ch_lu, ch_ur, ch_sz, ch_ow, ch_nw, ch_gl, ch_zg, ch_fr, ch_so, ch_ai, ch_sg, ch_ag, ch_ti, ch_vs, ch_ju]
     mday: 1
@@ -158,6 +161,19 @@ methods:
         date += 7
       end
       date
+  ch_be_zibelemaerit:
+    # fourth Monday in november
+    arguments: year
+    ruby: |
+      date = Date.civil(year,11,1)
+      # Find the first Monday of September
+      until date.wday.eql? 1 do
+        date += 1
+      end
+      # There are 21 days between the first monday
+      # and the 4rth Monday after
+      date + 21
+    end
 
 tests:
   - given:
@@ -250,3 +266,13 @@ tests:
       regions: ["ch_gl"]
     expect:
       name: "Näfelser Fahrt"
+  - given:
+      date: '2014-11-24'
+      regions: ["ch_be"]
+    expect:
+      name: "Zibelemärit"
+  - given:
+      date: '2020-11-23'
+      regions: ["ch_be"]
+    expect:
+      name: "Zibelemärit"
