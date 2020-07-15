@@ -1,5 +1,5 @@
 # Australian holiday definitions for the Ruby Holiday gem.
-# Updated: 2019-02-10
+# Updated: 2020-07-15
 # Sources:
 # - http://en.wikipedia.org/wiki/Australian_public_holidays
 # - http://www.docep.wa.gov.au/lr/LabourRelations/Content/Wages%20and%20Conditions/Public%20Holidays/Public_Holidays.html
@@ -90,7 +90,7 @@ months:
     regions: [au_sa]
     function: may_pub_hol_sa(year)
   6:
-  - name: Foundation Day
+  - name: Western Australia Day
     regions: [au_wa]
     week: 1
     wday: 1
