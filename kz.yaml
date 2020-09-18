@@ -57,7 +57,12 @@ months:
 
 tests:
   - given:
-      date: ['2020-1-1', '2020-1-2']
+      date: ['2020-1-1']
+      regions: ["kz"]
+    expect:
+      name: "Jańa jyl"
+  - given:
+      date: ['2020-1-2']
       regions: ["kz"]
     expect:
       name: "Jańa jyl"
