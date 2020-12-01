@@ -171,6 +171,10 @@ months:
     regions: [au_nsw, au_vic, au_qld, au_act, au_wa]
     mday: 26
     observed: to_tuesday_if_sunday_or_monday_if_saturday(date)
+  - name: Additional public holiday for Boxing Day # BOXING DAY ADDITIONAL - for States that recognise both the actual day (if on weekend) and the adjusted observed day
+    regions: [au_nsw, au_vic, au_qld, au_act, au_wa]
+    mday: 26
+    function: additiona_boxing_day(date)
   - name: Boxing Day
     regions: [au_tas, au_nt]
     function: to_weekday_if_boxing_weekend_from_year(year)
@@ -269,6 +273,16 @@ methods:
         nil
       else
         Date.civil(year, 5, Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 5, :third, :monday))
+      end
+  additiona_boxing_day:
+    # https://www.fairwork.gov.au/leave/public-holidays
+    # If Boxing Day falls on a weekend (Saturday / Sunday), the public holiday rates will be paid on both the weekend date and the observed date (e. Monday / Tuesday) and the additional day will use the term 'additional public holiday'.
+    arguments: date
+    source: |
+      if [0,6].include?(date.wday)
+        date
+      else
+        nil
       end
 
 tests:
