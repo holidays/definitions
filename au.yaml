@@ -74,7 +74,6 @@ months:
   - name: ANZAC Day # ANZAC DAY ACTUAL
     regions: [au_nsw, au_sa, au_tas, au_vic, au_wa]
     mday: 25
-    function: return_actual_date(date)
   - name: ANZAC Day # ANZAC DAY OBSERVED - no additional recognised
     regions: [au_act, au_nt, au_qld]
     mday: 25
@@ -167,7 +166,6 @@ months:
   - name: Christmas Day # CHRISTMAS DAY ACTUAL - Recognised by ALL states expect for NT
     regions: [au, au_act, au_nsw, au_qld, au_sa, au_tas, au_vic, au_wa]
     mday: 25
-    function: return_actual_date(date)
   - name: Additional public holiday for Christmas Day # ADDITIONAL CHRISTMAS DAY - Recognised by ALL states expect for NT
     regions: [au_act, au_nsw, au_qld, au_sa, au_tas, au_vic, au_wa]
     mday: 25
@@ -179,7 +177,6 @@ months:
   - name: Boxing Day # BOXING DAY ACTUAL - Recognised by ALL states expect for NT
     regions: [au, au_act, au_nsw, au_qld, au_sa, au_vic, au_wa]
     mday: 26
-    function: return_actual_date(date)
   - name: Additional public holiday Boxing Day # ADDITIONAL BOXING DAY - Recognised by ALL states expect for NT / TAS
     regions: [au_act, au_nsw, au_qld, au_sa, au_vic, au_wa]
     mday: 26
@@ -306,10 +303,6 @@ methods:
       date += 2 if date.wday == 6
       date += 1 if date.wday == 0
       date
-  return_actual_date:
-    arguments: date
-    source: |
-      return date
 
 tests:
   - given:
