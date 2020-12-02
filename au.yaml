@@ -184,7 +184,7 @@ months:
   - name: Boxing Day # BOXING DAY OBSERVED - Only NT & TAS as they dont have an additional observed if on weekend
     regions: [au_tas, au_nt]
     mday: 26
-    observed: to_tuesday_if_sunday_or_monday_if_saturday(year)
+    observed: to_tuesday_if_sunday_or_monday_if_saturday(date)
   - name: Proclamation Day
     regions: [au_sa]
     function: to_weekday_if_boxing_weekend_from_year_or_to_tuesday_if_monday(year)
