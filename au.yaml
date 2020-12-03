@@ -72,7 +72,7 @@ months:
     wday: 1
   4:
   - name: ANZAC Day # ANZAC DAY ACTUAL
-    regions: [au, au_nsw, au_sa, au_tas, au_vic, au_wa]
+    regions: [au_nsw, au_sa, au_tas, au_vic, au_wa]
     mday: 25
   - name: ANZAC Day # ANZAC DAY OBSERVED - no additional recognised
     regions: [au_act, au_nt, au_qld]
@@ -164,7 +164,7 @@ months:
     wday: 2
   12:
   - name: Christmas Day # CHRISTMAS DAY ACTUAL - Recognised by ALL states expect for NT
-    regions: [au, au_act, au_nsw, au_qld, au_sa, au_tas, au_vic, au_wa]
+    regions: [au_act, au_nsw, au_qld, au_sa, au_tas, au_vic, au_wa]
     mday: 25
   - name: Additional public holiday for Christmas Day # ADDITIONAL CHRISTMAS DAY - Recognised by ALL states expect for NT
     regions: [au_act, au_nsw, au_qld, au_sa, au_tas, au_vic, au_wa]
@@ -175,7 +175,7 @@ months:
     mday: 25
     observed: to_tuesday_if_sunday_or_monday_if_saturday(date)
   - name: Boxing Day # BOXING DAY ACTUAL - Recognised by ALL states expect for NT
-    regions: [au, au_act, au_nsw, au_qld, au_sa, au_vic, au_wa]
+    regions: [au_act, au_nsw, au_qld, au_sa, au_vic, au_wa]
     mday: 26
   - name: Additional public holiday Boxing Day # ADDITIONAL BOXING DAY - Recognised by ALL states expect for NT / TAS
     regions: [au_act, au_nsw, au_qld, au_sa, au_vic, au_wa]
