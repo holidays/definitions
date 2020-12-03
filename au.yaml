@@ -175,14 +175,14 @@ months:
     mday: 25
     observed: to_tuesday_if_sunday_or_monday_if_saturday(date)
   - name: Boxing Day # BOXING DAY ACTUAL - Recognised by ALL states expect for NT
-    regions: [au_act, au_nsw, au_qld, au_sa, au_vic, au_wa]
+    regions: [au_act, au_nsw, au_qld, au_vic, au_wa]
     mday: 26
   - name: Additional public holiday Boxing Day # ADDITIONAL BOXING DAY - Recognised by ALL states expect for NT / TAS
-    regions: [au_act, au_nsw, au_qld, au_sa, au_vic, au_wa]
+    regions: [au_act, au_nsw, au_qld, au_vic, au_wa]
     mday: 26
     function: additional_holiday_if_on_weekend(date)
   - name: Boxing Day # BOXING DAY OBSERVED - Only NT & TAS as they dont have an additional observed if on weekend
-    regions: [au_tas, au_nt]
+    regions: [au_tas, au_nt, au_sa] # SA to be moved to additional setup in 2021 (2020 has no additionals)
     mday: 26
     observed: to_tuesday_if_sunday_or_monday_if_saturday(date)
   - name: Proclamation Day
