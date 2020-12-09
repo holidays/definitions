@@ -131,10 +131,15 @@ months:
       limited: [2020]
   - name: 海の日
     regions: [jp]
+    mday: 22
+    year_ranges:
+      limited: [2021]
+  - name: 海の日
+    regions: [jp]
     wday: 1
     week: 3
     year_ranges:
-      from: 2021
+      from: 2022
   - name: 振替休日
     regions: [jp]
     function: jp_marine_day_substitute(year)
@@ -142,6 +147,11 @@ months:
       between:
         start: 1996
         end: 2002
+  - name: スポーツの日
+    regions: [jp]
+    mday: 23
+    year_ranges:
+      limited: [2021]
   - name: スポーツの日
     regions: [jp]
     mday: 24
@@ -162,8 +172,14 @@ months:
       limited: [2020]
   - name: 山の日
     regions: [jp]
+    mday: 8
     year_ranges:
       from: 2021
+    function: jp_mountain_holiday(year)
+  - name: 山の日
+    regions: [jp]
+    year_ranges:
+      from: 2022
     function: jp_mountain_holiday(year)
   - name: 振替休日
     regions: [jp]
