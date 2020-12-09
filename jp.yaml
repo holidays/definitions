@@ -174,8 +174,7 @@ months:
     regions: [jp]
     mday: 8
     year_ranges:
-      from: 2021
-    function: jp_mountain_holiday(year)
+      limited: [2021]
   - name: 山の日
     regions: [jp]
     year_ranges:
@@ -184,7 +183,19 @@ months:
   - name: 振替休日
     regions: [jp]
     year_ranges:
-      from: 2016
+      between:
+        start: 2016
+        end: 2020
+    function: jp_mountain_holiday_substitute(year)
+  - name: 振替休日
+    regions: [jp]
+    mday: 9
+    year_ranges:
+      limited: [2021]
+  - name: 振替休日
+    regions: [jp]
+    year_ranges:
+      from: 2022
     function: jp_mountain_holiday_substitute(year)
   9:
   - name: 敬老の日
