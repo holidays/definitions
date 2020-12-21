@@ -186,6 +186,12 @@ methods:
         Date.civil(2016, 9, 30)
       when 2017
         Date.civil(2017, 9, 29)
+      when 2018
+        Date.civil(2018, 9, 28)
+      when 2019
+        Date.civil(2019,9, 27)
+      when 2020
+        Date.civil(2020, 10, 23)
       end
   qld_queens_bday_october:
     # http://www.justice.qld.gov.au/fair-and-safe-work/industrial-relations/public-holidays/dates
