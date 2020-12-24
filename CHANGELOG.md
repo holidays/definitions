@@ -1,5 +1,19 @@
 # Holiday definitions
 
+## 5.3.0
+
+Update many defitnions.
+
+Definitions changes:
+
+* Change name of Foundation Day in Western Australia to 'Western Austra…(Thanks to https://github.com/mattman)
+* Terry Fox Day not a formal holiday(Thanks to https://github.com/tabbasi88)
+* Added the Zibelemärit to the region ch_be(Thanks to https://github.com/hrigu)
+* add "Lunes de Pascua Granada" to Catalunya holidays(Thanks to https://github.com/thefabbulus)
+* Correcting observed Battle of the Boyne, N.Ireland (Problem occurs July 2020)(Thanks to https://github.com/qidane)
+* Modify terry fox date test.
+* Fix ch holidays.
+
 ## 5.2.0
 
 Update many defitnions.
