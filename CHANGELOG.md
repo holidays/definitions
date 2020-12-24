@@ -1,5 +1,17 @@
 # Holiday definitions
 
+## 5.3.0
+
+Update many defitnions.
+
+Definitions changes:
+
+* Change name of Foundation Day in Western Australia to 'Western Austra…(Thanks to https://github.com/mattman)
+* add Kazakh holidays(Thanks to https://github.com/Legomegger)
+* Add AFL Grand final dates for 2018-2020(Thanks to https://github.com/anicholson)
+* Add 2021 jp holiday(Thanks to https://github.com/ryosukeYamazaki)
+
+
 ## 5.2.0
 
 Update many defitnions.
