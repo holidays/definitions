@@ -71,17 +71,17 @@ months:
     week: 2
     wday: 1
   4:
-  - name: ANZAC Day
-    regions: [au]
+  - name: ANZAC Day # ANZAC DAY ACTUAL
+    regions: [au_nsw, au_sa, au_tas, au_vic, au_wa]
     mday: 25
-  - name: ANZAC Day
-    regions: [au_nsw, au_vic, au_qld, au_nt, au_act, au_sa, au_tas]
-    mday: 25
-    observed: to_monday_if_sunday(date)
-  - name: ANZAC Day
-    regions: [au_wa]
+  - name: ANZAC Day # ANZAC DAY OBSERVED - no additional recognised
+    regions: [au_act, au_nt, au_qld]
     mday: 25
     observed: to_monday_if_weekend(date)
+  - name: Additional public holiday for ANZAC Day # ADDITIONAL ANZAC DAY
+    regions: [au_sa, au_wa]
+    mday: 25
+    function: additional_anzac_on_monday_if_on_weekend(date)
   5:
   - name: Labour Day
     regions: [au_qld]
@@ -163,24 +163,27 @@ months:
     week: 1
     wday: 2
   12:
-  - name: Christmas Day # CHRISTMAS DAY - All states except SA observe on 27th (and 25th) if 25th is a Sunday
-    regions: [au, au_qld, au_nsw, au_act, au_tas, au_wa, au_vic, au_nt]
+  - name: Christmas Day # CHRISTMAS DAY ACTUAL - Recognised by ALL states expect for NT
+    regions: [au_act, au_nsw, au_qld, au_sa, au_tas, au_vic, au_wa, au_nt]
     mday: 25
-    observed: to_tuesday_if_sunday_or_monday_if_saturday(date)
-  - name: Boxing Day
-    regions: [au_nsw, au_vic, au_qld, au_act, au_wa]
+  - name: Additional public holiday for Christmas Day # ADDITIONAL CHRISTMAS DAY - Recognised by ALL states expect for NT
+    regions: [au_act, au_nsw, au_qld, au_sa, au_tas, au_vic, au_wa, au_nt]
+    mday: 25
+    function: additional_holiday_if_on_weekend(date)
+  - name: Boxing Day # BOXING DAY ACTUAL - Recognised by ALL states expect for NT
+    regions: [au_act, au_nsw, au_qld, au_vic, au_wa, au_nt]
+    mday: 26
+  - name: Additional public holiday Boxing Day # ADDITIONAL BOXING DAY - Recognised by ALL states expect for NT / TAS
+    regions: [au_act, au_nsw, au_qld, au_vic, au_wa, au_nt]
+    mday: 26
+    function: additional_holiday_if_on_weekend(date)
+  - name: Boxing Day # BOXING DAY OBSERVED - Only NT & TAS as they dont have an additional observed if on weekend
+    regions: [au_tas, au_sa] # SA to be moved to additional setup in 2021 (2020 has no additionals)
     mday: 26
     observed: to_tuesday_if_sunday_or_monday_if_saturday(date)
-  - name: Boxing Day
-    regions: [au_tas, au_nt]
-    function: to_weekday_if_boxing_weekend_from_year(year)
   - name: Proclamation Day
     regions: [au_sa]
     function: to_weekday_if_boxing_weekend_from_year_or_to_tuesday_if_monday(year)
-  - name: Christmas Day # CHRISTMAS DAY - SA observes on 26th if 25th is a Sunday (Boxing Day goes to 27th)
-    regions: [au_sa]
-    mday: 25
-    observed: to_monday_if_weekend(date)
 
 methods:
   afl_grand_final:
@@ -197,6 +200,8 @@ methods:
         Date.civil(2018, 9, 28)
       when 2019
         Date.civil(2019, 9, 27)
+      when 2020
+        Date.civil(2020, 10, 23)
       end
   qld_queens_bday_october:
     # http://www.justice.qld.gov.au/fair-and-safe-work/industrial-relations/public-holidays/dates
@@ -268,8 +273,68 @@ methods:
       else
         Date.civil(year, 5, Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 5, :third, :monday))
       end
+  additional_holiday_if_on_weekend:
+    # https://www.fairwork.gov.au/leave/public-holidays
+    # https://www.fairwork.gov.au/leave/public-holidays/list-of-public-holidays/list-of-public-holidays-2021
+    # If Boxing Day/Christmas fall on a weekend (Saturday / Sunday), the public holiday rates will be paid on both the weekend date and the observed date (e. Monday / Tuesday) and the additional day will use the term 'Additional public holiday'.
+    arguments: date
+    source: |
+      if [0,6].include?(date.wday)
+        date += 2
+        date
+      else
+        nil
+      end
+  additional_anzac_on_monday_if_on_weekend:
+    # https://www.fairwork.gov.au/leave/public-holidays
+    # https://www.fairwork.gov.au/leave/public-holidays/list-of-public-holidays/list-of-public-holidays-2021
+    # SA and WA recognise additional anzac holidays on monday if on the weekend
+    arguments: date
+    source: |
+      if [0,6].include?(date.wday)
+        date += 2 if date.wday == 6
+        date += 1 if date.wday == 0
+        date
+      else
+        nil
+      end
 
 tests:
+  - given:
+      date: '2020-04-25'
+      regions: ["au_act"]
+    expect:
+      name: 'ANZAC Day'
+  - given:
+      date: '2020-04-25'
+      regions: ["au_qld"]
+    expect:
+      name: 'ANZAC Day'
+  - given:
+      date: '2021-04-27'
+      regions: ["au_wa"]
+    expect:
+      name: 'Additional public holiday for ANZAC Day'
+  - given:
+      date: '2021-12-25'
+      regions: ["au_qld"]
+    expect:
+      name: 'Christmas Day'
+  - given:
+      date: '2021-12-27'
+      regions: ["au_qld"]
+    expect:
+      name: 'Additional public holiday for Christmas Day'
+  - given:
+      date: '2021-12-26'
+      regions: ["au_qld"]
+    expect:
+      name: 'Boxing Day'
+  - given:
+      date: '2021-12-28'
+      regions: ["au_qld"]
+    expect:
+      name: 'Additional public holiday for Boxing Day'
   - given:
       date: '2013-10-07'
       regions: ["au_qld"]
@@ -489,6 +554,11 @@ tests:
     expect:
       name: 'Friday before the AFL Grand Final'
   - given:
+      date: '2020-10-23'
+      regions: ["au_vic"]
+    expect:
+      name: 'Friday before the AFL Grand Final'
+  - given:
       date: '2005-05-16'
       regions: ["au_sa"]
     expect:
@@ -535,6 +605,11 @@ tests:
       options: ["observed"]
     expect:
       name: "Boxing Day"
+  - given:
+      date: '2020-12-26'
+      regions: ["au_qld"]
+    expect:
+      name: "Additional public holiday for Boxing Day"
   - given:
       date: '2015-12-26'
       regions: ["au_sa"]

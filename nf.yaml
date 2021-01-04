@@ -25,6 +25,7 @@ months:
   - name: Australia Day
     regions: [nf]
     mday: 26
+    observed: to_monday_if_weekend(date)
   3:
   - name: Foundation Day
     regions: [nf]
@@ -58,6 +59,7 @@ months:
   - name: Boxing Day
     regions: [nf]
     mday: 26
+    observed: to_monday_if_weekend(date)
 
 methods:
   monday_after_second_saturday:
@@ -82,3 +84,15 @@ tests:
       regions: ['nf']
     expect:
       name: "Queen's Birthday"
+  - given:
+      date: ['2019-01-28', '2020-01-27']
+      regions: ['nf']
+      options: ["observed"]
+    expect:
+      name: "Australia Day"
+  - given:
+      date: ['2019-12-26', '2020-12-28']
+      regions: ['nf']
+      options: ["observed"]
+    expect:
+      name: "Boxing Day"
