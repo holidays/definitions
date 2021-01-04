@@ -10,7 +10,7 @@ module Definitions
           raise Errors::InvalidCustomMethod unless
           valid_name?(name) &&
             valid_arguments?(method['arguments']) &&
-            valid_source?(method['source'])
+            valid_source?(method['ruby'])
         end
 
         true

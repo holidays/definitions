@@ -8,67 +8,67 @@
 months:
   0:
   - name: Good Friday
-    regions: [ecb_target]
+    regions: [ecbtarget]
     function: easter(year)
     function_modifier: -2
   - name: Easter Monday
-    regions: [ecb_target]
+    regions: [ecbtarget]
     function: easter(year)
     function_modifier: 1
   1:
   - name: New Year's Day
-    regions: [ecb_target]
+    regions: [ecbtarget]
     mday: 1
   5:
   - name: Labour Day
-    regions: [ecb_target]
+    regions: [ecbtarget]
     mday: 1
   12:
   - name: Christmas Day
-    regions: [ecb_target]
+    regions: [ecbtarget]
     mday: 25
   - name: Christmas Holiday
-    regions: [ecb_target]
+    regions: [ecbtarget]
     mday: 26
 
 tests:
   - given:
       date: '2013-01-01'
-      regions: ["ecb_target"]
+      regions: ["ecbtarget"]
     expect:
       name: "New Year's Day"
   - given:
       date: '2013-05-01'
-      regions: ["ecb_target"]
+      regions: ["ecbtarget"]
     expect:
       name: "Labour Day"
   - given:
       date: '2013-03-29'
-      regions: ["ecb_target"]
+      regions: ["ecbtarget"]
     expect:
       name: "Good Friday"
   - given:
       date: '2013-04-01'
-      regions: ["ecb_target"]
+      regions: ["ecbtarget"]
     expect:
       name: "Easter Monday"
   - given:
       date: '2013-12-25'
-      regions: ["ecb_target"]
+      regions: ["ecbtarget"]
     expect:
       name: "Christmas Day"
   - given:
       date: '2013-12-26'
-      regions: ["ecb_target"]
+      regions: ["ecbtarget"]
     expect:
       name: "Christmas Holiday"
   - given:
       date: '2013-03-29'
-      regions: ["ecb_target"]
+      regions: ["ecbtarget"]
     expect:
       name: "Good Friday"
   - given:
       date: '2013-04-01'
-      regions: ["ecb_target"]
+      regions: ["ecbtarget"]
     expect:
       name: "Easter Monday"

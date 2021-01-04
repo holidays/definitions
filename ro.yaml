@@ -4,9 +4,25 @@
 # Sources:
 # - http://ro.wikipedia.org/wiki/S%C4%83rb%C4%83tori_publice_%C3%AEn_Rom%C3%A2nia
 # - http://en.wikipedia.org/wiki/Public_holidays_in_Romania
+#
+# Changes 2019-03-11
+# - Add Unirea Principatelor Române (since 2017)
+# - Add Ziua Copilului (since 2017)
+# - Add Vinerea Mare (since 2018)
+#
+# Sources:
+# - https://www.mediafax.ro/politic/legea-prin-care-24-ianuarie-a-fost-declarata-zi-libera-nelucratoare-a-fost-promulgata-de-iohannis-15777292
+# - https://www.avocatnet.ro/articol_43954/Din-2017-salaria%C8%9Bii-vor-sta-acas%C4%83-%C8%99i-de-Ziua-Copilului-1-iunie-inclus%C4%83-de-azi-pe-lista-liberelor-legale.html
+# - https://www.mediafax.ro/social/iohannis-a-promulgat-legea-prin-care-vinerea-mare-este-sarbatoare-legala-nelucratoare-17058413
 ---
 months:
   0:
+  - name: Paștele - Vinerea Mare # Good Friday
+    regions: [ro]
+    function: orthodox_easter(year)
+    function_modifier: -2
+    year_ranges:
+     from: 2018
   - name: Paștele - duminică
     regions: [ro]
     function: orthodox_easter(year)
@@ -29,10 +45,21 @@ months:
   - name: Anul nou
     regions: [ro]
     mday: 2
+  - name: Unirea Principatelor Române
+    regions: [ro]
+    mday: 24
+    year_ranges:
+      from: 2017
   5:
   - name: Ziua muncii
     regions: [ro]
     mday: 1
+  6:
+  - name: Ziua Copilului
+    regions: [ro]
+    mday: 1
+    year_ranges:
+     from: 2017
   8:
   - name: Adormirea Maicii Domnului
     regions: [ro]
@@ -53,6 +80,23 @@ months:
     mday: 26
 
 tests:
+  - given:
+      date: '2017-04-14'
+      regions: ["ro"]
+    expect:
+      holiday: false
+  - given:
+      date: '2018-04-06'
+      regions: ["ro"]
+      options: ["informal"]
+    expect:
+      name: "Paștele - Vinerea Mare"
+  - given:
+      date: '2019-04-26'
+      regions: ["ro"]
+      options: ["informal"]
+    expect:
+      name: "Paștele - Vinerea Mare"
   - given:
       date: '1961-04-09'
       regions: ["ro"]
@@ -132,11 +176,33 @@ tests:
     expect:
       name: "Anul nou"
   - given:
+      date: '2017-01-24'
+      regions: ["ro"]
+      options: ["informal"]
+    expect:
+      name: "Unirea Principatelor Române"
+  - given:
+      date: '2016-01-24'
+      regions: ["ro"]
+    expect:
+      holiday: false
+  - given:
       date: '2009-05-01'
       regions: ["ro"]
       options: ["informal"]
     expect:
       name: "Ziua muncii"
+  - given:
+      date: '2017-06-01'
+      regions: ["ro"]
+      options: ["informal"]
+    expect:
+      name: "Ziua Copilului"
+  - given:
+      date: '2016-06-01'
+      regions: ["ro"]
+    expect:
+      holiday: false
   - given:
       date: '2012-08-15'
       regions: ["ro"]

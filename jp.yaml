@@ -5,7 +5,7 @@
 #   - https://en.wikipedia.org/wiki/Public_holidays_in_Japan
 #
 # For Japanese/English translations of each holiday:
-#   - http://www.japanesecalendar.net/holidays/2016/
+#   - https://kotoritone.com/japanesecalendar/holidays/2019/
 #
 # This definition can calculate current Japanese holidays,
 # don't compat with past changes of Japan Holiday Act.
@@ -16,8 +16,9 @@
 #  2015-05-10: Non-Monday substitute holidays by Shuhei Kagawa <shuhei.kagawa@gmail.com>
 #  2015-12-15: Added mountain day by Tsuyoshi Sano <ttwo32@gmail.com>
 #  2016-03-26: Updated to match new custom method signature. See below for more. Phil Trimble <philtrimble@gmail.com>
+#  2019-02-10: Changing usage of 'year_ranges.after' to 'year_ranges.from' and 'year_ranges.before' to 'year_ranges.until', see https://github.com/holidays/definitions/issues/117
 #
-# NOTE: This is the most complex set of custom date methods in the entire
+# MAINTAINER NOTE: This is the most complex set of custom date methods in the entire
 # project, mainly surrounding the idea of 'substitute' holidays. Since this is
 # the only one that is this complex I have settled on a less-than-ideal solution.
 # It is overly verbose and not easy to follow. It will be a target for refactoring
@@ -48,13 +49,13 @@ months:
     regions: [jp]
     mday: 23
     year_ranges:
-      - after: 2020
+      from: 2020
   - name: 振替休日
     regions: [jp]
     mday: 23
     function: jp_substitute_holiday(year, month, day)
     year_ranges:
-      - after: 2020
+      from: 2020
   3:
   - name: 春分の日
     regions: [jp]
@@ -70,7 +71,22 @@ months:
     regions: [jp]
     mday: 29
     function: jp_substitute_holiday(year, month, day)
+  - name: 休日
+    regions: [jp]
+    mday: 30
+    year_ranges:
+      limited: [2019]
   5:
+  - name: 天皇即位
+    regions: [jp]
+    mday: 1
+    year_ranges:
+      limited: [2019]
+  - name: 休日
+    regions: [jp]
+    mday: 2
+    year_ranges:
+      limited: [2019]
   - name: 憲法記念日
     regions: [jp]
     mday: 3
@@ -97,28 +113,89 @@ months:
     regions: [jp]
     mday: 20
     year_ranges:
-      - between: 1996..2002
+      between:
+        start: 1996
+        end: 2002
   - name: 海の日
     regions: [jp]
     wday: 1
     week: 3
     year_ranges:
-      - after: 2003
+      between:
+        start: 2003
+        end: 2019
+  - name: 海の日
+    regions: [jp]
+    mday: 23
+    year_ranges:
+      limited: [2020]
+  - name: 海の日
+    regions: [jp]
+    mday: 22
+    year_ranges:
+      limited: [2021]
+  - name: 海の日
+    regions: [jp]
+    wday: 1
+    week: 3
+    year_ranges:
+      from: 2022
   - name: 振替休日
     regions: [jp]
     function: jp_marine_day_substitute(year)
     year_ranges:
-      - between: 1996..2002
+      between:
+        start: 1996
+        end: 2002
+  - name: スポーツの日
+    regions: [jp]
+    mday: 23
+    year_ranges:
+      limited: [2021]
+  - name: スポーツの日
+    regions: [jp]
+    mday: 24
+    year_ranges:
+      limited: [2020]
   8:
   - name: 山の日
     regions: [jp]
     year_ranges:
-      - after: 2016
+      between:
+        start: 2016
+        end: 2019
+    function: jp_mountain_holiday(year)
+  - name: 山の日
+    regions: [jp]
+    mday: 10
+    year_ranges:
+      limited: [2020]
+  - name: 山の日
+    regions: [jp]
+    mday: 8
+    year_ranges:
+      limited: [2021]
+  - name: 山の日
+    regions: [jp]
+    year_ranges:
+      from: 2022
     function: jp_mountain_holiday(year)
   - name: 振替休日
     regions: [jp]
     year_ranges:
-      - after: 2016
+      between:
+        start: 2016
+        end: 2020
+    function: jp_mountain_holiday_substitute(year)
+  - name: 振替休日
+    regions: [jp]
+    mday: 9
+    year_ranges:
+      limited: [2021]
+  - name: 振替休日
+    regions: [jp]
+    year_ranges:
+      from: 2022
     function: jp_mountain_holiday_substitute(year)
   9:
   - name: 敬老の日
@@ -131,7 +208,7 @@ months:
   - name: 国民の休日
     regions: [jp]
     year_ranges:
-      - after: 2003
+      from: 2003
     function: jp_citizens_holiday(year)
   - name: 秋分の日
     regions: [jp]
@@ -144,9 +221,22 @@ months:
     regions: [jp]
     wday: 1
     week: 2
+    year_ranges:
+      until: 2019
+  - name: スポーツの日
+    regions: [jp]
+    wday: 1
+    week: 2
+    year_ranges:
+      from: 2021
   - name: 振替休日
     regions: [jp]
     function: jp_health_sports_day_substitute(year)
+  - name: 即位礼正殿の儀
+    regions: [jp]
+    mday: 22
+    year_ranges:
+      limited: [2019]
   11:
   - name: 文化の日
     regions: [jp]
@@ -167,22 +257,23 @@ months:
     regions: [jp]
     mday: 23
     year_ranges:
-      - before: 2018
+      until: 2018
   - name: 振替休日
     regions: [jp]
     mday: 23
     function: jp_substitute_holiday(year, month, day)
     year_ranges:
-      - before: 2018
+      until: 2018
 
 methods:
   jp_health_sports_day_substitute:
     arguments: year
-    source: |
+    ruby: |
       Holidays::Factory::Definition.custom_methods_repository.find("jp_substitute_holiday(year, month, day)").call(year, 10, Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 10, 2, 1))
+
   jp_vernal_equinox_day:
     arguments: year
-    source: |
+    ruby: |
       day =
         case year
         when 1851..1899
@@ -199,18 +290,21 @@ methods:
       day += 0.242194 * (year - 1980) - ((year - 1980)/4).floor
       day = day.floor
       Date.civil(year, 3, day)
+
   jp_vernal_equinox_day_substitute:
     arguments: year
-    source: |
+    ruby: |
       date = Holidays::Factory::Definition.custom_methods_repository.find("jp_vernal_equinox_day(year)").call(year)
       Holidays::Factory::Definition.custom_methods_repository.find("jp_substitute_holiday(year, month, day)").call(year, date.month, date.mday)
+
   jp_marine_day_substitute:
     arguments: year
-    source: |
+    ruby: |
       Holidays::Factory::Definition.custom_methods_repository.find("jp_substitute_holiday(year, month, day)").call(year, 7, Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 7, 3, 1))
+
   jp_national_culture_day:
     arguments: year
-    source: |
+    ruby: |
       day =
         case year
         when 1851..1899
@@ -227,41 +321,49 @@ methods:
       day += 0.242194 * (year - 1980) - ((year - 1980)/4).floor
       day = day.floor
       Date.civil(year, 9, day)
+
   jp_national_culture_day_substitute:
     arguments: year
-    source: |
+    ruby: |
       date = Holidays::Factory::Definition.custom_methods_repository.find("jp_national_culture_day(year)").call(year)
       Holidays::Factory::Definition.custom_methods_repository.find("jp_substitute_holiday(year, month, day)").call(year, date.month, date.mday)
+
   jp_citizens_holiday:
     arguments: year
-    source: |
+    ruby: |
       ncd = Holidays::Factory::Definition.custom_methods_repository.find("jp_national_culture_day(year)").call(year)
       if ncd.wday == 3
         ncd - 1
       else
         nil
       end
+
   jp_mountain_holiday:
     arguments: year
-    source: |
+    ruby: |
       Date.civil(year, 8, 11)
+
   jp_mountain_holiday_substitute:
     arguments: year
-    source: |
+    ruby: |
       date = Holidays::Factory::Definition.custom_methods_repository.find("jp_mountain_holiday(year)").call(year)
       Holidays::Factory::Definition.custom_methods_repository.find("jp_substitute_holiday(year, month, day)").call(year, date.month, date.mday)
+
   jp_respect_for_aged_holiday_substitute:
     arguments: year
-    source: |
+    ruby: |
       Holidays::Factory::Definition.custom_methods_repository.find("jp_substitute_holiday(year, month, day)").call(year, 9, Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 9, 3, 1))
+
   jp_substitute_holiday:
     arguments: year, month, day
-    source: |
+    ruby: |
       date = Date.civil(year, month, day)
       date.wday == 0 ? (Holidays::Factory::Definition.custom_methods_repository.find("jp_next_weekday(date)").call(date+1)) : nil
   jp_next_weekday:
     arguments: date
-    source: |
+    ruby: |
+      # This suuuucks. I have no idea how to make this not reach into our interal ruby API to do this.
+      # I'm punting, I'll come back to this.
       is_holiday = Holidays::JP.holidays_by_month[date.month].any? do |holiday|
         holiday[:mday] == date.day
       end
@@ -543,6 +645,26 @@ tests:
     expect:
       name: "海の日"
   - given:
+      date: '2019-07-15'
+      regions: ["jp"]
+    expect:
+      name: "海の日"
+  - given:
+      date: '2020-07-20'
+      regions: ["jp"]
+    expect:
+      holiday: false
+  - given:
+      date: '2020-07-23'
+      regions: ["jp"]
+    expect:
+      name: "海の日"
+  - given:
+      date: '2021-07-22'
+      regions: ["jp"]
+    expect:
+      name: "海の日"
+  - given:
       date: '2016-08-11'
       regions: ["jp"]
     expect:
@@ -563,15 +685,25 @@ tests:
     expect:
       name: "山の日"
   - given:
-      date: '2020-08-11'
+      date: '2020-08-10'
       regions: ["jp"]
     expect:
       name: "山の日"
   - given:
-      date: '2021-08-11'
+      date: '2020-08-11'
+      regions: ["jp"]
+    expect:
+      holiday: false
+  - given:
+      date: '2021-08-08'
       regions: ["jp"]
     expect:
       name: "山の日"
+  - given:
+      date: '2021-08-09'
+      regions: ["jp"]
+    expect:
+      name: "振替休日"
   - given:
       date: '2022-08-11'
       regions: ["jp"]
@@ -607,3 +739,23 @@ tests:
       regions: ["jp"]
     expect:
       name: "天皇誕生日"
+  - given:
+      date: '2019-10-14'
+      regions: ["jp"]
+    expect:
+      name: "体育の日"
+  - given:
+      date: '2020-07-24'
+      regions: ["jp"]
+    expect:
+      name: "スポーツの日"
+  - given:
+      date: '2020-10-12'
+      regions: ["jp"]
+    expect:
+      holiday: false
+  - given:
+      date: '2021-07-23'
+      regions: ["jp"]
+    expect:
+      name: "スポーツの日"

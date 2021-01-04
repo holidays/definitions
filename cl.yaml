@@ -1,6 +1,6 @@
 # Chilean holiday definitions for the Ruby Holiday gem.
 #
-# Updated: 2014-8-9
+# Updated: 2019-02-10
 #
 # Sources:
 # - http://www.feriados.cl
@@ -21,12 +21,12 @@ months:
     regions: [cl]
     function: st_peter_st_paul_cl(year)
     year_ranges:
-      - after: 2000
+      from: 2000
   - name: Día de las Iglesias Evangélicas y Protestantes
     regions: [cl]
     function: other_churches_day_cl(year)
     year_ranges:
-      - after: 2008
+      from: 2008
   1:
   - name: Año Nuevo
     regions: [cl]
@@ -43,7 +43,7 @@ months:
     regions: [cl]
     mday: 29
     year_ranges:
-      - before: 1999
+      until: 1999
   7:
   - name: Día de la Virgen del Carmen
     regions: [cl]
@@ -64,12 +64,12 @@ months:
     regions: [cl]
     mday: 12
     year_ranges:
-      - before: 1999
+      until: 1999
   - name: Encuentro de Dos Mundos
     regions: [cl]
     year_ranges:
-      - after: 2000
-    function: columbus_day_cl(year) 
+      from: 2000
+    function: columbus_day_cl(year)
   11:
   - name: Día de Todos los Santos
     regions: [cl]
@@ -81,43 +81,42 @@ months:
   - name: Navidad
     regions: [cl]
     mday: 25
+
 methods:
   st_peter_st_paul_cl:
     arguments: year
     # Nearest monday
-    source: |
+    ruby: |
       date = Date.civil(year, 6, 29)
       if [2,3,4].include?(date.wday)
         date -= (date.wday - 1)
       elsif date.wday == 5
         date += 3
       end
-
       date
   columbus_day_cl:
     arguments: year
     # Nearest monday
-    source: |
+    ruby: |
       date = Date.civil(year, 10, 12)
       if [2,3,4].include?(date.wday)
         date -= (date.wday - 1)
       elsif date.wday == 5
         date += 3
       end
-
       date
   other_churches_day_cl:
     arguments: year
     # If on tuesday, friday before, if on wednesday, next friday
-    source: |
+    ruby: |
       date = Date.civil(year, 10, 31)
       if date.wday == 2
         date -= 4
       elsif date.wday == 3
         date += 2
       end
-
       date
+
 tests:
   - given:
       date: '2014-01-01'

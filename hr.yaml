@@ -1,6 +1,6 @@
 # Croatian holiday definitions for the Ruby Holiday gem.
 #
-# Updated: 2012-08-29.
+# Updated: 2019-11-21.
 # Sources:
 #  http://en.wikipedia.org/wiki/Public_holidays_in_Croatia
 ---
@@ -21,13 +21,18 @@ months:
   - name: Nova godina
     regions: [hr]
     mday: 1
-  - name: Sveta tri kralja
+  - name: Bogojavljenje ili Sveta tri kralja
     regions: [hr]
     mday: 6
   5:
-  - name: Međunarodni praznik rada
+  - name: Praznik rada
     regions: [hr]
     mday: 1
+  - name: Dan državnosti
+    regions: [hr]
+    mday: 30
+    year_ranges:
+      from: 2020
   6:
   - name: Dan antifašističke borbe
     regions: [hr]
@@ -35,8 +40,10 @@ months:
   - name: Dan državnosti
     regions: [hr]
     mday: 25
+    year_ranges:
+      until: 2019
   8:
-  - name: Dan pobjede i domovinske zahvalnosti i dan hrvatskih branitelja
+  - name: Dan pobjede i domovinske zahvalnosti i Dan hrvatskih branitelja
     regions: [hr]
     mday: 5
   - name: Velika Gospa
@@ -46,10 +53,17 @@ months:
   - name: Dan neovisnosti
     regions: [hr]
     mday: 8
+    year_ranges:
+      until: 2019
   11:
-  - name: Dan svih svetih
+  - name: Svi sveti
     regions: [hr]
     mday: 1
+  - name: Dan sjećanja na žrtve Domovinskog rata i Dan sjećanja na žrtvu Vukovara i Škabrnje
+    regions: [hr]
+    mday: 18
+    year_ranges:
+      from: 2020
   12:
   - name: Božić
     regions: [hr]
@@ -70,13 +84,13 @@ tests:
       regions: ["hr"]
       options: ["informal"]
     expect:
-      name: "Sveta tri kralja"
+      name: "Bogojavljenje ili Sveta tri kralja"
   - given:
       date: '2012-05-01'
       regions: ["hr"]
       options: ["informal"]
     expect:
-      name: "Međunarodni praznik rada"
+      name: "Praznik rada"
   - given:
       date: '2012-06-22'
       regions: ["hr"]
@@ -84,7 +98,7 @@ tests:
     expect:
       name: "Dan antifašističke borbe"
   - given:
-      date: '2012-06-25'
+      date: '2020-05-30'
       regions: ["hr"]
       options: ["informal"]
     expect:
@@ -94,7 +108,7 @@ tests:
       regions: ["hr"]
       options: ["informal"]
     expect:
-      name: "Dan pobjede i domovinske zahvalnosti i dan hrvatskih branitelja"
+      name: "Dan pobjede i domovinske zahvalnosti i Dan hrvatskih branitelja"
   - given:
       date: '2012-08-15'
       regions: ["hr"]
@@ -102,17 +116,17 @@ tests:
     expect:
       name: "Velika Gospa"
   - given:
-      date: '2012-10-08'
+      date: '2020-11-18'
       regions: ["hr"]
       options: ["informal"]
     expect:
-      name: "Dan neovisnosti"
+      name: "Dan sjećanja na žrtve Domovinskog rata i Dan sjećanja na žrtvu Vukovara i Škabrnje"
   - given:
       date: '2012-11-01'
       regions: ["hr"]
       options: ["informal"]
     expect:
-      name: "Dan svih svetih"
+      name: "Svi sveti"
   - given:
       date: '2012-12-25'
       regions: ["hr"]

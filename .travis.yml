@@ -15,7 +15,14 @@ notifications:
     holidaysgem@gmail.com
 
 rvm:
-  - 2.2.0
-  - 2.3.0
-  - 2.4.0
+  - 2.4.6
+  - 2.5.5
+  - 2.6.2
+  - ruby-head
+  - jruby-9.2.6.0
   - jruby-head
+
+matrix:
+  allow_failures:
+    - rvm: ruby-head
+    - rvm: jruby-head

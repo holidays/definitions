@@ -24,6 +24,10 @@ months:
     regions: [es_pv, es_ct, es_na, es_v, es_vc]
     function: easter(year)
     function_modifier: 1
+  - name: Lunes de Pascua Granada
+    regions: [es_ct]
+    function: easter(year)
+    function_modifier: 50
   1:
   - name: Año Nuevo
     regions: [es]
@@ -82,6 +86,9 @@ months:
     regions: [es_lo]
     mday: 9
     observed: to_monday_if_sunday(date)
+  - name: San Juan
+    regions: [es_ct, es_vc]
+    mday: 24
   7:
   - name: Santiago Apostol
     regions: [es_ga]
@@ -108,6 +115,9 @@ months:
     regions: [es_ct]
     mday: 11
     observed: to_monday_if_sunday(date)
+  - name: La Mercè
+    regions: [es_ct]
+    mday: 24
   10:
   - name: Día de Valencia
     regions: [es_vc, es_v]
@@ -478,3 +488,8 @@ tests:
       regions: ["es_ct"]
     expect:
       name: "Fiesta Nacional de Cataluña"
+  - given:
+      date: '2020-06-01'
+      regions: ["es_ct"]
+    expect:
+      name: "Lunes de Pascua Granada"

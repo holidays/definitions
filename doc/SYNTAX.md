@@ -1,6 +1,6 @@
-# Holiday Gem Definition Syntax
+# Holiday Definition Syntax
 
-All holidays are defined in these YAML files. These definition files have three main top-level properties:
+The definition syntax is a custom format developed over the life of this project. All holidays are defined in these YAML files. These definition files have three main top-level properties:
 
 * `months` - this is the meat! All definitions for months 1-12 are defined here
 * `methods` - this contains any custom logic that your definitions require
@@ -18,11 +18,22 @@ There are some terms that you should be familiar with before we dive into each s
 
 A region is a symbol that denotes the geographic or cultural region for that holiday. In general these symbols will be the [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166) code for a country or region.
 
-Please note that before version v1.1.0 the compliance with ISO 3166 was not as strict. There might be cases where an existing region symbol does not match the standard.
+##### Sub-region
 
-In addition, some sub-regions do not have a matching ISO 3116 entry. In those cases we attempt to choose symbols that are reasonably clear.
+We also have a concept of a `sub-region`. These regions exist inside of a 'parent' region and inherit the parent's holidays. We use an underscore to specify a subregion.
 
-Examples: `:us` for USA, `:fr` for France, `:us_dc` for Washington, D.C in USA
+Examples:
+
+* `:us_dc` for Washington, D.C in `:us`
+* `:ca_bc` for British Columbia in `:ca`
+
+Some sub-regions do not have a matching ISO 3116 entry. In these cases we attempt to choose symbols that are reasonably clear.
+
+##### Non-standard regions
+
+Before version v1.1.0 of the original ruby gem the compliance with ISO 3166 was not as strict. There might be cases where an existing region symbol does not match the ISO standard.
+
+Non-standard regions (e.g. `ecbtarget`, `federalreserve`, etc) must be all one word, just like a normal region. They must not use underscores or hyphens.
 
 #### `formal`/`informal`
 
@@ -93,7 +104,7 @@ If a user submits:
 Holidays.on(Date.civil(2016, 9, 1), :fr)
 ```
 
-then they will not see the holiday. However, if they submit:
+Then they will not see the holiday. However, if they submit:
 
 ```ruby
 Holidays.on(Date.civil(2016, 9, 1), :fr, :informal)
@@ -103,16 +114,19 @@ Then the holiday will be returned. This is especially useful for holidays like "
 
 ### Year ranges
 
-Certain holidays in various countries are only in effect during specific year ranges. For example, a new holiday might come into effect that is only valid after a specific year (say, 2017).
+Certain holidays in various countries are only in effect during specific year ranges. A few examples of this are:
 
-To address this we have the ability to specify these 'year ranges' in the definition. The gem will then only return a match on a date that adheres to these rules.
+* A new holiday that starts in 2017 and continues into the future
+* An existing holiday that has been cancelled so that the final year in effect is 2019
+* A historical holiday that was only in effect from 2002 through 2006
 
-There are a total of four selectors that can be specified. All must be specified in terms of 'years'.
+To address these kinds of scenarios we have the ability to specify 'year ranges' for individual holiday definitions. There are a total of four selectors that can be specified. All must be specified in terms of 'years'. Only one selector can be used at a time.
 
-#### `before`
+#### `until`
 
-The 'before' selector will only find a match if the supplied date takes place
-before or equal to the holiday.
+The 'until' selector will only return a match if the supplied date takes place in the same year as the holiday or earlier.
+
+A single integer representing a year *must* be supplied. An array of values will result in an error.
 
 Example:
 
@@ -122,25 +136,32 @@ Example:
   regions: [jp]
   mday: 1
   year_ranges:
-    - before: 2002
+    until: 2002
 ```
 
-This will return successfully:
+This will return successfully since the date is before 2002:
 
 ```ruby
 Holidays.on(Date.civil(2000, 7, 1), :jp)
 ```
 
-This will not:
+This will also return successfully since the date takes place on 2002 exactly:
+
+```ruby
+Holidays.on(Date.civil(2002, 7, 1), :jp)
+```
+
+This will not since the date is after 2002:
 
 ```ruby
 Holidays.on(Date.civil(2016, 7, 1), :jp)
 ```
 
-#### `after`
+#### `from`
 
-The 'after' selector will only find a match if the supplied date takes place
-after or equal to the holiday.
+The 'from' selector will only return a match if the supplied date takes place in the same year as the holiday or later.
+
+A single integer representing a year *must* be supplied. An array of values will result in an error.
 
 Example:
 
@@ -150,16 +171,22 @@ Example:
   regions: [jp]
   mday: 1
   year_ranges:
-    - after: 2002
+    from: 2002
 ```
 
-This will return successfully:
+This will return successfully since the date is after 2002:
 
 ```ruby
 Holidays.on(Date.civil(2016, 7, 1), :jp)
 ```
 
-This will not:
+This will also return successfully since the date takes place on 2002 exactly:
+
+```ruby
+Holidays.on(Date.civil(2002, 7, 1), :jp)
+```
+
+This will not since the date is before 2002:
 
 ```ruby
 Holidays.on(Date.civil(2000, 7, 1), :jp)
@@ -170,7 +197,9 @@ Holidays.on(Date.civil(2000, 7, 1), :jp)
 The 'limited' selector will only find a match if the supplied date takes place during
 one of the specified years. Multiple years can be specified.
 
-An array of years *must* be supplied. Individual integers will result in an error.
+An array of integers representing years *must* be supplied. Providing anything other than an array of integers will result in an error.
+
+Please note that this is *not* a range! This is an array of specific years during which the holiday is active. If you need a year range please see the `between` selector below.
 
 Example:
 
@@ -180,24 +209,28 @@ Example:
   regions: [jp]
   mday: 1
   year_ranges:
-    - limited: [2002]
+    limited: [2002,2004]
 ```
 
-This will return successfully:
+Both of these examples will return successfully since the dates takes place in 2002 and 2004 exactly:
 
 ```ruby
 Holidays.on(Date.civil(2002, 7, 1), :jp)
+Holidays.on(Date.civil(2004, 7, 1), :jp)
 ```
 
-This will not:
+Neither of these will return since the dates takes place in outside of 2002 and 2004:
 
 ```ruby
 Holidays.on(Date.civil(2000, 7, 1), :jp)
+Holidays.on(Date.civil(2003, 7, 1), :jp)
 ```
 
 #### `between`
 
-The 'between' selector will only find a match if the supplied date takes place during the specified range of years. Only a single range is allowed at this time.
+The 'between' selector will only find a match if the supplied date takes place during the specified _inclusive_ range of years.
+
+To use this selector you *must* provide both a `start` and `end` key. Both values must be integers representing years.
 
 Example:
 
@@ -207,16 +240,20 @@ Example:
   regions: [jp]
   mday: 1
   year_ranges:
-    - between: 1996..2002
+    between:
+      start: 1996
+      end: 2002
 ```
 
-This will return successfully:
+These examples will return successfully since they take place within the specified range:
 
 ```ruby
+Holidays.on(Date.civil(1996, 7, 1), :jp)
 Holidays.on(Date.civil(2000, 7, 1), :jp)
+Holidays.on(Date.civil(2002, 7, 1), :jp)
 ```
 
-This will not:
+These will not since both are outside of the specified start/end range:
 
 ```ruby
 Holidays.on(Date.civil(2003, 7, 1), :jp)
@@ -225,15 +262,23 @@ Holidays.on(Date.civil(1995, 7, 1), :jp)
 
 ## Methods
 
-In addition to defining holidays by day or week, you can create custom methods to calculate a date. These should be placed under the `methods` property. Methods named in this way can then be referenced by entries in the `months` property.
+Sometimes you need to perform a complex calculation to determine a holiday. To facilitate this we allow for users to specify custom methods to calculate a date. These should be placed under the `methods` property. Methods named in this way can then be referenced by entries in the `months` property.
 
-For example, Canada celebrates Victoria Day, which falls on the Monday on or before May 24.  So, under the `methods` property we create a custom method that returns a Date object.
+#### Important note
 
-```
+One thing to note is that these methods are _language specific_ at this time, meaning we would have one for ruby, one for golang, etc. Coming up with a standardized way to represent the logic in the custom-written methods proved to be very difficult. This is a punt until we can come up with a better solution.
+
+Please feel free to only add the custom method source in the language that you choose. It will be up to downstream maintainers to ensure that their language has an implementation. So if you only want to add it in ruby please just do that!
+
+### Method Example
+
+Canada celebrates Victoria Day, which falls on the Monday on or before May 24. Under the `methods` property we would create a custom method for ruby that returns a Date object:
+
+```yaml
 methods:
   ca_victoria_day:
     arguments: year
-    source: |
+    ruby: |
       date = Date.civil(year, 5, 24)
       if date.wday > 1
         date -= (date.wday - 1)
@@ -244,25 +289,57 @@ methods:
       date
 ```
 
-This would be represented in `months` entry as:
+This could then be used in a `months` entry:
 
-```
+```yaml
 5:
 - name: Victoria Day
   regions: [ca]
   function: ca_victoria_day(year)
 ```
 
-If a holiday can occur in different months (e.g. Easter) it can go in the '0' month.
+### Available arguments
 
+You may only specify the following values for arguments into a custom method: `date`, `year`, `month`, `day`, `region`
+
+Correct example:
+
+```yaml
+1:
+- name: Custom Method
+  regions: [us]
+  function: custom_method(year, month, day)
 ```
+
+The following will return an error since `week` is not a recognized argument:
+
+```yaml
+1:
+- name: Custom Method
+  regions: [us]
+  function: custom_method(week)
+```
+
+#### Whaa? Why do you restrict what I can pass in?
+
+This was done as an attempt to make it easier for the downstream projects to parse and use the custom methods. They have to be able to pass in the required data so we limit it to make that process easier.
+
+We can add to this list if your custom logic needs something else! Open an issue with your use case and we can discuss it.
+
+### Methods without a fixed month
+
+If a holiday does not have a fixed month (e.g. Easter) it should go in the '0' month:
+
+```yaml
 0:
 - name: Easter Monday
   regions: [ca]
   function: easter(year)
 ```
 
-There are pre-existing methods for highly-used calculations. They are:
+### Pre-existing methods
+
+There are pre-existing methods for highly-used calculations. You can reference these methods in your definitions as you would a custom method that you have written:
 
 * `easter(year)` - calculates Easter via Gregorian calendar for a given year
 * `orthodox_easter(year)` - calculates Easter via Julian calendar for a given year
@@ -285,36 +362,13 @@ There are pre-existing methods for highly-used calculations. They are:
 
 Use the `function_modifier` property, which can be positive or negative, to modify the result of the function.
 
-In addition, you may only specify the following values for arguments into a custom method: `date`, `year`, `month`, `day`.
-
-If attempt to specify anything else then you will receive an error on definition generation. This is because these are the only values that are available to
-call into the custom methods will calculating the result of a function.
-
-Correct example:
-
-```
-1:
-- name: Custom Method
-  regions: [us]
-  function: custom_method(year, month, day)
-```
-
-If you do the following:
-
-```
-1:
-- name: Custom Method
-  regions: [us]
-  function: custom_method(week)
-```
-
-This will result in an error since `week` is not a recognized method argument.
-
 ### Calculating observed dates
 
 Users can specify that this gem only return holidays on their 'observed' day. This can be especially useful if they are using this gem for business-related logic. If you wish for your definitions to allow for this then you can add the `observed` property to your entry. This requires a method to help calculate the observed day.
 
-Several built-in methods are available for holidays that are observed on varying dates.  For example, for a holiday that is observed on Monday if it falls on a weekend you could write:
+Several built-in methods are available for holidays that are observed on varying dates.
+
+For example, for a holiday that is observed on Monday if it falls on a weekend you could write:
 
 ```
 7:
@@ -324,14 +378,13 @@ Several built-in methods are available for holidays that are observed on varying
   observed: to_monday_if_weekend(date)
 ```
 
-If a user does not specify `observed` when calling the gem then 1/1 will be the date found for 'Canada Day', regardless of whether it falls on a Saturday or Sunday. If a user specifies 'observed' then it will show as the following Monday if the date falls on a Saturday or Sunday.
+If a user does not specify `observed` in the options then 7/1 will be the date found for 'Canada Day', regardless of whether it falls on a Saturday or Sunday. If a user specifies 'observed' then it will show as the following Monday if the date falls on a Saturday or Sunday.
 
 ## Tests
 
-All definition files should have tests included. At this time we do not enforce any rules on coverage or numbers of tests.
-However, in general, PRs will not be accepted if they are devoid of tests that cover the changes in question.
+All definition files should have tests included. At this time we do not enforce any rules on coverage or numbers of tests. However, in general, PRs will not be accepted if they are devoid of tests that cover the changes in question.
 
-The format is a straightforward 'given then expect'. Here is a simple example:
+The format is a straightforward 'given/expect'. Here is a simple example:
 
 ```yaml
 - given:
@@ -353,7 +406,9 @@ Here are format details:
 
 One or the other of the `expect` keys is required. If you do not specify a `name` then you should set `holiday: false`.
 
-Here are some more examples. First example shows multiple dates, multiple regions, additional options, and an expectation that the result will be the named holiday.
+#### Test Examples
+
+First example shows multiple dates, multiple regions, additional options, and an expectation that the result will be the named holiday:
 
 ```yaml
 - given:

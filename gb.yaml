@@ -3,7 +3,7 @@
 # Including England, Wales, Scotland, N. Ireland, the Isle of Man, Guernsey
 # and Jersey.
 #
-# Updated: 2016-04-29
+# Updated: 2019-02-10
 # Sources:
 # - http://en.wikipedia.org/wiki/List_of_holidays_by_country#United_Kingdom_and_Crown_dependencies
 #
@@ -38,6 +38,7 @@ months:
   - name: St. Patrick's Day
     regions: [gb_nir]
     mday: 17
+    observed: to_monday_if_weekend(date)
   5:
   - name: May Day
     regions: [gb]
@@ -56,6 +57,7 @@ months:
   - name: Battle of the Boyne
     regions: [gb_nir]
     mday: 12
+    observed: to_monday_if_weekend(date)
   8:
   - name: Bank Holiday
     regions: [gb_sct]
@@ -76,13 +78,13 @@ months:
     type: informal
     observed: to_monday_if_weekend(date)
     year_ranges:
-    - before: 2006
+      until: 2006
   - name: St. Andrew's Day
     regions: [gb_sct]
     mday: 30
     observed: to_monday_if_weekend(date)
     year_ranges:
-    - after: 2007
+      from: 2007
   12:
   - name: Christmas Day
     regions: [gb]
@@ -136,6 +138,75 @@ tests:
       options: ["informal"]
     expect:
       name: "St. Patrick's Day"
+  - given:
+      date: '2018-03-17'
+      regions: ["gb_nir"]
+      options: ["informal"]
+    expect:
+      name: "St. Patrick's Day"
+  - given:
+      date: '2018-03-19'
+      regions: ["gb_nir"]
+      options: ["observed", "informal"]
+    expect:
+      name: "St. Patrick's Day"
+  - given:
+      date: '2019-03-17'
+      regions: ["gb_nir"]
+      options: ["informal"]
+    expect:
+      name: "St. Patrick's Day"
+  - given:
+      date: '2019-03-18'
+      regions: ["gb_nir"]
+      options: ["observed", "informal"]
+    expect:
+      name: "St. Patrick's Day"
+  - given:
+      date: '2020-07-12'
+      regions: ["gb_nir"]
+    expect:
+      name: "Battle of the Boyne"
+  - given:
+      date: '2020-07-12'
+      regions: ["gb_nir"]
+      options: ["observed"]
+    expect:
+      holiday: false
+  - given:
+      date: '2020-07-13'
+      regions: ["gb_nir"]
+      options: ["observed"]
+    expect:
+      name: "Battle of the Boyne"
+  - given:
+      date: '2008-07-12'
+      regions: ["gb_nir"]
+    expect:
+      name: "Battle of the Boyne"
+  - given:
+      date: '2008-07-14'
+      regions: ["gb_nir"]
+      options: ["observed"]
+    expect:
+      name: "Battle of the Boyne"
+  - given:
+      date: '2021-07-12'
+      regions: ["gb_nir"]
+    expect:
+      name: "Battle of the Boyne"
+  - given:
+      date: '2021-07-12'
+      regions: ["gb_nir"]
+      options: ["observed"]
+    expect:
+      name: "Battle of the Boyne"
+  - given:
+      date: '2021-07-13'
+      regions: ["gb_nir"]
+      options: ["observed"]
+    expect:
+      holiday: false
   - given:
       date: '2006-11-30'
       regions: ["gb_sct"]

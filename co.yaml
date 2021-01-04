@@ -14,7 +14,7 @@ methods:
   # Movable holiday: when they do not fall on a Monday, these holidays are observed the following Monday.
   to_following_monday_if_not_monday:
     arguments: date
-    source: |
+    ruby: |
       if date.wday > 1
         date += ( 8 - date.wday )
       elsif date.wday == 0
@@ -23,7 +23,7 @@ methods:
       date
   epiphany:
     arguments: year
-    source: |
+    ruby: |
       date = Date.civil( year, 1, 6 )
       if date.wday > 1
         date += ( 8 - date.wday )
@@ -33,7 +33,7 @@ methods:
       date
   saint_josephs_day:
     arguments: year
-    source: |
+    ruby: |
       date = Date.civil( year, 3, 19 )
       if date.wday > 1
         date += ( 8 - date.wday )
@@ -43,7 +43,7 @@ methods:
       date
   saint_peter_and_saint_paul:
     arguments: year
-    source: |
+    ruby: |
       date = Date.civil( year, 6, 29 )
       if date.wday > 1
         date += ( 8 - date.wday )
@@ -53,7 +53,7 @@ methods:
       date
   assumption_of_mary:
     arguments: year
-    source: |
+    ruby: |
       date = Date.civil( year, 8, 15 )
       if date.wday > 1
         date += ( 8 - date.wday )
@@ -63,7 +63,7 @@ methods:
       date
   columbus_day:
     arguments: year
-    source: |
+    ruby: |
       date = Date.civil( year, 10, 12 )
       if date.wday > 1
         date += ( 8 - date.wday )
@@ -73,7 +73,7 @@ methods:
       date
   all_saints_day:
     arguments: year
-    source: |
+    ruby: |
       date = Date.civil( year, 11, 1 )
       if date.wday > 1
         date += ( 8 - date.wday )
@@ -83,7 +83,7 @@ methods:
       date
   independence_of_cartagena:
     arguments: year
-    source: |
+    ruby: |
       date = Date.civil( year, 11, 11 )
       if date.wday > 1
         date += ( 8 - date.wday )
@@ -266,17 +266,17 @@ tests:
       name: 'Día de la Ascensión'
   # Corpus Christi
   - given:
-      date: '2014-06-19'
+      date: '2014-06-23'
       regions: ['co']
     expect:
       name: 'Corpus Christi'
   - given:
-      date: '2016-05-26'
+      date: '2016-05-30'
       regions: ['co']
     expect:
       name: 'Corpus Christi'
   - given:
-      date: '2017-06-15'
+      date: '2017-06-19'
       regions: ['co']
     expect:
       name: 'Corpus Christi'

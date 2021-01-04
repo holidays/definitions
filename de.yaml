@@ -1,6 +1,6 @@
 # German holiday definitions for the Ruby Holiday gem.
 #
-# Updated: 2016-11-27
+# Updated: 2019-02-10
 #
 # Changes 2016-11-27:
 # - Change de_sn_aux, de_th_aux to de_sn_sorbian (because it only is celebrated in Sorbian regions in Sachsen) and de_th_eichsfeld, to reflect region of Eichsfeld
@@ -16,6 +16,12 @@
 #
 # Changes 2017-09-25:
 # - Correct definition for Reformation Day
+#
+# Changes 2018-09-10:
+#  - Reformation Day has been added as a new holiday in Bremen, Hamburg, Lower Saxony and Schleswig-Holstein, starting in 2018.
+#
+# Change 2019-02-10:
+#  - Changing usage of 'year_ranges.after' to 'year_ranges.from', see https://github.com/holidays/definitions/issues/117
 #
 # Sources:
 # - http://en.wikipedia.org/wiki/Holidays_in_Germany
@@ -77,10 +83,21 @@ months:
   - name: Heilige Drei Könige
     regions: [de_bw, de_by, de_st]
     mday: 6
+  3:
+  - name: Internationaler Frauentag
+    regions: [de_be]
+    mday: 8
+    year_ranges:
+      from: 2019
   5:
   - name: Tag der Arbeit
     regions: [de]
     mday: 1
+  - name: Tag der Befreiung
+    regions: [de_be]
+    mday: 8
+    year_ranges:
+      limited: [2020]
   8:
   - name: Mariä Himmelfahrt
     regions: [de_by_cath, de_by_augsburg, de_sl]
@@ -103,7 +120,12 @@ months:
     regions: [de]
     mday: 31
     year_ranges:
-    - limited: [2017]
+      limited: [2017]
+  - name: Reformationstag
+    regions: [de_hb, de_hh, de_ni, de_sh]
+    mday: 31
+    year_ranges:
+      from: 2018
   11:
   - name: Allerheiligen
     regions: [de_bw, de_by, de_nw, de_rp, de_sl]
@@ -131,7 +153,7 @@ methods:
   de_buss_und_bettag:
     # Germany: Wednesday before November 23
     arguments: year
-    source: |
+    ruby: |
       date = Date.civil(year,11,23)
       if date.wday > 3
         date -= (date.wday - 3)
@@ -261,8 +283,8 @@ tests:
     expect:
       holiday: false
   - given:
-      date: '2019-10-31'
-      regions: ["de_bb", "de_mv", "de_sn", "de_st", "de_th"]
+      date: '2018-10-31'
+      regions: ["de_bb", "de_hb", "de_hh", "de_mv", "de_ni", "de_sh", "de_sn", "de_st", "de_th"]
     expect:
       name: "Reformationstag"
   - given:
@@ -328,3 +350,18 @@ tests:
       options: ["informal"]
     expect:
       name: "Aschermittwoch"
+  - given:
+      date: '2018-03-08'
+      regions: ["de_be"]
+    expect:
+      holiday: false
+  - given:
+      date: '2019-03-08'
+      regions: ["de_be"]
+    expect:
+      name: "Internationaler Frauentag"
+  - given:
+      date: '2020-05-08'
+      regions: ["de_be"]
+    expect:
+      name: "Tag der Befreiung"

@@ -1,10 +1,12 @@
 # Canadian holiday definitions for the Ruby Holiday gem.
-# Updated 2018-03-02.
+# Updated 2020-03-18.
 #
 # Notes:
 #  - 'Family Day' in various provinces are only celebrated after certain years: http://www.timeanddate.com/holidays/canada/family-day
 #  - 'Family Day' for New Brunswick after 2018  http://www.gnb.ca/legis/bill/FILE/58/3/Bill-67-e.htm
 #  - 'National Aboriginal Day for Yukon' Bill 2 received Royal Assent on May 8, 2017. http://www.gov.yk.ca/news/17-075.html
+#  - 'Nunavut’s legislative assembly voted to pass Bill 29 making Nunavut Day', July 9, an officially statutory holiday across the territory. https://www.gov.nu.ca/human-resources/information/public-service-holidays
+#  - 'According to Manitoba labour standards, Terry Fox Day is not a formal holiday. https://www.gov.mb.ca/labour/standards/doc,gen-holidays-after-april-30-07,factsheet.html#q13'
 ---
 months:
   0:
@@ -35,31 +37,39 @@ months:
     wday: 1
     week: 3
     year_ranges:
-    - after: 1990
+      from: 1990
   - name: Family Day
     regions: [ca_sk]
     wday: 1
     week: 3
     year_ranges:
-    - after: 2007
+      from: 2007
   - name: Family Day
     regions: [ca_on]
     wday: 1
     week: 3
     year_ranges:
-    - after: 2008
+      from: 2008
   - name: Family Day
     regions: [ca_bc]
     wday: 1
     week: 2
     year_ranges:
-    - after: 2013
+      between:
+        start: 2013
+        end: 2018
+  - name: Family Day
+    regions: [ca_bc]
+    wday: 1
+    week: 3
+    year_ranges:
+      from: 2019
   - name: Family Day
     regions: [ca_nb]
     wday: 1
     week: 3
     year_ranges:
-    - after: 2018
+      from: 2018
   - name: Louis Riel Day
     regions: [ca_mb]
     wday: 1
@@ -69,7 +79,7 @@ months:
     wday: 1
     week: 3
     year_ranges:
-    - after: 2015
+      from: 2015
   - name: Islander Day
     regions: [ca_pe]
     wday: 1
@@ -79,7 +89,6 @@ months:
     regions: [ca_nl]
     mday: 17
     type: informal
-  3:
   - name: St. George's Day
     regions: [ca_nl]
     mday: 23
@@ -106,7 +115,7 @@ months:
     regions: [ca_yt]
     mday: 21
     year_ranges:
-    - after: 2017    
+      from: 2017
   7:
   - name: Canada Day
     regions: [ca]
@@ -119,6 +128,9 @@ months:
   - name: Nunavut Day
     regions: [ca_nu]
     mday: 9
+    observed: to_monday_if_weekend(date)
+    year_ranges:
+      from: 2020
   8:
   - name: B.C. Day
     week: 1
@@ -151,6 +163,11 @@ months:
     week: 1
     regions: [ca_nb]
     wday: 1
+  - name: Terry Fox Day
+    week: 1
+    regions: [ca_mb]
+    wday: 1
+    type: informal
   - name: Discovery Day
     week: 3
     regions: [ca_yt]
@@ -163,7 +180,7 @@ months:
   10:
   - name: Thanksgiving
     week: 2
-    regions: [ca_ab, ca_bc, ca_mb, ca_nt, ca_nu, ca_on, ca_sk, ca_yt]
+    regions: [ca_ab, ca_bc, ca_mb, ca_nt, ca_nu, ca_on, ca_qc, ca_sk, ca_yt]
     wday: 1
   11:
   - name: Remembrance Day
@@ -174,7 +191,7 @@ months:
   - name: Christmas Day
     regions: [ca]
     mday: 25
-    observed: to_monday_if_weekend(date)
+    observed: to_weekday_if_weekend(date)
   - name: Boxing Day
     regions: [ca_on]
     mday: 26
@@ -184,11 +201,12 @@ months:
     mday: 26
     observed: to_weekday_if_boxing_weekend(date)
     type: informal
+
 methods:
   ca_victoria_day:
     # Monday on or before May 24
     arguments: year
-    source: |
+    ruby: |
       date = Date.civil(year,5,24)
       if date.wday > 1
         date -= (date.wday - 1)
@@ -301,7 +319,8 @@ tests:
       regions: ["ca_sk"]
     expect:
       name: "Family Day"
-# Family Day in Saskatchewan - should not be active before 2007
+
+  # Family Day in Saskatchewan - should not be active before 2007
   - given:
       date: '1970-02-16'
       regions: ["ca_sk"]
@@ -372,7 +391,7 @@ tests:
     expect:
       holiday: false
 
-  # Family Day in BC - Should only be active on 2013 or later
+  # Family Day in BC on 2nd week - Should only be active between 2013 and 2018
   - given:
       date: '2013-02-11'
       regions: ["ca_bc"]
@@ -384,12 +403,12 @@ tests:
     expect:
       name: "Family Day"
   - given:
-      date: '2044-02-08'
+      date: '2018-02-12'
       regions: ["ca_bc"]
     expect:
       name: "Family Day"
 
-  # Family Day in BC - should not be active before 2013
+  # Family Day in BC on 2nd week - Should not be active before 2013 and after 2018
   - given:
       date: '2000-02-14'
       regions: ["ca_bc"]
@@ -402,6 +421,50 @@ tests:
       holiday: false
   - given:
       date: '2012-02-13'
+      regions: ["ca_bc"]
+    expect:
+      holiday: false
+  - given:
+      date: '2019-02-11'
+      regions: ["ca_bc"]
+    expect:
+      holiday: false
+  - given:
+      date: '2044-02-08'
+      regions: ["ca_bc"]
+    expect:
+      holiday: false
+
+  # Family Day in BC on 3nd week - Should only be active after 2018
+  - given:
+      date: '2019-02-18'
+      regions: ["ca_bc"]
+    expect:
+      name: "Family Day"
+  - given:
+      date: '2020-02-17'
+      regions: ["ca_bc"]
+    expect:
+      name: "Family Day"
+  - given:
+      date: '2044-02-15'
+      regions: ["ca_bc"]
+    expect:
+      name: "Family Day"
+
+  # Family Day in BC on 3nd week - Should not be active before 2019
+  - given:
+      date: '2000-02-21'
+      regions: ["ca_bc"]
+    expect:
+      holiday: false
+  - given:
+      date: '2011-02-21'
+      regions: ["ca_bc"]
+    expect:
+      holiday: false
+  - given:
+      date: '2018-02-19'
       regions: ["ca_bc"]
     expect:
       holiday: false
@@ -681,9 +744,32 @@ tests:
     expect:
       name: "Canada Day"
 
-  # Christmas observed date
+  # Christmas Day
   - given:
-      date: '2010-12-27'
+      date: '2010-12-25'
+      regions: ["ca"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: '2018-12-25'
+      regions: ["ca"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: '2022-12-25'
+      regions: ["ca"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: '2022-12-25'
+      regions: ["ca"]
+      options: ["observed"]
+    expect:
+      holiday: false
+
+  # Christmas Day observed date
+  - given:
+      date: '2010-12-24'
       regions: ["ca"]
       options: ["observed"]
     expect:
@@ -696,6 +782,18 @@ tests:
       name: "Christmas Day"
   - given:
       date: '2016-12-26'
+      regions: ["ca"]
+      options: ["observed"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: '2021-12-24'
+      regions: ["ca"]
+      options: ["observed"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: '2022-12-26'
       regions: ["ca"]
       options: ["observed"]
     expect:
@@ -730,3 +828,54 @@ tests:
       regions: ['ca_yt']
     expect:
       name: 'National Aboriginal Day'
+  - given:
+      date: '2019-08-05'
+      regions: ['ca_mb']
+      options: ['informal']
+    expect:
+      name: 'Terry Fox Day'
+  - given:
+      date: '2020-08-03'
+      regions: ['ca_mb']
+      options: ['informal']
+    expect:
+      name: 'Terry Fox Day'
+  - given:
+      date: '2020-08-03'
+      regions: ['ca_mb']
+    expect:
+      holiday: false
+  - given:
+      date: '2015-08-03'
+      regions: ['ca_mb']
+      options: ['informal']
+    expect:
+      name: 'Terry Fox Day'
+  - given:
+      date: '2045-08-07'
+      regions: ['ca_mb']
+      options: ['informal']
+    expect:
+      name: 'Terry Fox Day'
+  # Nunavut Day, July 9 - Should only be active on 2020 or later
+  - given:
+      date: '2020-07-09'
+      regions: ['ca_nu']
+    expect:
+      name: 'Nunavut Day'
+  - given:
+      date: '2021-07-09'
+      regions: ['ca_nu']
+    expect:
+      name: 'Nunavut Day'
+  # Nunavut Day,  July 9 - should NOT be active before 2020
+  - given:
+      date: '2019-07-09'
+      regions: ['ca_nu']
+    expect:
+      holiday: false
+  - given:
+      date: '2018-07-09'
+      regions: ['ca_nu']
+    expect:
+      holiday: false
