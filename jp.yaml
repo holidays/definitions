@@ -201,7 +201,7 @@ months:
     wday: 1
     week: 2
     year_ranges:
-      from: 2021
+      from: 2022
   - name: 振替休日
     regions: [jp]
     function: jp_health_sports_day_substitute(year)
@@ -633,7 +633,7 @@ tests:
     expect:
       name: "海の日"
   - given:
-      date: '2021-07-19'
+      date: '2021-07-22'
       regions: ["jp"]
     expect:
       name: "海の日"
@@ -668,10 +668,15 @@ tests:
     expect:
       holiday: false
   - given:
-      date: '2021-08-11'
+      date: '2021-08-08'
       regions: ["jp"]
     expect:
       name: "山の日"
+  - given:
+      date: '2021-08-09'
+      regions: ["jp"]
+    expect:
+      name: "振替休日"
   - given:
       date: '2022-08-11'
       regions: ["jp"]
@@ -723,7 +728,7 @@ tests:
     expect:
       holiday: false
   - given:
-      date: '2021-10-11'
+      date: '2021-07-23'
       regions: ["jp"]
     expect:
       name: "スポーツの日"
