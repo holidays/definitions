@@ -1,5 +1,11 @@
 # Holiday definitions
 
+## 5.3.1
+
+Fix jp holidays from 2022.
+
+* :+1: Reflects changes in Japanese holidays in 2021.(Thanks to https://github.com/ryosukeYamazaki)
+
 ## 5.3.0
 
 Update many defitnions.
