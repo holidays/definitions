@@ -228,7 +228,7 @@ months:
     wday: 1
     week: 2
     year_ranges:
-      from: 2021
+      from: 2022
   - name: 振替休日
     regions: [jp]
     function: jp_health_sports_day_substitute(year)
