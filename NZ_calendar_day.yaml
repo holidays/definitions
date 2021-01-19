@@ -1,0 +1,164 @@
+# New Zealand holiday definitions. Two options, paid as per the 'week day' or this paid on the specific calendar day
+# Updated: 2010-03-28.
+# Sources:
+# - http://en.wikipedia.org/wiki/Public_holidays_in_New_Zealand
+---
+months:
+  0:
+  - name: Good Friday
+    regions: [nz]
+    function: easter(year)
+    function_modifier: -2
+  - name: Easter Monday
+    regions: [nz]
+    function: easter(year)
+    function_modifier: 1
+  1:
+  - name: New Year's Day
+    regions: [nz]
+    mday: 1
+  - name: Day after New Year's Day
+    regions: [nz]
+    mday: 2
+  - name: Southland Anniversary Day
+    regions: [nz_sl]
+    mday: 17
+  - name: Wellington Anniversary Day
+    regions: [nz_we]
+    mday: 22
+  - name: Auckland Anniversary Day
+    regions: [nz_ak]
+    mday: 29
+  - name: Northland Anniversary Day
+    regions: [nz_nl]
+    mday: 29
+  2:
+  - name: Nelson Anniversary Day
+    regions: [nz_ne]
+    mday: 1
+  - name: Waitangi Day
+    regions: [nz]
+    mday: 6
+  3:
+  - name: Otago Anniversary Day
+    regions: [nz_ot]
+    mday: 23
+  - name: Taranaki Anniversary Day
+    regions: [nz_ta]
+    week: 2
+    wday: 1
+  4:
+  - name: ANZAC Day
+    regions: [nz]
+    mday: 25
+  6:
+  - name: Queen's Birthday
+    regions: [nz]
+    week: 1
+    wday: 1
+  9:
+  - name: Dominion Day
+    regions: [nz_sc]
+    week: 4
+    wday: 1
+  10:
+  - name: Hawke's bay Anniversary Day
+    regions: [nz_hb]
+    week: 1
+    wday: 1
+  - name: Labour Day
+    regions: [nz]
+    week: 4
+    wday: 1
+  - name: Marlborough Anniversary Day
+    regions: [nz_mb]
+    week: 4
+    wday: 1
+  11:
+  - name: Canterbury Anniversary Day
+    regions: [nz_ca]
+    week: 2
+    wday: 5
+  - name: Chatham Island Anniversary Day
+    regions: [nz_ch]
+    mday: 30
+  12:
+  - name: Westland Anniversary Day
+    regions: [nz_wl]
+    mday: 1
+  - name: Christmas Day
+    regions: [nz]
+    mday: 25
+  - name: Boxing Day
+    regions: [nz]
+    mday: 26
+
+tests:
+  - given:
+      date: '2007-01-01'
+      regions: ["nz"]
+      options: ["informal"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: '2007-01-02'
+      regions: ["nz"]
+      options: ["informal"]
+    expect:
+      name: "Day after New Year's Day"
+  - given:
+      date: '2007-02-06'
+      regions: ["nz"]
+      options: ["informal"]
+    expect:
+      name: "Waitangi Day"
+  - given:
+      date: '2007-04-06'
+      regions: ["nz"]
+      options: ["informal"]
+    expect:
+      name: "Good Friday"
+  - given:
+      date: '2007-04-09'
+      regions: ["nz"]
+      options: ["informal"]
+    expect:
+      name: "Easter Monday"
+  - given:
+      date: '2007-04-25'
+      regions: ["nz"]
+      options: ["informal"]
+    expect:
+      name: "ANZAC Day"
+  - given:
+      date: '2007-12-25'
+      regions: ["nz"]
+      options: ["informal"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: '2007-12-26'
+      regions: ["nz"]
+      options: ["informal"]
+    expect:
+      name: "Boxing Day"
+  - given:
+      date: '2015-04-25'
+      regions: ["nz"]
+    expect:
+      name: "ANZAC Day"
+  - given:
+      date: '2016-04-25'
+      regions: ["nz"]
+    expect:
+      name: "ANZAC Day"
+  - given:
+      date: '2015-02-06'
+      regions: ["nz"]
+    expect:
+      name: "Waitangi Day"
+  - given:
+      date: '2016-02-06'
+      regions: ["nz"]
+    expect:
+      name: "Waitangi Day"
