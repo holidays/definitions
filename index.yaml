@@ -47,7 +47,7 @@ defs:
   LU: ['lu.yaml']
   "NO": ['no.yaml']
   NYSE: ['nyse.yaml']
-  NZ: ['nz.yaml', 'nz_calendar_dates.yaml ']
+  NZ: ['nz.yaml', 'nz_calendar_dates.yaml']
   PE: ['pe.yaml']
   PH: ['ph.yaml']
   PK: ['pk.yaml']
