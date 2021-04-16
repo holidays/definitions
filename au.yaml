@@ -79,7 +79,7 @@ months:
     mday: 25
     observed: to_monday_if_weekend(date)
   - name: Additional public holiday for ANZAC Day # ADDITIONAL ANZAC DAY
-    regions: [au_sa, au_wa]
+    regions: [au_sa, au_act, au_wa]
     mday: 25
     function: additional_anzac_on_monday_if_on_weekend(date)
   5:
