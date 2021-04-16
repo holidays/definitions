@@ -8,6 +8,23 @@
 # - https://www.argentina.gob.ar/interior/feriados-nacionales-2020
 # - https://www.argentina.gob.ar/interior/feriados-nacionales-2021
 ---
+methods:
+  to_nearest_monday:
+    arguments: date
+    ruby: |
+        case date.wday
+        when 5
+          date += 3
+        when 4
+          date += 4
+        when 3
+          date -= 2
+        when 2
+          date -= 1
+        end
+
+        date
+
 months:
   0:
   - name: Viernes Santo
@@ -50,7 +67,7 @@ months:
   - name: Paso a la Inmortalidad del General Martín Miguel de Güemes
     regions: [ar]
     mday: 17
-    function: to_weekday_if_boxing_weekend_from_year(year)
+    function: to_nearest_monday(date)
   - name: Día de la Bandera
     regions: [ar]
     mday: 20
@@ -67,12 +84,12 @@ months:
   - name: Paso a la Inmortalidad del General José de San Martín
     regions: [ar]
     mday: 17
-    function: to_weekday_if_boxing_weekend_from_year(year)
+    function: to_nearest_monday(date)
   10:
   - name: Día del Respeto a la Diversidad Cultural
     regions: [ar]
     mday: 12
-    function: to_weekday_if_boxing_weekend_from_year(year)
+    function: to_nearest_monday(date)
   - name: Feriado con fines turísticos
     regions: [ar]
     mday: 8
