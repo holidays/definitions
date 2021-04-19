@@ -72,10 +72,10 @@ months:
     wday: 1
   4:
   - name: ANZAC Day # ANZAC DAY ACTUAL
-    regions: [au_nsw, au_sa, au_tas, au_vic, au_wa]
+    regions: [au_nsw, au_sa, au_tas, au_vic, au_act, au_wa]
     mday: 25
   - name: ANZAC Day # ANZAC DAY OBSERVED - no additional recognised
-    regions: [au_act, au_nt, au_qld]
+    regions: [au_nt, au_qld]
     mday: 25
     observed: to_monday_if_weekend(date)
   - name: Additional public holiday for ANZAC Day # ADDITIONAL ANZAC DAY
