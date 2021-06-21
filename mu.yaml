@@ -10,20 +10,19 @@ months:
   - name: New Year's Day
     regions: [mu]
     mday: 1
-    year_ranges:
   - name: New Year's Holiday
     regions: [mu]
     mday: 2
   - name: Thaipoosam Cavadee
     regions: [mu]
     mday: 28
-      year_ranges:
-      - limited: 2021
-    - name: Thaipoosam Cavadee
+    year_ranges:
+      - limited: [2021]
+  - name: Thaipoosam Cavadee
     regions: [mu]
     mday: 18
-      year_ranges:
-      - limited: 2022
+    year_ranges:
+      - limited: [2022]
   2:
   - name: Abolition of Slavery
     regions: [mu]
@@ -31,39 +30,38 @@ months:
   - name: Chinese Spring Festival
     regions: [mu]
     mday: 01
-        year_ranges:
-      - limited: 2022 
+    year_ranges:
+      - limited: [2022] 
   - name: Chinese Spring Festival
     regions: [mu]
     mday: 12
-        year_ranges:
-      - limited: 2021 
-
+    year_ranges:
+      - limited: [2021] 
   3:
-   - name: Maha Shivaratree
+  - name: Maha Shivaratree
     regions: [mu]
     mday: 1
     year_ranges:
-      - limited: 2022
+      - limited: [2022]
   - name: Maha Shivaratree
     regions: [mu]
     mday: 11
     year_ranges:
-      - limited: 2021
+      - limited: [2021]
   - name: Independence and Republic Day
     regions: [mu]
     mday: 12
   4:
-   - name: Ougadi
+  - name: Ougadi
     regions: [mu]
     mday: 2
     year_ranges:
-      - limited: 2022
+      - limited: [2022]
   - name: Ougadi
     regions: [mu]
     mday: 13
     year_ranges:
-      - limited: 2021
+      - limited: [2021]
   5:
   - name: Labour Day
     regions: [mu]
@@ -73,24 +71,24 @@ months:
     regions: [mu]
     mday: 15
     year_ranges:
-    - limited: 2022
+      - limited: [2022]
   - name: Ganesh Chaturthi
     regions: [mu]
     mday: 31
     year_ranges:
-    - limited: 2022 
+      - limited: [2022] 
   9:
   - name: Ganesh Chaturthi
     regions: [mu]
     mday: 11
     year_ranges:
-    - limited: 2021
+      - limited: [2021]
   11:
   - name: All Saints' Day
     regions: [mu]
     mday: 1
     year_ranges:
-    - limited: 2021
+      - limited: [2021]
   - name: Arrival of Indentured Labourers
     regions: [mu]
     mday: 2
@@ -98,22 +96,23 @@ months:
     regions: [mu]
     mday: 4
     year_ranges:
-    - limited: 2021
+      - limited: [2021]
   - name: Diwali
     regions: [mu]
     mday: 24
     year_ranges:
-    - limited: 2022
+      - limited: [2022]
   12:
   - name: Christmas Day
     regions: [mu]
     mday: 25
+
 tests:
   - given:
       date: '2012-01-01'
       regions: ["mu"]
     expect:
-      name: 'New Year's Day'
+      name: "New Year's Day"
   - given:
       date: '2022-02-01'
       regions: ["mu"]
