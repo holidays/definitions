@@ -193,6 +193,12 @@ months:
     regions: [us_hi]
     observed: to_weekday_if_weekend(date)
     mday: 11
+  - name: Juneteenth National Independence Day
+    regions: [us]
+    mday: 19
+    observed: to_weekday_if_weekend(date)
+    year_ranges:
+      from: 2021
   - name: Emancipation Day in Texas # fixed
     regions: [us_tx]
     mday: 19
@@ -684,6 +690,16 @@ tests:
       regions: ["us_hi"]
     expect:
       name: "King Kamehameha I Day"
+  - given:
+      date: ['2021-06-19']
+      regions: ["us"]
+    expect:
+      holiday: false
+  - given:
+      date: ['2021-06-18']
+      regions: ["us"]
+    expect:
+      name: "Juneteenth National Independence Day"
   - given:
       date: ['2017-6-19']
       regions: ["us_tx"]
