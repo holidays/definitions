@@ -71,9 +71,12 @@ months:
     regions: [au]
     mday: 25
   - name: ANZAC Day
-    regions: [au_nsw, au_vic, au_qld, au_nt, au_act, au_sa, au_tas]
+    regions: [au_nsw, au_qld, au_nt, au_act, au_sa, au_tas]
     mday: 25
     observed: to_monday_if_sunday(date)
+  - name: ANZAC Day
+    regions: [au_vic]
+    mday: 25
   - name: ANZAC Day
     regions: [au_wa]
     mday: 25
@@ -749,3 +752,8 @@ tests:
       regions: ["au_qld_brisbane"]
     expect:
       name: "G20 Day"
+  - given:
+      date: '2021-04-26'
+      regions: ["au_vic"]
+    expect:
+      holiday: false
