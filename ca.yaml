@@ -177,6 +177,11 @@ months:
     week: 1
     regions: [ca]
     wday: 1
+  - name: National Day for Truth and Reconciliation
+    regions: [ca]
+    mday: 30
+    year_ranges:
+      from: 2021
   10:
   - name: Thanksgiving
     week: 2
@@ -743,6 +748,30 @@ tests:
       options: ["observed"]
     expect:
       name: "Canada Day"
+
+  # National Day for Truth and Reconciliation
+  - given:
+      date: '2021-09-30'
+      regions: ["ca"]
+    expect:
+      name: "National Day for Truth and Reconciliation"
+  - given:
+      date: '2026-09-30'
+      regions: ["ca"]
+    expect:
+      name: "National Day for Truth and Reconciliation"
+
+  # National Day for Truth and Reconciliation - should not be active before 2021
+  - given:
+      date: '2020-09-30'
+      regions: ["ca"]
+    expect:
+      holiday: false
+  - given:
+      date: '1985-09-30'
+      regions: ["ca"]
+    expect:
+      holiday: false
 
   # Christmas Day
   - given:
