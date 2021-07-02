@@ -1,0 +1,392 @@
+months:
+  1:
+    - name: 元旦 # Yuándàn, New Year
+      regions: [cn]
+      mday: 1
+    - name: 春节 # Chūnjié, Lunar New Year
+      regions: [cn]
+      mday: 1
+      function: lunar_to_solar(year, month, day, region)
+  3:
+    - name: 清明节 # Qīngmíng jié, Tomb-sweeping Day
+      regions: [cn]
+      function: vernal_equinox(year)
+      function_modifier: 15
+  5:
+    - name: 劳动节 # Láodòng jié, Labor Day
+      regions: [cn]
+      mday: 1
+    - name: 端午节 # Duānwǔ jié, Dragon Boat Festival
+      regions: [cn]
+      mday: 5
+      function: lunar_to_solar(year, month, day, region)
+  8:
+    - name: 中秋节
+      regions: [cn]
+      mday: 15
+      function: lunar_to_solar(year, month, day, region)
+  10:
+    - name: 国庆节 # Guóqìng jié, Golden Week
+      regions: [cn]
+      mday: 1
+    - name: 国庆节 # Guóqìng jié, Golden Week
+      regions: [cn]
+      mday: 2
+    - name: 国庆节 # Guóqìng jié, Golden Week
+      regions: [cn]
+      mday: 3
+
+methods:
+  vernal_equinox:
+    arguments: year
+    ruby: |
+      day =
+        case year
+        when 1851..1899
+          19.8277
+        when 1900..1979
+          20.8357
+        when 1980..2099
+          20.8431
+        when 2100..2150
+          21.8510
+        else
+          raise IndexError.new("Year out of range")
+        end
+      day += 0.242194 * (year - 1980) - ((year - 1980)/4).floor
+      day = day.floor
+      Date.civil(year, 3, day)
+
+tests:
+  # Yuándàn, New Year
+  - given:
+      date: "2014-01-01"
+      regions: [cn]
+    expect:
+      name: "元旦"
+  - given:
+      date: "2015-01-01"
+      regions: [cn]
+    expect:
+      name: "元旦"
+  - given:
+      date: "2016-01-01"
+      regions: [cn]
+    expect:
+      name: "元旦"
+  - given:
+      date: "2017-01-01"
+      regions: [cn]
+    expect:
+      name: "元旦"
+  - given:
+      date: "2018-01-01"
+      regions: [cn]
+    expect:
+      name: "元旦"
+  - given:
+      date: "2019-01-01"
+      regions: [cn]
+    expect:
+      name: "元旦"
+  - given:
+      date: "2020-01-01"
+      regions: [cn]
+    expect:
+      name: "元旦"
+
+  # Yuándàn, New Year
+  - given:
+      date: "2014-05-01"
+      regions: [cn]
+    expect:
+      name: "劳动节"
+  - given:
+      date: "2015-05-01"
+      regions: [cn]
+    expect:
+      name: "劳动节"
+  - given:
+      date: "2016-05-01"
+      regions: [cn]
+    expect:
+      name: "劳动节"
+  - given:
+      date: "2017-05-01"
+      regions: [cn]
+    expect:
+      name: "劳动节"
+  - given:
+      date: "2018-05-01"
+      regions: [cn]
+    expect:
+      name: "劳动节"
+  - given:
+      date: "2019-05-01"
+      regions: [cn]
+    expect:
+      name: "劳动节"
+  - given:
+      date: "2020-05-01"
+      regions: [cn]
+    expect:
+      name: "劳动节"
+
+  # Guóqìng jié, Golden Week Day 1
+  - given:
+      date: "2014-10-01"
+      regions: [cn]
+    expect:
+      name: "劳动节"
+  - given:
+      date: "2015-10-01"
+      regions: [cn]
+    expect:
+      name: "劳动节"
+  - given:
+      date: "2016-10-01"
+      regions: [cn]
+    expect:
+      name: "劳动节"
+  - given:
+      date: "2017-10-01"
+      regions: [cn]
+    expect:
+      name: "劳动节"
+  - given:
+      date: "2018-10-01"
+      regions: [cn]
+    expect:
+      name: "劳动节"
+  - given:
+      date: "2019-10-01"
+      regions: [cn]
+    expect:
+      name: "劳动节"
+  - given:
+      date: "2020-10-01"
+      regions: [cn]
+    expect:
+      name: "劳动节"
+
+  # Guóqìng jié, Golden Week Day 2
+  - given:
+      date: "2014-10-02"
+      regions: [cn]
+    expect:
+      name: "劳动节"
+  - given:
+      date: "2015-10-02"
+      regions: [cn]
+    expect:
+      name: "劳动节"
+  - given:
+      date: "2016-10-02"
+      regions: [cn]
+    expect:
+      name: "劳动节"
+  - given:
+      date: "2017-10-02"
+      regions: [cn]
+    expect:
+      name: "劳动节"
+  - given:
+      date: "2018-10-02"
+      regions: [cn]
+    expect:
+      name: "劳动节"
+  - given:
+      date: "2019-10-02"
+      regions: [cn]
+    expect:
+      name: "劳动节"
+  - given:
+      date: "2020-10-02"
+      regions: [cn]
+    expect:
+      name: "劳动节"
+
+  # Guóqìng jié, Golden Week Day 3
+  - given:
+      date: "2014-10-03"
+      regions: [cn]
+    expect:
+      name: "劳动节"
+  - given:
+      date: "2015-10-03"
+      regions: [cn]
+    expect:
+      name: "劳动节"
+  - given:
+      date: "2016-10-03"
+      regions: [cn]
+    expect:
+      name: "劳动节"
+  - given:
+      date: "2017-10-03"
+      regions: [cn]
+    expect:
+      name: "劳动节"
+  - given:
+      date: "2018-10-03"
+      regions: [cn]
+    expect:
+      name: "劳动节"
+  - given:
+      date: "2019-10-03"
+      regions: [cn]
+    expect:
+      name: "劳动节"
+  - given:
+      date: "2020-10-03"
+      regions: [cn]
+    expect:
+      name: "劳动节"
+
+  # Chūnjié, Lunar New Year
+  - given:
+      date: "2014-01-31"
+      regions: [cn]
+    expect:
+      name: "春节"
+  - given:
+      date: "2015-02-19"
+      regions: [cn]
+    expect:
+      name: "春节"
+  - given:
+      date: "2016-02-08"
+      regions: [cn]
+    expect:
+      name: "春节"
+  - given:
+      date: "2017-02-28"
+      regions: [cn]
+    expect:
+      name: "春节"
+  - given:
+      date: "2018-02-16"
+      regions: [cn]
+    expect:
+      name: "春节"
+  - given:
+      date: "2019-02-05"
+      regions: [cn]
+    expect:
+      name: "春节"
+  - given:
+      date: "2020-01-25"
+      regions: [cn]
+    expect:
+      name: "春节"
+
+  # Duānwǔ jié, Dragon Boat Festival
+  - given:
+      date: "2014-06-02"
+      regions: [cn]
+    expect:
+      name: "端午节"
+  - given:
+      date: "2015-06-20"
+      regions: [cn]
+    expect:
+      name: "端午节"
+  - given:
+      date: "2016-06-09"
+      regions: [cn]
+    expect:
+      name: "端午节"
+  - given:
+      date: "2017-05-30"
+      regions: [cn]
+    expect:
+      name: "端午节"
+  - given:
+      date: "2018-06-18"
+      regions: [cn]
+    expect:
+      name: "端午节"
+  - given:
+      date: "2019-06-07"
+      regions: [cn]
+    expect:
+      name: "端午节"
+  - given:
+      date: "2020-06-25"
+      regions: [cn]
+    expect:
+      name: "端午节"
+
+  # Zhōngqiū jié, Mid-Autumn Festival
+  - given:
+      date: "2014-09-08"
+      regions: [cn]
+    expect:
+      name: "中秋节"
+  - given:
+      date: "2015-09-27"
+      regions: [cn]
+    expect:
+      name: "中秋节"
+  - given:
+      date: "2016-09-15"
+      regions: [cn]
+    expect:
+      name: "中秋节"
+  - given:
+      date: "2017-10-04"
+      regions: [cn]
+    expect:
+      name: "中秋节"
+  - given:
+      date: "2018-09-24"
+      regions: [cn]
+    expect:
+      name: "中秋节"
+  - given:
+      date: "2019-09-13"
+      regions: [cn]
+    expect:
+      name: "中秋节"
+  - given:
+      date: "2020-10-01"
+      regions: [cn]
+    expect:
+      name: "中秋节"
+
+  # Qīngmíng jié, Tomb-Sweeping Day
+  - given:
+      date: "2014-04-05"
+      regions: [cn]
+    expect:
+      name: "清明节"
+  - given:
+      date: "2015-04-05"
+      regions: [cn]
+    expect:
+      name: "清明节"
+  - given:
+      date: "2016-04-04"
+      regions: [cn]
+    expect:
+      name: "清明节"
+  - given:
+      date: "2017-04-04"
+      regions: [cn]
+    expect:
+      name: "清明节"
+  - given:
+      date: "2018-04-05"
+      regions: [cn]
+    expect:
+      name: "清明节"
+  - given:
+      date: "2019-04-05"
+      regions: [cn]
+    expect:
+      name: "清明节"
+  - given:
+      date: "2020-04-04"
+      regions: [cn]
+    expect:
+      name: "清明节"
