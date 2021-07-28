@@ -830,7 +830,7 @@ tests:
     expect:
       name: "Easter Sunday"
   - given:
-    date: '2021-08-02'
-    regions: ["au-nt"]
+      date: '2021-08-02'
+      regions: ["au-nt"]
     expect:
       name: "Picnic Day"
