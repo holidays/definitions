@@ -565,6 +565,11 @@ tests:
     expect:
       name: 'Friday before the AFL Grand Final'
   - given:
+      date: '2021-09-24'
+      regions: ["au_vic"]
+    expect:
+      name: 'Friday before the AFL Grand Final'
+  - given:
       date: '2005-05-16'
       regions: ["au_sa"]
     expect:
