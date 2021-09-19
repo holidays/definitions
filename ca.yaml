@@ -194,17 +194,37 @@ months:
     observed: to_monday_if_weekend(date)
   12:
   - name: Christmas Day
-    regions: [ca]
+    regions: [ca_on]
+    mday: 25
+    year_ranges:
+      until: 2020
+    observed: to_weekday_if_weekend(date)
+  - name: Christmas Day
+    regions: [ca_on]
+    mday: 25
+    observed: to_monday_if_weekend(date)
+    year_ranges:
+      from: 2020
+  - name: Christmas Day
+    regions: [ca_ab, ca_bc, ca_mb, ca_nb, ca_nl, ca_nt, ca_ns, ca_nu, ca_pe, ca_qc, ca_sk, ca_yt]
     mday: 25
     observed: to_weekday_if_weekend(date)
   - name: Boxing Day
     regions: [ca_on]
     mday: 26
+    year_ranges:
+      until: 2020
+    observed: to_monday_if_weekend(date)
+  - name: Boxing Day
+    regions: [ca_on]
+    mday: 26
+    year_ranges:
+      from: 2020
     observed: to_weekday_if_boxing_weekend(date)
   - name: Boxing Day
-    regions: [ca_ab, ca_bc, ca_mb, ca_nb, ca_nl, ca_nt, ca_ns, ca_nu, ca_pe, ca_sk, ca_yt]
+    regions: [ca_ab, ca_bc, ca_mb, ca_nb, ca_nl, ca_nt, ca_ns, ca_nu, ca_pe, ca_qc, ca_sk, ca_yt]
     mday: 26
-    observed: to_weekday_if_boxing_weekend(date)
+    observed: to_monday_if_weekend(date)
     type: informal
 
 methods:
@@ -817,8 +837,14 @@ tests:
       name: "Christmas Day"
   - given:
       date: '2021-12-24'
-      regions: ["ca"]
+      regions: ["ca_ab", "ca_bc", "ca_mb", "ca_nb", "ca_nl", "ca_nt", "ca_ns", "ca_nu", "ca_pe", "ca_qc", "ca_sk", "ca_yt"]
       options: ["observed"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: '2021-12-27'
+      regions: [ "ca_on" ]
+      options: [ "observed" ]
     expect:
       name: "Christmas Day"
   - given:
