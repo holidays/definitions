@@ -1,5 +1,14 @@
 # Holiday definitions
 
+## 5.4.0
+
+* Fix boxing day in `za` region
+* Fix ANZAC day in `au_vic` region (thanks to https://github.com/evjan)
+* Update `ar` region holidays for accuracy (thanks to https://github.com/elsupergomez)
+* Add Juneteenth holiday for `us` and `federalreservebank` regions (thanks to https://github.com/Murphydbuffalo and https://github.com/pjsier)
+* Add National Day for Truth and Reconciliation for `ca` region (thanks to https://github.com/Xipher7934)
+* Fix Christmas observation in `ca_on` region (thanks to https://github.com/jeffmess)
+
 ## 5.3.1
 
 Fix jp holidays from 2022.
