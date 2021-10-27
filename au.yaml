@@ -313,7 +313,7 @@ tests:
     expect:
       name: 'ANZAC Day'
   - given:
-      date: '2021-04-27'
+      date: '2021-04-26'
       regions: ["au_wa"]
     expect:
       name: 'Additional public holiday for ANZAC Day'
