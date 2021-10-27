@@ -336,7 +336,7 @@ tests:
       date: '2021-12-28'
       regions: ["au_qld"]
     expect:
-      name: 'Additional public holiday for Boxing Day'
+      name: 'Additional public holiday Boxing Day'
   - given:
       date: '2013-10-07'
       regions: ["au_qld"]
