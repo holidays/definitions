@@ -162,10 +162,6 @@ months:
     regions: [au_tas_north]
     wday: 1
     week: 1
-  - name: Melbourne Cup Day
-    regions: [au_vic_melbourne, au_vic]
-    week: 1
-    wday: 2
   12:
   - name: Christmas Day # CHRISTMAS DAY ACTUAL - Recognised by ALL states expect for NT
     regions: [au_act, au_nsw, au_qld, au_sa, au_tas, au_vic, au_wa, au_nt]
@@ -520,20 +516,10 @@ tests:
     expect:
       holiday: false
   - given:
-      date: '2014-11-04'
-      regions: ["au_vic_melbourne"]
-    expect:
-      name: 'Melbourne Cup Day'
-  - given:
-      date: '2015-11-03'
-      regions: ["au_vic_melbourne"]
-    expect:
-      name: 'Melbourne Cup Day'
-  - given:
-      date: '2019-11-05'
+      date: '2021-11-02'
       regions: ["au_vic"]
     expect:
-      name: 'Melbourne Cup Day'
+      holiday: false
   - given:
       date: '2015-10-02'
       regions: ["au_vic"]
