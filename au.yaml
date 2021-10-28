@@ -162,10 +162,6 @@ months:
     regions: [au_tas_north]
     wday: 1
     week: 1
-  - name: Melbourne Cup Day
-    regions: [au_vic_melbourne, au_vic]
-    week: 1
-    wday: 2
   12:
   - name: Christmas Day # CHRISTMAS DAY ACTUAL - Recognised by ALL states expect for NT
     regions: [au_act, au_nsw, au_qld, au_sa, au_tas, au_vic, au_wa, au_nt]
@@ -317,7 +313,7 @@ tests:
     expect:
       name: 'ANZAC Day'
   - given:
-      date: '2021-04-27'
+      date: '2021-04-26'
       regions: ["au_wa"]
     expect:
       name: 'Additional public holiday for ANZAC Day'
@@ -340,7 +336,7 @@ tests:
       date: '2021-12-28'
       regions: ["au_qld"]
     expect:
-      name: 'Additional public holiday for Boxing Day'
+      name: 'Additional public holiday Boxing Day'
   - given:
       date: '2013-10-07'
       regions: ["au_qld"]
@@ -457,7 +453,7 @@ tests:
       date: '2015-12-26'
       regions: ["au_tas"]
     expect:
-      holiday: false
+      name: 'Boxing Day'
   - given:
       date: '2015-11-14'
       regions: ["au_qld_brisbane"]
@@ -467,12 +463,12 @@ tests:
       date: '2015-12-26'
       regions: ["au_nt"]
     expect:
-      holiday: false
+      name: 'Boxing Day'
   - given:
       date: '2016-12-27'
       regions: ["au_sa"]
     expect:
-      name: 'Proclamation Day'
+      name: 'Additional public holiday for Christmas Day'
   - given:
       date: '2016-12-25'
       regions: ["au_nt"]
@@ -523,17 +519,22 @@ tests:
       date: '2014-11-04'
       regions: ["au_vic_melbourne"]
     expect:
-      name: 'Melbourne Cup Day'
+      holiday: false
   - given:
       date: '2015-11-03'
       regions: ["au_vic_melbourne"]
     expect:
-      name: 'Melbourne Cup Day'
+      holiday: false
   - given:
       date: '2019-11-05'
       regions: ["au_vic"]
     expect:
-      name: 'Melbourne Cup Day'
+      holiday: false
+  - given:
+      date: '2021-11-02'
+      regions: ["au_vic"]
+    expect:
+      holiday: false
   - given:
       date: '2015-10-02'
       regions: ["au_vic"]
