@@ -926,7 +926,7 @@ tests:
     expect:
       holiday: false
   - given:
-      date: ['2021-12-24', '2022-12-26', '2027-12-24']
+      date: ['2021-12-24', '2022-12-23', '2027-12-24']
       regions: ["us"]
       options: ["observed"]
     expect:
