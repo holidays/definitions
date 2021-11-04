@@ -110,9 +110,6 @@ months:
     regions: [gb]
     mday: 26
     observed: to_weekday_if_boxing_weekend(date)
-    year_ranges:
-    - before: 2022
-    - after: 2022
   - name: Christmas Day (substitute day)
     regions: [gb]
     mday: 27
