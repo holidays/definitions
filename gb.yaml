@@ -121,6 +121,7 @@ months:
   - name: Boxing Day
     regions: [gb]
     mday: 26
+    year_ranges:
     - limited: [2022]
 
 tests:
