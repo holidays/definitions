@@ -10,8 +10,8 @@
 # - Add missing tests and correct existing tests
 # - Add helpful comments
 # - Add a lot of used sources
-# 
-# Changed: 2021-10-15 
+#
+# Changed: 2021-10-15
 # - Updated Christmas to Weekday
 #
 # Common Sources:
@@ -300,7 +300,7 @@ months:
   - name: Christmas Day
     regions: [us]
     mday: 25
-    observed: to_weekday_if_weekend(date)
+    observed: to_monday_if_weekend(date)
   - name: Day after Christmas
     regions: [us_ar, us_nc, us_ok, us_sc, us_tn, us_tx]
     mday: 26
