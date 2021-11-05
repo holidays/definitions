@@ -39,7 +39,7 @@ months:
     regions: [gb_nir]
     mday: 17
   5:
-  - name: Early May bank holiday
+  - name: Early May Bank Holiday
     regions: [gb]
     week: 1
     wday: 1
@@ -59,7 +59,7 @@ months:
     mday: 2
     year_ranges:
     - limited: [2022]
-  - name: Platinum Jubilee bank holiday
+  - name: Platinum Jubilee Bank Holiday
     regions: [gb]
     mday: 3
     year_ranges:
@@ -136,7 +136,7 @@ tests:
       regions: ["gb"]
       options: ["informal"]
     expect:
-      name: "Early May bank holiday"
+      name: "Early May Bank Holiday"
   - given:
       date: '2008-05-26'
       regions: ["gb"]
@@ -154,7 +154,7 @@ tests:
       regions: ["gb"]
       options: ["informal"]
     expect:
-      name: "Platinum Jubilee bank holiday"
+      name: "Platinum Jubilee Bank Holiday"
   - given:
       date: '2008-11-05'
       regions: ["gb"]
