@@ -339,6 +339,18 @@ methods:
       else
         date
       end
+  to_monday_if_saturday_or_to_tuesday_if_sunday_or_monday: # NT has boxing day on tuesday if on monday instead
+    arguments: date
+    source: |
+      if date.wday == 6
+        date += 2
+        date
+      elsif [0,1].include?(date.wday)
+        date += 1
+        date
+      else
+        date
+      end
       
 
 tests:
