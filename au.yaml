@@ -33,14 +33,17 @@ months:
     regions: [au_vic]
     function: afl_grand_final(year)
   1:
-  - name: New Year's Day
-    regions: [au, au_nsw, au_vic, au_act, au_sa, au_wa, au_nt, au_qld]
+  - name: New Year's Day # All states except SA and TAS have an additional public holiday for New Year's Day
+    regions: [au_nsw, au_vic, au_act, au_wa, au_nt, au_qld]
     mday: 1
-    observed: to_monday_if_weekend(date)
-  - name: New Year's Day
-    regions: [au_tas]
+  - name: New Year's Day # SA and TAS move New Year's Day to monday on the weekend
+    regions: [au, au_tas, au_sa]
     mday: 1
     function: to_monday_if_weekend(date)
+  - name: Additional public holiday for New Year's Day # All states except SA and TAS have additional PH for New Year's Day
+    regions: [au_nsw, au_vic, au_act, au_sa, au_wa, au_nt, au_qld]
+    mday: 1
+    function: additional_holiday_on_monday_if_on_weekend(date)
   - name: Australia Day
     regions: [au]
     mday: 26
@@ -167,15 +170,27 @@ months:
     week: 1
     wday: 2
   12:
-  - name: Christmas Day # CHRISTMAS DAY ACTUAL - Recognised by ALL states expect for NT
-    regions: [au_act, au_nsw, au_qld, au_sa, au_tas, au_vic, au_wa, au_nt]
+  - name: Christmas Day # CHRISTMAS DAY EXCLUDING SATURDAY FOR SA
+    regions: [au_sa]
     mday: 25
+    function: sa_christmas_exclude_saturday(date)
+  - name: Christmas Day # CHRISTMAS DAY ACTUAL - Recognised by ALL states expect for NT
+    regions: [au_act, au_nsw, au_qld, au_tas, au_vic, au_wa, au_nt]
+    mday: 25
+  - name: Additional public holiday for Christmas Day # ADDITIONAL CHRISTMAS DAY TO MONDAY FOR NT - christmas day is always on monday before boxing day in NT
+    regions: [au_nt]
+    mday: 25
+    function: additional_holiday_on_monday_if_on_weekend(date)
   - name: Additional public holiday for Christmas Day # ADDITIONAL CHRISTMAS DAY - Recognised by ALL states expect for NT
-    regions: [au_act, au_nsw, au_qld, au_sa, au_tas, au_vic, au_wa, au_nt]
+    regions: [au_act, au_nsw, au_qld, au_sa, au_tas, au_vic, au_wa]
     mday: 25
     function: additional_holiday_if_on_weekend(date)
+  - name: Boxing Day # BOXING DAY NT SUBSTITUTE - NT substitutes boxing day in front of christmas day instead if on the weekend
+    regions: [au_nt]
+    mday: 26
+    function: to_monday_if_saturday_or_to_tuesday_if_sunday_or_monday(date)
   - name: Boxing Day # BOXING DAY ACTUAL - Recognised by ALL states expect for NT
-    regions: [au_act, au_nsw, au_qld, au_vic, au_wa, au_nt]
+    regions: [au_act, au_nsw, au_qld, au_vic, au_wa]
     mday: 26
   - name: Additional public holiday Boxing Day # ADDITIONAL BOXING DAY - Recognised by ALL states expect for NT / TAS
     regions: [au_act, au_nsw, au_qld, au_vic, au_wa, au_nt]
@@ -304,6 +319,27 @@ methods:
       else
         nil
       end
+  additional_holiday_on_monday_if_on_weekend:
+    # NT has additional christmas day on monday before boxing day if on the weekend instead of tuesday
+    # Also Additional new year's day is observed on monday if on the weekend
+    arguments: date
+    source: |
+      if [0,6].include?(date.wday)
+        date += 2 if date.wday == 6
+        date += 1 if date.wday == 0
+        date
+      else
+        nil
+      end
+  sa_christmas_exclude_saturday:
+    arguments: date
+    source: |
+      if date.wday == 6
+        nil
+      else
+        date
+      end
+      
 
 tests:
   - given:
@@ -729,6 +765,16 @@ tests:
       name: 'Christmas Day'
   - given:
       date: '2016-12-25'
+      regions: ["au_sa"]
+    expect:
+      name: 'Christmas Day'
+  - given:
+      date: '2021-12-25'
+      regions: ["au_sa"]
+    expect:
+      holiday: false
+  - given:
+      date: '2022-12-25'
       regions: ["au_sa"]
     expect:
       name: 'Christmas Day'
