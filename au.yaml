@@ -170,7 +170,7 @@ months:
     week: 1
     wday: 2
   12:
-  - name: Christmas Day # SA CHRISTMAS DAY STATIC EXCEPT SATURDAY - Excluding Saturday for SA
+  - name: Christmas Day # SA CHRISTMAS DAY STATIC EXCEPT SATURDAY - Excluding Saturday for SA, is moved to monday
     regions: [au_sa]
     mday: 25
     function: sa_christmas_exclude_saturday(date)
@@ -181,10 +181,14 @@ months:
     regions: [au_act, au_nsw, au_qld, au_tas, au_vic, au_wa]
     mday: 25
     function: additional_holiday_if_on_weekend(date)
-  - name: Additional public holiday for Christmas Day # ADDITIONAL CHRISTMAS DAY TO MONDAY FOR NT/SA - additional christmas day on the weekend is always on monday before boxing day in NT/SA
-    regions: [au_nt, au_sa]
+  - name: Additional public holiday for Christmas Day # ADDITIONAL CHRISTMAS DAY TO MONDAY FOR NT - additional christmas day on the weekend is always on monday before boxing day in NT
+    regions: [au_nt]
     mday: 25
     function: additional_holiday_on_monday_if_on_weekend(date)
+  - name: Additional public holiday for Christmas Day # ADDITIONAL CHRISTMAS DAY TO MONDAY FOR SA EXCEPT ON SATURDAY - additional christmas day for SA excludes saturday
+    regions: [au_sa]
+    mday: 25
+    function: additional_holiday_on_monday_if_on_sunday(date)
   - name: Boxing Day # BOXING DAY STATIC ACTUAL - Recognised by ALL states expect for NT/SA
     regions: [au_act, au_nsw, au_qld, au_vic, au_wa]
     mday: 26
@@ -331,11 +335,22 @@ methods:
       else
         nil
       end
+  additional_holiday_on_monday_if_on_sunday:
+    # SA doesn't get an additional christmas day if it falls on a saturday
+    arguments: date
+    source: |
+      if date.wday == 0
+        date += 1
+        date
+      else
+        nil
+      end
   sa_christmas_exclude_saturday:
     arguments: date
     source: |
       if date.wday == 6
-        nil
+        date += 2
+        date
       else
         date
       end
