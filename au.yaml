@@ -188,7 +188,7 @@ months:
   - name: Boxing Day # BOXING DAY ACTUAL - Recognised by ALL states expect for NT
     regions: [au_act, au_nsw, au_qld, au_vic, au_wa]
     mday: 26
-  - name: Boxing Day # BOXING DAY NT/SA SUBSTITUTE - NT/SA substitutes boxing day to monday instead of tuesday
+  - name: Boxing Day # BOXING DAY NT/SA SUBSTITUTE - NT/SA substitutes boxing day to after christmas day even if it falls on Monday
     regions: [au_nt, au_sa]
     mday: 26
     function: to_monday_if_saturday_or_to_tuesday_if_sunday_or_monday(date)
@@ -339,13 +339,13 @@ methods:
       else
         date
       end
-  to_monday_if_saturday_or_to_tuesday_if_sunday_or_monday: # NT has boxing day on tuesday if on monday instead
+  to_monday_if_saturday_or_to_tuesday_if_sunday_or_monday: # NT/SA has boxing day on tuesday if on monday instead
     arguments: date
     source: |
-      if date.wday == 6
+      if [6,0].include?(date.wday)
         date += 2
         date
-      elsif [0,1].include?(date.wday)
+      elsif date.wday == 1
         date += 1
         date
       else
