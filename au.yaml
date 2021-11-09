@@ -37,11 +37,11 @@ months:
     regions: [au_nsw, au_vic, au_act, au_wa, au_nt, au_qld]
     mday: 1
   - name: New Year's Day # SA and TAS move New Year's Day to monday on the weekend
-    regions: [au, au_tas, au_sa]
+    regions: [au_tas, au_sa]
     mday: 1
     function: to_monday_if_weekend(date)
   - name: Additional public holiday for New Year's Day # All states except SA and TAS have additional PH for New Year's Day
-    regions: [au_nsw, au_vic, au_act, au_sa, au_wa, au_nt, au_qld]
+    regions: [au_nsw, au_vic, au_act, au_wa, au_nt, au_qld]
     mday: 1
     function: additional_holiday_on_monday_if_on_weekend(date)
   - name: Australia Day
@@ -177,12 +177,12 @@ months:
   - name: Christmas Day # CHRISTMAS DAY ACTUAL - Recognised by ALL states expect for NT
     regions: [au_act, au_nsw, au_qld, au_tas, au_vic, au_wa, au_nt]
     mday: 25
-  - name: Additional public holiday for Christmas Day # ADDITIONAL CHRISTMAS DAY TO MONDAY FOR NT - christmas day is always on monday before boxing day in NT
-    regions: [au_nt]
+  - name: Additional public holiday for Christmas Day # ADDITIONAL CHRISTMAS DAY TO MONDAY FOR NT/SA - christmas day is always on monday before boxing day in NT/SA
+    regions: [au_nt, au_sa]
     mday: 25
     function: additional_holiday_on_monday_if_on_weekend(date)
-  - name: Additional public holiday for Christmas Day # ADDITIONAL CHRISTMAS DAY - Recognised by ALL states expect for NT
-    regions: [au_act, au_nsw, au_qld, au_sa, au_tas, au_vic, au_wa]
+  - name: Additional public holiday for Christmas Day # ADDITIONAL CHRISTMAS DAY - Recognised by ALL states expect for NT and SA
+    regions: [au_act, au_nsw, au_qld, au_tas, au_vic, au_wa]
     mday: 25
     function: additional_holiday_if_on_weekend(date)
   - name: Boxing Day # BOXING DAY NT SUBSTITUTE - NT substitutes boxing day in front of christmas day instead if on the weekend
