@@ -170,28 +170,28 @@ months:
     week: 1
     wday: 2
   12:
-  - name: Christmas Day # CHRISTMAS DAY EXCLUDING SATURDAY FOR SA
+  - name: Christmas Day # CHRISTMAS DAY STATIC EXCEPT SATURDAY - Excluding Saturday for SA
     regions: [au_sa]
     mday: 25
     function: sa_christmas_exclude_saturday(date)
-  - name: Christmas Day # CHRISTMAS DAY ACTUAL - Recognised by ALL states expect for NT
+  - name: Christmas Day # CHRISTMAS DAY STATIC ACTUAL - Recognised by ALL states expect for NT
     regions: [au_act, au_nsw, au_qld, au_tas, au_vic, au_wa, au_nt]
     mday: 25
-  - name: Additional public holiday for Christmas Day # ADDITIONAL CHRISTMAS DAY TO MONDAY FOR NT/SA - christmas day is always on monday before boxing day in NT/SA
-    regions: [au_nt, au_sa]
-    mday: 25
-    function: additional_holiday_on_monday_if_on_weekend(date)
-  - name: Additional public holiday for Christmas Day # ADDITIONAL CHRISTMAS DAY - Recognised by ALL states expect for NT and SA
+  - name: Additional public holiday for Christmas Day # ADDITIONAL CHRISTMAS DAY - additional christmas day moves two days forward on the weekend, Recognised by ALL states expect for NT and SA
     regions: [au_act, au_nsw, au_qld, au_tas, au_vic, au_wa]
     mday: 25
     function: additional_holiday_if_on_weekend(date)
-  - name: Boxing Day # BOXING DAY NT/SA SUBSTITUTE - NT/SA substitutes boxing day in front of christmas day instead if on the weekend
+  - name: Additional public holiday for Christmas Day # ADDITIONAL CHRISTMAS DAY TO MONDAY FOR NT/SA - additional christmas day on the weekend is always on monday before boxing day in NT/SA
     regions: [au_nt, au_sa]
-    mday: 26
-    function: to_monday_if_saturday_or_to_tuesday_if_sunday_or_monday(date)
+    mday: 25
+    function: additional_holiday_on_monday_if_on_weekend(date)
   - name: Boxing Day # BOXING DAY ACTUAL - Recognised by ALL states expect for NT
     regions: [au_act, au_nsw, au_qld, au_vic, au_wa]
     mday: 26
+  - name: Boxing Day # BOXING DAY NT/SA SUBSTITUTE - NT/SA substitutes boxing day to monday instead of tuesday
+    regions: [au_nt, au_sa]
+    mday: 26
+    function: to_monday_if_saturday_or_to_tuesday_if_sunday_or_monday(date)
   - name: Additional public holiday Boxing Day # ADDITIONAL BOXING DAY - Recognised by ALL states expect for NT / TAS
     regions: [au_act, au_nsw, au_qld, au_vic, au_wa, au_nt]
     mday: 26
