@@ -878,6 +878,16 @@ tests:
     expect:
       name: "New Year's Day"
   - given:
+      date: '2022-01-03'
+      regions: ["au_nsw, au_vic, au_act, au_sa, au_wa, au_nt, au_qld"]
+    expect:
+      name: "Additional public holiday for New Year's Day"
+  - given:
+      date: '2022-01-01'
+      regions: ["au_nsw, au_vic, au_act, au_sa, au_wa, au_nt, au_qld"]
+    expect:
+      name: "New Year's Day"
+  - given:
       date: '2017-04-16'
       regions: ["au_qld"]
     expect:
