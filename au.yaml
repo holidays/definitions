@@ -192,12 +192,16 @@ months:
   - name: Boxing Day # BOXING DAY STATIC ACTUAL - Recognised by ALL states expect for NT/SA
     regions: [au_act, au_nsw, au_qld, au_vic, au_wa]
     mday: 26
-  - name: Boxing Day # BOXING DAY NT/SA SUBSTITUTE - NT/SA substitutes boxing day to after christmas day even if it falls on Monday
-    regions: [au_nt, au_sa]
+  - name: Boxing Day # BOXING DAY NT SUBSTITUTE - NT substitutes boxing day to after christmas day even if it falls on Monday
+    regions: [au_nt]
     mday: 26
     function: to_monday_if_saturday_or_to_tuesday_if_sunday_or_monday(date)
+  - name: Boxing Day # BOXING DAY SA SUBSTITUTE - SA only substitutes Boxing Day if it falls on a Monday
+    regions: [au_sa]
+    mday: 26
+    function: to_tuesday_if_monday(date)
   - name: Additional public holiday Boxing Day # ADDITIONAL BOXING DAY - Recognised by ALL states expect for NT / TAS
-    regions: [au_act, au_nsw, au_qld, au_vic, au_wa]
+    regions: [au_act, au_nsw, au_qld, au_vic, au_wa, au_sa]
     mday: 26
     function: additional_holiday_if_on_weekend(date)
   - name: Boxing Day # BOXING DAY OBSERVED - Only NT & TAS as they dont have an additional observed if on weekend
