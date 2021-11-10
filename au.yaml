@@ -370,6 +370,15 @@ methods:
       else
         date
       end
+  to_tuesday_if_monday: # SA moves boxing day to after christmas day instead
+    arguments: date
+    source: |
+      if date.wday == 1
+        date += 1
+        date
+      else
+        date
+      end
 
 tests:
   - given:
