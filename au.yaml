@@ -37,7 +37,7 @@ months:
     regions: [au_nsw, au_vic, au_act, au_wa, au_nt, au_qld]
     mday: 1
   - name: New Year's Day # SA and TAS move New Year's Day to monday on the weekend
-    regions: [au_tas, au_sa]
+    regions: [au, au_tas, au_sa]
     mday: 1
     function: to_monday_if_weekend(date)
   - name: Additional public holiday for New Year's Day # All states except SA and TAS have additional PH for New Year's Day
