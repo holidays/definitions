@@ -74,7 +74,7 @@ months:
     week: -1
     wday: 1
     year_ranges:
-      from: 2023      
+      from: 2023
   6:
   - name: Bank Holiday
     regions: [gb]
