@@ -80,7 +80,7 @@ months:
     regions: [gb]
     mday: 2
     year_ranges:
-      limited: 2022
+      limited: [2022]
   - name: Platinum Jubilee
     regions: [gb]
     mday: 3
