@@ -475,3 +475,13 @@ tests:
       regions: ["je"]
     expect:
       name: "Bank Holiday"
+  - given:
+      date: '2022-06-02'
+      regions: ["gb"]
+    expect:
+      name: "Bank Holiday"
+  - given:
+      date: '2022-06-03'
+      regions: ["gb"]
+    expect:
+      name: "Platinum Jubilee"
