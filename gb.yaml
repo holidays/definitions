@@ -76,7 +76,7 @@ months:
     year_ranges:
       from: 2023      
   6:
-    name: Bank Holiday
+  - name: Bank Holiday
     regions: [gb]
     mday: 2
     year_ranges:
