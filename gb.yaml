@@ -481,7 +481,17 @@ tests:
     expect:
       name: "Bank Holiday"
   - given:
+      date: '2022-05-30'
+      regions: ["gb"]
+    expect:
+      holiday: false
+  - given:
       date: '2022-06-03'
       regions: ["gb"]
     expect:
       name: "Platinum Jubilee"
+  - given:
+      date: '2023-05-29'
+      regions: ["gb"]
+    expect:
+      name: "Bank Holiday"
