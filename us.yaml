@@ -300,7 +300,7 @@ months:
   - name: Christmas Day
     regions: [us]
     mday: 25
-    observed: to_monday_if_weekend(date)
+    observed: to_weekday_if_weekend(date)
   - name: Day after Christmas
     regions: [us_ar, us_nc, us_ok, us_sc, us_tn, us_tx]
     mday: 26
@@ -921,12 +921,12 @@ tests:
       name: "Christmas Eve"
 
   - given:
-      date: ['2021-12-27', '2022-12-26', '2027-12-27']
+      date: ['2021-12-27', '2022-12-23', '2027-12-27']
       regions: ["us"]
     expect:
       holiday: false
   - given:
-      date: ['2021-12-24', '2022-12-23', '2027-12-24']
+      date: ['2021-12-24', '2022-12-26', '2027-12-24']
       regions: ["us"]
       options: ["observed"]
     expect:
