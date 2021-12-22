@@ -66,6 +66,9 @@ months:
     regions: [nz]
     week: 1
     wday: 1
+  - name: Matariki Holiday
+    regions: [nz]
+    function: matariki_holiday(year)
   9:
   - name: Dominion Day
     regions: [nz_sc]
@@ -271,3 +274,28 @@ methods:
     arguments: date
     source: |
       date + 7
+  matariki_holiday:
+    arguments: year
+    source: |
+      case year
+      when 2022
+        Date.civil(2022, 6, 4, 5)
+      when 2023
+        Date.civil(2023, 7, 3, 5)
+      when 2024
+        Date.civil(2024, 6, 5, 5)
+      when 2025
+        Date.civil(2025, 6, 4, 5)
+      when 2026
+        Date.civil(2026, 7, 2, 5)
+      when 2027
+        Date.civil(2027, 6, 4, 5)
+      when 2028
+        Date.civil(2028, 7, 3, 5)
+      when 2029
+        Date.civil(2029, 7, 2, 5)
+      when 2030
+        Date.civil(2030, 6, 4, 5)
+      when 2031
+        Date.civil(2031, 7, 2, 5)
+      end
