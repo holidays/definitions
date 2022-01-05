@@ -1,5 +1,9 @@
 # Holiday definitions
 
+## 5.4.1
+* Add Platinum Jubilee bank holiday for 2022. (thanks to https://github.com/frankieroberto)
+* Fix definitions tests.
+
 ## 5.4.0
 
 * Fix boxing day in `za` region
