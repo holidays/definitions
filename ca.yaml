@@ -279,7 +279,7 @@ tests:
       name: "Labour Day"
   - given:
       date: '2008-12-25'
-      regions: ["ca"]
+      regions: ["ca_on"]
       options: ["informal"]
     expect:
       name: "Christmas Day"
