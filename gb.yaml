@@ -67,6 +67,25 @@ months:
     regions: [gb]
     week: -1
     wday: 1
+    year_ranges:
+      until: 2021
+  - name: Bank Holiday
+    regions: [gb]
+    week: -1
+    wday: 1
+    year_ranges:
+      from: 2023
+  6:
+  - name: Bank Holiday
+    regions: [gb]
+    mday: 2
+    year_ranges:
+      limited: [2022]
+  - name: Platinum Jubilee
+    regions: [gb]
+    mday: 3
+    year_ranges:
+      limited: [2022]
   7:
   - name: Tynwald Day
     regions: [im, gb_iom]
@@ -454,5 +473,25 @@ tests:
   - given:
       date: '2018-08-27'
       regions: ["je"]
+    expect:
+      name: "Bank Holiday"
+  - given:
+      date: '2022-06-02'
+      regions: ["gb"]
+    expect:
+      name: "Bank Holiday"
+  - given:
+      date: '2022-05-30'
+      regions: ["gb"]
+    expect:
+      holiday: false
+  - given:
+      date: '2022-06-03'
+      regions: ["gb"]
+    expect:
+      name: "Platinum Jubilee"
+  - given:
+      date: '2023-05-29'
+      regions: ["gb"]
     expect:
       name: "Bank Holiday"
