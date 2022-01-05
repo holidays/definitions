@@ -796,17 +796,17 @@ tests:
   # Christmas Day
   - given:
       date: '2010-12-25'
-      regions: ["ca"]
+      regions: ["ca_on"]
     expect:
       name: "Christmas Day"
   - given:
       date: '2018-12-25'
-      regions: ["ca"]
+      regions: ["ca_on"]
     expect:
       name: "Christmas Day"
   - given:
       date: '2022-12-25'
-      regions: ["ca"]
+      regions: ["ca_on"]
     expect:
       name: "Christmas Day"
   - given:
