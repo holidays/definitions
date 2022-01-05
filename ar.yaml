@@ -208,7 +208,7 @@ tests:
       regions: ['ar']
       options: 'informal'
     expect:
-      name: 'Día de la Bandera'
+      name: 'Paso a la Inmortalidad del General Martín Miguel de Güemes'
   - given:
       date: '2016-07-09'
       regions: ['ar']
@@ -229,7 +229,7 @@ tests:
     expect:
       holiday: false
   - given:
-      date: ['2016-10-12', '2021-10-11']
+      date: ['2016-10-10', '2021-10-11']
       regions: ['ar']
       options: 'informal'
     expect:

@@ -279,7 +279,7 @@ tests:
       name: "Labour Day"
   - given:
       date: '2008-12-25'
-      regions: ["ca"]
+      regions: ["ca_on"]
       options: ["informal"]
     expect:
       name: "Christmas Day"
@@ -796,17 +796,17 @@ tests:
   # Christmas Day
   - given:
       date: '2010-12-25'
-      regions: ["ca"]
+      regions: ["ca_on"]
     expect:
       name: "Christmas Day"
   - given:
       date: '2018-12-25'
-      regions: ["ca"]
+      regions: ["ca_on"]
     expect:
       name: "Christmas Day"
   - given:
       date: '2022-12-25'
-      regions: ["ca"]
+      regions: ["ca_on"]
     expect:
       name: "Christmas Day"
   - given:
@@ -819,19 +819,19 @@ tests:
   # Christmas Day observed date
   - given:
       date: '2010-12-24'
-      regions: ["ca"]
+      regions: ["ca_on"]
       options: ["observed"]
     expect:
       name: "Christmas Day"
   - given:
       date: '2012-12-25'
-      regions: ["ca"]
+      regions: ["ca_on"]
       options: ["observed"]
     expect:
       name: "Christmas Day"
   - given:
       date: '2016-12-26'
-      regions: ["ca"]
+      regions: ["ca_on"]
       options: ["observed"]
     expect:
       name: "Christmas Day"
@@ -849,13 +849,13 @@ tests:
       name: "Christmas Day"
   - given:
       date: '2022-12-26'
-      regions: ["ca"]
+      regions: ["ca_on"]
       options: ["observed"]
     expect:
       name: "Christmas Day"
 
   - given:
-      date: ['2010-12-28', '2012-12-26', '2015-12-28', '2016-12-27']
+      date: ['2010-12-27', '2012-12-26', '2015-12-28']
       regions: ["ca_on"]
       options: ["observed"]
     expect:

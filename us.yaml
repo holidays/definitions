@@ -693,11 +693,13 @@ tests:
   - given:
       date: ['2021-06-19']
       regions: ["us"]
+      options: ["observed"]
     expect:
       holiday: false
   - given:
       date: ['2021-06-18']
       regions: ["us"]
+      options: ["observed"]
     expect:
       name: "Juneteenth National Independence Day"
   - given:
