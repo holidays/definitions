@@ -33,7 +33,7 @@ months:
   - name: Juneteenth National Independence Day
     regions: [federalreservebanks]
     mday: 19
-    observed: to_weekday_if_weekend(date)
+    observed: to_monday_if_sunday(date)
     year_ranges:
       from: 2021
   7:

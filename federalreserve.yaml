@@ -25,6 +25,13 @@ months:
     week: -1
     wday: 1
     regions: [federalreserve]
+  6:
+  - name: Juneteenth National Independence Day
+    regions: [federalreserve]
+    mday: 19
+    observed: to_weekday_if_weekend(date)
+    year_ranges:
+      from: 2021
   7:
   - name: Independence Day
     regions: [federalreserve]
