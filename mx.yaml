@@ -58,6 +58,7 @@ months:
   - name: Grito de Dolores
     regions: [mx]
     mday: 15
+    type: informal
   - name: Día de la Independencia
     regions: [mx]
     mday: 16
