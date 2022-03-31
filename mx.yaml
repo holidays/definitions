@@ -123,6 +123,12 @@ tests:
     expect:
       name: "Cinco de Mayo"
   - given:
+      date: '2007-09-15'
+      regions: ["mx"]
+      options: ["informal"]
+    expect:
+      name: "Grito de Dolores"
+  - given:
       date: '2007-09-16'
       regions: ["mx"]
       options: ["informal"]
