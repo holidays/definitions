@@ -369,3 +369,21 @@ tests:
       options: ["observed"]
     expect:
       name: "Christmas Day"
+  - given:
+      date: '2021-06-18'
+      regions: ["federalreserve"]
+      options: ["observed"]
+    expect:
+      name: "Juneteenth National Independence Day"
+  - given:
+      date: '2022-06-20'
+      regions: ["federalreserve"]
+      options: ["observed"]
+    expect:
+      name: "Juneteenth National Independence Day"
+  - given:
+      date: '2023-06-19'
+      regions: ["federalreserve"]
+      options: ["observed"]
+    expect:
+      name: "Juneteenth National Independence Day"

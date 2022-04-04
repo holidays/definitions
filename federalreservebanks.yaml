@@ -92,18 +92,6 @@ tests:
     expect:
       name: "Memorial Day"
   - given:
-      date: ['2021-06-19']
-      regions: ["federalreservebanks"]
-      options: ["observed"]
-    expect:
-      holiday: false
-  - given:
-      date: ['2021-06-18']
-      regions: ["federalreservebanks"]
-      options: ["observed"]
-    expect:
-      name: "Juneteenth National Independence Day"
-  - given:
       date: '2012-07-04'
       regions: ["federalreservebanks"]
       options: ["observed"]
@@ -819,3 +807,15 @@ tests:
       options: ["observed"]
     expect:
       name: "Christmas Day"
+  - given:
+      date: '2022-06-20'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Juneteenth National Independence Day"
+  - given:
+      date: '2023-06-19'
+      regions: ["federalreservebanks"]
+      options: ["observed"]
+    expect:
+      name: "Juneteenth National Independence Day"
