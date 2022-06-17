@@ -197,10 +197,7 @@ months:
   - name: Juneteenth
     regions: [us]
     mday: 19
-  - name: Juneteenth (Holiday)
-    regions: [us]
-    mday: 19
-    function: to_weekday_if_weekend(date) # Note: Always if Independence Day don't match
+    observed: to_weekday_if_weekend(date)
   - name: Emancipation Day in Texas # fixed
     regions: [us_tx]
     mday: 19
@@ -962,5 +959,6 @@ tests:
   - given:
       date: ["2022-06-20"]
       regions: ["us"]
+      options: ["observed"]
     expect:
-      name: "Juneteenth (Holiday)"
+      name: "Juneteenth"
