@@ -194,6 +194,9 @@ months:
     regions: [us_hi]
     observed: to_weekday_if_weekend(date)
     mday: 11
+  - name: Juneteenth
+    regions: [us]
+    mday: 19
   - name: Emancipation Day in Texas # fixed
     regions: [us_tx]
     mday: 19
