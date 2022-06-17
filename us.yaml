@@ -190,6 +190,9 @@ months:
   - name: Birthday of Jefferson Davis # fixed
     regions: [us_fl]
     mday: 3
+  - name: Juneteenth
+    regions: [us]
+    mday: 19
   - name: King Kamehameha I Day
     regions: [us_hi]
     observed: to_weekday_if_weekend(date)
