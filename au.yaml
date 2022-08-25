@@ -387,6 +387,7 @@ methods:
       else
         date
       end
+
 tests:
   - given:
       date: '2020-04-25'
