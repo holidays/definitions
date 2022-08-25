@@ -180,10 +180,6 @@ months:
     week: 1
     wday: 2
   12:
-  - name: Christmas Eve
-    regions: [au_sa, au_nt, au_qld]
-    mday: 24
-    function: christmas_eve_part_day
   - name: Christmas Day # SA CHRISTMAS DAY STATIC EXCEPT SATURDAY - Excluding Saturday for SA, is moved to monday
     regions: [au_sa]
     mday: 25
@@ -391,12 +387,7 @@ methods:
       else
         date
       end
-  christmas_eve_part_day:
-    source: |
-      1800 till 1200
-      end
-    
-
+      
 tests:
   - given:
       date: '2020-04-25'
