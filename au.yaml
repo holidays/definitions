@@ -237,6 +237,8 @@ methods:
         Date.civil(2020, 10, 23)
       when 2021
         Date.civil(2021, 9, 24)
+      when 2022
+        Date.civil(2022, 9, 23)
       end
   qld_queens_bday_october:
     # http://www.justice.qld.gov.au/fair-and-safe-work/industrial-relations/public-holidays/dates
@@ -647,6 +649,11 @@ tests:
       name: 'Friday before the AFL Grand Final'
   - given:
       date: '2021-09-24'
+      regions: ["au_vic"]
+    expect:
+      name: 'Friday before the AFL Grand Final'
+  - given:
+      date: '2022-09-23'
       regions: ["au_vic"]
     expect:
       name: 'Friday before the AFL Grand Final'
