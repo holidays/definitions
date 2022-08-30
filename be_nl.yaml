@@ -17,10 +17,6 @@ months:
     regions: [be_nl]
     function: easter(year)
     function_modifier: 39
-  - name: Pinksteren
-    regions: [be_nl]
-    function: easter(year)
-    function_modifier: 49
   - name: Pinkstermaandag
     regions: [be_nl]
     function: easter(year)
@@ -84,12 +80,6 @@ tests:
       options: ["informal"]
     expect:
       name: 'O.H. Hemelvaart'
-  - given:
-      date: '2007-05-27'
-      regions: ["be_nl"]
-      options: ["informal"]
-    expect:
-      name: 'Pinksteren'
   - given:
       date: '2007-05-28'
       regions: ["be_nl"]

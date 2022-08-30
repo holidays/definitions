@@ -1,0 +1,102 @@
+# Namibia holiday definitions for the Ruby Holiday gem.
+#
+#
+# http://www.gov.na/holidays - shows list of days recognised as public holidays but dates haven't been updated since 2014
+# can also look at https://publicholidays.africa/namibia/2018-dates/
+# future dates at https://publicholidays.africa/namibia/2019-dates/
+# https://www.timeanddate.com/holidays/namibia/ - shows current dates
+# Note that Ascension Day as that is Easter Sunday + 39 days which in 2017 landed on the same day as Africa Day - https://en.wikipedia.org/wiki/Public_holidays_in_Namibia
+months:
+  0:
+  - name: Good Friday
+    regions: [na]
+    # calculates Easter Sunday
+    function: easter(year)
+    # goes 2 days back from Easter Sunday
+    function_modifier: -2
+  - name: Easter Monday
+    regions: [na]
+    # calculates Easter Sunday
+    function: easter(year)
+    # goes 1 day forward from Easter Sunday
+    function_modifier: 1
+  - name: Ascension Day
+    regions: [na]
+    function: easter(year)
+    function_modifier: 39
+  1:
+  - name: New Years Days
+    regions: [na]
+    mday: 1
+  3:
+  - name: Independence Day
+    regions: [na]
+    mday: 21
+  5:
+  - name: Worker's Day
+    regions: [na]
+    mday: 1
+  - name: Cassinga Day
+    regions: [na]
+    mday: 4
+  - name: Africa Day
+    regions: [na]
+    mday: 25
+  8:
+  - name: Heroes' Day
+    regions: [na]
+    mday: 26
+    observed: to_monday_if_weekend(date)
+  12:
+  - name: International Human Rights Day
+    regions: [na]
+    mday: 10
+  - name: Christmas Day
+    regions: [na]
+    mday: 25
+  - name: Family Day
+    regions: [na]
+    mday: 26
+
+tests:
+  - given:
+      date: '2018-1-1'
+      regions: [na]
+    expect:
+      name: New Years Days
+  - given:
+      date: '2018-03-30'
+      regions: [na]
+    expect:
+      name: Good Friday
+  - given:
+      date: '2018-04-02'
+      regions: [na]
+    expect:
+      name: Easter Monday
+  - given:
+      date: '2018-05-10'
+      regions: [na]
+    expect:
+      name: Ascension Day
+  - given:
+      date: '2018-08-27'
+      regions: [na]
+      options: ["observed"]
+    expect:
+      name: Heroes' Day
+  - given:
+      date: '2019-04-22'
+      regions: [na]
+    expect:
+      name: Easter Monday
+  - given:
+      date: '2019-05-30'
+      regions: [na]
+    expect:
+      name: Ascension Day
+  - given:
+      date: '2019-08-26'
+      regions: [na]
+    expect:
+      name: Heroes' Day

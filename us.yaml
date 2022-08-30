@@ -11,6 +11,9 @@
 # - Add helpful comments
 # - Add a lot of used sources
 #
+# Changed: 2021-10-15
+# - Updated Christmas to Weekday
+#
 # Common Sources:
 # - http://en.wikipedia.org/wiki/Public_holidays_of_the_United_States
 # - https://www.timeanddate.com/holidays/us/
@@ -197,8 +200,6 @@ months:
     regions: [us]
     mday: 19
     observed: to_weekday_if_weekend(date)
-    year_ranges:
-      from: 2021
   - name: Emancipation Day in Texas # fixed
     regions: [us_tx]
     mday: 19
@@ -374,7 +375,6 @@ methods:
     arguments: year
     ruby: |
       Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 11, 4, 4) + 1
-
 tests:
   - given:
       date: ['2017-2-28', '2018-2-13', '2019-3-5']
@@ -714,6 +714,12 @@ tests:
     expect:
       holiday: false
   - given:
+      date: ['2021-06-18']
+      regions: ["us"]
+      options: ["observed"]
+    expect:
+      name: "Juneteenth National Independence Day"
+  - given:
       date: ['2017-6-20', '2020-6-19', '2021-6-21']
       regions: ["us_wv"]
       options: ["observed"]
@@ -938,7 +944,7 @@ tests:
       name: "Christmas Eve"
 
   - given:
-      date: ['2021-12-27', '2022-12-26', '2027-12-27']
+      date: ['2021-12-27', '2022-12-23', '2027-12-27']
       regions: ["us"]
     expect:
       holiday: false

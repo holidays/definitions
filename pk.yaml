@@ -1,0 +1,107 @@
+# Pakistan holiday definitions for the Ruby Holiday gem.
+#
+# https://trello-attachments.s3.amazonaws.com/561af80c433ec5f6175b74ba/59b1156ea7e691f048c08b2b/d5c0513eca7d33141d76615b15d1d58b/Public_holidays_2017_(1).pdf
+# Excluded holidays that are dependent on the moon appearing, and holidays that are only for Christians.
+#
+# https://en.wikipedia.org/wiki/Kashmir_Solidarity_Day
+# https://en.wikipedia.org/wiki/Pakistan_Day
+# https://www.timeanddate.com/holidays/pakistan/labour-day
+# https://en.wikipedia.org/wiki/Independence_Day_(Pakistan)
+
+months:
+  2:
+  - name: Kashmir Day
+    regions: [pk]
+    mday: 5
+  3:
+  - name: Pakistan Day
+    regions: [pk]
+    mday: 23
+  5:
+  - name: Labour Day
+    regions: [pk]
+    mday: 1
+  8:
+  - name: Independence Day
+    regions: [pk]
+    mday: 14
+  12:
+  - name: Quaid-i-Azam Day
+    regions: [pk]
+    mday: 25
+tests:
+  - given:
+      date: '2017-02-05'
+      regions: ["pk"]
+    expect:
+      name: 'Kashmir Day'
+  - given:
+      date: '2018-02-05'
+      regions: ["pk"]
+    expect:
+      name: 'Kashmir Day'
+  - given:
+      date: '2019-02-05'
+      regions: ["pk"]
+    expect:
+      name: 'Kashmir Day'
+  - given:
+      date: '2017-03-23'
+      regions: ["pk"]
+    expect:
+      name: 'Pakistan Day'
+  - given:
+      date: '2018-03-23'
+      regions: ["pk"]
+    expect:
+      name: 'Pakistan Day'
+  - given:
+      date: '2019-03-23'
+      regions: ["pk"]
+    expect:
+      name: 'Pakistan Day'
+  - given:
+      date: '2017-05-01'
+      regions: ["pk"]
+    expect:
+      name: 'Labour Day'
+  - given:
+      date: '2018-05-01'
+      regions: ["pk"]
+    expect:
+      name: 'Labour Day'
+  - given:
+      date: '2019-05-01'
+      regions: ["pk"]
+    expect:
+      name: 'Labour Day'
+  - given:
+      date: '2017-08-14'
+      regions: ["pk"]
+    expect:
+      name: 'Independence Day'
+  - given:
+      date: '2018-08-14'
+      regions: ["pk"]
+    expect:
+      name: 'Independence Day'
+  - given:
+      date: '2019-08-14'
+      regions: ["pk"]
+    expect:
+      name: 'Independence Day'
+  - given:
+      date: '2017-12-25'
+      regions: ["pk"]
+    expect:
+      name: 'Quaid-i-Azam Day'
+  - given:
+      date: '2018-12-25'
+      regions: ["pk"]
+    expect:
+      name: 'Quaid-i-Azam Day'
+  - given:
+      date: '2019-12-25'
+      regions: ["pk"]
+    expect:
+      name: 'Quaid-i-Azam Day'

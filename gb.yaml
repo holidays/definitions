@@ -23,9 +23,6 @@ months:
     regions: [gb]
     function: easter(year)
     function_modifier: -2
-  - name: Easter Sunday
-    regions: [gb]
-    function: easter(year)
   - name: Easter Monday
     regions: [gb_eng, gb_wls, gb_eaw, gb_nir, je, gb_jsy, gg, gb_gsy]
     function: easter(year)
@@ -48,7 +45,7 @@ months:
     mday: 17
     observed: to_monday_if_weekend(date)
   5:
-  - name: May Day
+  - name: Early May Bank Holiday
     regions: [gb]
     week: 1
     wday: 1
@@ -68,29 +65,24 @@ months:
   - name: Liberation Day
     regions: [je, gb_jsy, gg, gb_gsy]
     mday: 9
-  - name: Bank Holiday
+  - name: Spring Bank Holiday
     regions: [gb]
     week: -1
     wday: 1
     year_ranges:
-      until: 2021
-  - name: Bank Holiday
-    regions: [gb]
-    week: -1
-    wday: 1
-    year_ranges:
-      from: 2023
+    - before: 2021
+    - after: 2023
   6:
-  - name: Bank Holiday
+  - name: Spring Bank Holiday
     regions: [gb]
     mday: 2
     year_ranges:
-      limited: [2022]
-  - name: Platinum Jubilee
+    - limited: [2022]
+  - name: Platinum Jubilee Bank Holiday
     regions: [gb]
     mday: 3
     year_ranges:
-      limited: [2022]
+    - limited: [2022]
   7:
   - name: Tynwald Day
     regions: [im, gb_iom]
@@ -104,7 +96,7 @@ months:
     regions: [gb_sct]
     week: 1
     wday: 1
-  - name: Bank Holiday
+  - name: Summer Bank Holiday
     regions: [gb_eng, gb_wls, gb_eaw, gb_nir, je, gb_jsy, gg, gb_gsy]
     week: -1
     wday: 1
@@ -131,10 +123,26 @@ months:
     regions: [gb]
     mday: 25
     observed: to_monday_if_weekend(date)
+    year_ranges:
+    - before: 2021
+    - after: 2023
   - name: Boxing Day
     regions: [gb]
     mday: 26
     observed: to_weekday_if_boxing_weekend(date)
+    year_ranges:
+    - before: 2021
+    - after: 2023
+  - name: Christmas Day (substitute day)
+    regions: [gb]
+    mday: 27
+    year_ranges:
+    - limited: [2022]
+  - name: Boxing Day
+    regions: [gb]
+    mday: 26
+    year_ranges:
+    - limited: [2022]
 
 tests:
   - given:
@@ -156,23 +164,29 @@ tests:
     expect:
       name: "Good Friday"
   - given:
-      date: '2008-03-23'
-      regions: ["gb"]
-      options: ["informal"]
-    expect:
-      name: "Easter Sunday"
-  - given:
       date: '2008-05-05'
       regions: ["gb"]
       options: ["informal"]
     expect:
-      name: "May Day"
+      name: "Early May Bank Holiday"
   - given:
       date: '2008-05-26'
       regions: ["gb"]
       options: ["informal"]
     expect:
-      name: "Bank Holiday"
+      name: "Spring Bank Holiday"
+  - given:
+      date: '2022-06-02'
+      regions: ["gb"]
+      options: ["informal"]
+    expect:
+      name: "Spring Bank Holiday"
+  - given:
+      date: '2022-06-03'
+      regions: ["gb"]
+      options: ["informal"]
+    expect:
+      name: "Platinum Jubilee Bank Holiday"
   - given:
       date: '2008-11-05'
       regions: ["gb"]
@@ -181,6 +195,18 @@ tests:
       name: "Guy Fawkes Day"
   - given:
       date: '2008-12-25'
+      regions: ["gb"]
+      options: ["informal"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: '2022-12-25'
+      regions: ["gb"]
+      options: ["informal"]
+    expect:
+      holiday: false
+  - given:
+      date: '2022-12-27'
       regions: ["gb"]
       options: ["informal"]
     expect:
@@ -436,7 +462,7 @@ tests:
       date: '2008-08-25'
       regions: ["gb_wls"]
     expect:
-      name: "Bank Holiday"
+      name: "Summer Bank Holiday"
   - given:
       date: '2008-03-24'
       regions: ["gb_eng"]
@@ -446,7 +472,7 @@ tests:
       date: '2008-08-25'
       regions: ["gb_eng"]
     expect:
-      name: "Bank Holiday"
+      name: "Summer Bank Holiday"
   - given:
       date: '2008-03-24'
       regions: ["gb_nir"]
@@ -456,7 +482,7 @@ tests:
       date: '2008-08-25'
       regions: ["gb_nir"]
     expect:
-      name: "Bank Holiday"
+      name: "Summer Bank Holiday"
   - given:
       date: '2008-03-24'
       regions: ["gb_eaw"]
@@ -466,7 +492,7 @@ tests:
       date: '2008-08-25'
       regions: ["gb_eaw"]
     expect:
-      name: "Bank Holiday"
+      name: "Summer Bank Holiday"
   - given:
       date: '2008-03-24'
       regions: ["gb_"]
@@ -476,7 +502,7 @@ tests:
       date: '2008-08-25'
       regions: ["gb_"]
     expect:
-      name: "Bank Holiday"
+      name: "Summer Bank Holiday"
   - given:
       date: '2018-05-09'
       regions: ["je"]
@@ -491,24 +517,4 @@ tests:
       date: '2018-08-27'
       regions: ["je"]
     expect:
-      name: "Bank Holiday"
-  - given:
-      date: '2022-06-02'
-      regions: ["gb"]
-    expect:
-      name: "Bank Holiday"
-  - given:
-      date: '2022-05-30'
-      regions: ["gb"]
-    expect:
-      holiday: false
-  - given:
-      date: '2022-06-03'
-      regions: ["gb"]
-    expect:
-      name: "Platinum Jubilee"
-  - given:
-      date: '2023-05-29'
-      regions: ["gb"]
-    expect:
-      name: "Bank Holiday"
+      name: "Summer Bank Holiday"

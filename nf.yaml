@@ -1,0 +1,98 @@
+# Liberian holiday definitions for the Ruby Holiday gem.
+#
+# Updated: 2018-11-21.
+#
+# Sources:
+# - https://publicholidays.asia/norfolk-island/2018-dates/
+# - https://publicholidays.asia/norfolk-island/2019-dates/
+# - https://publicholidays.asia/norfolk-island/2020-dates/
+# - https://en.wikipedia.org/wiki/Public_holidays_in_Norfolk_Island
+---
+months:
+  0:
+  - name: Good Friday
+    regions: [nf]
+    function: easter(year)
+    function_modifier: -2
+  - name: Easter Monday
+    regions: [nf]
+    function: easter(year)
+    function_modifier: +1
+  1:
+  - name: New Year's Day
+    regions: [nf]
+    mday: 1
+  - name: Australia Day
+    regions: [nf]
+    mday: 26
+    observed: to_monday_if_weekend(date)
+  3:
+  - name: Foundation Day
+    regions: [nf]
+    mday: 6
+  4:
+  - name: Anzac Day
+    regions: [nf]
+    mday: 25
+  6:
+  - name: Bounty Day
+    regions: [nf]
+    mday: 8
+    observed: to_monday_if_weekend(date)
+  - name: Queen's Birthday
+    regions: [nf]
+    function: monday_after_second_saturday(year)
+  10:
+  - name: Norfolk Island Agricultural Show
+    regions: [nf]
+    week: 2
+    wday: 1
+  11:
+  - name: Thanksgiving Day
+    regions: [nf]
+    week: 4
+    wday: 3
+  12:
+  - name: Christmas Day
+    regions: [nf]
+    mday: 25
+  - name: Boxing Day
+    regions: [nf]
+    mday: 26
+    observed: to_monday_if_weekend(date)
+
+methods:
+  monday_after_second_saturday:
+    arguments: year
+    source: |
+      second_sat_in_jun = Date.civil(year, 6, Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 6, 2, :saturday))
+      second_sat_in_jun + 2
+
+tests:
+  - given:
+      date: ['2018-03-30', '2019-04-19', '2020-04-10']
+      regions: ['nf']
+    expect:
+      name: 'Good Friday'
+  - given:
+      date: ['2018-04-02', '2019-04-22', '2020-04-13']
+      regions: ['nf']
+    expect:
+      name: 'Easter Monday'
+  - given:
+      date: ['2018-06-11', '2019-06-10', '2020-06-15']
+      regions: ['nf']
+    expect:
+      name: "Queen's Birthday"
+  - given:
+      date: ['2019-01-28', '2020-01-27']
+      regions: ['nf']
+      options: ["observed"]
+    expect:
+      name: "Australia Day"
+  - given:
+      date: ['2019-12-26', '2020-12-28']
+      regions: ['nf']
+      options: ["observed"]
+    expect:
+      name: "Boxing Day"
