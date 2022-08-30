@@ -31,12 +31,12 @@ months:
     regions: [mu]
     mday: 01
     year_ranges:
-      - limited: [2022] 
+      - limited: [2022]
   - name: Chinese Spring Festival
     regions: [mu]
     mday: 12
     year_ranges:
-      - limited: [2021] 
+      - limited: [2021]
   3:
   - name: Maha Shivaratree
     regions: [mu]
@@ -72,17 +72,17 @@ months:
     mday: 15
     year_ranges:
       - limited: [2022]
-  - name: Ganesh Chaturthi
-    regions: [mu]
-    mday: 31
-    year_ranges:
-      - limited: [2022] 
   9:
   - name: Ganesh Chaturthi
     regions: [mu]
     mday: 11
     year_ranges:
       - limited: [2021]
+  - name: Ganesh Chaturthi
+    regions: [mu]
+    mday: 1
+    year_ranges:
+      - limited: [2022]
   11:
   - name: All Saints' Day
     regions: [mu]
