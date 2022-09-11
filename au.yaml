@@ -151,6 +151,12 @@ months:
     wday: 1
     year_ranges:
       - before: 2017
+  - name: Day of mourning for Queen Elizabeth II
+    regions: [au, au_nsw, au_act, au_sa, au_tas, au_vic, au_wa, au_nt, au_qld]
+    week: 4
+    wday: 4
+    year_ranges:
+      - limited: 2022
   10:
   - name: Labour Day
     regions: [au_act, au_nsw, au_sa]
