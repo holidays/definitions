@@ -116,8 +116,7 @@ months:
   8:
   - name: Ekka
     regions: [au_qld_brisbane]
-    week: -3
-    wday: 3
+    function: qld_brisbane_ekka_holiday(year)
   9:
   - name: Queen's Birthday
     regions: [au_wa]
@@ -265,6 +264,19 @@ methods:
         nil
       else
         Date.civil(year, 5, Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 5, :third, :monday))
+      end
+  qld_brisbane_ekka_holiday:
+    # https://www.qld.gov.au/recreation/travel/holidays/public
+    # The Ekka holiday occurs on the Wednesday during the RNA Show perido, the RNA show occurs on the first Friday of August, unless that's prior to August 5, then it occurs on the second.
+    arguments: year
+    ruby: |
+      first_friday = Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 8, :first, :friday)
+
+      if first_friday < 5
+        second_friday = Date.civil(year, 8, Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 8, :second, :friday))
+        second_friday + 5 # The next Wednesday
+      else
+        Date.civil(year, 8, first_friday) + 5
       end
 
 tests:
@@ -757,3 +769,28 @@ tests:
       regions: ["au_vic"]
     expect:
       holiday: false
+  - given:
+      date: '2019-08-14'
+      regions: ["au_qld_brisbane"]
+    expect:
+      name: "Ekka"
+  - given:
+      date: '2022-08-10'
+      regions: ["au_qld_brisbane"]
+    expect:
+      name: "Ekka"
+  - given:
+      date: '2023-08-16'
+      regions: ["au_qld_brisbane"]
+    expect:
+      name: "Ekka"
+  - given:
+      date: '2024-08-14'
+      regions: ["au_qld_brisbane"]
+    expect:
+      name: "Ekka"
+  - given:
+      date: '2025-08-13'
+      regions: ["au_qld_brisbane"]
+    expect:
+      name: "Ekka"
