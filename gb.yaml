@@ -3,10 +3,10 @@
 # Including England, Wales, Scotland, N. Ireland, the Isle of Man, Guernsey
 # and Jersey.
 #
-# Updated: 2019-02-10
+# Updated: 2022-09-12
 # Sources:
 # - http://en.wikipedia.org/wiki/List_of_holidays_by_country#United_Kingdom_and_Crown_dependencies
-#
+# - https://www.gov.uk/bank-holidays
 # Notes:
 # - Jersey, Guernsey and the Isle of Man are encode with both their ISO 3166-1 and ISO 3-3166-2 codes.
 # - England and Wales together should be encoded as [gb_eng, gb_wls, gb_eaw...]
@@ -108,6 +108,12 @@ months:
     regions: [gb_eng, gb_wls, gb_eaw, gb_nir, je, gb_jsy, gg, gb_gsy]
     week: -1
     wday: 1
+  9:
+  - name:	Bank Holiday for the State Funeral of Queen Elizabeth II
+    regions: [gb]
+    mday: 19
+    year_ranges:
+    - limited: [2022]
   11:
   - name: Guy Fawkes Day
     regions: [gb]
