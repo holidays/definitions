@@ -85,7 +85,7 @@ months:
     regions: [gb]
     mday: 19
     year_ranges:
-    - limited: [2022]  
+    - limited: [2022]
   11:
   - name: Guy Fawkes Day
     regions: [gb]
