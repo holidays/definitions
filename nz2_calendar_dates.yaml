@@ -36,6 +36,12 @@ months:
   - name: Matariki Holiday
     regions: [nz2_calendar_dates]
     function: matariki_holiday(year)
+  9:
+  - name: Day of mourning for Queen Elizabeth II
+    regions: [nz2_calendar_dates]
+    mday: 26
+    year_ranges:
+      - limited: 2022
   10:
   - name: Labour Day
     regions: [nz2_calendar_dates]
