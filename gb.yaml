@@ -80,12 +80,6 @@ months:
     regions: [gb_eng, gb_wls, gb_eaw, gb_nir, je, gb_jsy, gg, gb_gsy]
     week: -1
     wday: 1
-  9:
-  - name:	Bank Holiday for the State Funeral of Queen Elizabeth II
-    regions: [gb]
-    mday: 19
-    year_ranges:
-    - limited: [2022]
   11:
   - name: Guy Fawkes Day
     regions: [gb]
