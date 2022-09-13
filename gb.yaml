@@ -109,7 +109,7 @@ months:
     week: -1
     wday: 1
   9:
-  - name: Queen Elizabeth II Memorial Bank Holiday
+  - name: Bank Holiday for the State Funeral of Queen Elizabeth II
     regions: [gb]
     mday: 19
     year_ranges:
@@ -517,7 +517,7 @@ tests:
       date: '2022-09-19'
       regions: ["gb"]
     expect:
-      name: "Queen Elizabeth II Memorial Bank Holiday"
+      name: "Bank Holiday for the State Funeral of Queen Elizabeth II"
   - given:
       date: '2023-09-19'
       regions: ['gb']
