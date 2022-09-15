@@ -118,6 +118,11 @@ months:
     regions: [au_qld_brisbane]
     function: qld_brisbane_ekka_holiday(year)
   9:
+  - name: National Day of Mourning for Her Majesty Queen Elizabeth II
+    regions: [au]
+    mday: 22
+    year_ranges:
+      limited: [2022]
   - name: Queen's Birthday
     regions: [au_wa]
     week: -1
@@ -794,3 +799,18 @@ tests:
       regions: ["au_qld_brisbane"]
     expect:
       name: "Ekka"
+  - given:
+      date: '2022-09-22'
+      regions: ['au']
+    expect:
+      name: "National Day of Mourning for Her Majesty Queen Elizabeth II"
+  - given:
+      date: '2023-09-22'
+      regions: ['au']
+    expect:
+      holiday: false
+  - given:
+      date: '2021-09-22'
+      regions: ['au']
+    expect:
+      holiday: false
