@@ -85,12 +85,12 @@ tests:
       regions: ["ke"]
     expect:
       name: "Huduma Day"
-   - given:
+  - given:
       date: '2018-10-20'
       regions: ["ke"]
     expect:
       name: "Mashujaa Day"
-   - given:
+  - given:
       date: '2019-12-12'
       regions: ["ke"]
     expect:
