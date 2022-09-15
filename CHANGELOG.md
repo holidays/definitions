@@ -1,6 +1,23 @@
 # Holiday definitions
 
+## 5.5.0
+
+* Update `si` region to add `novo leto` (thanks to https://github.com/vlakre)
+* Add informal Mothering Sunday in UK+IE (thanks to https://github.com/ericcj)
+* Add Juneteenth for `federalreserve` and `federalreservebanks` (thanks to https://github.com/kapil2004)
+* Create `ke` region with initial holidays (thanks to https://github.com/bkmgit)
+* Add planned 2023 ocurrence of Latvian Song and Dance festival (thanks to https://github.com/aleksandrs-ledovskis)
+* Update `mx` holidays for accuracy (thanks to https://github.com/andres107)
+* Add Juneteenth to NYSE calendar (thanks to https://github.com/vassilios)
+* Add Matariki to `nz` (thanks to https://github.com/bagp1)
+* Adds function to calculate shifting Ekka holiday (thanks to https://github.com/antonivanopoulos)
+* change 9th of May dan pobjede to informal holiday (thanks to https://github.com/KristjanSever)
+* Add AU National Day of Mourning (thanks to https://github.com/justinjones)
+* Correct KE holidays indentation (thanks to https://github.com/hlascelles)
+* Add QEII Memorial Bank Holiday (thanks to https://github.com/hlascelles)
+
 ## 5.4.1
+
 * Add Platinum Jubilee bank holiday for 2022. (thanks to https://github.com/frankieroberto)
 * Fix definitions tests.
 
