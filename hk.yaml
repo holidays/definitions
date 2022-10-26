@@ -9,6 +9,7 @@
 
 # Source:
 # http://www.gov.hk/en/about/abouthk/holiday/
+# https://en.wikipedia.org/wiki/Public_holidays_in_Hong_Kong
 
 months:
   0:
@@ -19,13 +20,11 @@ months:
   - name: The second day of Lunar New Year
     regions: [hk]
     function: cn_new_lunar_day(year)
-    function_modifier: 1
-    observed: to_monday_if_sunday(date)
+    observed: to_the_weekday_after(date)
   - name: The third day of Lunar New Year
     regions: [hk]
     function: cn_new_lunar_day(year)
-    function_modifier: 2
-    observed: to_monday_if_sunday(date)
+    observed: to_the_second_weekday_after(date)
   - name: Good Friday
     regions: [hk]
     function: easter(year)
@@ -281,6 +280,108 @@ tests:
       name: "Christmas Day"
   - given:
       date: '2017-12-26'
+      regions: ["hk"]
+      options: ["observed"]
+    expect:
+      name: "Boxing Day"
+  - given:
+      date: '2023-01-02'
+      regions: ["hk"]
+      options: ["observed"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: '2023-01-23'
+      regions: ["hk"]
+      options: ["observed"]
+    expect:
+      name: "Lunar New Year's Day"
+  - given:
+      date: '2023-01-24'
+      regions: ["hk"]
+      options: ["observed"]
+    expect:
+      name: "The second day of Lunar New Year"
+  - given:
+      date: '2023-01-25'
+      regions: ["hk"]
+      options: ["observed"]
+    expect:
+      name: "The third day of Lunar New Year"
+  - given:
+      date: '2023-04-05'
+      regions: ["hk"]
+      options: ["observed"]
+    expect:
+      name: "Ching Ming Festival"
+  - given:
+      date: '2023-04-07'
+      regions: ["hk"]
+      options: ["observed"]
+    expect:
+      name: "Good Friday"
+  - given:
+      date: '2023-04-08'
+      regions: ["hk"]
+      options: ["observed"]
+    expect:
+      name: "The day following Good Friday"
+  - given:
+      date: '2023-04-10'
+      regions: ["hk"]
+      options: ["observed"]
+    expect:
+      name: "Easter Monday"
+  - given:
+      date: '2023-05-01'
+      regions: ["hk"]
+      options: ["observed"]
+    expect:
+      name: "Labour Day"
+  - given:
+      date: '2023-05-26'
+      regions: ["hk"]
+      options: ["observed"]
+    expect:
+      name: "The Birthday of the Buddha"
+  - given:
+      date: '2023-06-22'
+      regions: ["hk"]
+      options: ["observed"]
+    expect:
+      name: "Tuen Ng Festival"
+  - given:
+      date: '2023-07-01'
+      regions: ["hk"]
+      options: ["observed"]
+    expect:
+      name: "Hong Kong Special Administrative Region Establishment Day"
+  - given:
+      date: '2023-09-30'
+      regions: ["hk"]
+      options: ["observed"]
+    expect:
+      name: "The day following the Chinese Mid-Autumn Festival"
+  - given:
+      date: '2023-10-02'
+      regions: ["hk"]
+      options: ["observed"]
+    expect:
+      name: "National Day"
+  - given:
+      date: '2023-10-23'
+      regions: ["hk"]
+      options: ["observed"]
+    expect:
+      name: "Chung Yeung Festival"
+  - given:
+      date: '2023-12-25'
+      regions: ["hk"]
+      options: ["observed"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: '2023-12-26'
       regions: ["hk"]
       options: ["observed"]
     expect:
