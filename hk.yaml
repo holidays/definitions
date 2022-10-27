@@ -1,16 +1,5 @@
 # Hong Kong holiday definitions for the Holidays gem!
 
-# The following holidays are based on the Chinese lunar calendar:
-# Lunar New Year's Day
-# Ching Ming Festival
-# The Birthday of the Buddha
-# Tuen Ng Festival
-# Chinese Mid-Autumn Festival
-# Chung Yeung Festival
-
-# The Chinese lunar calendar has been copied from the Vietnamese lunar calendar.
-# Only the year 2022, 2023, 2024 have been updated. You should assume that the other years are incorrect.
-
 # Source:
 # http://www.gov.hk/en/about/abouthk/holiday/
 # https://en.wikipedia.org/wiki/Public_holidays_in_Hong_Kong
