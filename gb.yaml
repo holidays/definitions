@@ -80,6 +80,11 @@ months:
     wday: 1
     year_ranges:
       from: 2023
+  - name: Bank Holiday for the Coronation of King Charles III
+    regions: [gb]
+    mday: 8
+    year_ranges:
+      limited: [2023]
   6:
   - name: Bank Holiday
     regions: [gb]
@@ -525,6 +530,21 @@ tests:
       holiday: false
   - given:
       date: '2021-09-19'
+      regions: ['gb']
+    expect:
+      holiday: false
+  - given:
+      date: '2023-05-08'
+      regions: ["gb"]
+    expect:
+      name: "Bank Holiday for the Coronation of King Charles III"
+  - given:
+      date: '2024-05-08'
+      regions: ['gb']
+    expect:
+      holiday: false
+  - given:
+      date: '2022-05-08'
       regions: ['gb']
     expect:
       holiday: false
