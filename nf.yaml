@@ -7,6 +7,7 @@
 # - https://publicholidays.asia/norfolk-island/2019-dates/
 # - https://publicholidays.asia/norfolk-island/2020-dates/
 # - https://en.wikipedia.org/wiki/Public_holidays_in_Norfolk_Island
+# -
 ---
 months:
   0:
@@ -22,6 +23,10 @@ months:
   - name: New Year's Day
     regions: [nf]
     mday: 1
+  - name: (additional day New Year's Day)
+    regions: [nf]
+    mday: 1
+    observed: to_monday_if_weekend(date)
   - name: Australia Day
     regions: [nf]
     mday: 26
@@ -30,6 +35,10 @@ months:
   - name: Foundation Day
     regions: [nf]
     mday: 6
+  - name: (additional day Foundation Day)
+    regions: [nf]
+    mday: 6
+    observed: to_monday_if_weekend(date)
   4:
   - name: Anzac Day
     regions: [nf]
@@ -50,13 +59,16 @@ months:
   11:
   - name: Thanksgiving Day
     regions: [nf]
-    week: 4
+    week: 5
     wday: 3
   12:
   - name: Christmas Day
     regions: [nf]
     mday: 25
   - name: Boxing Day
+    regions: [nf]
+    mday: 26
+  - name: (additional day Boxing Day)
     regions: [nf]
     mday: 26
     observed: to_monday_if_weekend(date)
