@@ -65,13 +65,13 @@ months:
   - name: Christmas Day
     regions: [nf]
     mday: 25
+  - name: (additional day Christmas Day)
+    regions: [nf]
+    mday: 25
+    observed: to_monday_if_weekend(date)
   - name: Boxing Day
     regions: [nf]
     mday: 26
-  - name: (additional day Boxing Day)
-    regions: [nf]
-    mday: 26
-    observed: to_monday_if_weekend(date)
 
 methods:
   monday_after_second_saturday:
