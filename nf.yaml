@@ -75,7 +75,7 @@ months:
   - name: (additional day Boxing Day)
     regions: [nf]
     mday: 26
-    observed: to_monday_if_saturday_or_to_tuesday_if_sunday_or_monday
+    function: to_monday_if_saturday_or_to_tuesday_if_sunday_or_monday(date)
 
 methods:
   monday_after_second_saturday:
