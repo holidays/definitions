@@ -7,6 +7,7 @@
 # - https://publicholidays.asia/norfolk-island/2019-dates/
 # - https://publicholidays.asia/norfolk-island/2020-dates/
 # - https://en.wikipedia.org/wiki/Public_holidays_in_Norfolk_Island
+# -
 ---
 months:
   0:
@@ -22,6 +23,10 @@ months:
   - name: New Year's Day
     regions: [nf]
     mday: 1
+  - name: (additional day New Year's Day)
+    regions: [nf]
+    mday: 1
+    observed: to_monday_if_weekend(date)
   - name: Australia Day
     regions: [nf]
     mday: 26
@@ -30,6 +35,10 @@ months:
   - name: Foundation Day
     regions: [nf]
     mday: 6
+  - name: (additional day Foundation Day)
+    regions: [nf]
+    mday: 6
+    observed: to_monday_if_weekend(date)
   4:
   - name: Anzac Day
     regions: [nf]
@@ -50,16 +59,19 @@ months:
   11:
   - name: Thanksgiving Day
     regions: [nf]
-    week: 4
+    week: 5
     wday: 3
   12:
   - name: Christmas Day
     regions: [nf]
     mday: 25
+  - name: (additional day Christmas Day)
+    regions: [nf]
+    mday: 25
+    function: to_tuesday_if_sunday(date)
   - name: Boxing Day
     regions: [nf]
     mday: 26
-    observed: to_monday_if_weekend(date)
 
 methods:
   monday_after_second_saturday:
@@ -67,6 +79,15 @@ methods:
     source: |
       second_sat_in_jun = Date.civil(year, 6, Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 6, 2, :saturday))
       second_sat_in_jun + 2
+  to_tuesday_if_sunday:
+    arguments: date
+    source: |
+      if [6,0].include?(date.wday)
+        date += 2
+        date
+      else
+        nil
+      end
 
 tests:
   - given:
