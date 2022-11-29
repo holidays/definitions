@@ -83,6 +83,12 @@ months:
     mday: 1
     year_ranges:
       - limited: [2022]
+  10:
+  - name: Diwali
+    regions: [mu]
+    mday: 24
+    year_ranges:
+      - limited: [2022]
   11:
   - name: All Saints' Day
     regions: [mu]
@@ -97,11 +103,6 @@ months:
     mday: 4
     year_ranges:
       - limited: [2021]
-  - name: Diwali
-    regions: [mu]
-    mday: 24
-    year_ranges:
-      - limited: [2022]
   12:
   - name: Christmas Day
     regions: [mu]
