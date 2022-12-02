@@ -44,8 +44,13 @@ months:
     function: afl_grand_final(year)
   1:
   - name: New Year's Day # All states except TAS have an additional public holiday for New Year's Day
-    regions: [au_nsw, au_vic, au_act, au_wa, au_nt, au_qld, au_sa]
+    regions: [au_nsw, au_vic, au_act, au_wa, au_nt, au_qld]
     mday: 1
+  - name: New Year's Day # SA only just get this now. Can delete after this year.
+    regions: [au_sa]
+    mday: 1
+    year_ranges:
+      - after: 2022
   - name: New Year's Day # TAS move New Year's Day to monday on the weekend
     regions: [au_tas]
     mday: 1
