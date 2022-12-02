@@ -50,7 +50,7 @@ months:
     regions: [au_sa]
     mday: 1
     year_ranges:
-      - after: 2022
+      - after: 2023
   - name: New Year's Day # TAS move New Year's Day to monday on the weekend
     regions: [au_tas]
     mday: 1
