@@ -22,7 +22,8 @@ months:
   6:
   - name: Agong's Birthday
     regions: [my]
-    mday: 4
+    week: 1
+    wday: 1
     observed: to_weekday_if_weekend(date)
   8:
   - name: Independence Day
