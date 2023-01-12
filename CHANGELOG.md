@@ -1,5 +1,84 @@
 # Holiday definitions
 
+## 5.5.0
+
+* Update `si` region to add `novo leto` (thanks to https://github.com/vlakre)
+* Add informal Mothering Sunday in UK+IE (thanks to https://github.com/ericcj)
+* Add Juneteenth for `federalreserve` and `federalreservebanks` (thanks to https://github.com/kapil2004)
+* Create `ke` region with initial holidays (thanks to https://github.com/bkmgit)
+* Add planned 2023 ocurrence of Latvian Song and Dance festival (thanks to https://github.com/aleksandrs-ledovskis)
+* Update `mx` holidays for accuracy (thanks to https://github.com/andres107)
+* Add Juneteenth to NYSE calendar (thanks to https://github.com/vassilios)
+* Add Matariki to `nz` (thanks to https://github.com/bagp1)
+* Adds function to calculate shifting Ekka holiday (thanks to https://github.com/antonivanopoulos)
+* change 9th of May dan pobjede to informal holiday (thanks to https://github.com/KristjanSever)
+* Add AU National Day of Mourning (thanks to https://github.com/justinjones)
+* Correct KE holidays indentation (thanks to https://github.com/hlascelles)
+* Add QEII Memorial Bank Holiday (thanks to https://github.com/hlascelles)
+
+## 5.4.1
+
+* Add Platinum Jubilee bank holiday for 2022. (thanks to https://github.com/frankieroberto)
+* Fix definitions tests.
+
+## 5.4.0
+
+* Fix boxing day in `za` region
+* Fix ANZAC day in `au_vic` region (thanks to https://github.com/evjan)
+* Update `ar` region holidays for accuracy (thanks to https://github.com/elsupergomez)
+* Add Juneteenth holiday for `us` and `federalreservebank` regions (thanks to https://github.com/Murphydbuffalo and https://github.com/pjsier)
+* Add National Day for Truth and Reconciliation for `ca` region (thanks to https://github.com/Xipher7934)
+* Fix Christmas observation in `ca_on` region (thanks to https://github.com/jeffmess)
+
+## 5.3.1
+
+Fix jp holidays from 2022.
+
+* :+1: Reflects changes in Japanese holidays in 2021.(Thanks to https://github.com/ryosukeYamazaki)
+
+## 5.3.0
+
+Update many defitnions.
+
+Definitions changes:
+
+* Change name of Foundation Day in Western Australia to 'Western Austra…(Thanks to https://github.com/mattman)
+* add Kazakh holidays(Thanks to https://github.com/Legomegger)
+* Add AFL Grand final dates for 2018-2020(Thanks to https://github.com/anicholson)
+* Add 2021 jp holiday(Thanks to https://github.com/ryosukeYamazaki)
+
+
+## 5.2.0
+
+Update many defitnions.
+
+Definitions changes:
+
+* Update hr.yaml(Thanks to https://github.com/KarloPletesImago)
+* Terry Fox Day not a formal holiday(Thanks to https://github.com/tabbasi88)
+* Added the Zibelemärit to the region ch_be(Thanks to https://github.com/hrigu)
+* add "Lunes de Pascua Granada" to Catalunya holidays(Thanks to https://github.com/thefabbulus)
+* Correcting observed Battle of the Boyne, N.Ireland (Problem occurs July 2020)(Thanks to https://github.com/qidane)
+* Modify terry fox date test.
+* Fix ch holidays.
+
+## 5.1.0
+
+Update many defitnions.
+
+Definitions changes:
+
+* Add Nigerian Holidays(Thanks to https://github.com/osioke)
+* Add 2024 calendar year to Federal Reserve banks(Thanks to https://github.com/JeremiahChurch)
+* Nunavut July 9th new statutory holiday from 2020(Thanks to https://github.com/tabbasi88)
+* Add Ramadan & Sacrafice holidays in 2020(Thanks to https://github.com/saygun)
+* Mark mexicans dates as informal(Thanks to https://github.com/arandilopez)
+* Add May 1 and May 9 holidays for Luxembourg(Thanks to https://github.com/pmor)
+* New Croatian holidays 2020(Thanks to https://github.com/KarloPletesImago)
+* DE: adde new liberation day for Berlin 2020 only(Thanks to https://github.com/estani)
+* Add Québec to provinces observing Canadian Thanksgiving(Thanks to https://github.com/rafbm)
+
+
 ## 5.0.1
 
 No behavior change.

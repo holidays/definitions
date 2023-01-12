@@ -14,6 +14,11 @@
 ---
 months:
   0:
+  - name: Mothering Sunday
+    regions: [gb]
+    function: easter(year)
+    function_modifier: -21
+    type: informal
   - name: Good Friday
     regions: [gb]
     function: easter(year)
@@ -49,7 +54,7 @@ months:
     wday: 1
     year_ranges:
       until: 2019
-  - name: May Day 
+  - name: May Day
     regions: [gb]
     mday: 8
     year_ranges:
@@ -67,6 +72,25 @@ months:
     regions: [gb]
     week: -1
     wday: 1
+    year_ranges:
+      until: 2021
+  - name: Bank Holiday
+    regions: [gb]
+    week: -1
+    wday: 1
+    year_ranges:
+      from: 2023
+  6:
+  - name: Bank Holiday
+    regions: [gb]
+    mday: 2
+    year_ranges:
+      limited: [2022]
+  - name: Platinum Jubilee
+    regions: [gb]
+    mday: 3
+    year_ranges:
+      limited: [2022]
   7:
   - name: Tynwald Day
     regions: [im, gb_iom]
@@ -74,6 +98,7 @@ months:
   - name: Battle of the Boyne
     regions: [gb_nir]
     mday: 12
+    observed: to_monday_if_weekend(date)
   8:
   - name: Bank Holiday
     regions: [gb_sct]
@@ -83,6 +108,12 @@ months:
     regions: [gb_eng, gb_wls, gb_eaw, gb_nir, je, gb_jsy, gg, gb_gsy]
     week: -1
     wday: 1
+  9:
+  - name: Bank Holiday for the State Funeral of Queen Elizabeth II
+    regions: [gb]
+    mday: 19
+    year_ranges:
+      limited: [2022]
   11:
   - name: Guy Fawkes Day
     regions: [gb]
@@ -112,6 +143,18 @@ months:
     observed: to_weekday_if_boxing_weekend(date)
 
 tests:
+  - given:
+      date: '2022-03-27'
+      regions: ["gb"]
+      options: ["informal"]
+    expect:
+      name: "Mothering Sunday"
+  - given:
+      date: '2021-03-14'
+      regions: ["gb"]
+      options: ["informal"]
+    expect:
+      name: "Mothering Sunday"
   - given:
       date: '2008-03-21'
       regions: ["gb"]
@@ -184,6 +227,51 @@ tests:
       options: ["observed", "informal"]
     expect:
       name: "St. Patrick's Day"
+  - given:
+      date: '2020-07-12'
+      regions: ["gb_nir"]
+    expect:
+      name: "Battle of the Boyne"
+  - given:
+      date: '2020-07-12'
+      regions: ["gb_nir"]
+      options: ["observed"]
+    expect:
+      holiday: false
+  - given:
+      date: '2020-07-13'
+      regions: ["gb_nir"]
+      options: ["observed"]
+    expect:
+      name: "Battle of the Boyne"
+  - given:
+      date: '2008-07-12'
+      regions: ["gb_nir"]
+    expect:
+      name: "Battle of the Boyne"
+  - given:
+      date: '2008-07-14'
+      regions: ["gb_nir"]
+      options: ["observed"]
+    expect:
+      name: "Battle of the Boyne"
+  - given:
+      date: '2021-07-12'
+      regions: ["gb_nir"]
+    expect:
+      name: "Battle of the Boyne"
+  - given:
+      date: '2021-07-12'
+      regions: ["gb_nir"]
+      options: ["observed"]
+    expect:
+      name: "Battle of the Boyne"
+  - given:
+      date: '2021-07-13'
+      regions: ["gb_nir"]
+      options: ["observed"]
+    expect:
+      holiday: false
   - given:
       date: '2006-11-30'
       regions: ["gb_sct"]
@@ -408,5 +496,40 @@ tests:
   - given:
       date: '2018-08-27'
       regions: ["je"]
+    expect:
+      name: "Bank Holiday"
+  - given:
+      date: '2022-06-02'
+      regions: ["gb"]
+    expect:
+      name: "Bank Holiday"
+  - given:
+      date: '2022-05-30'
+      regions: ["gb"]
+    expect:
+      holiday: false
+  - given:
+      date: '2022-06-03'
+      regions: ["gb"]
+    expect:
+      name: "Platinum Jubilee"
+  - given:
+      date: '2022-09-19'
+      regions: ["gb"]
+    expect:
+      name: "Bank Holiday for the State Funeral of Queen Elizabeth II"
+  - given:
+      date: '2023-09-19'
+      regions: ['gb']
+    expect:
+      holiday: false
+  - given:
+      date: '2021-09-19'
+      regions: ['gb']
+    expect:
+      holiday: false
+  - given:
+      date: '2023-05-29'
+      regions: ["gb"]
     expect:
       name: "Bank Holiday"

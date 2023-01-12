@@ -93,6 +93,11 @@ months:
   - name: Tag der Arbeit
     regions: [de]
     mday: 1
+  - name: Tag der Befreiung
+    regions: [de_be]
+    mday: 8
+    year_ranges:
+      limited: [2020]
   8:
   - name: Mariä Himmelfahrt
     regions: [de_by_cath, de_by_augsburg, de_sl]
@@ -355,3 +360,8 @@ tests:
       regions: ["de_be"]
     expect:
       name: "Internationaler Frauentag"
+  - given:
+      date: '2020-05-08'
+      regions: ["de_be"]
+    expect:
+      name: "Tag der Befreiung"

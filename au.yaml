@@ -1,5 +1,5 @@
 # Australian holiday definitions for the Ruby Holiday gem.
-# Updated: 2019-02-10
+# Updated: 2020-07-15
 # Sources:
 # - http://en.wikipedia.org/wiki/Australian_public_holidays
 # - http://www.docep.wa.gov.au/lr/LabourRelations/Content/Wages%20and%20Conditions/Public%20Holidays/Public_Holidays.html
@@ -71,9 +71,12 @@ months:
     regions: [au]
     mday: 25
   - name: ANZAC Day
-    regions: [au_nsw, au_vic, au_qld, au_nt, au_act, au_sa, au_tas]
+    regions: [au_nsw, au_qld, au_nt, au_act, au_sa, au_tas]
     mday: 25
     observed: to_monday_if_sunday(date)
+  - name: ANZAC Day
+    regions: [au_vic]
+    mday: 25
   - name: ANZAC Day
     regions: [au_wa]
     mday: 25
@@ -90,7 +93,7 @@ months:
     regions: [au_sa]
     function: may_pub_hol_sa(year)
   6:
-  - name: Foundation Day
+  - name: Western Australia Day
     regions: [au_wa]
     week: 1
     wday: 1
@@ -113,9 +116,13 @@ months:
   8:
   - name: Ekka
     regions: [au_qld_brisbane]
-    week: -3
-    wday: 3
+    function: qld_brisbane_ekka_holiday(year)
   9:
+  - name: National Day of Mourning for Her Majesty Queen Elizabeth II
+    regions: [au]
+    mday: 22
+    year_ranges:
+      limited: [2022]
   - name: Queen's Birthday
     regions: [au_wa]
     week: -1
@@ -186,6 +193,12 @@ methods:
         Date.civil(2016, 9, 30)
       when 2017
         Date.civil(2017, 9, 29)
+      when 2018
+        Date.civil(2018, 9, 28)
+      when 2019
+        Date.civil(2019,9, 27)
+      when 2020
+        Date.civil(2020, 10, 23)
       end
   qld_queens_bday_october:
     # http://www.justice.qld.gov.au/fair-and-safe-work/industrial-relations/public-holidays/dates
@@ -256,6 +269,19 @@ methods:
         nil
       else
         Date.civil(year, 5, Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 5, :third, :monday))
+      end
+  qld_brisbane_ekka_holiday:
+    # https://www.qld.gov.au/recreation/travel/holidays/public
+    # The Ekka holiday occurs on the Wednesday during the RNA Show perido, the RNA show occurs on the first Friday of August, unless that's prior to August 5, then it occurs on the second.
+    arguments: year
+    ruby: |
+      first_friday = Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 8, :first, :friday)
+
+      if first_friday < 5
+        second_friday = Date.civil(year, 8, Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 8, :second, :friday))
+        second_friday + 5 # The next Wednesday
+      else
+        Date.civil(year, 8, first_friday) + 5
       end
 
 tests:
@@ -743,3 +769,48 @@ tests:
       regions: ["au_qld_brisbane"]
     expect:
       name: "G20 Day"
+  - given:
+      date: '2021-04-26'
+      regions: ["au_vic"]
+    expect:
+      holiday: false
+  - given:
+      date: '2019-08-14'
+      regions: ["au_qld_brisbane"]
+    expect:
+      name: "Ekka"
+  - given:
+      date: '2022-08-10'
+      regions: ["au_qld_brisbane"]
+    expect:
+      name: "Ekka"
+  - given:
+      date: '2023-08-16'
+      regions: ["au_qld_brisbane"]
+    expect:
+      name: "Ekka"
+  - given:
+      date: '2024-08-14'
+      regions: ["au_qld_brisbane"]
+    expect:
+      name: "Ekka"
+  - given:
+      date: '2025-08-13'
+      regions: ["au_qld_brisbane"]
+    expect:
+      name: "Ekka"
+  - given:
+      date: '2022-09-22'
+      regions: ['au']
+    expect:
+      name: "National Day of Mourning for Her Majesty Queen Elizabeth II"
+  - given:
+      date: '2023-09-22'
+      regions: ['au']
+    expect:
+      holiday: false
+  - given:
+      date: '2021-09-22'
+      regions: ['au']
+    expect:
+      holiday: false

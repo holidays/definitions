@@ -12,6 +12,7 @@ months:
   - name: Dia de los Santos Reyes
     regions: [mx]
     mday: 6
+    type: informal
   2:
   - name: Día de la Constitución
     week: 1
@@ -38,6 +39,7 @@ months:
   - name: La Batalla de Puebla
     regions: [mx_pue]
     mday: 5
+    type: informal
   - name: Día de la Madre
     regions: [mx]
     mday: 10
@@ -56,6 +58,7 @@ months:
   - name: Grito de Dolores
     regions: [mx]
     mday: 15
+    type: informal
   - name: Día de la Independencia
     regions: [mx]
     mday: 16
@@ -92,6 +95,7 @@ months:
   - name: Los Santos Inocentes
     regions: [mx]
     mday: 28
+    type: informal
 
 tests:
   - given:
@@ -118,6 +122,12 @@ tests:
       options: ["informal"]
     expect:
       name: "Cinco de Mayo"
+  - given:
+      date: '2007-09-15'
+      regions: ["mx"]
+      options: ["informal"]
+    expect:
+      name: "Grito de Dolores"
   - given:
       date: '2007-09-16'
       regions: ["mx"]

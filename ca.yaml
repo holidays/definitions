@@ -1,10 +1,12 @@
 # Canadian holiday definitions for the Ruby Holiday gem.
-# Updated 2019-02-10.
+# Updated 2020-03-18.
 #
 # Notes:
 #  - 'Family Day' in various provinces are only celebrated after certain years: http://www.timeanddate.com/holidays/canada/family-day
 #  - 'Family Day' for New Brunswick after 2018  http://www.gnb.ca/legis/bill/FILE/58/3/Bill-67-e.htm
 #  - 'National Aboriginal Day for Yukon' Bill 2 received Royal Assent on May 8, 2017. http://www.gov.yk.ca/news/17-075.html
+#  - 'Nunavut’s legislative assembly voted to pass Bill 29 making Nunavut Day', July 9, an officially statutory holiday across the territory. https://www.gov.nu.ca/human-resources/information/public-service-holidays
+#  - 'According to Manitoba labour standards, Terry Fox Day is not a formal holiday. https://www.gov.mb.ca/labour/standards/doc,gen-holidays-after-april-30-07,factsheet.html#q13'
 ---
 months:
   0:
@@ -126,6 +128,9 @@ months:
   - name: Nunavut Day
     regions: [ca_nu]
     mday: 9
+    observed: to_monday_if_weekend(date)
+    year_ranges:
+      from: 2020
   8:
   - name: B.C. Day
     week: 1
@@ -162,6 +167,7 @@ months:
     week: 1
     regions: [ca_mb]
     wday: 1
+    type: informal
   - name: Discovery Day
     week: 3
     regions: [ca_yt]
@@ -171,10 +177,15 @@ months:
     week: 1
     regions: [ca]
     wday: 1
+  - name: National Day for Truth and Reconciliation
+    regions: [ca]
+    mday: 30
+    year_ranges:
+      from: 2021
   10:
   - name: Thanksgiving
     week: 2
-    regions: [ca_ab, ca_bc, ca_mb, ca_nt, ca_nu, ca_on, ca_sk, ca_yt]
+    regions: [ca_ab, ca_bc, ca_mb, ca_nt, ca_nu, ca_on, ca_qc, ca_sk, ca_yt]
     wday: 1
   11:
   - name: Remembrance Day
@@ -183,17 +194,37 @@ months:
     observed: to_monday_if_weekend(date)
   12:
   - name: Christmas Day
-    regions: [ca]
+    regions: [ca_on]
+    mday: 25
+    year_ranges:
+      until: 2020
+    observed: to_weekday_if_weekend(date)
+  - name: Christmas Day
+    regions: [ca_on]
+    mday: 25
+    observed: to_monday_if_weekend(date)
+    year_ranges:
+      from: 2020
+  - name: Christmas Day
+    regions: [ca_ab, ca_bc, ca_mb, ca_nb, ca_nl, ca_nt, ca_ns, ca_nu, ca_pe, ca_qc, ca_sk, ca_yt]
     mday: 25
     observed: to_weekday_if_weekend(date)
   - name: Boxing Day
     regions: [ca_on]
     mday: 26
+    year_ranges:
+      until: 2020
+    observed: to_monday_if_weekend(date)
+  - name: Boxing Day
+    regions: [ca_on]
+    mday: 26
+    year_ranges:
+      from: 2020
     observed: to_weekday_if_boxing_weekend(date)
   - name: Boxing Day
-    regions: [ca_ab, ca_bc, ca_mb, ca_nb, ca_nl, ca_nt, ca_ns, ca_nu, ca_pe, ca_sk, ca_yt]
+    regions: [ca_ab, ca_bc, ca_mb, ca_nb, ca_nl, ca_nt, ca_ns, ca_nu, ca_pe, ca_qc, ca_sk, ca_yt]
     mday: 26
-    observed: to_weekday_if_boxing_weekend(date)
+    observed: to_monday_if_weekend(date)
     type: informal
 
 methods:
@@ -248,7 +279,7 @@ tests:
       name: "Labour Day"
   - given:
       date: '2008-12-25'
-      regions: ["ca"]
+      regions: ["ca_on"]
       options: ["informal"]
     expect:
       name: "Christmas Day"
@@ -738,20 +769,44 @@ tests:
     expect:
       name: "Canada Day"
 
+  # National Day for Truth and Reconciliation
+  - given:
+      date: '2021-09-30'
+      regions: ["ca"]
+    expect:
+      name: "National Day for Truth and Reconciliation"
+  - given:
+      date: '2026-09-30'
+      regions: ["ca"]
+    expect:
+      name: "National Day for Truth and Reconciliation"
+
+  # National Day for Truth and Reconciliation - should not be active before 2021
+  - given:
+      date: '2020-09-30'
+      regions: ["ca"]
+    expect:
+      holiday: false
+  - given:
+      date: '1985-09-30'
+      regions: ["ca"]
+    expect:
+      holiday: false
+
   # Christmas Day
   - given:
       date: '2010-12-25'
-      regions: ["ca"]
+      regions: ["ca_on"]
     expect:
       name: "Christmas Day"
   - given:
       date: '2018-12-25'
-      regions: ["ca"]
+      regions: ["ca_on"]
     expect:
       name: "Christmas Day"
   - given:
       date: '2022-12-25'
-      regions: ["ca"]
+      regions: ["ca_on"]
     expect:
       name: "Christmas Day"
   - given:
@@ -764,37 +819,43 @@ tests:
   # Christmas Day observed date
   - given:
       date: '2010-12-24'
-      regions: ["ca"]
+      regions: ["ca_on"]
       options: ["observed"]
     expect:
       name: "Christmas Day"
   - given:
       date: '2012-12-25'
-      regions: ["ca"]
+      regions: ["ca_on"]
       options: ["observed"]
     expect:
       name: "Christmas Day"
   - given:
       date: '2016-12-26'
-      regions: ["ca"]
+      regions: ["ca_on"]
       options: ["observed"]
     expect:
       name: "Christmas Day"
   - given:
       date: '2021-12-24'
-      regions: ["ca"]
+      regions: ["ca_ab", "ca_bc", "ca_mb", "ca_nb", "ca_nl", "ca_nt", "ca_ns", "ca_nu", "ca_pe", "ca_qc", "ca_sk", "ca_yt"]
       options: ["observed"]
     expect:
       name: "Christmas Day"
   - given:
+      date: '2021-12-27'
+      regions: [ "ca_on" ]
+      options: [ "observed" ]
+    expect:
+      name: "Christmas Day"
+  - given:
       date: '2022-12-26'
-      regions: ["ca"]
+      regions: ["ca_on"]
       options: ["observed"]
     expect:
       name: "Christmas Day"
 
   - given:
-      date: ['2010-12-28', '2012-12-26', '2015-12-28', '2016-12-27']
+      date: ['2010-12-27', '2012-12-26', '2015-12-28']
       regions: ["ca_on"]
       options: ["observed"]
     expect:
@@ -825,20 +886,51 @@ tests:
   - given:
       date: '2019-08-05'
       regions: ['ca_mb']
+      options: ['informal']
+    expect:
+      name: 'Terry Fox Day'
+  - given:
+      date: '2020-08-03'
+      regions: ['ca_mb']
+      options: ['informal']
     expect:
       name: 'Terry Fox Day'
   - given:
       date: '2020-08-03'
       regions: ['ca_mb']
     expect:
-      name: 'Terry Fox Day'
+      holiday: false
   - given:
       date: '2015-08-03'
       regions: ['ca_mb']
+      options: ['informal']
     expect:
       name: 'Terry Fox Day'
   - given:
       date: '2045-08-07'
       regions: ['ca_mb']
+      options: ['informal']
     expect:
       name: 'Terry Fox Day'
+  # Nunavut Day, July 9 - Should only be active on 2020 or later
+  - given:
+      date: '2020-07-09'
+      regions: ['ca_nu']
+    expect:
+      name: 'Nunavut Day'
+  - given:
+      date: '2021-07-09'
+      regions: ['ca_nu']
+    expect:
+      name: 'Nunavut Day'
+  # Nunavut Day,  July 9 - should NOT be active before 2020
+  - given:
+      date: '2019-07-09'
+      regions: ['ca_nu']
+    expect:
+      holiday: false
+  - given:
+      date: '2018-07-09'
+      regions: ['ca_nu']
+    expect:
+      holiday: false
