@@ -85,7 +85,7 @@ months:
     mday: 6
   3:
     - name: Internationaler Frauentag
-      regions: [de_be]
+      regions: [de_be, de_mv]
       mday: 8
       year_ranges:
         from: 2019
