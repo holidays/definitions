@@ -84,11 +84,11 @@ months:
     regions: [de_bw, de_by, de_st]
     mday: 6
   3:
-   - name: Internationaler Frauentag
-     regions: [de_be, de_mv]
-     mday: 8
-     year_ranges:
-       from: 2019
+  - name: Internationaler Frauentag
+    regions: [de_be, de_mv]
+    mday: 8
+    year_ranges:
+      from: 2019
   5:
   - name: Tag der Arbeit
     regions: [de]
