@@ -357,7 +357,7 @@ tests:
       holiday: false
   - given:
       date: '2019-03-08'
-      regions: ["de_be"]
+      regions: ["de_be", "de_mv"]
     expect:
       name: "Internationaler Frauentag"
   - given:
