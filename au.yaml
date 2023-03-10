@@ -34,7 +34,7 @@ months:
     regions: [au_nt]
     function: easter(year)
     year_ranges:
-      - after: 2021
+      - after: 2022
   - name: Easter Sunday
     regions: [au_nt]
     function: easter(year)
