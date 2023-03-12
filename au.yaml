@@ -34,6 +34,11 @@ months:
     regions: [au_nt]
     function: easter(year)
     year_ranges:
+      - after: 2022
+  - name: Easter Sunday
+    regions: [au_nt]
+    function: easter(year)
+    year_ranges:
       - limited: 2022
   - name: Easter Monday
     regions: [au]
@@ -964,3 +969,13 @@ tests:
       regions: ["au-nt"]
     expect:
       name: "Picnic Day"
+  - given:
+      date: '2022-04-17'
+      regions: ["au-nt"]
+    expect:
+      holiday: false
+  - given:
+      date: '2023-04-09'
+      regions: ["au_nt"]
+    expect:
+      name: "Easter Sunday"
