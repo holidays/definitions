@@ -65,6 +65,11 @@ months:
     wday: 1
     year_ranges:
       from: 2021
+  - name: Coronation of King Charles III and Queen Camilla
+    regions: [je, gb_jsy, gg, gb_gsy]
+    mday: 8
+    year_ranges:
+      limited: [2023]
   - name: Liberation Day
     regions: [je, gb_jsy, gg, gb_gsy]
     mday: 9
