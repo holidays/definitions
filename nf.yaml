@@ -35,7 +35,7 @@ months:
   - name: Foundation Day
     regions: [nf]
     mday: 6
-  - name: (Additional day Foundation Day)
+  - name: (additional day Foundation Day)
     regions: [nf]
     mday: 6
     observed: to_monday_if_weekend(date)
