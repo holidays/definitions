@@ -38,7 +38,7 @@ months:
     function: easter(year)
     function_modifier: 26
     year_ranges:
-      until: 2024
+      until: 2023
   - name: Kristi Himmelfartsdag
     regions: [dk]
     function: easter(year)
