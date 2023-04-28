@@ -59,6 +59,11 @@ months:
     mday: 8
     year_ranges:
       limited: [2020]
+  - name: Bank holiday for the coronation of King Charles III
+    regions: [gb]
+    mday: 8
+    year_ranges:
+      limited: [2023]      
   - name: May Day
     regions: [gb]
     week: 1
@@ -533,3 +538,8 @@ tests:
       regions: ["gb"]
     expect:
       name: "Bank Holiday"
+  - given:
+      date: '2023-05-08'
+      regions: ["gb"]
+    expect:
+      name: "Bank holiday for the coronation of King Charles III"      
