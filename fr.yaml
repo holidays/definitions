@@ -32,11 +32,11 @@ months:
     regions: [fr]
     function: easter(year)
     function_modifier: 49
-    type: informal
   - name: Lundi de Pentecôte
     regions: [fr]
     function: easter(year)
     function_modifier: 50
+    type: informal
   1:
   - name: Jour de l'an
     regions: [fr]
