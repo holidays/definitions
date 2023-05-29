@@ -1,6 +1,6 @@
 # Latvian holiday definitions for the Ruby Holiday gem.
 #
-# Updated: 2022-02-19
+# Updated: 2023-05-29
 # Sources:
 # - https://likumi.lv/ta/id/72608 (Likums "Par svētku, atceres un atzīmējamām dienām")
 ---
@@ -43,6 +43,11 @@ months:
     regions: [lv]
     week: 2
     wday: 0
+  - name: "Diena, kad Latvijas hokeja komanda ieguva bronzas medaļu 2023. gada Pasaules hokeja čempionātā" # Latvia team 2023 IIHF World Championship bronze medal win
+    regions: [lv]
+    mday: 29
+    year_ranges:
+      limited: [2023]
   6:
   - name: Līgo diena # Midsummer
     regions: [lv]
@@ -139,6 +144,11 @@ tests:
       regions: ["lv"]
     expect:
       name: "Mātes diena"
+  - given:
+      date: '2023-05-29'
+      regions: ["lv"]
+    expect:
+      name: "Diena, kad Latvijas hokeja komanda ieguva bronzas medaļu 2023. gada Pasaules hokeja čempionātā"
   - given:
       date: ['2019-06-09', '2020-05-31', '2029-05-20']
       regions: ["lv"]
