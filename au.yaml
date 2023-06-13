@@ -129,6 +129,14 @@ months:
     regions: [au_act, au_nsw, au_sa, au_tas, au_nt, au_vic]
     week: 2
     wday: 1
+    year_ranges:
+      - before: 2022
+  - name: King's Birthday
+    regions: [au_act, au_nsw, au_sa, au_tas, au_nt, au_vic]
+    week: 2
+    wday: 1
+    year_ranges:
+      - after: 2023
   - name: Queen's Birthday
     regions: [au_qld]
     function: qld_queens_birthday_june(year)
@@ -155,6 +163,15 @@ months:
     regions: [au_wa]
     week: -1
     wday: 1
+    year_ranges:
+      - before: 2022
+  - name: King's Birthday
+    regions: [au_wa]
+    week: -1
+    wday: 1
+    year_ranges:
+      - before: 2023
+  
   - name: "Family & Community Day"
     regions: [au_act]
     week: -1
@@ -178,6 +195,10 @@ months:
   - name: Queen's Birthday
     regions: [au_qld]
     function: qld_queens_bday_october(year)
+    observed: to_monday_if_weekend(date)
+  - name: King's Birthday
+    regions: [au_qld]
+    function: qld_kings_bday_october(year)
     observed: to_monday_if_weekend(date)
   - name: Royal Hobart Show
     regions: [au_tas_south]
@@ -255,13 +276,24 @@ methods:
       when 2022
         Date.civil(2022, 9, 23)
       end
+  qld_kings_bday_october:
+    # http://www.justice.qld.gov.au/fair-and-safe-work/industrial-relations/public-holidays/dates
+    # celebrated twice in 2012
+    # in october again from 2016
+    arguments: year
+    source: |
+      if year >= 2023
+        Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 10, 1, 1)
+      else
+        nil
+      end
   qld_queens_bday_october:
     # http://www.justice.qld.gov.au/fair-and-safe-work/industrial-relations/public-holidays/dates
     # celebrated twice in 2012
     # in october again from 2016
     arguments: year
     source: |
-      if year >= 2016
+      if year <= 2022 && year >= 2016
         Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 10, 1, 1)
       elsif year == 2012
         1
@@ -465,10 +497,20 @@ tests:
     expect:
       name: "Queen's Birthday"
   - given:
+      date: ['2023-10-02',"2024-10-07"]
+      regions: ["au_qld"]
+    expect:
+      name: "King's Birthday"
+  - given:
       date: ['2014-09-29', '2015-09-28', '2016-09-26']
       regions: ["au_wa"]
     expect:
       name: "Queen's Birthday"
+  - given:
+      date: ['2023-09-25']
+      regions: ["au_wa"]
+    expect:
+      name: "King's Birthday"
   - given:
       date: '2014-09-29'
       regions: ["au_act"]
