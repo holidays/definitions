@@ -275,6 +275,12 @@ methods:
         Date.civil(2021, 9, 24)
       when 2022
         Date.civil(2022, 9, 23)
+      when 2023
+        Date.civil(2023, 9, 29)
+      when 2024
+        Date.civil(2024, 9, 27)
+      when 2025
+        Date.civil(2025, 9, 26)
       end
   qld_kings_bday_october:
     # http://www.justice.qld.gov.au/fair-and-safe-work/industrial-relations/public-holidays/dates
@@ -711,6 +717,21 @@ tests:
       name: 'Friday before the AFL Grand Final'
   - given:
       date: '2022-09-23'
+      regions: ["au_vic"]
+    expect:
+      name: 'Friday before the AFL Grand Final'
+  - given:
+      date: '2023-09-29'
+      regions: ["au_vic"]
+    expect:
+      name: 'Friday before the AFL Grand Final'
+  - given: 
+      date: '2024-09-27'
+      regions: ["au_vic"]
+    expect:
+      name: 'Friday before the AFL Grand Final'
+  - given: 
+      date: '2025-09-26'
       regions: ["au_vic"]
     expect:
       name: 'Friday before the AFL Grand Final'
