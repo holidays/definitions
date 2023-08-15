@@ -3,5 +3,3 @@
 coverage/
 Gemfile.lock
 tmp/
-.bundle/
-vendor/
