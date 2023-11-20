@@ -92,6 +92,11 @@ months:
   - name: May Public Holiday
     regions: [au_sa]
     function: may_pub_hol_sa(year)
+  - name: Reconciliation Day
+    regions: [au_act]
+    function: to_nearest_monday_after(date)
+    year_ranges:
+      from: 2018
   6:
   - name: Western Australia Day
     regions: [au_wa]
@@ -131,6 +136,8 @@ months:
     regions: [au_act]
     week: -1
     wday: 1
+    year_ranges:
+      until: 2017
   10:
   - name: Friday before the AFL Grand Final
     regions: [au_vic]
@@ -283,6 +290,25 @@ methods:
       else
         Date.civil(year, 8, first_friday) + 5
       end
+  to_nearest_monday_after:
+    arguments: date
+    ruby: |
+        case date.wday
+        when 6
+          date += 2
+        when 5
+          date += 3
+        when 4
+          date += 4
+        when 3
+          date += 5
+        when 2
+          date += 6
+        when 0
+          date += 1
+        end
+
+        date
 
 tests:
   - given:
@@ -814,3 +840,13 @@ tests:
       regions: ['au']
     expect:
       holiday: false
+  - given:
+      date: '2024-05-27'
+      regions: ['au_act']
+    expect:
+      name: "Reconciliation Day"
+  - given:
+      date: '2025-06-02'
+      regions: ['au_act']
+    expect:
+      name: "Reconciliation Day"
