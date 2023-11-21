@@ -187,6 +187,7 @@ months:
     regions: [ca_ab, ca_mb, ca_nu]
     mday: 30
     observed: to_monday_if_weekend(date)
+    type: informal
     year_ranges:
       from: 2021
   10:
