@@ -177,9 +177,16 @@ months:
     week: 1
     regions: [ca]
     wday: 1
-  - name: National Day for Truth and Reconciliation
-    regions: [ca]
+  - name: National Day for Truth and Reconciliation (statutory)
+    regions: [ca_bc, ca_nt, ca_pe, ca_yt]
     mday: 30
+    observed: to_monday_if_weekend(date)
+    year_ranges:
+      from: 2021
+  - name: National Day for Truth and Reconciliation (informal)
+    regions: [ca_ab, ca_mb, ca_nu]
+    mday: 30
+    observed: to_monday_if_weekend(date)
     year_ranges:
       from: 2021
   10:
@@ -772,12 +779,24 @@ tests:
   # National Day for Truth and Reconciliation
   - given:
       date: '2021-09-30'
-      regions: ["ca"]
+      regions: ["ca_bc", "ca_nt", "ca_pe", "ca_yt"]
+      options: ["observed"]
+    expect:
+      name: "National Day for Truth and Reconciliation"
+  - given:
+      date: '2021-09-30'
+      regions: ["ca_ab", "ca_mb", "ca_nu"]
+      options: ["informal"]
+    expect:
+      name: "National Day for Truth and Reconciliation"
+  - given:
+      date: '2023-10-02'
+      regions: ["ca_bc", "ca_nt", "ca_pe", "ca_yt", "ca_ab", "ca_mb", "ca_nu"]
     expect:
       name: "National Day for Truth and Reconciliation"
   - given:
       date: '2026-09-30'
-      regions: ["ca"]
+      regions: ["ca_bc", "ca_nt", "ca_pe", "ca_yt", "ca_ab", "ca_mb", "ca_nu"]
     expect:
       name: "National Day for Truth and Reconciliation"
 
