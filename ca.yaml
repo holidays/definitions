@@ -791,12 +791,26 @@ tests:
       name: "National Day for Truth and Reconciliation"
   - given:
       date: '2023-10-02'
-      regions: ["ca_bc", "ca_nt", "ca_pe", "ca_yt", "ca_ab", "ca_mb", "ca_nu"]
+      regions: ["ca_bc", "ca_nt", "ca_pe", "ca_yt"]
+      options: ["observed"]
+    expect:
+      name: "National Day for Truth and Reconciliation"
+  - given:
+      date: '2023-10-02'
+      regions: ["ca_ab", "ca_mb", "ca_nu"]
+      options: ["informal"]
     expect:
       name: "National Day for Truth and Reconciliation"
   - given:
       date: '2026-09-30'
-      regions: ["ca_bc", "ca_nt", "ca_pe", "ca_yt", "ca_ab", "ca_mb", "ca_nu"]
+      regions: ["ca_bc", "ca_nt", "ca_pe", "ca_yt"]
+      options: ["observed"]
+    expect:
+      name: "National Day for Truth and Reconciliation"
+  - given:
+      date: '2026-09-30'
+      regions: ["ca_ab", "ca_mb", "ca_nu"]
+      options: ["informal"]
     expect:
       name: "National Day for Truth and Reconciliation"
 
