@@ -92,6 +92,11 @@ months:
     mday: 8
     year_ranges:
       from: 2019
+  - name: Internationaler Frauentag
+    regions: [de_mv]
+    mday: 8
+    year_ranges:
+      from: 2023
   5:
   - name: Tag der Arbeit
     regions: [de]
@@ -370,6 +375,11 @@ tests:
   - given:
       date: '2019-03-08'
       regions: ["de_be"]
+    expect:
+      name: "Internationaler Frauentag"
+  - given:
+      date: '2023-03-08'
+      regions: ["de_mv"]
     expect:
       name: "Internationaler Frauentag"
   - given:
