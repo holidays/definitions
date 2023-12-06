@@ -23,6 +23,9 @@
 # Change 2019-02-10:
 #  - Changing usage of 'year_ranges.after' to 'year_ranges.from', see https://github.com/holidays/definitions/issues/117
 #
+# Change 2023-04-17:
+#  - Historical data for Tag der Deutschen Einheit
+#
 # Sources:
 # - http://en.wikipedia.org/wiki/Holidays_in_Germany
 # - http://www.timeanddate.com/calendar/index.html?country=8
@@ -98,6 +101,13 @@ months:
     mday: 8
     year_ranges:
       limited: [2020]
+  6:
+  - name: Tag der Deutschen Einheit
+    regions: [de]
+    mday: 17
+    year_ranges:
+      from: 1954
+      until: 1990
   8:
   - name: Mariä Himmelfahrt
     regions: [de_by_cath, de_by_augsburg, de_sl]
@@ -109,6 +119,8 @@ months:
   - name: Tag der Deutschen Einheit
     regions: [de]
     mday: 3
+    year_ranges:
+      from: 1990
   - name: Reformationstag
     regions: [de_bb, de_mv, de_sn, de_st, de_th]
     mday: 31
