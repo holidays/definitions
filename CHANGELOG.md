@@ -1,5 +1,17 @@
 # Holiday definitions
 
+## 5.6.0
+
+* Update `ca`, `ca_bc, `ca_nt, `ca_pe`, ca_yt` for national truth and reconciliation day (thanks to https://github.com/danger-ranger)
+* Update `au_act` with reconcilation day (thanks to https://github.com/mylestan)
+* Update `lv` with ice hockey team bronze medal holiday (thanks to https://github.com/aleksandrs-ledovskis)
+* Update `fr` region for Pentecote (thanks to https://github.com/skalimer0)
+* Update for `gb` region for bank holidays (thanks to https://github.com/i2chris)
+* Update for `de` region for tag der deutcshen (thanks to https://github.com/HanSolo72)
+* Update for `dk` for store bededag (thanks to https://github.com/LarsDK)
+* Update for `de_mv` for Internationaler Frauentag (thanks to https://github.com/jiveeee)
+* Update for `gb` for King Charles bank holiday (thanks to https://github.com/ryanharkins)
+
 ## 5.5.0
 
 * Update `si` region to add `novo leto` (thanks to https://github.com/vlakre)
