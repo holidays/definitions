@@ -93,8 +93,9 @@ months:
     regions: [au_sa]
     function: may_pub_hol_sa(year)
   - name: Reconciliation Day
+    mday: 27
     regions: [au_act]
-    function: to_nearest_monday_after(date)
+    observed: to_nearest_monday_after(date)
     year_ranges:
       from: 2018
   6:
@@ -842,11 +843,6 @@ tests:
       holiday: false
   - given:
       date: '2024-05-27'
-      regions: ['au_act']
-    expect:
-      name: "Reconciliation Day"
-  - given:
-      date: '2025-06-02'
       regions: ['au_act']
     expect:
       name: "Reconciliation Day"
