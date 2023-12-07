@@ -117,9 +117,6 @@ months:
   - name: Lee-Jackson Day
     regions: [us_va]
     function: lee_jackson_day(year, month)
-  - name: Confederate Heroes Day # fixed
-    regions: [us_tx]
-    mday: 19
   2:
   - name: Presidents' Day # Note: Several states are using another name for this holiday, there are 12 notations for it
     week: 3
@@ -481,12 +478,6 @@ tests:
       regions: ["us_va"]
     expect:
       name: "Lee-Jackson Day"
-
-  - given:
-      date: ['2017-1-19']
-      regions: ["us_tx"]
-    expect:
-      name: "Confederate Heroes Day"
 
   - given:
       date: ['2008-2-18', '2017-2-20', '2018-2-19']
