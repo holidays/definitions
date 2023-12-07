@@ -69,10 +69,6 @@
 
 months:
   0:
-  - name: Shrove Tuesday
-    regions: [us_fl]
-    function: easter(year)
-    function_modifier: -47
   - name: Mardi Gras Day
     regions: [us_la]
     function: easter(year)
@@ -114,9 +110,6 @@ months:
   - name: Inauguration Day
     function: us_inauguration_day(year)
     regions: [us_tx, us_dc, us_la, us_md, us_va]
-  - name: Lee-Jackson Day
-    regions: [us_va]
-    function: lee_jackson_day(year, month)
   2:
   - name: Presidents' Day # Note: Several states are using another name for this holiday, there are 12 notations for it
     week: 3
@@ -150,17 +143,6 @@ months:
     regions: [us_me, us_ma]
     week: 3
     wday: 1
-  - name: San Jacinto Day # fixed
-    regions: [us_tx]
-    mday: 21
-  - name: Confederate Memorial Day # Last Monday in April
-    regions: [us_al, us_ms]
-    week: -1
-    wday: 1
-  - name: Confederate Memorial Day
-    regions: [us_fl]
-    mday: 26
-    observed: to_monday_if_sunday(date)
   - name: State Holiday # April 20 or April 26
     regions: [us_ga]
     function: georgia_state_holiday(year, month)
@@ -171,21 +153,11 @@ months:
   - name: Truman Day # fixed
     regions: [us_mo]
     mday: 8
-  - name: Confederate Memorial Day # fixed
-    regions: [us_sc]
-    mday: 10
   - name: Memorial Day # Note: full name in Mississippi is National Memorial Day/Jefferson Davis' Birthday
     regions: [us]
     week: -1
     wday: 1
   6:
-  - name: Jefferson Davis' Birthday # First Monday in June
-    regions: [us_al]
-    week: 1
-    wday: 1
-  - name: Birthday of Jefferson Davis # fixed
-    regions: [us_fl]
-    mday: 3
   - name: King Kamehameha I Day
     regions: [us_hi]
     observed: to_weekday_if_weekend(date)
@@ -230,9 +202,6 @@ months:
     regions: [us_hi]
     week: 3
     wday: 5
-  - name: Lyndon Baines Johnson Day # fixed
-    regions: [us_tx]
-    mday: 27
   9:
   - name: Labor Day
     week: 1
@@ -375,11 +344,6 @@ methods:
 tests:
   - given:
       date: ['2017-2-28', '2018-2-13', '2019-3-5']
-      regions: ["us_fl"]
-    expect:
-      name: 'Shrove Tuesday'
-  - given:
-      date: ['2017-2-28', '2018-2-13', '2019-3-5']
       regions: ["us_la"]
     expect:
       name: 'Mardi Gras Day'
@@ -473,11 +437,6 @@ tests:
       regions: ["us"]
     expect:
       holiday: false
-  - given:
-      date: ['2017-1-13', '2018-1-12', '2019-1-18']
-      regions: ["us_va"]
-    expect:
-      name: "Lee-Jackson Day"
 
   - given:
       date: ['2008-2-18', '2017-2-20', '2018-2-19']
@@ -571,45 +530,24 @@ tests:
     expect:
       name: "Patriots' Day"
 
-  - given:
-      date: ['2017-4-21']
-      regions: ["us_tx"]
-    expect:
-      name: "San Jacinto Day"
 
   - given:
       date: ['2017-4-24', '2018-4-30', '2019-4-29']
       regions: ["us"]
     expect:
       holiday: false
-  - given:
-      date: ['2017-4-24', '2018-4-30', '2019-4-29']
-      regions: ["us_al", "us_ms"]
-    expect:
-      name: "Confederate Memorial Day"
 
   - given:
       date: ['2015-4-27', '2020-4-27', '2026-4-27']
       regions: ["us"]
     expect:
       holiday: false
-  - given:
-      date: ['2015-4-27', '2020-4-27', '2026-4-27']
-      regions: ["us_fl"]
-      options: ["observed"]
-    expect:
-      name: "Confederate Memorial Day"
 
   - given:
       date: ['2017-4-26']
       regions: ["us"]
     expect:
       holiday: false
-  - given:
-      date: ['2017-4-26']
-      regions: ["us_fl"]
-    expect:
-      name: "Confederate Memorial Day"
 
   - given:
       date: ['2015-4-20', '2021-4-26']
@@ -632,11 +570,7 @@ tests:
       regions: ["us_mo"]
     expect:
       name: "Truman Day"
-  - given:
-      date: ['2017-5-10']
-      regions: ["us_sc"]
-    expect:
-      name: "Confederate Memorial Day"
+
   - given:
       date: ['2017-5-29', '2018-5-28', '2019-5-27']
       regions: ["us"]
@@ -648,16 +582,6 @@ tests:
       regions: ["us"]
     expect:
       holiday: false
-  - given:
-      date: ['2017-6-5', '2018-6-4', '2019-6-3']
-      regions: ["us_al"]
-    expect:
-      name: "Jefferson Davis' Birthday"
-  - given:
-      date: ['2017-6-3']
-      regions: ["us_fl"]
-    expect:
-      name: "Birthday of Jefferson Davis"
 
   - given:
       date: ['2017-6-12', '2018-6-11', '2022-6-10']
@@ -782,11 +706,6 @@ tests:
       regions: ["us_hi"]
     expect:
       name: "Statehood Day"
-  - given:
-      date: ['2017-8-27']
-      regions: ["us_tx"]
-    expect:
-      name: "Lyndon Baines Johnson Day"
   - given:
       date: ['2017-9-4', '2018-9-3', '2019-9-2']
       regions: ["us"]
