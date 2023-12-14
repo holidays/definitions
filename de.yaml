@@ -111,8 +111,9 @@ months:
     regions: [de]
     mday: 17
     year_ranges:
-      from: 1954
-      until: 1990
+      between:
+        start: 1954
+        end: 1990
   8:
   - name: Mariä Himmelfahrt
     regions: [de_by_cath, de_by_augsburg, de_sl]
