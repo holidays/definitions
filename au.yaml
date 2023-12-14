@@ -93,6 +93,7 @@ months:
     regions: [au_sa]
     function: may_pub_hol_sa(year)
   - name: Reconciliation Day
+    mday: 27
     regions: [au_act]
     function: to_nearest_monday_after(date)
     year_ranges:
@@ -307,7 +308,6 @@ methods:
         when 0
           date += 1
         end
-
         date
 
 tests:

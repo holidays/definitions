@@ -1,12 +1,18 @@
 # Holiday definitions
 
+## 5.6.2
+
+* Fix tests for `gb` coronation of King Charles
+* Fix spacing for `au` defs
+* Fix `au_act` reconciliation day
+
 ## 5.6.1
 
 * Fix `de` holiday for 'Tag der Deutschen Einheit' to correctly use `year_ranges` syntax
 
 ## 5.6.0
 
-* Update `ca`, `ca_bc, `ca_nt, `ca_pe`, ca_yt` for national truth and reconciliation day (thanks to https://github.com/danger-ranger)
+* Update `ca`, `ca_bc, `ca_nt, `ca_pe`, `ca_yt` for national truth and reconciliation day (thanks to https://github.com/danger-ranger)
 * Update `au_act` with reconcilation day (thanks to https://github.com/mylestan)
 * Update `lv` with ice hockey team bronze medal holiday (thanks to https://github.com/aleksandrs-ledovskis)
 * Update `fr` region for Pentecote (thanks to https://github.com/skalimer0)
