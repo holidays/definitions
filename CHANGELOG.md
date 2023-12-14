@@ -1,5 +1,9 @@
 # Holiday definitions
 
+## 5.6.1
+
+* Fix `de` holiday for 'Tag der Deutschen Einheit' to correctly use `year_ranges` syntax
+
 ## 5.6.0
 
 * Update `ca`, `ca_bc, `ca_nt, `ca_pe`, ca_yt` for national truth and reconciliation day (thanks to https://github.com/danger-ranger)
