@@ -1,6 +1,6 @@
 # How to contribute
 
-In this repository we have all of the definitions that are used in holiday calcuations. We rely on users around the world to help keep our definitions accurate and up to date.
+In this repository we have all of the definitions that are used in holiday calculations. We rely on users around the world to help keep our definitions accurate and up to date.
 
 ## Code of Conduct
 
