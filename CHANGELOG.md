@@ -1,5 +1,11 @@
 # Holiday definitions
 
+## 5.7.0
+
+* Add GitHub Actions
+* Black Consciousness holiday [br] (thanks to https://github.com/hbontempo-cw)
+* NZ monarch change (thanks to https://github.com/michael-smith-nz)
+
 ## 5.6.2
 
 * Fix tests for `gb` coronation of King Charles
