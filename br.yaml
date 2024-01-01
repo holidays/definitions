@@ -51,6 +51,11 @@ months:
   - name: Proclamação da República
     regions: [br]
     mday: 15
+  - name: Dia Nacional de Zumbi e da Consciência Negra
+    regions: [br]
+    mday: 20
+    year_ranges:
+      from: 2024
   12:
   - name: Natal
     regions: [br]
@@ -153,6 +158,18 @@ tests:
       options: ["informal"]
     expect:
       name: "Proclamação da República"
+  - given:
+      date: '2023-11-20'
+      regions: ["br"]
+      options: ["informal"]
+    expect:
+      holiday: false
+  - given:
+      date: '2024-11-20'
+      regions: ["br"]
+      options: ["informal"]
+    expect:
+      name: "Dia Nacional de Zumbi e da Consciência Negra"
   - given:
       date: '2008-12-25'
       regions: ["br"]
