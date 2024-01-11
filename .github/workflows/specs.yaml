@@ -1,0 +1,22 @@
+name: Specs
+on: [pull_request]
+jobs:
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    strategy:
+       fail-fast: false
+       matrix:
+         os: [ubuntu]
+         ruby: [2.7, 3.0, 3.1]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+      - name: Run tests
+        run: |
+          bundle install
+          make test
+          make validate
