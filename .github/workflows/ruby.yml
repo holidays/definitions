@@ -1,4 +1,4 @@
-name: definitions
+name: Ruby
 on:
   push:
     branches: [ "master" ]
@@ -8,7 +8,6 @@ permissions:
   contents: read
 jobs:
   test:
-    name: verify
     runs-on: ubuntu-latest
     strategy:
        matrix:
