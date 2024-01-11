@@ -33,6 +33,7 @@ defs:
   IE: ['ie.yaml']
   IS: ['is.yaml']
   IT: ['it.yaml']
+  KE: ['ke.yaml']
   KR: ['kr.yaml']
   KZ: ['kz.yaml']
   LI: ['li.yaml']
