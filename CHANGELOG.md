@@ -1,5 +1,9 @@
 # Holiday definitions
 
+## 5.7.1
+
+- Update with github actions
+
 ## 5.7.0
 
 * Add GitHub Actions
