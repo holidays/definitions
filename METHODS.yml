@@ -24,3 +24,9 @@ methods:
     arguments: date
   lunar_to_solar:
     arguments: year, month, day, region
+  to_the_next_weekday_after:
+    arguments: date
+  to_the_second_weekday_after:
+    arguments: date
+  to_previous_day_if_leap_year:
+    arguments: date
