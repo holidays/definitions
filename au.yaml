@@ -170,7 +170,7 @@ months:
     week: -1
     wday: 1
     year_ranges:
-      - before: 2023
+      - after: 2023
   
   - name: "Family & Community Day"
     regions: [au_act]
