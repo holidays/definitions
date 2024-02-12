@@ -167,10 +167,15 @@ months:
       - before: 2022
   - name: King's Birthday
     regions: [au_wa]
+    mday: 23
+    year_ranges:
+      - limited: [2024]
+  - name: King's Birthday
+    regions: [au_wa]
     week: -1
     wday: 1
     year_ranges:
-      - after: 2023
+      - after: 2025
   
   - name: "Family & Community Day"
     regions: [au_act]
@@ -513,7 +518,7 @@ tests:
     expect:
       name: "Queen's Birthday"
   - given:
-      date: ['2023-09-25']
+      date: ['2024-09-23', '2025-09-30']
       regions: ["au_wa"]
     expect:
       name: "King's Birthday"
