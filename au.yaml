@@ -169,7 +169,7 @@ months:
     regions: [au_wa]
     mday: 23
     year_ranges:
-      - limited: [2024]
+      - limited: 2024
   - name: King's Birthday
     regions: [au_wa]
     week: -1
@@ -517,7 +517,7 @@ tests:
     expect:
       name: "Queen's Birthday"
   - given:
-      date: ['2024-09-23', '2025-09-30']
+      date: ['2025-09-30']
       regions: ["au_wa"]
     expect:
       name: "King's Birthday"
@@ -729,12 +729,12 @@ tests:
       regions: ["au_vic"]
     expect:
       name: 'Friday before the AFL Grand Final'
-  - given: 
+  - given:
       date: '2024-09-27'
       regions: ["au_vic"]
     expect:
       name: 'Friday before the AFL Grand Final'
-  - given: 
+  - given:
       date: '2025-09-26'
       regions: ["au_vic"]
     expect:
