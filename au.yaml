@@ -176,7 +176,6 @@ months:
     wday: 1
     year_ranges:
       - after: 2025
-  
   - name: "Family & Community Day"
     regions: [au_act]
     week: -1
