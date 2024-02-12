@@ -167,10 +167,15 @@ months:
       - before: 2022
   - name: King's Birthday
     regions: [au_wa]
-    week: -1
-    wday: 1
+      week: -1
+      wday: 1
     year_ranges:
       - after: 2025
+  - name: King's Birthday
+    regions: [au_wa]
+    mday: 25
+    year_ranges:
+      - limited: 2023
   - name: King's Birthday
     regions: [au_wa]
     mday: 23
