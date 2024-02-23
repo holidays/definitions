@@ -208,6 +208,8 @@ methods:
     arguments: year
     source: |
       month_day = case year
+        when 2023
+          [06. 29]
         when 2024
           [06, 17]
         when 2025
@@ -220,6 +222,8 @@ methods:
     arguments: year
     source: |
       month_day = case year
+        when 2023
+          [04, 22]
         when 2024
           [04, 10]
         when 2025
@@ -232,8 +236,10 @@ methods:
     arguments: year
     source: |
       month_day = case year
+        when 2023
+          [06, 02]
         when 2024
-          [05, 22]
+          [05, 23]
         when 2025
           [05, 12]
         when 2026
