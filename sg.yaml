@@ -209,7 +209,7 @@ methods:
     source: |
       month_day = case year
         when 2023
-          [06. 29]
+          [06, 29]
         when 2024
           [06, 17]
         when 2025
