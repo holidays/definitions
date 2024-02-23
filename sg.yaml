@@ -138,7 +138,6 @@ methods:
           [2, 21]
         end
       Date.civil(year, month_day[0], month_day[1])
-
   deepavali:
     arguments: year
     source: |
@@ -205,7 +204,6 @@ methods:
           [10, 27]
         end
       Date.civil(year, month_day[0], month_day[1])
-
   hari_raya_haji:
     arguments: year
     source: |
@@ -218,7 +216,6 @@ methods:
           [05, 27]
         end
       Date.civil(year, month_day[0], month_day[1])
-
   hari_raya_puasa:
     arguments: year
     source: |
@@ -231,7 +228,6 @@ methods:
           [03, 20]
         end
       Date.civil(year, month_day[0], month_day[1])
-
   vesak_day:
     arguments: year
     source: |
