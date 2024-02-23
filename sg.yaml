@@ -232,7 +232,7 @@ methods:
         end
       Date.civil(year, month_day[0], month_day[1])
 
-  vasak_day:
+  vesak_day:
     arguments: year
     source: |
       month_day = case year
