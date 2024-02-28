@@ -29,7 +29,7 @@ months:
     regions: [au_sa]
     function: easter(year)
     year_ranges:
-      from: 2024
+      - after: 2024
   - name: Easter Sunday
     regions: [au_wa]
     function: easter(year)
