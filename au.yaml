@@ -26,6 +26,11 @@ months:
     year_ranges:
       - after: 2017
   - name: Easter Sunday
+    regions: [au_sa]
+    function: easter(year)
+    year_ranges:
+      from: 2024
+  - name: Easter Sunday
     regions: [au_wa]
     function: easter(year)
     year_ranges:
@@ -1029,6 +1034,11 @@ tests:
   - given:
       date: '2017-04-16'
       regions: ["au_qld"]
+    expect:
+      name: "Easter Sunday"
+  - given:
+      date: ['2024-03-31']
+      regions: ["au_sa"]
     expect:
       name: "Easter Sunday"
   - given:
