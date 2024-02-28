@@ -1,10 +1,11 @@
 # Australian holiday definitions for the Ruby Holiday gem.
-# Updated: 2020-07-15
+# Updated: 2008-11-29.
 # Sources:
 # - http://en.wikipedia.org/wiki/Australian_public_holidays
 # - http://www.docep.wa.gov.au/lr/LabourRelations/Content/Wages%20and%20Conditions/Public%20Holidays/Public_Holidays.html
 # - http://www.wst.tas.gov.au/employment_info/public_holidays
 # - https://www.fairwork.gov.au/leave/public-holidays/list-of-public-holidays
+# - http://www.business.vic.gov.au/victorian-public-holidays-and-daylight-saving/victorian-public-holidays
 ---
 months:
   0:
@@ -23,25 +24,46 @@ months:
     regions: [au_qld, au_act]
     function: easter(year)
     year_ranges:
-      from: 2017
+      - after: 2017
   - name: Easter Sunday
-    regions: [au_sa]
+    regions: [au_wa]
     function: easter(year)
     year_ranges:
-      from: 2024
+      - after: 2021
+  - name: Easter Sunday
+    regions: [au_nt]
+    function: easter(year)
+    year_ranges:
+      - after: 2022
+  - name: Easter Sunday
+    regions: [au_nt]
+    function: easter(year)
+    year_ranges:
+      - limited: 2022
   - name: Easter Monday
     regions: [au]
     function: easter(year)
     function_modifier: 1
+  - name: Friday before the AFL Grand Final
+    regions: [au_vic]
+    function: afl_grand_final(year)
   1:
-  - name: New Year's Day
-    regions: [au, au_nsw, au_vic, au_act, au_sa, au_wa, au_nt, au_qld]
+  - name: New Year's Day # All states except TAS have an additional public holiday for New Year's Day
+    regions: [au_nsw, au_vic, au_act, au_wa, au_nt, au_qld]
     mday: 1
-    observed: to_monday_if_weekend(date)
-  - name: New Year's Day
+  - name: New Year's Day # SA only just get this now. Can delete after this year.
+    regions: [au_sa]
+    mday: 1
+    year_ranges:
+      - after: 2023
+  - name: New Year's Day # TAS move New Year's Day to monday on the weekend
     regions: [au_tas]
     mday: 1
     function: to_monday_if_weekend(date)
+  - name: Additional public holiday for New Year's Day # All states except TAS have additional PH for New Year's Day
+    regions: [au_nsw, au_vic, au_act, au_wa, au_nt, au_qld, au_sa]
+    mday: 1
+    function: additional_holiday_on_monday_if_on_weekend(date)
   - name: Australia Day
     regions: [au]
     mday: 26
@@ -72,20 +94,17 @@ months:
     week: 2
     wday: 1
   4:
-  - name: ANZAC Day
-    regions: [au]
+  - name: ANZAC Day # ANZAC DAY ACTUAL
+    regions: [au_nsw, au_sa, au_tas, au_vic, au_act, au_wa]
     mday: 25
-  - name: ANZAC Day
-    regions: [au_nsw, au_qld, au_nt, au_act, au_sa, au_tas]
-    mday: 25
-    observed: to_monday_if_sunday(date)
-  - name: ANZAC Day
-    regions: [au_vic]
-    mday: 25
-  - name: ANZAC Day
-    regions: [au_wa]
+  - name: ANZAC Day # ANZAC DAY OBSERVED - no additional recognised
+    regions: [au_nt, au_qld]
     mday: 25
     observed: to_monday_if_weekend(date)
+  - name: Additional public holiday for ANZAC Day # ADDITIONAL ANZAC DAY
+    regions: [au_sa, au_act, au_wa]
+    mday: 25
+    function: additional_anzac_on_monday_if_on_weekend(date)
   5:
   - name: Labour Day
     regions: [au_qld]
@@ -97,14 +116,12 @@ months:
   - name: May Public Holiday
     regions: [au_sa]
     function: may_pub_hol_sa(year)
-  - name: Reconciliation Day
-    mday: 27
+  - name: ACT Reconciliation Day
     regions: [au_act]
-    function: to_nearest_monday_after(date)
-    year_ranges:
-      from: 2018
+    mday: 27
+    observed: to_next_monday(date)
   6:
-  - name: Western Australia Day
+  - name: Foundation Day
     regions: [au_wa]
     week: 1
     wday: 1
@@ -112,6 +129,14 @@ months:
     regions: [au_act, au_nsw, au_sa, au_tas, au_nt, au_vic]
     week: 2
     wday: 1
+    year_ranges:
+      - before: 2022
+  - name: King's Birthday
+    regions: [au_act, au_nsw, au_sa, au_tas, au_nt, au_vic]
+    week: 2
+    wday: 1
+    year_ranges:
+      - after: 2023
   - name: Queen's Birthday
     regions: [au_qld]
     function: qld_queens_birthday_june(year)
@@ -127,27 +152,47 @@ months:
   8:
   - name: Ekka
     regions: [au_qld_brisbane]
-    function: qld_brisbane_ekka_holiday(year)
+    week: -3
+    wday: 3
+  - name: Picnic Day
+    regions: [au_nt]
+    wday: 1
+    week: 1
   9:
-  - name: National Day of Mourning for Her Majesty Queen Elizabeth II
-    regions: [au]
-    mday: 22
-    year_ranges:
-      limited: [2022]
   - name: Queen's Birthday
     regions: [au_wa]
     week: -1
     wday: 1
+    year_ranges:
+      - before: 2022
+  - name: King's Birthday
+    regions: [au_wa]
+    week: -1
+    wday: 1
+    year_ranges:
+      - after: 2025
+  - name: King's Birthday
+    regions: [au_wa]
+    mday: 25
+    year_ranges:
+      - limited: 2023
+  - name: King's Birthday
+    regions: [au_wa]
+    mday: 23
+    year_ranges:
+      - limited: 2024
   - name: "Family & Community Day"
     regions: [au_act]
     week: -1
     wday: 1
     year_ranges:
-      until: 2017
+      - before: 2017
+  - name: Day of mourning for Queen Elizabeth II
+    regions: [au, au_nsw, au_act, au_sa, au_tas, au_vic, au_wa, au_nt, au_qld]
+    mday: 22
+    year_ranges:
+      - limited: 2022
   10:
-  - name: Friday before the AFL Grand Final
-    regions: [au_vic]
-    function: afl_grand_final(year)
   - name: Labour Day
     regions: [au_act, au_nsw, au_sa]
     week: 1
@@ -159,6 +204,10 @@ months:
   - name: Queen's Birthday
     regions: [au_qld]
     function: qld_queens_bday_october(year)
+    observed: to_monday_if_weekend(date)
+  - name: King's Birthday
+    regions: [au_qld]
+    function: qld_kings_bday_october(year)
     observed: to_monday_if_weekend(date)
   - name: Royal Hobart Show
     regions: [au_tas_south]
@@ -172,33 +221,52 @@ months:
     wday: 1
     week: 1
   - name: Melbourne Cup Day
-    regions: [au_vic_melbourne]
+    regions: [au_vic_melbourne, au_vic]
     week: 1
     wday: 2
   12:
-  - name: Christmas Day # CHRISTMAS DAY - All states except SA observe on 27th (and 25th) if 25th is a Sunday
-    regions: [au_qld, au_nsw, au_act, au_tas, au_wa, au_vic, au_nt]
+  - name: Christmas Day # SA CHRISTMAS DAY STATIC EXCEPT SATURDAY - Excluding Saturday for SA, is moved to monday
+    regions: [au_sa]
     mday: 25
-    observed: to_tuesday_if_sunday_or_monday_if_saturday(date)
-  - name: Boxing Day
-    regions: [au_nsw, au_vic, au_qld, au_act, au_wa]
+    function: sa_christmas_exclude_saturday(date)
+  - name: Christmas Day # CHRISTMAS DAY STATIC ACTUAL - Recognised by ALL states expect for SA
+    regions: [au_act, au_nsw, au_qld, au_tas, au_vic, au_wa, au_nt]
+    mday: 25
+  - name: Additional public holiday for Christmas Day # ADDITIONAL CHRISTMAS DAY - additional christmas day moves two days forward on the weekend, Recognised by ALL states expect for NT and SA
+    regions: [au_act, au_nsw, au_qld, au_tas, au_vic, au_wa]
+    mday: 25
+    function: additional_holiday_if_on_weekend(date)
+  - name: Additional public holiday for Christmas Day # ADDITIONAL CHRISTMAS DAY TO MONDAY FOR NT - additional christmas day on the weekend is always on monday before boxing day in NT
+    regions: [au_nt]
+    mday: 25
+    function: additional_holiday_on_monday_if_on_weekend(date)
+  - name: Additional public holiday for Christmas Day # ADDITIONAL CHRISTMAS DAY TO MONDAY FOR SA EXCEPT ON SATURDAY - additional christmas day for SA excludes saturday
+    regions: [au_sa]
+    mday: 25
+    function: additional_holiday_on_monday_if_on_sunday(date)
+  - name: Boxing Day # BOXING DAY STATIC ACTUAL - Recognised by ALL states expect for NT/SA
+    regions: [au_act, au_nsw, au_qld, au_vic, au_wa]
+    mday: 26
+  - name: Boxing Day # BOXING DAY SA SUBSTITUTE - SA only substitutes Boxing Day if it falls on a Monday
+    regions: [au_sa, au_nt]
+    mday: 26
+    function: to_tuesday_if_monday(date)
+  - name: Additional public holiday Boxing Day # ADDITIONAL BOXING DAY - Recognised by ALL states expect for NT / TAS
+    regions: [au_act, au_nsw, au_qld, au_vic, au_wa, au_sa, au_nt]
+    mday: 26
+    function: additional_holiday_if_on_weekend(date)
+  - name: Boxing Day # BOXING DAY OBSERVED - Only NT & TAS as they dont have an additional observed if on weekend
+    regions: [au_tas] # SA to be moved to additional setup in 2021 (2020 has no additionals)
     mday: 26
     observed: to_tuesday_if_sunday_or_monday_if_saturday(date)
-  - name: Boxing Day
-    regions: [au_tas, au_nt]
-    function: to_weekday_if_boxing_weekend_from_year(year)
   - name: Proclamation Day
     regions: [au_sa]
     function: to_weekday_if_boxing_weekend_from_year_or_to_tuesday_if_monday(year)
-  - name: Christmas Day # CHRISTMAS DAY - SA observes on 26th if 25th is a Sunday (Boxing Day goes to 27th)
-    regions: [au_sa]
-    mday: 25
-    observed: to_monday_if_weekend(date)
 
 methods:
   afl_grand_final:
     arguments: year
-    ruby: |
+    source: |
       case year
       when 2015
         Date.civil(2015, 10, 2)
@@ -209,17 +277,38 @@ methods:
       when 2018
         Date.civil(2018, 9, 28)
       when 2019
-        Date.civil(2019,9, 27)
+        Date.civil(2019, 9, 27)
       when 2020
         Date.civil(2020, 10, 23)
+      when 2021
+        Date.civil(2021, 9, 24)
+      when 2022
+        Date.civil(2022, 9, 23)
+      when 2023
+        Date.civil(2023, 9, 29)
+      when 2024
+        Date.civil(2024, 9, 27)
+      when 2025
+        Date.civil(2025, 9, 26)
+      end
+  qld_kings_bday_october:
+    # http://www.justice.qld.gov.au/fair-and-safe-work/industrial-relations/public-holidays/dates
+    # celebrated twice in 2012
+    # in october again from 2016
+    arguments: year
+    source: |
+      if year >= 2023
+        Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 10, 1, 1)
+      else
+        nil
       end
   qld_queens_bday_october:
     # http://www.justice.qld.gov.au/fair-and-safe-work/industrial-relations/public-holidays/dates
     # celebrated twice in 2012
     # in october again from 2016
     arguments: year
-    ruby: |
-      if year >= 2016
+    source: |
+      if year <= 2022 && year >= 2016
         Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 10, 1, 1)
       elsif year == 2012
         1
@@ -230,7 +319,7 @@ methods:
     # http://www.justice.qld.gov.au/fair-and-safe-work/industrial-relations/public-holidays/dates
     # in june until 2015
     arguments: year
-    ruby: |
+    source: |
       if year <= 2015
         Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 6, 2, 1)
       end
@@ -238,7 +327,7 @@ methods:
     # http://www.justice.qld.gov.au/fair-and-safe-work/industrial-relations/public-holidays/dates
     # for 2013 to 2016 it was in October, otherwise it's in May
     arguments: year
-    ruby: |
+    source: |
       if year < 2013 || year >= 2016
         Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 5, 1, 1)
       end
@@ -246,7 +335,7 @@ methods:
     # http://www.justice.qld.gov.au/fair-and-safe-work/industrial-relations/public-holidays/dates
     # for 2013 to 2016 it was in October, otherwise it's in May
     arguments: year
-    ruby: |
+    source: |
       if year >= 2013 && year < 2016
         Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 10, 1, 1)
       end
@@ -254,20 +343,20 @@ methods:
     # http://www.justice.qld.gov.au/fair-and-safe-work/industrial-relations/public-holidays/dates
     # G20 day in brisbane, in 2014, on november 14
     arguments: year
-    ruby: |
+    source: |
       year == 2014 ? 14 : nil
   hobart_show_day:
     # http://worksafe.tas.gov.au/__data/assets/pdf_file/0008/287036/Public_Holidays_2014.pdf
     # The Thursday before the fourth Saturday in October.
     arguments: year
-    ruby: |
+    source: |
       fourth_sat_in_oct = Date.civil(year, 10, Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 10, 4, :saturday))
       fourth_sat_in_oct - 2 # the thursday before
   march_pub_hol_sa:
     # http://www.safework.sa.gov.au/show_page.jsp?id=2483#.VQ9Mfmb8-8E
     # The Holidays Act 1910 provides for the third Monday in May to be a public holiday. Since 2006 this public holiday has been observed on the second Monday in March through the issuing of a special Proclamation by the Governor.
     arguments: year
-    ruby: |
+    source: |
       if year < 2006
         nil
       else
@@ -277,65 +366,126 @@ methods:
     # http://www.safework.sa.gov.au/show_page.jsp?id=2483#.VQ9Mfmb8-8E
     # The Holidays Act 1910 provides for the third Monday in May to be a public holiday. Since 2006 this public holiday has been observed on the second Monday in March through the issuing of a special Proclamation by the Governor.
     arguments: year
-    ruby: |
+    source: |
       if year >= 2006
         nil
       else
         Date.civil(year, 5, Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 5, :third, :monday))
       end
-  qld_brisbane_ekka_holiday:
-    # https://www.qld.gov.au/recreation/travel/holidays/public
-    # The Ekka holiday occurs on the Wednesday during the RNA Show perido, the RNA show occurs on the first Friday of August, unless that's prior to August 5, then it occurs on the second.
-    arguments: year
-    ruby: |
-      first_friday = Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 8, :first, :friday)
-
-      if first_friday < 5
-        second_friday = Date.civil(year, 8, Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 8, :second, :friday))
-        second_friday + 5 # The next Wednesday
-      else
-        Date.civil(year, 8, first_friday) + 5
-      end
-  to_nearest_monday_after:
+  additional_holiday_if_on_weekend:
+    # https://www.fairwork.gov.au/leave/public-holidays
+    # https://www.fairwork.gov.au/leave/public-holidays/list-of-public-holidays/list-of-public-holidays-2021
+    # If Boxing Day/Christmas fall on a weekend (Saturday / Sunday), the public holiday rates will be paid on both the weekend date and the observed date (e. Monday / Tuesday) and the additional day will use the term 'Additional public holiday'.
     arguments: date
-    ruby: |
-        case date.wday
-        when 6
-          date += 2
-        when 5
-          date += 3
-        when 4
-          date += 4
-        when 3
-          date += 5
-        when 2
-          date += 6
-        when 0
-          date += 1
-        end
+    source: |
+      if [0,6].include?(date.wday)
+        date += 2
         date
+      else
+        nil
+      end
+  additional_anzac_on_monday_if_on_weekend:
+    # https://www.fairwork.gov.au/leave/public-holidays
+    # https://www.fairwork.gov.au/leave/public-holidays/list-of-public-holidays/list-of-public-holidays-2021
+    # SA and WA recognise additional anzac holidays on monday if on the weekend
+    arguments: date
+    source: |
+      if [0,6].include?(date.wday)
+        date += 2 if date.wday == 6
+        date += 1 if date.wday == 0
+        date
+      else
+        nil
+      end
+  additional_holiday_on_monday_if_on_weekend:
+    # NT has additional christmas day on monday before boxing day if on the weekend instead of tuesday
+    # Also Additional new year's day is observed on monday if on the weekend
+    arguments: date
+    source: |
+      if [0,6].include?(date.wday)
+        date += 2 if date.wday == 6
+        date += 1 if date.wday == 0
+        date
+      else
+        nil
+      end
+  additional_holiday_on_monday_if_on_sunday:
+    # SA doesn't get an additional christmas day if it falls on a saturday
+    arguments: date
+    source: |
+      if date.wday == 0
+        date += 1
+        date
+      else
+        nil
+      end
+  sa_christmas_exclude_saturday:
+    arguments: date
+    source: |
+      if date.wday == 6
+        date += 2
+        date
+      else
+        date
+      end
+  to_monday_if_saturday_or_to_tuesday_if_sunday_or_monday: # NT/SA has boxing day on tuesday if on monday instead
+    arguments: date
+    source: |
+      if [6,0].include?(date.wday)
+        date += 2
+        date
+      elsif date.wday == 1
+        date += 1
+        date
+      else
+        date
+      end
+  to_tuesday_if_monday: # SA moves boxing day to after christmas day instead
+    arguments: date
+    source: |
+      if date.wday == 1
+        date += 1
+        date
+      else
+        date
+      end
 
 tests:
   - given:
-      date: "2017-04-14"
-      regions: ["au"]
+      date: '2020-04-25'
+      regions: ["au_act"]
     expect:
-      name: "Good Friday"
+      name: 'ANZAC Day'
   - given:
-      date: "2017-04-15"
-      regions: ["au_nsw"]
+      date: '2020-04-25'
+      regions: ["au_qld"]
     expect:
-      name: "Easter Saturday"
+      name: 'ANZAC Day'
   - given:
-      date: ['2010-4-4', "2017-04-16"]
-      regions: ["au_nsw"]
+      date: '2021-04-27'
+      regions: ["au_wa"]
     expect:
-      name: "Easter Sunday"
+      name: 'Additional public holiday for ANZAC Day'
   - given:
-      date: ['2024-03-31']
-      regions: ["au_sa"]
+      date: '2021-12-25'
+      regions: ["au_qld"]
     expect:
-      name: "Easter Sunday"
+      name: 'Christmas Day'
+  - given:
+      date: '2021-12-27'
+      regions: ["au_qld"]
+    expect:
+      name: 'Additional public holiday for Christmas Day'
+  - given:
+      date: '2021-12-26'
+      regions: ["au_qld"]
+    expect:
+      name: 'Boxing Day'
+  - given:
+      date: '2021-12-28'
+      regions: ["au_qld"]
+    expect:
+      name: 'Additional public holiday for Boxing Day'
   - given:
       date: '2013-10-07'
       regions: ["au_qld"]
@@ -362,10 +512,20 @@ tests:
     expect:
       name: "Queen's Birthday"
   - given:
+      date: ['2023-10-02',"2024-10-07"]
+      regions: ["au_qld"]
+    expect:
+      name: "King's Birthday"
+  - given:
       date: ['2014-09-29', '2015-09-28', '2016-09-26']
       regions: ["au_wa"]
     expect:
       name: "Queen's Birthday"
+  - given:
+      date: ['2023-09-25','2024-09-23', '2025-09-30']
+      regions: ["au_wa"]
+    expect:
+      name: "King's Birthday"
   - given:
       date: '2014-09-29'
       regions: ["au_act"]
@@ -381,6 +541,12 @@ tests:
       regions: ["au_act"]
     expect:
       name: 'Family & Community Day'
+  - given:
+      date: ['2017-05-29', '2018-05-28', '2019-05-27', '2020-06-01']
+      regions: ["au_act"]
+      options: ["observed"]
+    expect:
+      name: 'ACT Reconciliation Day'
   - given:
       date: '2014-01-26'
       regions: ["au_qld"]
@@ -519,6 +685,11 @@ tests:
     expect:
       name: 'Melbourne Cup Day'
   - given:
+      date: '2019-11-05'
+      regions: ["au_vic"]
+    expect:
+      name: 'Melbourne Cup Day'
+  - given:
       date: '2015-10-02'
       regions: ["au_vic"]
     expect:
@@ -530,6 +701,46 @@ tests:
       name: 'Friday before the AFL Grand Final'
   - given:
       date: '2017-09-29'
+      regions: ["au_vic"]
+    expect:
+      name: 'Friday before the AFL Grand Final'
+  - given:
+      date: '2018-09-28'
+      regions: ["au_vic"]
+    expect:
+      name: 'Friday before the AFL Grand Final'
+  - given:
+      date: '2019-09-27'
+      regions: ["au_vic"]
+    expect:
+      name: 'Friday before the AFL Grand Final'
+  - given:
+      date: '2020-10-23'
+      regions: ["au_vic"]
+    expect:
+      name: 'Friday before the AFL Grand Final'
+  - given:
+      date: '2021-09-24'
+      regions: ["au_vic"]
+    expect:
+      name: 'Friday before the AFL Grand Final'
+  - given:
+      date: '2022-09-23'
+      regions: ["au_vic"]
+    expect:
+      name: 'Friday before the AFL Grand Final'
+  - given:
+      date: '2023-09-29'
+      regions: ["au_vic"]
+    expect:
+      name: 'Friday before the AFL Grand Final'
+  - given:
+      date: '2024-09-27'
+      regions: ["au_vic"]
+    expect:
+      name: 'Friday before the AFL Grand Final'
+  - given:
+      date: '2025-09-26'
       regions: ["au_vic"]
     expect:
       name: 'Friday before the AFL Grand Final'
@@ -580,6 +791,11 @@ tests:
       options: ["observed"]
     expect:
       name: "Boxing Day"
+  - given:
+      date: '2020-12-26'
+      regions: ["au_qld"]
+    expect:
+      name: "Additional public holiday for Boxing Day"
   - given:
       date: '2015-12-26'
       regions: ["au_sa"]
@@ -692,6 +908,16 @@ tests:
     expect:
       name: 'Christmas Day'
   - given:
+      date: '2021-12-25'
+      regions: ["au_sa"]
+    expect:
+      holiday: false
+  - given:
+      date: '2022-12-25'
+      regions: ["au_sa"]
+    expect:
+      name: 'Christmas Day'
+  - given:
       date: '2016-12-26'
       regions: ["au_sa"]
       options: ["observed"]
@@ -791,72 +1017,37 @@ tests:
     expect:
       name: "New Year's Day"
   - given:
-      date: '2016-03-27'
-      regions: ["au_qld"]
+      date: '2022-01-03'
+      regions: ["au_nsw, au_vic, au_act, au_sa, au_wa, au_nt, au_qld"]
     expect:
-      holiday: false
+      name: "Additional public holiday for New Year's Day"
+  - given:
+      date: '2022-01-01'
+      regions: ["au_nsw, au_vic, au_act, au_sa, au_wa, au_nt, au_qld"]
+    expect:
+      name: "New Year's Day"
   - given:
       date: '2017-04-16'
       regions: ["au_qld"]
     expect:
       name: "Easter Sunday"
   - given:
-      date: "2014-11-14"
-      regions: ["au_qld_brisbane"]
+      date: '2022-04-17'
+      regions: ["au_wa"]
     expect:
-      name: "G20 Day"
+      name: "Easter Sunday"
   - given:
-      date: '2021-04-26'
-      regions: ["au_vic"]
+      date: '2021-08-02'
+      regions: ["au-nt"]
+    expect:
+      name: "Picnic Day"
+  - given:
+      date: '2022-04-17'
+      regions: ["au-nt"]
     expect:
       holiday: false
   - given:
-      date: '2019-08-14'
-      regions: ["au_qld_brisbane"]
+      date: '2023-04-09'
+      regions: ["au_nt"]
     expect:
-      name: "Ekka"
-  - given:
-      date: '2022-08-10'
-      regions: ["au_qld_brisbane"]
-    expect:
-      name: "Ekka"
-  - given:
-      date: '2023-08-16'
-      regions: ["au_qld_brisbane"]
-    expect:
-      name: "Ekka"
-  - given:
-      date: '2024-08-14'
-      regions: ["au_qld_brisbane"]
-    expect:
-      name: "Ekka"
-  - given:
-      date: '2025-08-13'
-      regions: ["au_qld_brisbane"]
-    expect:
-      name: "Ekka"
-  - given:
-      date: '2022-09-22'
-      regions: ['au']
-    expect:
-      name: "National Day of Mourning for Her Majesty Queen Elizabeth II"
-  - given:
-      date: '2023-09-22'
-      regions: ['au']
-    expect:
-      holiday: false
-  - given:
-      date: '2021-09-22'
-      regions: ['au']
-    expect:
-      holiday: false
-  - given:
-      date: '2024-05-27'
-      regions: ['au_act']
-    expect:
-      name: "Reconciliation Day"
-  - given:
-      date: '2025-06-02'
-      regions: ['au_act']
-    expect:
-      name: "Reconciliation Day"
+      name: "Easter Sunday"
