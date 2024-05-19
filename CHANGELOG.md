@@ -1,5 +1,9 @@
 # Holiday definitions
 
+## 5.7.2
+
+* Fix `gr` in index
+
 ## 5.7.0
 
 * Add GitHub Actions
