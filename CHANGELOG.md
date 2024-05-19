@@ -1,5 +1,9 @@
 # Holiday definitions
 
+## 5.7.3
+
+* Fix stupid naming problem in Greece yaml file
+
 ## 5.7.2
 
 * Fix `gr` in index countries
