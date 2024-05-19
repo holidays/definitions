@@ -1,5 +1,9 @@
 # Holiday definitions
 
+## 5.7.2
+
+* Fix `gr` in index countries
+
 ## 5.7.1
 
 * Fix GitHub Actions
