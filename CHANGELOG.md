@@ -2,7 +2,12 @@
 
 ## 5.7.1
 
-- Update with github actions
+* Fix GitHub Actions
+* Add Kenya correctly (thanks to https://github.com/bkmgit)
+* Add Weltkindertag (thanks to https://github.com/dennisvandehoef)
+* Add Nov 2 for `lt` (thanks to https://github.com/Brunas)
+* Use correct country code for Greece (thanks to https://github.com/toy)
+* Update Australian Queen/King public holiday (thanks to https://github.com/lairtonmendes)
 
 ## 5.7.0
 
@@ -55,7 +60,7 @@
 * Fix definitions tests.
 
 ## 5.4.0
-
+Brunas
 * Fix boxing day in `za` region
 * Fix ANZAC day in `au_vic` region (thanks to https://github.com/evjan)
 * Update `ar` region holidays for accuracy (thanks to https://github.com/elsupergomez)
