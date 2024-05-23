@@ -46,7 +46,6 @@ months:
   - name: Visų šventųjų diena
     regions: [lt]
     mday: 1
-  11:
   - name: Mirusiųjų atminimo (Vėlinių) diena
     regions: [lt]
     mday: 2
