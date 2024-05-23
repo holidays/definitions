@@ -26,6 +26,7 @@ defs:
   FR: ['fr.yaml']
   GB: ['gb.yaml']
   GE: ['ge.yaml']
+  GR: ['gr.yaml']
   HR: ['hr.yaml']
   HK: ['hk.yaml']
   HU: ['hu.yaml']
