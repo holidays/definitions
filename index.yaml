@@ -60,6 +60,7 @@ defs:
   SE: ['se.yaml']
   TN: ['tn.yaml']
   TR: ['tr.yaml']
+  TSX: ['tsx.yaml']
   UA: ['ua.yaml']
   US: ['us.yaml', 'northamericainformal.yaml']
   UnitedNations: ['unitednations.yaml']
