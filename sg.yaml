@@ -13,11 +13,11 @@ months:
     regions: [sg]
     function: easter(year)
     function_modifier: -2
-  - name: Lunar New Year's Day
+  - name: Chinese New Year
     regions: [sg]
     function: cn_new_lunar_day(year)
     observed: to_monday_if_sunday(date)
-  - name: The second day of Lunar New Year
+  - name: The second day of Chinese New Year
     regions: [sg]
     function: cn_new_lunar_day(year)
     function_modifier: 1
@@ -231,13 +231,13 @@ tests:
       regions: ["sg"]
       options: ["observed"]
     expect:
-      name: "Lunar New Year's Day"
+      name: "Chinese New Year"
   - given:
       date: '2016-02-09'
       regions: ["sg"]
       options: ["observed"]
     expect:
-      name: "The second day of Lunar New Year"
+      name: "The second day of Chinese New Year"
   - given:
       date: '2077-11-15'
       regions: ["sg"]

@@ -20,7 +20,8 @@ months:
   2:
   - name: St Brigid's Day
     regions: [ie]
-    mday: 5
+    mday: 1
+    observed: to_monday_if_not_monday_or_friday(date)
   3:
   - name: St. Patrick's Day
     regions: [ie]
@@ -179,3 +180,10 @@ tests:
       options: ["observed"]
     expect:
       name: "St. Stephen's Day"
+  - given:
+      date: '2025-02-03'
+      regions: ["ie"]
+      options: ["observed"]
+    expect:
+      name: St Brigid's Day
+
