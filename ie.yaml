@@ -20,7 +20,7 @@ months:
   2:
   - name: St Brigid's Day
     regions: [ie]
-    mday: 5
+    mday: 3
   3:
   - name: St. Patrick's Day
     regions: [ie]
