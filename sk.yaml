@@ -1,6 +1,6 @@
 # Slovak holiday definitions for the Ruby Holiday gem.
 #
-# Updated: 2013-12-26.
+# Updated: 2024-09-04.
 # Sources:
 # - http://sk.wikipedia.org/wiki/Slovensk%C3%A9_%C5%A1t%C3%A1tne_sviatky
 ---
@@ -40,6 +40,10 @@ months:
   - name: Deň Ústavy Slovenskej republiky
     regions: [sk]
     mday: 1
+    year_ranges:
+      between:
+        start: 1994
+        end: 2023
   - name: Sedembolestná Panna Mária
     regions: [sk]
     mday: 15
@@ -116,6 +120,12 @@ tests:
       options: ["informal"]
     expect:
       name: "Deň Ústavy Slovenskej republiky"
+  - given:
+      date: ['2024-09-01', '1993-09-01']
+      regions: ["sk"]
+      options: ["informal"]
+    expect:
+      holiday: false
   - given:
       date: '2013-09-15'
       regions: ["sk"]
