@@ -98,11 +98,11 @@ months:
   - name: Tag der Arbeit
     regions: [de]
     mday: 1
-  - name: Tag der Befreiung
+  - name: Jahrestag der Befreiung vom Nationalsozialismus und Ende des Zweiten Weltkriegs
     regions: [de_be]
     mday: 8
     year_ranges:
-      limited: [2020]
+      limited: [2025]
   8:
   - name: Mariä Himmelfahrt
     regions: [de_by_cath, de_by_augsburg, de_sl]
@@ -371,7 +371,7 @@ tests:
     expect:
       name: "Internationaler Frauentag"
   - given:
-      date: '2020-05-08'
+      date: '2025-05-08'
       regions: ["de_be"]
     expect:
-      name: "Tag der Befreiung"
+      name: "Jahrestag der Befreiung vom Nationalsozialismus und Ende des Zweiten Weltkriegs"
