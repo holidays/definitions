@@ -1,0 +1,95 @@
+# Mozambique holiday definitions for the Holidays gem!
+
+# Source:
+# http://www.officeholidays.com/countries/mozambique/2017.php
+
+months:
+  1:
+  - name: New Year's Day
+    regions: [mz]
+    mday: 1
+    observed: to_monday_if_weekend(date)
+  2:
+  - name: Heroes' Day
+    regions: [mz]
+    mday: 3
+  4:
+  - name: Women's Day
+    regions: [mz]
+    mday: 7
+  5:
+  - name: Worker's Day
+    regions: [mz]
+    mday: 1
+  6:
+  - name: Independence Day
+    regions: [mz]
+    mday: 25
+  9:
+  - name: Victory Day
+    regions: [mz]
+    mday: 7
+  - name: Revolution Day
+    regions: [mz]
+    mday: 25
+  10:
+  - name: Day of Peace and Reconciliation
+    regions: [mz]
+    mday: 4
+  12:
+  - name: Family Day
+    regions: [mz]
+    mday: 25
+
+tests:
+  - given:
+      date: '2017-01-01'
+      regions: ["mz"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: '2017-01-02'
+      regions: ["mz"]
+      options: ["observed"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: '2017-02-03'
+      regions: ["mz"]
+    expect:
+      name: "Heroes' Day"
+  - given:
+      date: '2017-04-07'
+      regions: ["mz"]
+    expect:
+      name: "Women's Day"
+  - given:
+      date: '2017-05-01'
+      regions: ["mz"]
+    expect:
+      name: "Worker's Day"
+  - given:
+      date: '2017-06-25'
+      regions: ["mz"]
+    expect:
+      name: "Independence Day"
+  - given:
+      date: '2017-09-07'
+      regions: ["mz"]
+    expect:
+      name: "Victory Day"
+  - given:
+      date: '2017-09-25'
+      regions: ["mz"]
+    expect:
+      name: "Revolution Day"
+  - given:
+      date: '2017-10-04'
+      regions: ["mz"]
+    expect:
+      name: "Day of Peace and Reconciliation"
+  - given:
+      date: '2017-12-25'
+      regions: ["mz"]
+    expect:
+      name: "Family Day"

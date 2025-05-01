@@ -33,6 +33,8 @@ months:
     regions: [es]
     mday: 1
     observed: to_monday_if_sunday(date)
+    year_ranges:
+      - before: 2022
   - name: Día de Reyes
     regions: [es]
     mday: 6

@@ -1,111 +1,144 @@
 # Thai holiday definitions for the Ruby Holiday gem.
 #
-# Updated: 2019-01-14.
+# Updated: 2018-10-17.
 # Sources:
-# - https://en.wikipedia.org/wiki/Public_holidays_in_Thailand
+# - Photo in this trello card https://trello.com/c/zSDdA4Zy/39-add-public-holidays
 ---
 months:
   1:
-  - name: วันขึ้นปีใหม่
+  - name: New Year's Day
+    regions: [th]
+    mday: 1
+    observed: to_monday_if_weekend(date)
+  3:
+  - name: Makha Bucha Day
     regions: [th]
     mday: 1
   4:
-  - name: วันจักรี
+  - name: Chakri Memorial Day
     regions: [th]
     mday: 6
-  - name: วันสงกรานต์
+  - name: Songkran Day
     regions: [th]
     mday: 13
-  - name: วันสงกรานต์
+  - name: Songkran Festival
     regions: [th]
-    mday: 14
-  - name: วันสงกรานต์
+    mday: 16
+  5:
+  - name: National Labour Day
     regions: [th]
-    mday: 15
+    mday: 1
+  - name: Wisakha Bucha Day
+    regions: [th]
+    mday: 29
   7:
-  - name: วันเฉลิมพระชนมพรรษาสมเด็จพระเจ้าอยู่หัวมหาวชิราลงกรณ บดินทรเทพยวรางกูร
+  - name: Asarnha Bucha Day
+    regions: [th]
+    mday: 27
+  - name: H.M. King Maha Vajiralongkorn Bodindradebayavarangkun's Birthday
     regions: [th]
     mday: 28
+    observed: to_monday_if_weekend(date)
   8:
-  - name: วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสิริกิติ์ พระบรมราชินีนาถในรัชกาลที่ ๙
+  - name: H.M. Queen Sirikit's Birthday
     regions: [th]
     mday: 12
+    observed: to_monday_if_weekend(date)
   10:
-  - name: วันคล้ายวันสวรรคตพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร
+  - name: Commemoration of the Passing King Bhumibol
     regions: [th]
     mday: 13
-  - name: วันปิยมหาราช
+    observed: to_monday_if_weekend(date)
+  - name: Chulalongkorn Day
     regions: [th]
     mday: 23
   12:
-  - name: วันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร
+  - name: Late King Bhumibol Adulyadej's Birthday, National Day and National Father's Day
     regions: [th]
     mday: 5
-  - name: วันรัฐธรรมนูญ
+  - name: Constitution Day
     regions: [th]
     mday: 10
-  - name: วันสิ้นปี
+  - name: Year's End Day
     regions: [th]
     mday: 31
 
 tests:
   - given:
-      date: '20019-01-01'
+      date: '2016-01-01'
       regions: ["th"]
-      options: ["informal"]
     expect:
-      name: "วันขึ้นปีใหม่"
+      name: "New Year's Day"
   - given:
-      date: '2019-04-06'
+      date: '2016-03-01'
       regions: ["th"]
-      options: ["informal"]
     expect:
-      name: "วันจักรี"
+      name: "Makha Bucha Day"
   - given:
-      date: ['2019-04-13', '2019-04-14', '2019-04-15']
+      date: '2016-04-06'
       regions: ["th"]
-      options: ["informal"]
     expect:
-      name: "วันสงกรานต์"
+      name: "Chakri Memorial Day"
   - given:
-      date: '2019-07-28'
+      date: '2016-04-13'
       regions: ["th"]
-      options: ["informal"]
     expect:
-      name: "วันเฉลิมพระชนมพรรษาสมเด็จพระเจ้าอยู่หัวมหาวชิราลงกรณ บดินทรเทพยวรางกูร"
+      name: "Songkran Day"
   - given:
-      date: '2007-08-12'
+      date: '2016-04-16'
       regions: ["th"]
-      options: ["informal"]
     expect:
-      name: "วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสิริกิติ์ พระบรมราชินีนาถในรัชกาลที่ ๙"
+      name: "Songkran Festival"
   - given:
-      date: '2019-10-13'
+      date: '2016-05-01'
       regions: ["th"]
-      options: ["informal"]
     expect:
-      name: "วันคล้ายวันสวรรคตพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร"
+      name: "National Labour Day"
   - given:
-      date: '2019-10-23'
+      date: '2016-05-29'
       regions: ["th"]
-      options: ["informal"]
     expect:
-      name: "วันปิยมหาราช"
+      name: "Wisakha Bucha Day"
   - given:
-      date: '2019-12-05'
+      date: '2016-07-27'
       regions: ["th"]
-      options: ["informal"]
     expect:
-      name: "วันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร"
+      name: "Asarnha Bucha Day"
   - given:
-      date: '2019-12-10'
+      date: '2016-07-28'
       regions: ["th"]
-      options: ["informal"]
+      options: ["observed"]
     expect:
-      name: "วันรัฐธรรมนูญ"
+      name: "H.M. King Maha Vajiralongkorn Bodindradebayavarangkun's Birthday"
   - given:
-      date: '2019-12-31'
+      date: '2016-08-12'
       regions: ["th"]
-      options: ["informal"]
+      options: ["observed"]
     expect:
-      name: "วันสิ้นปี"
+      name: "H.M. Queen Sirikit's Birthday"
+  - given:
+      date: '2016-10-13'
+      regions: ["th"]
+      options: ["observed"]
+    expect:
+      name: "Commemoration of the Passing King Bhumibol"
+  - given:
+      date: '2016-10-23'
+      regions: ["th"]
+    expect:
+      name: "Chulalongkorn Day"
+  - given:
+      date: '2016-12-05'
+      regions: ["th"]
+    expect:
+      name: "Late King Bhumibol Adulyadej's Birthday, National Day and National Father's Day"
+  - given:
+      date: '2016-12-10'
+      regions: ["th"]
+    expect:
+      name: "Constitution Day"
+  - given:
+      date: '2016-12-31'
+      regions: ["th"]
+    expect:
+      name: "Year's End Day"

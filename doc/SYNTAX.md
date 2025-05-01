@@ -114,19 +114,16 @@ Then the holiday will be returned. This is especially useful for holidays like "
 
 ### Year ranges
 
-Certain holidays in various countries are only in effect during specific year ranges. A few examples of this are:
+Certain holidays in various countries are only in effect during specific year ranges. For example, a new holiday might come into effect that is only valid after a specific year (say, 2017). After is inclusive, if you put after: 2017 it will apply on 2017 and after.
 
-* A new holiday that starts in 2017 and continues into the future
-* An existing holiday that has been cancelled so that the final year in effect is 2019
-* A historical holiday that was only in effect from 2002 through 2006
+To address this we have the ability to specify these 'year ranges' in the definition. The gem will then only return a match on a date that adheres to these rules.
 
-To address these kinds of scenarios we have the ability to specify 'year ranges' for individual holiday definitions. There are a total of four selectors that can be specified. All must be specified in terms of 'years'. Only one selector can be used at a time.
+There are a total of four selectors that can be specified. All must be specified in terms of 'years'.
 
-#### `until`
+#### `before`
 
-The 'until' selector will only return a match if the supplied date takes place in the same year as the holiday or earlier.
-
-A single integer representing a year *must* be supplied. An array of values will result in an error.
+The 'before' selector will only find a match if the supplied date takes place
+before or equal to the holiday.
 
 Example:
 
