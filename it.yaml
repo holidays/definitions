@@ -55,31 +55,37 @@ months:
   5:
   - name: Festa dei Lavoratori
     regions: [it]
-    mday: 1  
+    mday: 1
   - name: Festa di San Zeno
     regions: [it_vr]
-    mday: 21 
+    mday: 21
   6:
   - name: Festa della Repubblica
     regions: [it]
     mday: 2
   - name: Festa di Sant'Antonio di Padova
     regions: [it_pd]
-    mday: 13    
+    mday: 13
   - name: Festa di San Giovanni Battista
     regions: [it_fi, it_ge, it_to]
     mday: 24
   - name: Festa di San Pietro e Paolo
     regions: [it_rm]
     mday: 29
-  8:  
+  8:
   - name: Assunzione
     regions: [it]
     mday: 15
-  9:  
+  9:
   - name: Festa della Madonna di Monte Berico
     regions: [it_vi]
-    mday: 8    
+    mday: 8
+  10:
+  - name: Festa di San Francesco d'Assisi
+    regions: [it]
+    mday: 4
+    year_ranges:
+      from: 2026
   11:
   - name: Ognissanti
     regions: [it]
@@ -208,6 +214,12 @@ tests:
       options: ["informal"]
     expect:
       name: "Festa della Madonna di Monte Berico"
+  - given:
+      date: '2026-10-04'
+      regions: ["it"]
+      options: ["informal"]
+    expect:
+      name: "Festa di San Francesco d'Assisi"
   - given:
       date: '2007-11-01'
       regions: ["it"]
