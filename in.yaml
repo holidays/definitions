@@ -65,14 +65,14 @@ months:
     regions: [in_wb]
     mday: 15
   5:
-  - name: Labour Day
-    regions: [in]
-    mday: 1
   - name: Gujarat Day
     regions: [in_gj]
     mday: 1
   - name: Maharashtra Day
     regions: [in_mh]
+    mday: 1
+  - name: Labour Day
+    regions: [in]
     mday: 1
   - name: Rabindranath Tagore Jayanti
     regions: [in_wb]

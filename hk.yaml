@@ -23,6 +23,7 @@ months:
     regions: [hk]
     mday: 1
     observed: to_monday_if_sunday(date)
+
   - name: Lunar New Year's Day
     regions: [hk]
     function: lunar_to_solar(year, month, day, region)
@@ -32,7 +33,7 @@ months:
     regions: [hk]
     function: lunar_to_solar(year, month, day, region)
     mday: 1
-    observed: to_the_weekday_after(date)
+    observed: to_the_next_weekday_after(date)
   - name: The third day of Lunar New Year
     regions: [hk]
     function: lunar_to_solar(year, month, day, region)
