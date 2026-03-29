@@ -2,8 +2,8 @@
 #
 # By Tim Anglade
 #
-# Updated: 2008-09-23.
-# Source:  http://www.ups.com/content/us/en/resources/ship/imp_exp/operation.html
+# Updated: 2025-01-21.
+# Source:  https://www.ups.com/us/en/support/shipping-support/shipping-services/holiday-shipping-schedule.page
 ---
 months:
   1:
@@ -11,6 +11,10 @@ months:
     regions: [ups]
     mday: 1
     observed: to_weekday_if_weekend(date)
+  - name: Birthday of Martin Luther King, Jr
+    week: 3
+    wday: 1
+    regions: [ups]
   5:
   - name: Memorial Day
     week: -1
