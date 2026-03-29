@@ -74,7 +74,7 @@ months:
     function: easter(year)
     function_modifier: -47
   - name: Mardi Gras Day
-    regions: [us_la]
+    regions: [us_al, us_la]
     function: easter(year)
     function_modifier: -47
   - name: Good Friday # informal in general
@@ -83,7 +83,7 @@ months:
     function_modifier: -2
     type: informal
   - name: Good Friday # public holiday in the following states
-    regions: [us_ct, us_de, us_gu, us_hi, us_in, us_ky, us_la, us_nj, us_nc, us_nd, us_pr, us_tn]
+    regions: [us_ct, us_de, us_gu, us_hi, us_in, us_ky, us_la, us_nj, us_nc, us_nd, us_pa, us_pr, us_tn]
     function: easter(year)
     function_modifier: -2
   - name: Easter Sunday
@@ -157,8 +157,12 @@ months:
     regions: [us_tx]
     mday: 21
   - name: Confederate Memorial Day # Last Monday in April
-    regions: [us_al, us_ms]
+    regions: [us_ms]
     week: -1
+    wday: 1
+  - name: Confederate Memorial Day # 4th Monday in April
+    regions: [us_al]
+    week: 4
     wday: 1
   - name: Confederate Memorial Day
     regions: [us_fl]
@@ -167,9 +171,10 @@ months:
   - name: State Holiday # April 20 or April 26
     regions: [us_ga]
     function: georgia_state_holiday(year, month)
-  - name: Arbor Day # fixed
+  - name: Arbor Day
     regions: [us_ne]
-    mday: 28
+    week: -1
+    wday: 5
   5:
   - name: Truman Day # fixed
     regions: [us_mo]
@@ -268,6 +273,9 @@ months:
   - name: Election Day
     regions: [us_de, us_hi, us_in, us_mt, us_nj, us_ny, us_pa, us_ri]
     function: election_day(year)
+  - name: Election Day # even years only
+    regions: [us_la]
+    function: even_year_election_day(year)
   - name: Veterans Day
     regions: [us]
     mday: 11
@@ -365,6 +373,13 @@ methods:
     arguments: year
     ruby: |
        Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 11, 1, 1) + 1
+  even_year_election_day:
+    # Tuesday after the first Monday of November but only even years for General Elections
+    arguments: year
+    ruby: |
+      if year % 2 == 0
+        Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 11, 1, 1) + 1
+      end
   us_inauguration_day:
     # January 20, every fourth year, following Presidential election
     arguments: year
@@ -383,7 +398,7 @@ tests:
       name: 'Shrove Tuesday'
   - given:
       date: ['2017-2-28', '2018-2-13', '2019-3-5']
-      regions: ["us_la"]
+      regions: ["us_al", "us_la"]
     expect:
       name: 'Mardi Gras Day'
   - given:
@@ -394,7 +409,7 @@ tests:
 
   - given:
       date: ['2017-4-14', '2018-3-30', '2019-4-19']
-      regions: ["us_ct","us_de","us_gu","us_hi","us_in","us_ky","us_la","us_nj","us_nc","us_nd","us_pr","us_tn"]
+      regions: ["us_ct","us_de","us_gu","us_hi","us_in","us_ky","us_la","us_nj","us_nc","us_nd","us_pa","us_pr","us_tn"]
     expect:
       name: 'Good Friday'
   - given:
@@ -592,8 +607,18 @@ tests:
     expect:
       holiday: false
   - given:
-      date: ['2017-4-24', '2018-4-30', '2019-4-29']
+      date: ['2017-4-24']
       regions: ["us_al", "us_ms"]
+    expect:
+      name: "Confederate Memorial Day"
+  - given:
+      date: ['2018-4-23', '2019-4-22']
+      regions: ["us_al"]
+    expect:
+      name: "Confederate Memorial Day"
+  - given:
+      date: ['2018-4-30', '2019-4-29']
+      regions: ["us_ms"]
     expect:
       name: "Confederate Memorial Day"
 
@@ -632,7 +657,7 @@ tests:
       name: "State Holiday"
 
   - given:
-      date: ['2017-4-28']
+      date: ['2017-4-28', '2025-4-25']
       regions: ["us_ne"]
     expect:
       name: "Arbor Day"
@@ -869,8 +894,13 @@ tests:
     expect:
       holiday: false
   - given:
-      date: ['2017-11-7', '2018-11-6', '2021-11-2']
+      date: ['2017-11-7', '2021-11-2']
       regions: ["us_de", "us_hi", "us_in", "us_mt", "us_nj", "us_ny", "us_pa", "us_ri"]
+    expect:
+      name: "Election Day"
+  - given:
+      date: ['2018-11-6', '2028-11-7']
+      regions: ["us_de", "us_hi", "us_in", "us_la", "us_mt", "us_nj", "us_ny", "us_pa", "us_ri"]
     expect:
       name: "Election Day"
   - given:
