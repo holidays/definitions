@@ -14,6 +14,14 @@
 # - https://www.mediafax.ro/politic/legea-prin-care-24-ianuarie-a-fost-declarata-zi-libera-nelucratoare-a-fost-promulgata-de-iohannis-15777292
 # - https://www.avocatnet.ro/articol_43954/Din-2017-salaria%C8%9Bii-vor-sta-acas%C4%83-%C8%99i-de-Ziua-Copilului-1-iunie-inclus%C4%83-de-azi-pe-lista-liberelor-legale.html
 # - https://www.mediafax.ro/social/iohannis-a-promulgat-legea-prin-care-vinerea-mare-este-sarbatoare-legala-nelucratoare-17058413
+# 
+# Changes 2025-01-05
+# - Add Botezul Domnului - Boboteaza
+# - Add Soborul Sfântului Proroc Ioan Botezătorul
+#
+# Sources:
+# - https://www.avocatnet.ro/articol_68582/Zile-libere-2025-Cate-dintre-liberele-legale-de-anul-viitor-vor-pica-in-timpul-s%C4%83pt%C4%83manii.html
+# - https://www.mediafax.ro/social/calendarul-sarbatorilor-legale-2025-de-cate-zile-libere-se-bucura-angajatii-din-romania-iata-cand-sunt-urmatoarele-zile-libere-pentru-romani-22630313
 ---
 months:
   0:
@@ -45,6 +53,12 @@ months:
   - name: Anul nou
     regions: [ro]
     mday: 2
+  - name: Botezul Domnului - Boboteaza
+    regions: [ro]
+    mday: 6
+  - name: Soborul Sfântului Proroc Ioan Botezătorul
+    regions: [ro]
+    mday: 7
   - name: Unirea Principatelor Române
     regions: [ro]
     mday: 24
@@ -238,3 +252,15 @@ tests:
       regions: ["ro"]
     expect:
       holiday: false
+  - given:
+      date: '2025-01-06'
+      regions: ["ro"]
+      options: ["informal"]
+    expect:
+      name: "Botezul Domnului - Boboteaza"
+  - given:
+      date: '2025-01-07'
+      regions: ["ro"]
+      options: ["informal"]
+    expect:
+      name: "Soborul Sfântului Proroc Ioan Botezătorul"
