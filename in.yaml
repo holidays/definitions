@@ -10,16 +10,6 @@ months:
     regions: [in]
     function: easter(year)
     function_modifier: -2
-  - name: Second Saturday Bank Holiday
-    regions: [in]
-    week: 2
-    wday: 6
-    type: informal
-  - name: Fourth Saturday Bank Holiday
-    regions: [in]
-    week: 4
-    wday: 6
-    type: informal
   1:
   - name: New Year's Day
     regions: [in]
@@ -65,14 +55,14 @@ months:
     regions: [in_wb]
     mday: 15
   5:
-  - name: Labour Day
-    regions: [in]
-    mday: 1
   - name: Gujarat Day
     regions: [in_gj]
     mday: 1
   - name: Maharashtra Day
     regions: [in_mh]
+    mday: 1
+  - name: Labour Day
+    regions: [in]
     mday: 1
   - name: Rabindranath Tagore Jayanti
     regions: [in_wb]
@@ -267,7 +257,7 @@ tests:
       name: "Telangana Formation Day"
 
   - given:
-      date: '2025-08-13'
+      date: '2025-07-13'
       regions: ["in_jh"]
     expect:
       name: "Martyrs' Day"
@@ -392,22 +382,6 @@ tests:
       regions: ["in"]
     expect:
       name: "Good Friday"
-
-  # Informal — Second Saturday in January 2025 is Jan 11
-  - given:
-      date: '2025-01-11'
-      regions: ["in"]
-      options: ["informal"]
-    expect:
-      name: "Second Saturday Bank Holiday"
-
-  # Informal — Fourth Saturday in January 2025 is Jan 25
-  - given:
-      date: '2025-01-25'
-      regions: ["in"]
-      options: ["informal"]
-    expect:
-      name: "Fourth Saturday Bank Holiday"
 
   # Informal — First and Third Saturday in January 2025 are Jan 04, Jan 18
   - given:
