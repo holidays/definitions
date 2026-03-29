@@ -13,6 +13,7 @@ defs:
   CL: ['cl.yaml']
   CO: ['co.yaml']
   CR: ['cr.yaml']
+  CY: ['cy.yaml']
   CZ: ['cz.yaml']
   DK: ['dk.yaml']
   DE: ['de.yaml']
