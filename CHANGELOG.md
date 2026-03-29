@@ -1,5 +1,19 @@
 # Holiday definitions
 
+## 5.9.0
+
+* Fix `us` holidays for AL, PA, NE, and LA (thanks to https://github.com/philipwritescode)
+* Update Friday before the AFL Grand Final public holiday (thanks to https://github.com/gregoryfm)
+* Update `ro` - Add 'Boboteaza'
+* Add Martin Luther King Jr. Day to `ups`
+* Add 2028 one-time Berlin holiday to `de_be` (thanks to https://github.com/mar1u50)
+* Introduce `cy` (Cyprus) region (thanks to https://github.com/nttzamos)
+* Use Gregorian calendar for Bulgaria `bg` (thanks to https://github.com/nttzamos)
+* Introduce `in` (India) region (thanks to https://github.com/Chiragasourabh)
+* Make Christmas Eve a public holiday in `pl` (thanks to https://github.com/mareklipka)
+* Add October 4 as new Italian national holiday to `it` (thanks to https://github.com/alepore)
+* Update Slovak holiday definitions and dates for `sk` (thanks to https://github.com/MichalRemis)
+
 ## 5.8.0
 
 * FIX: tasmania / nsw / vic do not observe on Monday
