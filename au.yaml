@@ -216,6 +216,7 @@ months:
 
 methods:
   afl_grand_final:
+    # https://business.vic.gov.au/business-information/public-holidays/victorian-public-holidays-2024
     arguments: year
     ruby: |
       case year
@@ -228,9 +229,17 @@ methods:
       when 2018
         Date.civil(2018, 9, 28)
       when 2019
-        Date.civil(2019,9, 27)
+        Date.civil(2019, 9, 27)
       when 2020
         Date.civil(2020, 10, 23)
+      when 2021
+        Date.civil(2021, 9, 24)
+      when 2022
+        Date.civil(2022, 9, 23)
+      when 2023
+        Date.civil(2023, 9, 29)
+      when 2024
+        Date.civil(2024, 9, 27)
       end
   qld_queens_bday_october:
     # http://www.justice.qld.gov.au/fair-and-safe-work/industrial-relations/public-holidays/dates
