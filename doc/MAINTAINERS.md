@@ -25,15 +25,25 @@ This guide assumes that you have forked the repository in Github. If you require
 
 When new PRs are submitted you can navigate the following steps:
 
-* Make sure that the PR Travis CI builds are green. If they are green then you can simply continue. If there are errors you
-will need to investigate further (contact a core member for assistance).
+* Make sure that all CI builds are green. If there are errors you will need to investigate further (contact a core member for assistance).
 * If the builds are green and the changes look reasonable to you then go ahead and merge!
-* Once the merges are done, make a new branch on your fork that includes an updated [CHANGELOG](https://github.com/holidays/definitions/blob/master/CHANGELOG.md)
-that has the new version and associated changes. This is pretty open-ended! Include the information that you feel is
-important. Use past CHANGELOG updates as a guide.
-* Open a PR against the CHANGELOG branch and merge it (this may require another maintainer for safety)
-* Once the updated CHANGELOG is merged, go to [releases](https://github.com/holidays/definitions/releases) and create a new release. It should point at the latest commit that contains the changes that you want included in this release. If you just merged then you can just point at master.  All release versions follow this format: `vMAJOR.MINOR.PATCH`. This should follow normal [semver rules](https://semver.org/).
 
-You don't need to list out the specific changes that were made on the release description. You can just give a general overview and then link to the updated CHANGELOG that you did in a previous step. Example: [v2.2.0](https://github.com/holidays/definitions/releases/tag/v2.2.0)
+### Releasing a new version
 
-Once the release is created in Github you are done! The definitions have been 'released' and downstream projects (right now just ruby) can reference them without issues. See the maintainers guides in downstream projects for information on how to release updates for each language.
+Releases are created automatically by CI when a PR is merged to `master`, provided the following conditions are met:
+
+* `VERSION.txt` contains a version string higher than the most recent GitHub release tag
+* `CHANGELOG.md` has a matching `## X.Y.Z` section for the version in `VERSION.txt`
+
+If either condition is not met, the pipeline will fail and the release will not be created.
+
+To prepare a release:
+
+1. Update `VERSION.txt` with the new version number, following [semver rules](https://semver.org/):
+   * **PATCH** bump for fixes and minor updates to existing definitions
+   * **MINOR** bump for new regions or significant additions
+   * **MAJOR** bump for breaking changes (e.g. dropping support for old downstream runtime versions)
+2. Add a matching `## X.Y.Z` section to the top of [CHANGELOG.md](https://github.com/holidays/definitions/blob/master/CHANGELOG.md) with a summary of the changes included in this release. Use past entries as a guide.
+3. Open a PR with both files updated. Once the PR is merged to `master`, CI will automatically create the GitHub release and tag using the CHANGELOG entry as the release description.
+
+You do not need to manually create tags or releases in GitHub.

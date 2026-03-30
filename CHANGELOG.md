@@ -1,5 +1,12 @@
 # Holiday definitions
 
+## 6.0.0
+
+* Drop support for EOL Ruby versions; minimum supported version is now Ruby 3.2 (testing 3.2, 3.3, 3.4, 4.0, ruby-head)
+* Add downstream integration test - run `holidays` Ruby project against definitions on every PR/push to catch downstream breakage early
+* Introduce automated releases - bumping `VERSION.txt` and adding a matching `CHANGELOG.md` entry is now all that is required to trigger a new GitHub release on merge to `master`
+* Update `au` AFL Grand Final public holiday dates through 2024 (thanks to https://github.com/gregoryfm)
+
 ## 5.9.0
 
 * Fix `us` holidays for AL, PA, NE, and LA (thanks to https://github.com/philipwritescode)

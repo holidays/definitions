@@ -1,0 +1,76 @@
+name: Release
+on:
+  push:
+    branches: ["master"]
+  pull_request:
+    branches: ["master"]
+jobs:
+  validate:
+    name: Validate version and CHANGELOG
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check CHANGELOG has entry for VERSION.txt
+        run: |
+          VERSION=$(cat VERSION.txt)
+          if ! grep -qE "^## ${VERSION}$" CHANGELOG.md; then
+            echo "Error: No CHANGELOG entry found for version ${VERSION}"
+            echo "Add a '## ${VERSION}' section to CHANGELOG.md before merging."
+            exit 1
+          fi
+          echo "Found CHANGELOG entry for ${VERSION}"
+
+  release:
+    name: Create GitHub release
+    needs: validate
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check if release is needed
+        id: check
+        run: |
+          VERSION=$(cat VERSION.txt)
+          LATEST_TAG=$(git tag --sort=-v:refname | head -1)
+          LATEST_VERSION="${LATEST_TAG#v}"
+          echo "version=${VERSION}" >> $GITHUB_OUTPUT
+
+          if [ -z "$LATEST_TAG" ]; then
+            echo "No existing tags found, will create release for ${VERSION}"
+            echo "should_release=true" >> $GITHUB_OUTPUT
+          elif [ "$VERSION" = "$LATEST_VERSION" ]; then
+            echo "Version ${VERSION} already tagged, skipping"
+            echo "should_release=false" >> $GITHUB_OUTPUT
+          elif [ "$(printf '%s\n%s\n' "$LATEST_VERSION" "$VERSION" | sort -V | tail -1)" = "$VERSION" ]; then
+            echo "Version ${VERSION} is newer than ${LATEST_TAG}, will create release"
+            echo "should_release=true" >> $GITHUB_OUTPUT
+          else
+            echo "Version ${VERSION} is not newer than ${LATEST_TAG}, skipping"
+            echo "should_release=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Extract CHANGELOG entry
+        if: steps.check.outputs.should_release == 'true'
+        run: |
+          VERSION=$(cat VERSION.txt)
+          awk "/^## ${VERSION}$/{found=1; next} found && /^## /{exit} found{print}" CHANGELOG.md \
+            | sed '/^[[:space:]]*$/d' > release_notes.md
+          echo "Release notes:"
+          cat release_notes.md
+
+      - name: Create release
+        if: steps.check.outputs.should_release == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          VERSION=$(cat VERSION.txt)
+          gh release create "v${VERSION}" \
+            --title "v${VERSION}" \
+            --notes-file release_notes.md
