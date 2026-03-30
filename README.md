@@ -1,4 +1,4 @@
-# Holidays Definitions [![Build Status](https://travis-ci.org/holidays/definitions.svg?branch=master)](https://travis-ci.org/holidays/definitions)
+# Holidays Definitions [![Build Status](https://github.com/holidays/definitions/actions/workflows/ruby.yml/badge.svg?branch=master)](https://github.com/holidays/definitions/actions/workflows/ruby.yml)
 
 This repository contains the 'raw' definitions for the various holidays projects. It should be added a submodule to
 any project that wants to use them.
