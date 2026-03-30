@@ -1,0 +1,53 @@
+name: Downstream Integration Tests
+on:
+  push:
+    branches: ["master"]
+  pull_request:
+    branches: ["master"]
+permissions:
+  contents: read
+jobs:
+  downstream-ruby:
+    name: Ruby (holidays)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout definitions
+        uses: actions/checkout@v4
+
+      - name: Configure git to use HTTPS instead of SSH
+        run: git config --global url."https://github.com/".insteadOf "git@github.com:"
+
+      - name: Clone holidays repository
+        run: git clone https://github.com/holidays/holidays.git holidays
+
+      - name: Set definitions branch and user
+        id: vars
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            echo "branch=${{ github.head_ref }}" >> $GITHUB_OUTPUT
+            echo "user=${{ github.event.pull_request.head.repo.owner.login }}" >> $GITHUB_OUTPUT
+          else
+            echo "branch=${{ github.ref_name }}" >> $GITHUB_OUTPUT
+            echo "user=${{ github.repository_owner }}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 'ruby'
+          working-directory: holidays
+          bundler-cache: true
+
+      - name: Point holidays to definitions branch
+        working-directory: holidays
+        run: |
+          make clean-defs
+          make point-to-defs-branch BRANCH=${{ steps.vars.outputs.branch }} USER=${{ steps.vars.outputs.user }}
+
+      - name: Generate definitions
+        working-directory: holidays
+        run: make generate
+
+      - name: Run tests
+        working-directory: holidays
+        run: make test
