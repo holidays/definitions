@@ -13,23 +13,11 @@ jobs:
     steps:
       - name: Checkout definitions
         uses: actions/checkout@v4
-
-      - name: Configure git to use HTTPS instead of SSH
-        run: git config --global url."https://github.com/".insteadOf "git@github.com:"
+        with:
+          path: definitions-src
 
       - name: Clone holidays repository
         run: git clone https://github.com/holidays/holidays.git holidays
-
-      - name: Set definitions branch and user
-        id: vars
-        run: |
-          if [ "${{ github.event_name }}" = "pull_request" ]; then
-            echo "branch=${{ github.head_ref }}" >> $GITHUB_OUTPUT
-            echo "user=${{ github.event.pull_request.head.repo.owner.login }}" >> $GITHUB_OUTPUT
-          else
-            echo "branch=${{ github.ref_name }}" >> $GITHUB_OUTPUT
-            echo "user=${{ github.repository_owner }}" >> $GITHUB_OUTPUT
-          fi
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
@@ -38,11 +26,13 @@ jobs:
           working-directory: holidays
           bundler-cache: true
 
-      - name: Point holidays to definitions branch
+      - name: Install definitions into holidays
         working-directory: holidays
         run: |
-          make clean-defs
-          make point-to-defs-branch BRANCH=${{ steps.vars.outputs.branch }} USER=${{ steps.vars.outputs.user }}
+          git rm -f definitions || true
+          rm -rf .git/modules/definitions
+          git config -f .git/config --remove-section submodule.definitions 2>/dev/null || true
+          cp -r ../definitions-src definitions
 
       - name: Generate definitions
         working-directory: holidays
