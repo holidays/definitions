@@ -61,7 +61,6 @@ months:
   - name: Ημέρα Ανεξαρτησίας της Κύπρου
     regions: [cy]
     mday: 1
-  10:
   - name: Επέτειος του Όχι
     regions: [cy]
     mday: 28
