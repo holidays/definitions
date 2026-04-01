@@ -1,5 +1,10 @@
 # Holiday definitions
 
+## 6.0.1
+
+* Fix `bg` Easter Monday name to be distinct so corresponding holidays resolve correctly (thanks to https://github.com/nttzamos)
+* Fix `cy` configuration issue with missing month entry causing incorrect holiday structure (thanks to https://github.com/nttzamos)
+
 ## 6.0.0
 
 * Drop support for EOL Ruby versions; minimum supported version is now Ruby 3.2 (testing 3.2, 3.3, 3.4, 4.0, ruby-head)
