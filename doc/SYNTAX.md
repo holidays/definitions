@@ -343,11 +343,19 @@ There are pre-existing methods for highly-used calculations. You can reference t
 
 * `easter(year)` - calculates Easter via Gregorian calendar for a given year
 * `orthodox_easter(year)` - calculates Easter via Julian calendar for a given year
+* `orthodox_easter_julian(year)` - calculates Easter via Julian calendar for a given year
 * `to_monday_if_sunday(date)` - returns date of the following Monday if the 'date' argument falls on a Sunday
 * `to_monday_if_weekend(date)` - returns date of the following Monday if the 'date' argument falls on a weekend (Saturday or Sunday)
 * `to_weekday_if_boxing_weekend(date)` - returns nearest following weekday if the 'date' argument falls on Boxing Day
 * `to_weekday_if_boxing_weekend_from_year(year)` - calculates nearest weekday following Boxing weekend for given year
+* `to_weekday_if_boxing_weekend_from_year_or_to_tuesday_if_monday(year)` - calculates nearest weekday following Boxing weekend for given year, or Tuesday if the result falls on a Monday
 * `to_weekday_if_weekend(date)` - returns nearest weekday (Monday or Friday) if 'date' argument falls on a weekend (Saturday or Sunday)
+* `to_tuesday_if_sunday_or_monday_if_saturday(date)` - returns Tuesday if the 'date' argument falls on a Sunday, or Monday if it falls on a Saturday
+* `calculate_day_of_month(year, month, day, wday)` - calculates the date of a holiday that falls on a specific weekday of a given month
+* `lunar_to_solar(year, month, day, region)` - converts a lunar calendar date to a solar calendar date for the given region
+* `to_the_weekday_after(date)` - returns the next weekday after the 'date' argument
+* `to_the_second_weekday_after(date)` - returns the second weekday after the 'date' argument
+* `to_previous_day_if_leap_year(date)` - returns the previous day if the 'date' argument falls in a leap year
 
 *Protip*: you can use the `easter` methods to calculate all of the dates that are based around Easter. It's especially useful to use since the Easter calculation is complex. For example, 'Good Friday' in the US is 2 days before Easter. Therefore you could do the following:
 
