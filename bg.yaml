@@ -31,7 +31,7 @@ months:
     regions: [bg_en]
     function: orthodox_easter(year)
     function_modifier: 1
-  - name: Възкресение Христово. Великден
+  - name: Великденски понеделник
     regions: [bg_bg]
     function: orthodox_easter(year)
     function_modifier: 1
