@@ -1,5 +1,10 @@
 # Holiday definitions
 
+## 6.0.2
+
+* Fix `METHODS.yml` incorrect method name `to_the_next_weekday_after` to correct name `to_the_weekday_after`
+* Update `SYNTAX.md` pre-existing methods list to document all methods defined in `METHODS.yml`
+
 ## 6.0.1
 
 * Fix `bg` Easter Monday name to be distinct so corresponding holidays resolve correctly (thanks to https://github.com/nttzamos)
