@@ -86,6 +86,12 @@ months:
     regions: [us_ct, us_de, us_gu, us_hi, us_in, us_ky, us_la, us_nj, us_nc, us_nd, us_pa, us_pr, us_tn]
     function: easter(year)
     function_modifier: -2
+  - name: State Holiday # Good Friday in Georgia, observed as State Holiday
+    regions: [us_ga]
+    function: easter(year)
+    function_modifier: -2
+    year_ranges:
+      from: 2020
   - name: Easter Sunday
     regions: [us]
     function: easter(year)
@@ -171,6 +177,8 @@ months:
   - name: State Holiday # April 20 or April 26
     regions: [us_ga]
     function: georgia_state_holiday(year, month)
+    year_ranges:
+      until: 2019
   - name: Arbor Day
     regions: [us_ne]
     week: -1
@@ -651,10 +659,20 @@ tests:
     expect:
       holiday: false
   - given:
-      date: ['2015-4-20', '2021-4-26']
+      date: ['2015-4-20']
       regions: ["us_ga"]
     expect:
       name: "State Holiday"
+  - given:
+      date: ['2020-4-10', '2021-4-2', '2022-4-15']
+      regions: ["us_ga"]
+    expect:
+      name: "State Holiday"
+  - given:
+      date: ['2021-4-26']
+      regions: ["us_ga"]
+    expect:
+      holiday: false
 
   - given:
       date: ['2017-4-28', '2025-4-25']
