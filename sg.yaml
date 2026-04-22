@@ -12,7 +12,6 @@
 ---
 region_names:
   sg: "Singapore"
-
 months:
   0:
   - name: Good Friday

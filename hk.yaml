@@ -7,7 +7,6 @@
 ---
 region_names:
   hk: "Hong Kong"
-
 months:
   0:
   - name: Good Friday

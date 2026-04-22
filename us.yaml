@@ -122,7 +122,6 @@ region_names:
   us_wi: "Wisconsin"
   us_wv: "West Virginia"
   us_wy: "Wyoming"
-
 months:
   0:
   - name: Shrove Tuesday

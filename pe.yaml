@@ -20,7 +20,6 @@
 ---
 region_names:
   pe: "Peru"
-
 months:
   0:
   - name: Jueves Santo

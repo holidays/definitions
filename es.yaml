@@ -31,7 +31,6 @@ region_names:
   es_pv: "País Vasco"
   es_v: "Valencia"
   es_vc: "Comunitat Valenciana"
-
 months:
   0:
   - name: Jueves Santo
