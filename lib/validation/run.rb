@@ -58,6 +58,9 @@ module Definitions
   end
 end
 
+# Build a flat lookup of region code -> ISO common name for all countries and their
+# subdivisions. Injected into RegionNames validator so the validator itself has no
+# direct dependency on the countries gem.
 iso_names = {}
 ISO3166::Country.all.each do |country|
   iso_names[country.alpha2.downcase] = country.common_name
