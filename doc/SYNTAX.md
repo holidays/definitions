@@ -50,7 +50,7 @@ There are certain holidays that can be legally observed on different days than t
 
 ## Region Names
 
-Each definition file should include a `region_names` section mapping every region symbol used in that file to its English short name. These names follow [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166) where a standard exists.
+Each definition file should include a `region_names` section mapping every region symbol used in that file to its English short name. Names use the [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166) English short name wherever a standard exists. Using the ISO standard as the source of truth means that i18n libraries can translate these names into other languages without requiring this project to maintain its own translations.
 
 ```yaml
 region_names:
@@ -63,10 +63,10 @@ region_names:
 
 ### Naming conventions
 
-- **ISO 3166-1 countries** (e.g. `:gb`, `:fr`): use the ISO 3166-1 English short name exactly.
-- **ISO 3166-2 subdivisions** (e.g. `:gb_eng`, `:de_by`): use the ISO 3166-2 official name. Note that ISO 3166-2 names are in the official language of the country, not necessarily English — for example, `de_by` is `"Bayern"`, not `"Bavaria"`.
-- **Non-geographic regions** (e.g. `:nyse`, `:federalreserve`): use a clear English descriptive name.
-- **Gem-specific composite regions** with no ISO counterpart (e.g. `:gb_eaw`): use a reasonable English descriptive name.
+- **ISO 3166-1 countries** (e.g. `:gb`, `:fr`): use the ISO 3166-1 English short name exactly
+- **ISO 3166-2 subdivisions** (e.g. `:gb_eng`, `:de_by`): use the ISO 3166-2 official name, note that ISO 3166-2 names are in the official language of the country, not necessarily English (e.g. `de_by` is `"Bayern"`, not `"Bavaria"`)
+- **Non-geographic regions** (e.g. `:nyse`, `:federalreserve`): use a clear English descriptive name
+- **Gem-specific composite regions** with no ISO counterpart (e.g. `:gb_eaw`): use a reasonable English descriptive name
 
 ### YAML quoting note
 
