@@ -4,6 +4,7 @@ require 'yaml'
 
 require_relative 'error'
 require_relative 'definition_validator'
+require_relative 'region_names_validator'
 require_relative 'custom_method_validator'
 require_relative 'month_validator'
 require_relative 'test_validator'
@@ -59,6 +60,7 @@ end
 Definitions::Validate.new(
   definitions_path,
   Definitions::Validation::Definition.new(
+    Definitions::Validation::RegionNames.new,
     Definitions::Validation::CustomMethod.new,
     Definitions::Validation::Month.new,
     Definitions::Validation::Test.new,

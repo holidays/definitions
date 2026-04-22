@@ -1,6 +1,9 @@
 # Informal North American holiday definitions for the Ruby Holiday gem.
 # Updated 2008-11-22.
 ---
+region_names:
+  ca: "Canada"
+  us: "United States"
 months:
   2:
   - name: Groundhog Day
