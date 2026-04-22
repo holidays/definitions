@@ -25,10 +25,10 @@ region_names:
   in_nl: "Nagaland"
   in_od: "Odisha"
   in_pb: "Punjab"
-  in_py: "Puducherry"
+  in_py: "Pondicherry"
   in_sk: "Sikkim"
   in_tr: "Tripura"
-  in_ts: "Telangana"
+  in_ts: "तेलंगाना"
   in_wb: "West Bengal"
 months:
   0:

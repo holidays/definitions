@@ -2,7 +2,8 @@ require 'spec_helper'
 require 'validation/region_names_validator'
 
 describe Definitions::Validation::RegionNames do
-  subject { described_class.new }
+  let(:iso_names) { {} }
+  subject { described_class.new(iso_names) }
 
   let(:months) { { 1 => [{"name" => "Test Holiday", "regions" => ["us"], "mday" => 1}] } }
   let(:region_names) { { "us" => "United States" } }
@@ -19,6 +20,34 @@ describe Definitions::Validation::RegionNames do
       }
       region_names = { "us" => "United States", "ca" => "Canada" }
       expect(subject.call(region_names, months)).to be true
+    end
+
+    it 'returns true when ISO name matches the injected lookup' do
+      iso_names = { "gb" => "United Kingdom" }
+      months = { 1 => [{"name" => "Holiday", "regions" => ["gb"], "mday" => 1}] }
+      region_names = { "gb" => "United Kingdom" }
+      expect(described_class.new(iso_names).call(region_names, months)).to be true
+    end
+
+    it 'skips ISO validation for regions not in the lookup' do
+      iso_names = {}
+      months = { 1 => [{"name" => "Holiday", "regions" => ["nyse"], "mday" => 1}] }
+      region_names = { "nyse" => "New York Stock Exchange" }
+      expect(described_class.new(iso_names).call(region_names, months)).to be true
+    end
+
+    it 'skips ISO validation for regions in NON_ISO_REGIONS' do
+      iso_names = { "vi" => "Virgin Islands (U.S.)" }
+      months = { 1 => [{"name" => "Holiday", "regions" => ["vi"], "mday" => 1}] }
+      region_names = { "vi" => "Viet Nam" }
+      expect(described_class.new(iso_names).call(region_names, months)).to be true
+    end
+
+    it 'validates subdivision names correctly' do
+      iso_names = { "de_by" => "Bayern" }
+      months = { 1 => [{"name" => "Holiday", "regions" => ["de_by"], "mday" => 1}] }
+      region_names = { "de_by" => "Bayern" }
+      expect(described_class.new(iso_names).call(region_names, months)).to be true
     end
   end
 
@@ -52,6 +81,16 @@ describe Definitions::Validation::RegionNames do
       region_names = { "us" => "United States", "ca" => "Canada" }
       expect { subject.call(region_names, months) }.to raise_error(Definitions::Errors::InvalidRegionNames) { |e|
         expect(e.message).to eq("region_names has entries for regions not found in months: ca")
+      }
+    end
+
+    it 'raises error if a name does not match the ISO lookup' do
+      iso_names = { "gb" => "United Kingdom" }
+      months = { 1 => [{"name" => "Holiday", "regions" => ["gb"], "mday" => 1}] }
+      region_names = { "gb" => "Great Britain" }
+      expect { described_class.new(iso_names).call(region_names, months) }.to raise_error(Definitions::Errors::InvalidRegionNames) { |e|
+        expect(e.message).to include("gb: expected 'United Kingdom' but got 'Great Britain'")
+        expect(e.message).to include("See doc/SYNTAX.md for naming conventions.")
       }
     end
   end

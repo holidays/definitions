@@ -1,6 +1,7 @@
 ## encoding: utf-8
 
 require 'yaml'
+require 'countries'
 
 require_relative 'error'
 require_relative 'definition_validator'
@@ -57,10 +58,18 @@ module Definitions
   end
 end
 
+iso_names = {}
+ISO3166::Country.all.each do |country|
+  iso_names[country.alpha2.downcase] = country.common_name
+  country.subdivisions.each do |sub_code, sub|
+    iso_names["#{country.alpha2.downcase}_#{sub_code.downcase}"] = sub.name.gsub(/ \([a-z]{2,3}\)$/, '')
+  end
+end
+
 Definitions::Validate.new(
   definitions_path,
   Definitions::Validation::Definition.new(
-    Definitions::Validation::RegionNames.new,
+    Definitions::Validation::RegionNames.new(iso_names),
     Definitions::Validation::CustomMethod.new,
     Definitions::Validation::Month.new,
     Definitions::Validation::Test.new,

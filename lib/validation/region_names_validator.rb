@@ -3,9 +3,19 @@ require_relative 'error'
 module Definitions
   module Validation
     class RegionNames
+      # :vi is a non-standard gem code for Vietnam (ISO 3166-1 VI = US Virgin Islands).
+      # Skip ISO validation until the breaking rename :vi -> :vn is made.
+      # See: https://github.com/holidays/definitions/issues/177
+      NON_ISO_REGIONS = %w[vi].freeze
+
+      def initialize(iso_names = {})
+        @iso_names = iso_names
+      end
+
       def call(region_names, months)
         validate_presence!(region_names)
         validate_coverage!(region_names, months)
+        validate_iso_names!(region_names)
       end
 
       private
@@ -32,6 +42,28 @@ module Definitions
         unless extra.empty?
           raise Errors::InvalidRegionNames.new(
             "region_names has entries for regions not found in months: #{extra.sort.join(', ')}"
+          )
+        end
+
+        true
+      end
+
+      def validate_iso_names!(region_names)
+        mismatches = []
+
+        region_names.each do |code, name|
+          code_str = code.to_s
+          next if NON_ISO_REGIONS.include?(code_str)
+
+          expected = @iso_names[code_str]
+          next if expected.nil?
+
+          mismatches << "#{code}: expected '#{expected}' but got '#{name}'" unless name == expected
+        end
+
+        unless mismatches.empty?
+          raise Errors::InvalidRegionNames.new(
+            "region_names has incorrect ISO names:\n#{mismatches.join("\n")}\nSee doc/SYNTAX.md for naming conventions."
           )
         end
 
