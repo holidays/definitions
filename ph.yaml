@@ -5,6 +5,8 @@
 # - http://www.gov.ph/2014/07/23/list-of-nationwide-holidays-for-2015/
 # - http://www.timeanddate.com/holidays/philippines/
 ---
+region_names:
+  ph: "Philippines"
 months:
   0:
   - name: Maundy Thursday

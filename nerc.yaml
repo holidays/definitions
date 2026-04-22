@@ -5,6 +5,8 @@
 #
 # Updated 2013-01-03.
 ---
+region_names:
+  nerc: "North American Electric Reliability Corporation"
 months:
   1:
   - name: New Year's Day

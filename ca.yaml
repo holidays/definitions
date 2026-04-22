@@ -8,6 +8,21 @@
 #  - 'Nunavut’s legislative assembly voted to pass Bill 29 making Nunavut Day', July 9, an officially statutory holiday across the territory. https://www.gov.nu.ca/human-resources/information/public-service-holidays
 #  - 'According to Manitoba labour standards, Terry Fox Day is not a formal holiday. https://www.gov.mb.ca/labour/standards/doc,gen-holidays-after-april-30-07,factsheet.html#q13'
 ---
+region_names:
+  ca: "Canada"
+  ca_ab: "Alberta"
+  ca_bc: "British Columbia"
+  ca_mb: "Manitoba"
+  ca_nb: "New Brunswick"
+  ca_nl: "Newfoundland and Labrador"
+  ca_ns: "Nova Scotia"
+  ca_nt: "Northwest Territories"
+  ca_nu: "Nunavut"
+  ca_on: "Ontario"
+  ca_pe: "Prince Edward Island"
+  ca_qc: "Quebec"
+  ca_sk: "Saskatchewan"
+  ca_yt: "Yukon"
 months:
   0:
   - name: Good Friday

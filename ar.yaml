@@ -8,6 +8,8 @@
 # - https://www.argentina.gob.ar/interior/feriados-nacionales-2020
 # - https://www.argentina.gob.ar/interior/feriados-nacionales-2021
 ---
+region_names:
+  ar: "Argentina"
 methods:
   to_nearest_monday:
     arguments: date

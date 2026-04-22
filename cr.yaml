@@ -6,6 +6,10 @@
 # Sources:
 # - http://en.wikipedia.org/wiki/Public_holidays_in_Costa_Rica
 #
+---
+region_names:
+  cr: "Costa Rica"
+
 months:
   0:
   - name: Jueves Santo

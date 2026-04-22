@@ -5,6 +5,8 @@
 # Sources:
 # - http://en.wikipedia.org/wiki/Public_holidays_in_Morocco
 ---
+region_names:
+  ma: "Morocco"
 months:
   1:
   - name: Ras l' âm

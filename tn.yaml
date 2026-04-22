@@ -7,6 +7,8 @@
 # - https://fr.wikipedia.org/wiki/Fêtes_et_jours_fériés_en_Tunisie#F.C3.AAtes_officielles
 #
 ---
+region_names:
+  tn: "Tunisia"
 months:
   1:
   - name: Jour de l'an

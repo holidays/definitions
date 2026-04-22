@@ -25,6 +25,34 @@
 #          - 26th of December is not celebrated in case the 25th is a Monday or a Friday.
 # * ch_ne: 26th of December and 2nd of January are only celebrated in case 25th of December and 1st of January are Sundays
 ---
+region_names:
+  ch: "Switzerland"
+  ch_ag: "Aargau"
+  ch_ai: "Appenzell Innerrhoden"
+  ch_ar: "Appenzell Ausserrhoden"
+  ch_be: "Bern"
+  ch_bl: "Basel-Landschaft"
+  ch_bs: "Basel-Stadt"
+  ch_fr: "Fribourg"
+  ch_ge: "Geneva"
+  ch_gl: "Glarus"
+  ch_gr: "Graubünden"
+  ch_ju: "Jura"
+  ch_lu: "Lucerne"
+  ch_ne: "Neuchâtel"
+  ch_nw: "Nidwalden"
+  ch_ow: "Obwalden"
+  ch_sg: "St. Gallen"
+  ch_sh: "Schaffhausen"
+  ch_so: "Solothurn"
+  ch_sz: "Schwyz"
+  ch_tg: "Thurgau"
+  ch_ti: "Ticino"
+  ch_ur: "Uri"
+  ch_vd: "Vaud"
+  ch_vs: "Valais"
+  ch_zg: "Zug"
+  ch_zh: "Zürich"
 months:
   0:
   - name: Karfreitag

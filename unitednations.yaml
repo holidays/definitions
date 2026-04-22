@@ -1,6 +1,8 @@
 # United Nationas holiday definitions for the Ruby Holiday gem.
 # Updated 2008-11-21.
 ---
+region_names:
+  unitednations: "United Nations"
 months:
   2:
   - name: International Mother Language Day

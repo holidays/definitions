@@ -10,6 +10,28 @@
 #
 # Notes:
 # - Valencia is encoded as both es_v and es_vc
+---
+region_names:
+  es: "Spain"
+  es_an: "Andalusia"
+  es_ar: "Aragon"
+  es_ce: "Ceuta"
+  es_cl: "Castile and León"
+  es_cm: "Castile-La Mancha"
+  es_cn: "Canary Islands"
+  es_ct: "Catalonia"
+  es_ex: "Extremadura"
+  es_ga: "Galicia"
+  es_ib: "Balearic Islands"
+  es_lo: "La Rioja"
+  es_m: "Community of Madrid"
+  es_mu: "Region of Murcia"
+  es_na: "Navarre"
+  es_o: "Principality of Asturias"
+  es_pv: "Basque Country"
+  es_v: "Valencia"
+  es_vc: "Valencian Community"
+
 months:
   0:
   - name: Jueves Santo

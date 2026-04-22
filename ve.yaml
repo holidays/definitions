@@ -5,6 +5,8 @@
 # Updated: 2012-09-14.
 # Source:  http://venciclopedia.com/index.php?title=D%C3%ADas_feriados_de_Venezuela
 ---
+region_names:
+  ve: "Venezuela"
 months:
   0:
   - name: Lunes Carnaval

@@ -4,6 +4,8 @@
 # Sources:
 # - http://en.wikipedia.org/wiki/Public_holidays_in_Finland
 ---
+region_names:
+  fi: "Finland"
 months:
   0:
   - name: Pitkäperjantai

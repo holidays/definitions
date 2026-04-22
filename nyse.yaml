@@ -8,6 +8,8 @@
 # Source: https://www.nyse.com/markets/hours-calendars
 # Updated 2017-03-14 By Vassilios Liatsos
 ---
+region_names:
+  nyse: "New York Stock Exchange"
 months:
   0:
   - name: Good Friday

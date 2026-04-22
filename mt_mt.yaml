@@ -4,6 +4,8 @@
 # Sources:
 # - https://en.wikipedia.org/wiki/Public_holidays_in_Malta
 ---
+region_names:
+  mt_mt: "Malta"
 months:
   0:
   - name: Il-Ġimgħa l-Kbira # Good Friday

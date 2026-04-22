@@ -4,6 +4,8 @@
 # Sources:
 # - https://likumi.lv/ta/id/72608 (Likums "Par svētku, atceres un atzīmējamām dienām")
 ---
+region_names:
+  lv: "Latvia"
 months:
   0:
   - name: Lielā Piektdiena # Good Friday

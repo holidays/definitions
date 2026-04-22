@@ -4,6 +4,8 @@
 # Sources:
 #  http://www.tourismus.li/de/navpage-RegionLI-InformationLI-44728.html
 ---
+region_names:
+  li: "Liechtenstein"
 months:
   0:
   - name: Fasnachtsdienstag

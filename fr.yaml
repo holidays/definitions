@@ -10,6 +10,10 @@
 # - http://vosdroits.service-public.fr/particuliers/F2405.xhtml
 # - https://en.wikipedia.org/wiki/Public_holidays_in_France
 ---
+region_names:
+  fr: "France"
+  fr_a: "Alsace"
+  fr_m: "Moselle"
 months:
   0:
   - name: Vendredi saint

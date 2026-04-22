@@ -6,6 +6,8 @@
 # - https://www.timeanddate.com/holidays/kenya/
 # - http://www.kenyalaw.org/kl/fileadmin/pdfdownloads/Acts/PublicHolidaysActCap110.pdf
 ---
+region_names:
+  ke: "Kenya"
 months:
   0:
     - name: Good Friday

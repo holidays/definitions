@@ -4,6 +4,32 @@
 # Sources:
 # - https://en.wikipedia.org/wiki/Public_holidays_in_India
 ---
+region_names:
+  in: "India"
+  in_ap: "Andhra Pradesh"
+  in_ar: "Arunachal Pradesh"
+  in_as: "Assam"
+  in_br: "Bihar"
+  in_cg: "Chhattisgarh"
+  in_ga: "Goa"
+  in_gj: "Gujarat"
+  in_hp: "Himachal Pradesh"
+  in_hr: "Haryana"
+  in_jh: "Jharkhand"
+  in_jk: "Jammu and Kashmir"
+  in_ka: "Karnataka"
+  in_kl: "Kerala"
+  in_mh: "Maharashtra"
+  in_mp: "Madhya Pradesh"
+  in_mz: "Mizoram"
+  in_nl: "Nagaland"
+  in_od: "Odisha"
+  in_pb: "Punjab"
+  in_py: "Puducherry"
+  in_sk: "Sikkim"
+  in_tr: "Tripura"
+  in_ts: "Telangana"
+  in_wb: "West Bengal"
 months:
   0:
   - name: Good Friday

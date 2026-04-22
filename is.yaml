@@ -7,6 +7,8 @@
 # - http://en.wikipedia.org/wiki/Public_holidays_in_Iceland
 # - http://www.qppstudio.net/publicholidays2007/iceland.htm
 ---
+region_names:
+  is: "Iceland"
 months:
   0:
   - name: Bolludagur

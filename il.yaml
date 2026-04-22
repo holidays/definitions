@@ -9,6 +9,8 @@
 #  - Israel has its own way of calculation holidays (different calendar).
 #  - In case of holidays being out of date - message voiteh322@gmail.com to update.
 ---
+region_names:
+  il: "Israel"
 months:
   3:
   - name: Exodus from Egypt

@@ -9,6 +9,8 @@
 # For Korean/English translations of each holiday:
 # - https://ko.wikipedia.org/wiki/%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD%EC%9D%98_%EA%B3%B5%ED%9C%B4%EC%9D%BC
 ---
+region_names:
+  kr: "Korea, Republic of"
 months:
   1:
   - name: 설날

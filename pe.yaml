@@ -17,6 +17,10 @@
 #   Christmas day observed
 #   New year's eve
 #
+---
+region_names:
+  pe: "Peru"
+
 months:
   0:
   - name: Jueves Santo

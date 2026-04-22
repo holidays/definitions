@@ -4,6 +4,9 @@
 # - http://www.britishembassy.gov.uk/servlet/Front?pagename=OpenMarket/Xcelerate/ShowPage&c=Page&cid=1125561634963
 # - http://www.usembassy-mexico.gov/eng/holidays.html
 ---
+region_names:
+  mx: "Mexico"
+  mx_pue: "Puebla"
 months:
   1:
   - name: Año nuevo

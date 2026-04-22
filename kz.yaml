@@ -5,6 +5,8 @@
 # - https://www.officeholidays.com/countries/kazakhstan/2020
 # - https://en.wikipedia.org/wiki/Public_holidays_in_Kazakhstan
 ---
+region_names:
+  kz: "Kazakhstan"
 months:
   1:
   - name: Jańa jyl # New Year's Day

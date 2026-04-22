@@ -26,6 +26,19 @@
 # Sources:
 # - https://it.wikipedia.org/wiki/Santi_patroni_cattolici_delle_citt%C3%A0_capoluogo_di_provincia_italiane
 ---
+region_names:
+  it: "Italy"
+  it_bl: "Belluno"
+  it_fi: "Florence"
+  it_ge: "Genoa"
+  it_pd: "Padua"
+  it_rm: "Rome"
+  it_ro: "Rovigo"
+  it_to: "Turin"
+  it_tv: "Treviso"
+  it_ve: "Venice"
+  it_vi: "Vicenza"
+  it_vr: "Verona"
 months:
   0:
   - name: Pasqua

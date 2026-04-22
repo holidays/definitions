@@ -6,6 +6,8 @@
 # - http://www.citizensinformation.ie/categories/employment/employment-rights-and-conditions/leave-and-holidays/public-holidays-in-ireland
 # While there is mention that Jan 2 2012 was not officially a bank holiday, in reality very few businesses will not observe that date as a bank holiday
 ---
+region_names:
+  ie: "Ireland"
 months:
   0:
   - name: Easter Monday

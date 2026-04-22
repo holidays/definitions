@@ -13,6 +13,10 @@
 # Changes 2017-05-31:
 # - Add additional holidays for Porto (pt_po) and Lisbon (pt_li)
 ---
+region_names:
+  pt: "Portugal"
+  pt_li: "Lisbon"
+  pt_po: "Porto"
 months:
   0:
   - name: Carnaval # same as Shrove Tuesday

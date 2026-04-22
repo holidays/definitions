@@ -5,6 +5,8 @@
 # - http://cs.wikipedia.org/wiki/%C4%8Cesk%C3%BD_st%C3%A1tn%C3%AD_sv%C3%A1tek
 # - http://www.mpsv.cz/cs/74
 ---
+region_names:
+  cz: "Czechia"
 months:
   0:
   - name: Velký pátek

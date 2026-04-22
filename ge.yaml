@@ -6,6 +6,8 @@
 # - https://de.wikipedia.org/wiki/Feiertage_in_Georgien
 # - https://translate.yandex.com/?lang=ka-en
 ---
+region_names:
+  ge: "Georgia"
 months:
   0:
   - name: დიდი პარასკევი # Good Friday

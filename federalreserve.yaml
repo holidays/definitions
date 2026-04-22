@@ -5,6 +5,8 @@
 # Sources:
 #  - http://www.federalreserve.gov/aboutthefed/k8.htm
 ---
+region_names:
+  federalreserve: "Federal Reserve"
 months:
   1:
   - name: New Year's Day

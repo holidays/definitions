@@ -13,6 +13,8 @@
 # - https://en.wikipedia.org/wiki/Public_holidays_in_Estonia
 # - https://www.riigiteataja.ee/akt/13276841?leiaKehtiv
 ---
+region_names:
+  ee: "Estonia"
 months:
   0:
   - name: suur reede # Good Friday

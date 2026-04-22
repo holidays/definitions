@@ -4,6 +4,8 @@
 # Sources:
 # - https://www.vlada.gov.sk/slovensko/statne-sviatky/
 ---
+region_names:
+  sk: "Slovakia"
 months:
   0:
   - name: Veľkonočný pondelok
