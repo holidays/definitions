@@ -17,7 +17,7 @@
 # - https://en.wikipedia.org/wiki/Democracy_and_National_Unity_Day
 ---
 region_names:
-  tr: "Turkey"
+  tr: "Türkiye"
 months:
   0:
   - name: Ramazan Bayramı # Ramadan Feast

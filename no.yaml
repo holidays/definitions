@@ -6,7 +6,7 @@
 # - http://www.timeanddate.com/norsk/kalender.html
 ---
 region_names:
-  no: "Norway"
+  "no": "Norway"
 months:
   0:
   - name: Fastelavn
