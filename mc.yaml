@@ -1,0 +1,149 @@
+# Monaco holiday definitions for the Ruby Holiday gem.
+#
+# Sources:
+# - https://monservicepublic.gouv.mc/thematiques/emploi/activite-salariee/conges-et-don-de-conges/jours-feries
+#
+# Note:
+# When New Year's Day, May 1st, Assumption, All Saints' Day, Prince's Day, or Christmas
+# fall on a Sunday, the following Monday is a holiday.
+---
+months:
+  0:
+  - name: Lundi de Pâques
+    regions: [mc]
+    function: easter(year)
+    function_modifier: 1
+  - name: Ascension
+    regions: [mc]
+    function: easter(year)
+    function_modifier: 39
+  - name: Lundi de Pentecôte
+    regions: [mc]
+    function: easter(year)
+    function_modifier: 50
+  - name: Fête Dieu
+    regions: [mc]
+    function: easter(year)
+    function_modifier: 60
+  1:
+  - name: Jour de l'an
+    regions: [mc]
+    mday: 1
+    observed: true
+  - name: Sainte Dévote
+    regions: [mc]
+    mday: 27
+  5:
+  - name: Fête du Travail
+    regions: [mc]
+    mday: 1
+    observed: true
+  8:
+  - name: Assomption
+    regions: [mc]
+    mday: 15
+    observed: true
+  11:
+  - name: Toussaint
+    regions: [mc]
+    mday: 1
+    observed: true
+  - name: Fête du Prince
+    regions: [mc]
+    mday: 19
+    observed: true
+  12:
+  - name: Immaculée Conception
+    regions: [mc]
+    mday: 8
+    observed: true
+  - name: Noël
+    regions: [mc]
+    mday: 25
+    observed: true
+
+tests:
+  - given:
+      date: '2026-01-01'
+      regions: ["mc"]
+    expect:
+      name: "Jour de l'an"
+  - given:
+      date: '2026-01-27'
+      regions: ["mc"]
+    expect:
+      name: "Sainte Dévote"
+  - given:
+      date: '2026-04-06'
+      regions: ["mc"]
+    expect:
+      name: "Lundi de Pâques"
+  - given:
+      date: '2026-05-01'
+      regions: ["mc"]
+    expect:
+      name: "Fête du Travail"
+  - given:
+      date: '2026-05-14'
+      regions: ["mc"]
+    expect:
+      name: "Ascension"
+  - given:
+      date: '2026-05-25'
+      regions: ["mc"]
+    expect:
+      name: "Lundi de Pentecôte"
+  - given:
+      date: '2026-06-04'
+      regions: ["mc"]
+    expect:
+      name: "Fête Dieu"
+  - given:
+      date: '2026-08-15'
+      regions: ["mc"]
+    expect:
+      name: "Assomption"
+  - given:
+      date: '2026-11-01'
+      regions: ["mc"]
+    expect:
+      name: "Toussaint"
+  - given:
+      date: '2026-11-19'
+      regions: ["mc"]
+    expect:
+      name: "Fête du Prince"
+  - given:
+      date: '2026-12-08'
+      regions: ["mc"]
+    expect:
+      name: "Immaculée Conception"
+  - given:
+      date: '2026-12-25'
+      regions: ["mc"]
+    expect:
+      name: "Noël"
+  # Testing observed (Sunday -> Monday logic)
+  # In 2024, Nov 1st was Friday. Nov 19th was Tuesday. Dec 8 was Sunday.
+  - given:
+      date: '2024-12-08'
+      regions: ["mc"]
+    expect:
+      name: "Immaculée Conception"
+  - given:
+      date: '2024-12-09'
+      regions: ["mc"]
+    expect:
+      name: "Immaculée Conception"
+  # 2025: Nov 1 is Saturday.
+  # 2026: Nov 1 is Sunday.
+  - given:
+      date: '2026-11-01'
+      regions: ["mc"]
+    expect:
+      name: "Toussaint"
+  - given:
+      date: '2026-11-02'
+      regions: ["mc"]
+    expect:
+      name: "Toussaint"
