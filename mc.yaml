@@ -56,7 +56,7 @@ months:
   - name: Immaculée Conception
     regions: [mc]
     mday: 8
-    observed: true
+    observed: to_monday_if_sunday(date)
   - name: Noël
     regions: [mc]
     mday: 25
