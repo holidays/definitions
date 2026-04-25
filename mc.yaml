@@ -29,7 +29,6 @@ months:
   - name: Jour de l'an
     regions: [mc]
     mday: 1
-    observed: true
   - name: Sainte Dévote
     regions: [mc]
     mday: 27
@@ -37,21 +36,17 @@ months:
   - name: Fête du Travail
     regions: [mc]
     mday: 1
-    observed: true
   8:
   - name: Assomption
     regions: [mc]
     mday: 15
-    observed: true
   11:
   - name: Toussaint
     regions: [mc]
     mday: 1
-    observed: true
   - name: Fête du Prince
     regions: [mc]
     mday: 19
-    observed: true
   12:
   - name: Immaculée Conception
     regions: [mc]
@@ -60,7 +55,6 @@ months:
   - name: Noël
     regions: [mc]
     mday: 25
-    observed: true
 
 tests:
   - given:
