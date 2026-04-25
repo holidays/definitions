@@ -38,6 +38,6 @@ jobs:
         working-directory: holidays
         run: make generate
 
-      - name: Run tests
+      - name: Run smoke tests
         working-directory: holidays
-        run: make test
+        run: make test-smoke

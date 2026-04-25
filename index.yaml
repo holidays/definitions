@@ -32,6 +32,7 @@ defs:
   HK: ['hk.yaml']
   HU: ['hu.yaml']
   IE: ['ie.yaml']
+  IL: ['il.yaml']
   IN: ['in.yaml']
   IS: ['is.yaml']
   IT: ['it.yaml']
