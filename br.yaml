@@ -6,6 +6,8 @@
 # - http://pt.wikipedia.org/wiki/Feriados_no_Brasil
 
 ---
+region_names:
+  br: "Brazil"
 months:
   0:
   - name: Carnaval # same as Shrove Tuesday

@@ -9,6 +9,9 @@
 # Source:
 # http://publicholidays.com.my/
 
+---
+region_names:
+  my: "Malaysia"
 months:
   1:
   - name: New Year's Day

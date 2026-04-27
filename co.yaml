@@ -10,6 +10,8 @@
 # - https://www.timeanddate.com/holidays/colombia/
 # - http://www.bank-holidays.com/country/Colombia_42.htm
 ---
+region_names:
+  co: "Colombia"
 methods:
   # Movable holiday: when they do not fall on a Monday, these holidays are observed the following Monday.
   to_following_monday_if_not_monday:

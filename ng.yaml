@@ -3,6 +3,8 @@
 # Sources:
 # - https://en.wikipedia.org/wiki/Public_holidays_in_Nigeria
 ---
+region_names:
+  ng: "Nigeria"
 months:
   0:
     - name: Good Friday

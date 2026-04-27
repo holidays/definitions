@@ -24,6 +24,8 @@
 # It is overly verbose and not easy to follow. It will be a target for refactoring
 # in the near future.
 ---
+region_names:
+  jp: "Japan"
 months:
   1:
   - name: 元日

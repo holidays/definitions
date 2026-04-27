@@ -3,6 +3,8 @@
 # Updated: 2011-09-12.
 # Source:  http://pl.wikipedia.org/wiki/Dni_wolne_od_pracy_w_Polsce
 ---
+region_names:
+  pl: "Poland"
 months:
   0:
   - name: Tłusty Czwartek

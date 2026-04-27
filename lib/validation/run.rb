@@ -1,9 +1,11 @@
 ## encoding: utf-8
 
 require 'yaml'
+require 'countries'
 
 require_relative 'error'
 require_relative 'definition_validator'
+require_relative 'region_names_validator'
 require_relative 'custom_method_validator'
 require_relative 'month_validator'
 require_relative 'test_validator'
@@ -65,9 +67,21 @@ module Definitions
   end
 end
 
+# Build a flat lookup of region code -> ISO common name for all countries and their
+# subdivisions. Injected into RegionNames validator so the validator itself has no
+# direct dependency on the countries gem.
+iso_names = {}
+ISO3166::Country.all.each do |country|
+  iso_names[country.alpha2.downcase] = country.common_name
+  country.subdivisions.each do |sub_code, sub|
+    iso_names["#{country.alpha2.downcase}_#{sub_code.downcase}"] = sub.name.gsub(/ \([a-z]{2,3}\)$/, '')
+  end
+end
+
 Definitions::Validate.new(
   definitions_path,
   Definitions::Validation::Definition.new(
+    Definitions::Validation::RegionNames.new(iso_names),
     Definitions::Validation::CustomMethod.new,
     Definitions::Validation::Month.new,
     Definitions::Validation::Test.new,

@@ -4,6 +4,9 @@
 # Sources:
 # - http://en.wikipedia.org/wiki/Public_holidays_in_Slovenia
 
+---
+region_names:
+  si: "Slovenia"
 months:
   0:
   - name: velikonočna nedelja

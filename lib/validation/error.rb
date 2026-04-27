@@ -7,5 +7,6 @@ module Definitions
     class InvalidRegions < Error; end
     class InvalidCustomMethod < Error; end
     class InvalidTest < Error; end
+    class InvalidRegionNames < Error; end
   end
 end

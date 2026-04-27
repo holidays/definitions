@@ -40,6 +40,28 @@
 # - https://www.statistik.bayern.de/statistik/bevoelkerungsstand/00141.php
 # - http://www.thueringen.de/mam/th3/tim/verwaltungsrecht/fronleichnam_gemeindeschluesselzahlen.pdf
 ---
+region_names:
+  de: "Germany"
+  de_bb: "Brandenburg"
+  de_be: "Berlin"
+  de_bw: "Baden-Württemberg"
+  de_by: "Bayern"
+  de_by_augsburg: "Augsburg (Bayern)"
+  de_by_cath: "Bayern (Catholic regions)"
+  de_hb: "Bremen"
+  de_he: "Hessen"
+  de_hh: "Hamburg"
+  de_mv: "Mecklenburg-Vorpommern"
+  de_ni: "Niedersachsen"
+  de_nw: "Nordrhein-Westfalen"
+  de_rp: "Rheinland-Pfalz"
+  de_sh: "Schleswig-Holstein"
+  de_sl: "Saarland"
+  de_sn: "Sachsen"
+  de_sn_sorbian: "Sachsen (Sorbian regions)"
+  de_st: "Sachsen-Anhalt"
+  de_th: "Thüringen"
+  de_th_cath: "Thüringen (Catholic regions)"
 months:
   0:
   - name: Karfreitag

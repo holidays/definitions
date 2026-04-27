@@ -5,6 +5,8 @@
 # - http://www.ecb.europa.eu/home/html/holidays.en.html
 # - http://www.ecb.europa.eu/press/pr/date/2000/html/pr001214_4.en.html
 ---
+region_names:
+  ecbtarget: "ECB TARGET (European Central Bank)"
 months:
   0:
   - name: Good Friday

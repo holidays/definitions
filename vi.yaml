@@ -3,6 +3,8 @@
 # Updated: 2014-07-17.
 # Source: http://en.wikipedia.org/wiki/Public_holidays_in_Vietnam
 ---
+region_names:
+  vi: "Viet Nam"
 months:
   1:
   - name: Tết dương lịch

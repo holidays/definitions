@@ -5,6 +5,8 @@
     # https://el.wikipedia.org/wiki/%CE%94%CE%B7%CE%BC%CF%8C%CF%83%CE%B9%CE%B5%CF%82_%CE%B1%CF%81%CE%B3%CE%AF%CE%B5%CF%82_%CF%83%CF%84%CE%B7%CE%BD_%CE%9A%CF%8D%CF%80%CF%81%CE%BF
     # https://www.centralbank.cy/the-bank/working-hours-bank-holidays
 ---
+region_names:
+  cy: "Cyprus"
 months:
   0:
   - name: Μεγάλη Παρασκευή

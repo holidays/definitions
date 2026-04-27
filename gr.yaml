@@ -9,6 +9,8 @@
     # http://el.wikipedia.org/wiki/Επίσημες_αργίες_στην_Ελλάδα - for holidays
     # http://www.eortologio.gr/arthra/pasxa.php - for holidays
 ---
+region_names:
+  gr: "Greece"
 months:
   0:
   - name: Μεγάλη Παρασκευή

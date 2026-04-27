@@ -6,6 +6,8 @@
 # - http://www.timeanddate.com/calendar/index.html?country=8
 # - http://www.germany.info/relaunch/welcome/travel/holidays.html
 ---
+region_names:
+  at: "Austria"
 months:
   0:
   - name: Ostermontag

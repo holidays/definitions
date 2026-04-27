@@ -5,6 +5,8 @@
 # - http://en.wikipedia.org/wiki/Public_holidays_in_South_Africa
 # - http://www.info.gov.za/aboutsa/holidays.htm
 ---
+region_names:
+  za: "South Africa"
 months:
   0:
   - name: Good Friday

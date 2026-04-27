@@ -2,6 +2,8 @@
 #
 # Updated: 2012-03-01 by spap
 ---
+region_names:
+  hu: "Hungary"
 months:
   0:
   - name: Nagypéntek

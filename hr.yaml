@@ -4,6 +4,8 @@
 # Sources:
 #  http://en.wikipedia.org/wiki/Public_holidays_in_Croatia
 ---
+region_names:
+  hr: "Croatia"
 months:
   0:
   - name: Uskrs

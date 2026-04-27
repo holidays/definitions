@@ -5,6 +5,8 @@
 # Updated: 2025-01-21.
 # Source:  https://www.ups.com/us/en/support/shipping-support/shipping-services/holiday-shipping-schedule.page
 ---
+region_names:
+  ups: "UPS"
 months:
   1:
   - name: New Year's Day

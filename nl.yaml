@@ -4,6 +4,8 @@
 # Sources:
 # - http://en.wikipedia.org/wiki/Public_holidays_in_the_Netherlands
 ---
+region_names:
+  nl: "Netherlands"
 months:
   0:
   - name: Goede Vrijdag

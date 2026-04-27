@@ -8,6 +8,8 @@
 # - https://www.wko.at/service/aussenwirtschaft/Serbien:-Feiertage-2016.html
 # - http://www.lexilogos.com/keyboard/serbian_conversion.htm
 ---
+region_names:
+  rs_cyrl: "Serbia"
 months:
   0:
   - name: Велики петак # Good Friday

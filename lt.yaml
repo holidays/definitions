@@ -5,6 +5,8 @@
 # - http://en.wikipedia.org/wiki/Public_holidays_in_Lithuania
 # - http://day.lt/sventes/nedarbo
 ---
+region_names:
+  lt: "Lithuania"
 months:
   0:
   - name: Šv. Velykos

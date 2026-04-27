@@ -4,6 +4,8 @@
 # Sources:
 # - https://en.wikipedia.org/wiki/Public_holidays_in_Thailand
 ---
+region_names:
+  th: "Thailand"
 months:
   1:
   - name: วันขึ้นปีใหม่

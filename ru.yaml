@@ -7,6 +7,8 @@
 # - https://translate.yandex.com/?lang=en-ru
 # - https://ru.wikipedia.org/wiki/День_Государственного_флага_Российской_Федерации
 ---
+region_names:
+  ru: "Russian Federation"
 months:
   1:
   - name: Новый год # New Year's Day

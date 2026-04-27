@@ -12,6 +12,20 @@
 # - England and Wales together should be encoded as [gb_eng, gb_wls, gb_eaw...]
 # - For :gb_sct, St. Andrew's Day is 'informal' 2006 and earlier but a bank holiday from 2007 on.
 ---
+region_names:
+  gb: "United Kingdom"
+  gb_con: "Cornwall"
+  gb_eaw: "England and Wales"
+  gb_eng: "England"
+  gb_gsy: "Guernsey"
+  gb_iom: "Isle of Man"
+  gb_jsy: "Jersey"
+  gb_nir: "Northern Ireland"
+  gb_sct: "Scotland"
+  gb_wls: "Wales"
+  gg: "Guernsey"
+  im: "Isle of Man"
+  je: "Jersey"
 months:
   0:
   - name: Mothering Sunday

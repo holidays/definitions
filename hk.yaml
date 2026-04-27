@@ -4,6 +4,9 @@
 # http://www.gov.hk/en/about/abouthk/holiday/
 # https://en.wikipedia.org/wiki/Public_holidays_in_Hong_Kong
 
+---
+region_names:
+  hk: "Hong Kong"
 months:
   0:
   - name: Good Friday

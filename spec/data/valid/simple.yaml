@@ -1,4 +1,6 @@
 ---
+region_names:
+  test: "Test Region"
 months:
   1:
   - name: Test Holiday

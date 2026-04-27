@@ -7,6 +7,8 @@
 # - http://hem.passagen.se/farila/midsum.htm
 # - http://www.timeanddate.com/calendar/?country=21
 ---
+region_names:
+  se: "Sweden"
 months:
   0:
   - name: Långfredagen

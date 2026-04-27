@@ -2,6 +2,8 @@
 #
 # Source: https://www.tsx.com/trading/calendars-and-trading-hours/calendar
 ---
+region_names:
+  tsx: "Toronto Stock Exchange"
 months:
   0:
   - name: Good Friday

@@ -6,6 +6,8 @@
 # - http://www.amblondon.um.dk/en/menu/AboutDenmark/PublicHolidaysInDK/PublicHolidaysinDenmark-until2010.htm
 # - http://borger.dk/forside/kirke-og-tro/folkekirken/officielle-helligdage
 ---
+region_names:
+  dk: "Denmark"
 months:
   0:
   - name: Fastelavn

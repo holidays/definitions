@@ -5,6 +5,8 @@
 # Updated: 2015-03-09.
 # Source:  http://www.fedex.com/us/service-guide/holiday-schedule.html
 ---
+region_names:
+  fedex: "FedEx"
 months:
   1:
   - name: New Year's Day

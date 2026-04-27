@@ -23,6 +23,8 @@
 # - https://www.avocatnet.ro/articol_68582/Zile-libere-2025-Cate-dintre-liberele-legale-de-anul-viitor-vor-pica-in-timpul-s%C4%83pt%C4%83manii.html
 # - https://www.mediafax.ro/social/calendarul-sarbatorilor-legale-2025-de-cate-zile-libere-se-bucura-angajatii-din-romania-iata-cand-sunt-urmatoarele-zile-libere-pentru-romani-22630313
 ---
+region_names:
+  ro: "Romania"
 months:
   0:
   - name: Paștele - Vinerea Mare # Good Friday

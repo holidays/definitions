@@ -4,6 +4,8 @@
 # Sources:
 # - https://en.wikipedia.org/wiki/Public_holidays_in_Luxembourg
 ---
+region_names:
+  lu: "Luxembourg"
 months:
   0:
   - name: Ouschterméindeg

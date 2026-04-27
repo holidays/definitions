@@ -1,12 +1,13 @@
 # Holiday Definition Syntax
 
-The definition syntax is a custom format developed over the life of this project. All holidays are defined in these YAML files. These definition files have three main top-level properties:
+The definition syntax is a custom format developed over the life of this project. All holidays are defined in these YAML files. These definition files have four top-level properties:
 
+* `region_names` - human-readable English names for each region defined in this file
 * `months` - this is the meat! All definitions for months 1-12 are defined here
 * `methods` - this contains any custom logic that your definitions require
 * `tests` - this contains the tests for your definitions
 
-The `months` property is required. The two other properties are not strictly required but are almost always used.
+The `months` property is required. The remaining properties are not strictly required but are almost always used.
 
 In fact, if you leave out `tests` your PR will probably not be accepted unless there is a very, very good reason for leaving it out.
 
@@ -46,6 +47,35 @@ We recognize that these definitions can be highly subjective. If you disagree wi
 #### `observed`
 
 There are certain holidays that can be legally observed on different days than they occur. For example, if a holiday falls on a Saturday but it is legally observed on the following Monday then you can define it as `observed` on the Monday. Please see the section below for more details and examples.
+
+## Region Names
+
+Each definition file should include a `region_names` section mapping every region symbol used in that file to its English name. Names use the common English name from [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166) wherever a standard exists. Using the ISO standard as the source of truth means that i18n libraries can translate these names into other languages without requiring this project to maintain its own translations.
+
+```yaml
+region_names:
+  gb: "United Kingdom"
+  gb_eng: "England"
+  gb_wls: "Wales"
+  gb_sct: "Scotland"
+  gb_nir: "Northern Ireland"
+```
+
+### Naming conventions
+
+- **ISO 3166-1 countries** (e.g. `:gb`, `:fr`): use the ISO 3166-1 common English name (e.g. `gb` is `"United Kingdom"`, not `"United Kingdom of Great Britain and Northern Ireland"`)
+- **ISO 3166-2 subdivisions** (e.g. `:gb_eng`, `:de_by`): use the ISO 3166-2 official name, note that ISO 3166-2 names are in the official language of the country, not necessarily English (e.g. `de_by` is `"Bayern"`, not `"Bavaria"`)
+- **Non-geographic regions** (e.g. `:nyse`, `:federalreserve`): use a clear English descriptive name
+- **Gem-specific composite regions** with no ISO counterpart (e.g. `:gb_eaw`): use a reasonable English descriptive name
+
+### YAML quoting note
+
+Region symbols that are YAML reserved words must be quoted. For example, `no` (Norway) is interpreted as a boolean by YAML parsers and must be written as `"no"`:
+
+```yaml
+region_names:
+  "no": "Norway"
+```
 
 ## Months
 

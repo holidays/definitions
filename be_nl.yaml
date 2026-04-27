@@ -4,6 +4,8 @@
 # Sources:
 # - http://en.wikipedia.org/wiki/Public_holidays_in_Belgium
 ---
+region_names:
+  be_nl: "Belgium (Dutch)"
 months:
   0:
   - name: Pasen
