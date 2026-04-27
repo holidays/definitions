@@ -101,7 +101,7 @@ tests:
       date: '2007-05-27'
       regions: ["fr"]
     expect:
-      name: "Pentecôte"
+      holiday: false
   - given:
       date: '2007-07-14'
       regions: ["fr"]
@@ -136,7 +136,7 @@ tests:
       date: '2007-05-28'
       regions: ["fr"]
     expect:
-      holiday: false
+      name: "Lundi de Pentecôte"
   - given:
       date: '2007-04-08'
       regions: ["fr"]
@@ -144,11 +144,11 @@ tests:
     expect:
       name: "Pâques"
   - given:
-      date: '2007-05-28'
+      date: '2007-05-27'
       regions: ["fr"]
       options: ["informal"]
     expect:
-      name: "Lundi de Pentecôte"
+      name: "Pentecôte"
   - given:
       date: '2017-12-26'
       regions: ["fr_a", "fr_m"]
