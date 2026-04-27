@@ -1,5 +1,14 @@
 # Holiday definitions
 
+## 6.1.0
+
+* Introduce `mc` (Monaco) region (thanks to https://github.com/abenhamdine)
+* Fix `fr` Pentecote Sunday to be an official public holiday (thanks to https://github.com/abenhamdine)
+* Fix `gb` Cornwall holidays for [holidays issue-160](https://github.com/holidays/holidays/issues/160)
+* Fix `us_ga` April State Holiday for years post-2020 (thanks to https://github.com/joseph-carino)
+* Add validation to ensure that all regions are represented in `index.yaml`
+* Run downstream smoke tests instead of the full test suite on PR/push
+
 ## 6.0.2
 
 * Fix `METHODS.yml` incorrect method name `to_the_next_weekday_after` to correct name `to_the_weekday_after`
