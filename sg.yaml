@@ -69,7 +69,7 @@ months:
 methods:
   cn_new_lunar_day:
     arguments: year
-    source: |
+    ruby: |
       month_day = case year
         when 1930, 1949, 1987, 2025, 2063, 2082, 2101, 2112, 2131, 2150, 2207, 2245, 2253, 2283, 2321
           [1, 29]
@@ -139,7 +139,7 @@ methods:
       Date.civil(year, month_day[0], month_day[1]) if month_day
   deepavali:
     arguments: year
-    source: |
+    ruby: |
       month_day = case year
         when 2023
           [11, 12]
@@ -153,7 +153,7 @@ methods:
       Date.civil(year, month_day[0], month_day[1]) if month_day
   hari_raya_haji:
     arguments: year
-    source: |
+    ruby: |
       month_day = case year
         when 2023
           [06, 29]
@@ -167,7 +167,7 @@ methods:
       Date.civil(year, month_day[0], month_day[1]) if month_day
   hari_raya_puasa:
     arguments: year
-    source: |
+    ruby: |
       month_day = case year
         when 2023
           [04, 22]
@@ -181,7 +181,7 @@ methods:
       Date.civil(year, month_day[0], month_day[1]) if month_day
   vesak_day:
     arguments: year
-    source: |
+    ruby: |
       month_day = case year
         when 2023
           [06, 02]
