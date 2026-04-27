@@ -212,6 +212,13 @@ months:
     observed: to_weekday_if_weekend(date)
     year_ranges:
       from: 2021
+  - name: Juneteenth National Independence Day # Juneteenth is not a formal holiday in all US states, https://en.wikipedia.org/wiki/Juneteenth
+    regions: [us_hi]
+    mday: 19
+    observed: to_weekday_if_weekend(date)
+    type: informal
+    year_ranges:
+      from: 2021
   - name: Emancipation Day in Texas # fixed
     regions: [us_tx]
     mday: 19
@@ -227,7 +234,7 @@ months:
     regions: [us]
     mday: 4
   - name: Independence Day (Holiday)
-    regions: [us_va]
+    regions: [us_va, us_hi]
     mday: 4
     function: to_weekday_if_weekend(date) # Note: Always if Independence Day don't match
   - name: Pioneer Day # fixed
@@ -734,16 +741,22 @@ tests:
     expect:
       name: "King Kamehameha I Day"
   - given:
-      date: ['2021-06-19']
+      date: ['2021-06-18', '2022-06-20', '2023-06-19']
       regions: ["us"]
       options: ["observed"]
     expect:
-      holiday: false
+      name: "Juneteenth National Independence Day"
   - given:
-      date: ['2021-06-18']
-      regions: ["us"]
+      date: ['2021-06-18', '2022-06-20', '2023-06-19']
+      regions: ["us_hi"]
       options: ["observed"]
     expect:
+      name: false
+  - given:
+      date: ['2021-06-18', '2022-06-20', '2023-06-19']
+      regions: ["us_hi"]
+      options: ["informal"]
+    expect: 
       name: "Juneteenth National Independence Day"
   - given:
       date: ['2017-6-19']
@@ -787,7 +800,7 @@ tests:
       holiday: false
   - given:
       date: ['2020-7-3', '2021-7-5', '2026-7-3']
-      regions: ["us_va"]
+      regions: ["us_va, us_hi"]
     expect:
       name: "Independence Day (Holiday)"
   - given:
