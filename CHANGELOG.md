@@ -1,5 +1,11 @@
 # Holiday definitions
 
+## 6.1.1
+
+* Fix `fr` test cases to match Pentecôte/Lundi de Pentecôte informal swap introduced in 6.1.0
+* Fix `mc` Toussaint missing `observed` modifier and correct observed-day test cases
+* Run contract tests (smoke + generated definition tests) in downstream CI instead of smoke-only
+
 ## 6.1.0
 
 * Introduce `mc` (Monaco) region (thanks to https://github.com/abenhamdine)

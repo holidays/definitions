@@ -44,6 +44,7 @@ months:
   - name: Toussaint
     regions: [mc]
     mday: 1
+    observed: to_monday_if_sunday(date)
   - name: Fête du Prince
     regions: [mc]
     mday: 19
@@ -127,6 +128,7 @@ tests:
   - given:
       date: '2024-12-09'
       regions: ["mc"]
+      options: ["observed"]
     expect:
       name: "Immaculée Conception"
   # 2025: Nov 1 is Saturday.
@@ -139,5 +141,6 @@ tests:
   - given:
       date: '2026-11-02'
       regions: ["mc"]
+      options: ["observed"]
     expect:
       name: "Toussaint"
