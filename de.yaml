@@ -119,7 +119,7 @@ months:
     regions: [de_be]
     mday: 8
     year_ranges:
-      limited: [2020]
+      limited: [2020, 2025]
   6:
   - name: Tag der Deutschen Einheit
     regions: [de]
@@ -426,6 +426,11 @@ tests:
       name: "Internationaler Frauentag"
   - given:
       date: '2020-05-08'
+      regions: ["de_be"]
+    expect:
+      name: "Tag der Befreiung"
+  - given:
+      date: '2025-05-08'
       regions: ["de_be"]
     expect:
       name: "Tag der Befreiung"
