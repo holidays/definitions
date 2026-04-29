@@ -1,0 +1,392 @@
+# Indian holiday definitions for the Ruby Holiday gem.
+#
+# Updated: 2025-08-06 by Chiragasourabh
+# Sources:
+# - https://en.wikipedia.org/wiki/Public_holidays_in_India
+---
+months:
+  0:
+  - name: Good Friday
+    regions: [in]
+    function: easter(year)
+    function_modifier: -2
+  1:
+  - name: New Year's Day
+    regions: [in]
+    mday: 1
+    observed: to_monday_if_weekend(date)
+  - name: Swami Vivekananda Jayanti
+    regions: [in_wb]
+    mday: 12
+  - name: Makar Sankranti / Pongal / Magh Bihu / Uttarayan / Khichdi / Sankranti
+    regions: [in]
+    mday: 14
+  - name: Netaji Subhas Chandra Bose Jayanti
+    regions: [in_od, in_wb, in_tr]
+    mday: 23
+  - name: Republic Day
+    regions: [in]
+    mday: 26
+  2:
+  - name: Chhatrapati Shivaji Maharaj Jayanti
+    regions: [in_mh]
+    mday: 19
+  - name: Arunachal Pradesh Statehood Day
+    regions: [in_ar]
+    mday: 20
+  - name: Mizoram State Day
+    regions: [in_mz]
+    mday: 20
+  3:
+  - name: Bihar Day
+    regions: [in_br]
+    mday: 22
+  4:
+  - name: Odisha Day
+    regions: [in_od]
+    mday: 1
+  - name: Dr. B. R. Ambedkar Jayanti
+    regions: [in]
+    mday: 14
+  - name: Himachal Pradesh Day
+    regions: [in_hp]
+    mday: 15
+  - name: West Bengal Day
+    regions: [in_wb]
+    mday: 15
+  5:
+  - name: Gujarat Day
+    regions: [in_gj]
+    mday: 1
+  - name: Maharashtra Day
+    regions: [in_mh]
+    mday: 1
+  - name: Labour Day
+    regions: [in]
+    mday: 1
+  - name: Rabindranath Tagore Jayanti
+    regions: [in_wb]
+    mday: 7
+  - name: Sikkim State Day
+    regions: [in_sk]
+    mday: 16
+  6:
+  - name: Telangana Formation Day
+    regions: [in_ts]
+    mday: 2
+  7:
+  - name: Martyrs' Day
+    regions: [in_jh]
+    mday: 13
+  8:
+  - name: Independence day
+    regions: [in]
+    mday: 15
+  - name: Puducherry De Jure Transfer Day
+    regions: [in_py]
+    mday: 16
+  - name: Sree Narayana Guru Jayanti
+    regions: [in_kl]
+    mday: 20
+  9:
+  - name: Hyderabad-Karnataka Liberation Day
+    regions: [in_ka]
+    mday: 17
+  10:
+  - name: Mahatma Gandhi Jayanti
+    regions: [in]
+    mday: 2
+  - name: Jammu and Kashmir Association Day
+    regions: [in_jk]
+    mday: 26
+  - name: Sardar Vallabhbhai Patel Jayanti
+    regions: [in_gj]
+    mday: 31
+  11:
+  - name: Andhra Pradesh Day
+    regions: [in_ap]
+    mday: 1
+  - name: Chhattisgarh Rajyotsava
+    regions: [in_cg]
+    mday: 1
+  - name: Haryana Day
+    regions: [in_hr]
+    mday: 1
+  - name: Kannada Rajyothsava
+    regions: [in_ka]
+    mday: 1
+  - name: Kerala Day
+    regions: [in_kl]
+    mday: 1
+  - name: Madhya Pradesh Day
+    regions: [in_mp]
+    mday: 1
+  - name: Punjab Day
+    regions: [in_pb]
+    mday: 1
+  - name: Puducherry Liberation Day
+    regions: [in_py]
+    mday: 1
+  12:
+  - name: Nagaland State Inauguration Day
+    regions: [in_nl]
+    mday: 1
+  - name: Asom Day
+    regions: [in_as]
+    mday: 2
+  - name: Goa Liberation Day
+    regions: [in_ga]
+    mday: 19
+  - name: Christmas Day
+    regions: [in]
+    mday: 25
+
+tests:
+  - given:
+      date: '2025-01-01'
+      regions: ["in"]
+    expect:
+      name: "New Year's Day"
+
+  - given:
+      date: '2025-01-12'
+      regions: ["in_wb"]
+    expect:
+      name: "Swami Vivekananda Jayanti"
+
+  - given:
+      date: '2025-01-14'
+      regions: ["in"]
+    expect:
+      name: "Makar Sankranti / Pongal / Magh Bihu / Uttarayan / Khichdi / Sankranti"
+
+  - given:
+      date: '2025-01-23'
+      regions: ["in_wb"]
+    expect:
+      name: "Netaji Subhas Chandra Bose Jayanti"
+
+  - given:
+      date: '2025-01-26'
+      regions: ["in"]
+    expect:
+      name: "Republic Day"
+
+  - given:
+      date: '2025-02-19'
+      regions: ["in_mh"]
+    expect:
+      name: "Chhatrapati Shivaji Maharaj Jayanti"
+  
+  - given:
+      date: '2025-02-20'
+      regions: ["in_ar"]
+    expect:
+      name: "Arunachal Pradesh Statehood Day"
+
+  - given:
+      date: '2025-02-20'
+      regions: ["in_mz"]
+    expect:
+      name: "Mizoram State Day"
+
+  - given:
+      date: '2025-03-22'
+      regions: ["in_br"]
+    expect:
+      name: "Bihar Day"
+
+  - given:
+      date: '2025-04-01'
+      regions: ["in_od"]
+    expect:
+      name: "Odisha Day"
+
+  - given:
+      date: '2025-04-14'
+      regions: ["in"]
+    expect:
+      name: "Dr. B. R. Ambedkar Jayanti"
+
+  - given:
+      date: '2025-04-15'
+      regions: ["in_hp"]
+    expect:
+      name: "Himachal Pradesh Day"
+
+  - given:
+      date: '2025-04-15'
+      regions: ["in_wb"]
+    expect:
+      name: "West Bengal Day"
+
+  - given:
+      date: '2025-05-01'
+      regions: ["in"]
+    expect:
+      name: "Labour Day"
+
+  - given:
+      date: '2025-05-01'
+      regions: ["in_gj"]
+    expect:
+      name: "Gujarat Day"
+
+  - given:
+      date: '2025-05-01'
+      regions: ["in_mh"]
+    expect:
+      name: "Maharashtra Day"
+
+  - given:
+      date: '2025-05-07'
+      regions: ["in_wb"]
+    expect:
+      name: "Rabindranath Tagore Jayanti"
+
+  - given:
+      date: '2025-05-16'
+      regions: ["in_sk"]
+    expect:
+      name: "Sikkim State Day"
+
+  - given:
+      date: '2025-06-02'
+      regions: ["in_ts"]
+    expect:
+      name: "Telangana Formation Day"
+
+  - given:
+      date: '2025-07-13'
+      regions: ["in_jh"]
+    expect:
+      name: "Martyrs' Day"
+
+  - given:
+      date: '2025-08-15'
+      regions: ["in"]
+    expect:
+      name: "Independence day"
+
+  - given:
+      date: '2025-08-16'
+      regions: ["in_py"]
+    expect:
+      name: "Puducherry De Jure Transfer Day"
+
+  - given:
+      date: '2025-08-20'
+      regions: ["in_kl"]
+    expect:
+      name: "Sree Narayana Guru Jayanti"
+
+  - given:
+      date: '2025-09-17'
+      regions: ["in_ka"]
+    expect:
+      name: "Hyderabad-Karnataka Liberation Day"
+
+  - given:
+      date: '2025-10-02'
+      regions: ["in"]
+    expect:
+      name: "Mahatma Gandhi Jayanti"
+  
+  - given:
+      date: '2025-10-26'
+      regions: ["in_jk"]
+    expect:
+      name: "Jammu and Kashmir Association Day"
+
+  - given:
+      date: '2025-10-31'
+      regions: ["in_gj"]
+    expect:
+      name: "Sardar Vallabhbhai Patel Jayanti"
+
+  - given:
+      date: '2025-11-01'
+      regions: ["in_ap"]
+    expect:
+      name: "Andhra Pradesh Day"
+
+  - given:
+      date: '2025-11-01'
+      regions: ["in_cg"]
+    expect:
+      name: "Chhattisgarh Rajyotsava"
+
+  - given:
+      date: '2025-11-01'
+      regions: ["in_hr"]
+    expect:
+      name: "Haryana Day"
+
+  - given:
+      date: '2025-11-01'
+      regions: ["in_ka"]
+    expect:
+      name: "Kannada Rajyothsava"
+
+  - given:
+      date: '2025-11-01'
+      regions: ["in_kl"]
+    expect:
+      name: "Kerala Day"
+
+  - given:
+      date: '2025-11-01'
+      regions: ["in_mp"]
+    expect:
+      name: "Madhya Pradesh Day"
+
+  - given:
+      date: '2025-11-01'
+      regions: ["in_pb"]
+    expect:
+      name: "Punjab Day"
+
+  - given:
+      date: '2025-11-01'
+      regions: ["in_py"]
+    expect:
+      name: "Puducherry Liberation Day"
+
+  - given:
+      date: '2025-12-01'
+      regions: ["in_nl"]
+    expect:
+      name: "Nagaland State Inauguration Day"
+
+  - given:
+      date: '2025-12-02'
+      regions: ["in_as"]
+    expect:
+      name: "Asom Day"
+
+  - given:
+      date: '2025-12-19'
+      regions: ["in_ga"]
+    expect:
+      name: "Goa Liberation Day"
+
+  - given:
+      date: '2025-12-25'
+      regions: ["in"]
+    expect:
+      name: "Christmas Day"
+
+  # Good Friday — dynamic, calculated from Easter
+  - given:
+      date: '2025-04-18'
+      regions: ["in"]
+    expect:
+      name: "Good Friday"
+
+  # Informal — First and Third Saturday in January 2025 are Jan 04, Jan 18
+  - given:
+      date: ['2025-01-04', '2025-01-18']
+      regions: ["in"]
+      options: ["informal"]
+    expect:
+      holiday: false

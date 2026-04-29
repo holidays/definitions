@@ -216,6 +216,7 @@ months:
 
 methods:
   afl_grand_final:
+    # https://business.vic.gov.au/business-information/public-holidays/victorian-public-holidays-2024
     arguments: year
     ruby: |
       case year
@@ -225,12 +226,16 @@ methods:
         Date.civil(2016, 9, 30)
       when 2017
         Date.civil(2017, 9, 29)
-      when 2018
-        Date.civil(2018, 9, 28)
-      when 2019
-        Date.civil(2019,9, 27)
       when 2020
         Date.civil(2020, 10, 23)
+      when 2022
+        Date.civil(2022, 9, 23)
+      else
+        # Friday before AFL Grand Final typically falls on the last Friday in September
+        # Override when falls on a different date
+        last_day = Date.civil(year, 9, -1)
+        last_friday = last_day - ((last_day.wday - 5) % 7)
+        last_friday
       end
   qld_queens_bday_october:
     # http://www.justice.qld.gov.au/fair-and-safe-work/industrial-relations/public-holidays/dates

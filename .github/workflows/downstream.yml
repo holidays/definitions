@@ -1,0 +1,43 @@
+name: Downstream Integration Tests
+on:
+  push:
+    branches: ["master"]
+  pull_request:
+    branches: ["master"]
+permissions:
+  contents: read
+jobs:
+  downstream-ruby:
+    name: Ruby (holidays)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout definitions
+        uses: actions/checkout@v4
+        with:
+          path: definitions-src
+
+      - name: Clone holidays repository
+        run: git clone https://github.com/holidays/holidays.git holidays
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 'ruby'
+          working-directory: holidays
+          bundler-cache: true
+
+      - name: Install definitions into holidays
+        working-directory: holidays
+        run: |
+          git rm -f definitions || true
+          rm -rf .git/modules/definitions
+          git config -f .git/config --remove-section submodule.definitions 2>/dev/null || true
+          cp -r ../definitions-src definitions
+
+      - name: Generate definitions
+        working-directory: holidays
+        run: make generate
+
+      - name: Run contract tests
+        working-directory: holidays
+        run: make test-contract

@@ -1,5 +1,51 @@
 # Holiday definitions
 
+## 6.1.1
+
+* Fix `fr` test cases to match Pentecôte/Lundi de Pentecôte informal swap introduced in 6.1.0
+* Fix `mc` Toussaint missing `observed` modifier and correct observed-day test cases
+* Run contract tests (smoke + generated definition tests) in downstream CI instead of smoke-only
+
+## 6.1.0
+
+* Introduce `mc` (Monaco) region (thanks to https://github.com/abenhamdine)
+* Fix `fr` Pentecote Sunday to be an official public holiday (thanks to https://github.com/abenhamdine)
+* Fix `gb` Cornwall holidays for [holidays issue-160](https://github.com/holidays/holidays/issues/160)
+* Fix `us_ga` April State Holiday for years post-2020 (thanks to https://github.com/joseph-carino)
+* Add validation to ensure that all regions are represented in `index.yaml`
+* Run downstream smoke tests instead of the full test suite on PR/push
+
+## 6.0.2
+
+* Fix `METHODS.yml` incorrect method name `to_the_next_weekday_after` to correct name `to_the_weekday_after`
+* Update `SYNTAX.md` pre-existing methods list to document all methods defined in `METHODS.yml`
+
+## 6.0.1
+
+* Fix `bg` Easter Monday name to be distinct so corresponding holidays resolve correctly (thanks to https://github.com/nttzamos)
+* Fix `cy` configuration issue with missing month entry causing incorrect holiday structure (thanks to https://github.com/nttzamos)
+
+## 6.0.0
+
+* Drop support for EOL Ruby versions; minimum supported version is now Ruby 3.2 (testing 3.2, 3.3, 3.4, 4.0, ruby-head)
+* Add downstream integration test - run `holidays` Ruby project against definitions on every PR/push to catch downstream breakage early
+* Introduce automated releases - bumping `VERSION.txt` and adding a matching `CHANGELOG.md` entry is now all that is required to trigger a new GitHub release on merge to `master`
+* Update `au` AFL Grand Final public holiday dates through 2024 (thanks to https://github.com/gregoryfm)
+
+## 5.9.0
+
+* Fix `us` holidays for AL, PA, NE, and LA (thanks to https://github.com/philipwritescode)
+* Update Friday before the AFL Grand Final public holiday (thanks to https://github.com/gregoryfm)
+* Update `ro` - Add 'Boboteaza'
+* Add Martin Luther King Jr. Day to `ups`
+* Add 2028 one-time Berlin holiday to `de_be` (thanks to https://github.com/mar1u50)
+* Introduce `cy` (Cyprus) region (thanks to https://github.com/nttzamos)
+* Use Gregorian calendar for Bulgaria `bg` (thanks to https://github.com/nttzamos)
+* Introduce `in` (India) region (thanks to https://github.com/Chiragasourabh)
+* Make Christmas Eve a public holiday in `pl` (thanks to https://github.com/mareklipka)
+* Add October 4 as new Italian national holiday to `it` (thanks to https://github.com/alepore)
+* Update Slovak holiday definitions and dates for `sk` (thanks to https://github.com/MichalRemis)
+
 ## 5.8.0
 
 * FIX: tasmania / nsw / vic do not observe on Monday

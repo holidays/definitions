@@ -1,0 +1,165 @@
+# Cypriot holiday definitions for the Ruby Holiday gem.
+#
+# Created: 2025-07-20.
+# Sources:
+    # https://el.wikipedia.org/wiki/%CE%94%CE%B7%CE%BC%CF%8C%CF%83%CE%B9%CE%B5%CF%82_%CE%B1%CF%81%CE%B3%CE%AF%CE%B5%CF%82_%CF%83%CF%84%CE%B7%CE%BD_%CE%9A%CF%8D%CF%80%CF%81%CE%BF
+    # https://www.centralbank.cy/the-bank/working-hours-bank-holidays
+---
+months:
+  0:
+  - name: Μεγάλη Παρασκευή
+    regions: [cy]
+    function: orthodox_easter(year)
+    function_modifier: -2
+  - name: Μεγάλο Σάββατο
+    regions: [cy]
+    function: orthodox_easter(year)
+    function_modifier: -1
+  - name: Κυριακή του Πάσχα
+    regions: [cy]
+    function: orthodox_easter(year)
+  - name: Δευτέρα του Πάσχα
+    regions: [cy]
+    function: orthodox_easter(year)
+    function_modifier: 1
+  - name: Τρίτη του Πάσχα
+    regions: [cy]
+    function: orthodox_easter(year)
+    function_modifier: 2
+  - name: Καθαρά Δευτέρα
+    regions: [cy]
+    function: orthodox_easter(year)
+    function_modifier: -48
+  - name: Αγίου Πνεύματος
+    regions: [cy]
+    function: orthodox_easter(year)
+    function_modifier: 50
+  1:
+  - name: Πρωτοχρονιά
+    regions: [cy]
+    mday: 1
+  - name: Θεοφάνεια
+    regions: [cy]
+    mday: 6
+  3:
+  - name: Επέτειος της Επανάστασης του 1821
+    regions: [cy]
+    mday: 25
+  4:
+  - name: Εθνική Ημέρα Κύπρου
+    regions: [cy]
+    mday: 1
+  5:
+  - name: Πρωτομαγιά
+    regions: [cy]
+    mday: 1
+  8:
+  - name: Κοίμηση της Θεοτόκου
+    regions: [cy]
+    mday: 15
+  10:
+  - name: Ημέρα Ανεξαρτησίας της Κύπρου
+    regions: [cy]
+    mday: 1
+  - name: Επέτειος του Όχι
+    regions: [cy]
+    mday: 28
+  12:
+  - name: Χριστούγεννα
+    regions: [cy]
+    mday: 25
+  - name: Δεύτερη ημέρα των Χριστουγέννων
+    regions: [cy]
+    mday: 26
+
+tests:
+  - given:
+      date: '2011-01-01'
+      regions: ["cy"]
+      options: ["informal"]
+    expect:
+      name: "Πρωτοχρονιά"
+  - given:
+      date: '2011-01-06'
+      regions: ["cy"]
+      options: ["informal"]
+    expect:
+      name: "Θεοφάνεια"
+  - given:
+      date: '2011-04-22'
+      regions: ["cy"]
+      options: ["informal"]
+    expect:
+      name: "Μεγάλη Παρασκευή"
+  - given:
+      date: '1970-04-25'
+      regions: ["cy"]
+      options: ["informal"]
+    expect:
+      name: "Μεγάλο Σάββατο"
+  - given:
+      date: '1985-04-14'
+      regions: ["cy"]
+      options: ["informal"]
+    expect:
+      name: "Κυριακή του Πάσχα"
+  - given:
+      date: '2011-04-24'
+      regions: ["cy"]
+      options: ["informal"]
+    expect:
+      name: "Κυριακή του Πάσχα"
+  - given:
+      date: '2027-05-02'
+      regions: ["cy"]
+      options: ["informal"]
+    expect:
+      name: "Κυριακή του Πάσχα"
+  - given:
+      date: '2046-04-30'
+      regions: ["cy"]
+      options: ["informal"]
+    expect:
+      name: "Δευτέρα του Πάσχα"
+  - given:
+      date: '2011-05-01'
+      regions: ["cy"]
+      options: ["informal"]
+    expect:
+      name: "Πρωτομαγιά"
+  - given:
+      date: '2011-06-13'
+      regions: ["cy"]
+      options: ["informal"]
+    expect:
+      name: "Αγίου Πνεύματος"
+  - given:
+      date: '2012-06-04'
+      regions: ["cy"]
+      options: ["informal"]
+    expect:
+      name: "Αγίου Πνεύματος"
+  - given:
+      date: '2011-03-07'
+      regions: ["cy"]
+      options: ["informal"]
+    expect:
+      name: "Καθαρά Δευτέρα"
+  - given:
+      date: '2012-02-27'
+      regions: ["cy"]
+      options: ["informal"]
+    expect:
+      name: "Καθαρά Δευτέρα"
+  - given:
+      date: '2011-12-25'
+      regions: ["cy"]
+      options: ["informal"]
+    expect:
+      name: "Χριστούγεννα"
+  - given:
+      date: '2011-12-26'
+      regions: ["cy"]
+      options: ["informal"]
+    expect:
+      name: "Δεύτερη ημέρα των Χριστουγέννων"

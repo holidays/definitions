@@ -27,7 +27,7 @@ months:
     regions: [gb]
     function: easter(year)
   - name: Easter Monday
-    regions: [gb_eng, gb_wls, gb_eaw, gb_nir, je, gb_jsy, gg, gb_gsy]
+    regions: [gb_eng, gb_wls, gb_eaw, gb_nir, gb_con, je, gb_jsy, gg, gb_gsy]
     function: easter(year)
     function_modifier: 1
   1:
@@ -115,7 +115,7 @@ months:
     week: 1
     wday: 1
   - name: Bank Holiday
-    regions: [gb_eng, gb_wls, gb_eaw, gb_nir, je, gb_jsy, gg, gb_gsy]
+    regions: [gb_eng, gb_wls, gb_eaw, gb_nir, gb_con, je, gb_jsy, gg, gb_gsy]
     week: -1
     wday: 1
   9:
@@ -543,6 +543,16 @@ tests:
       regions: ["gb"]
     expect:
       name: "Bank Holiday for the Coronation of King Charles III"
+  - given:
+      date: '2016-03-28'
+      regions: ["gb_con"]
+    expect:
+      name: "Easter Monday"
+  - given:
+      date: '2016-08-29'
+      regions: ["gb_con"]
+    expect:
+      name: "Bank Holiday"
   - given:
       date: '2024-05-08'
       regions: ['gb']

@@ -20,6 +20,9 @@ module Definitions
     def call
       path = File.expand_path(File.dirname(__FILE__)) + @path
 
+      index_file = YAML.load(File.open(path + 'index.yaml'))
+      indexed_files = index_file['defs'].values.flatten.uniq
+
       definition_count = 0
 
       Dir.foreach(path) do |item|
@@ -30,6 +33,12 @@ module Definitions
         next if item == 'index.yaml'
 
         definition_count += 1
+
+        unless indexed_files.include?(item)
+          puts "Failed! Definition file '#{item}' is not listed in index.yaml."
+          puts "Please add '#{item}' to the appropriate region entry in index.yaml."
+          exit 1
+        end
 
         begin
           definition_file = YAML.load(File.open(target))
