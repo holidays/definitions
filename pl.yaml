@@ -61,11 +61,15 @@ months:
     mday: 1
   - name: Objawienie Pańskie (święto Trzech Króli)
     regions: [pl]
-    function: pl_trzech_kroli(year)
+    mday: 6
+    year_ranges:
+      from: 2011
   - name: Objawienie Pańskie (święto Trzech Króli)
     regions: [pl]
-    function: pl_trzech_kroli_informal(year)
+    mday: 6
     type: informal
+    year_ranges:
+      until: 2010
   - name: Dzień Babci
     regions: [pl]
     mday: 21
@@ -179,18 +183,6 @@ months:
     regions: [pl]
     mday: 31
     type: informal
-
-methods:
-  pl_trzech_kroli:
-    # Poland: January 6 is holiday since 2011
-    arguments: year
-    ruby: |
-      year >= 2011 ? 6 : nil
-  pl_trzech_kroli_informal:
-    # Poland: January 6 wasn't holiday before 2011
-    arguments: year
-    ruby: |
-      year < 2011 ? 6 : nil
 
 tests:
   - given:
@@ -467,6 +459,12 @@ tests:
   - given:
       date: '2011-01-06'
       regions: ["pl"]
+    expect:
+      name: "Objawienie Pańskie (święto Trzech Króli)"
+  - given:
+      date: '2011-01-06'
+      regions: ["pl"]
+      options: ["informal"]
     expect:
       name: "Objawienie Pańskie (święto Trzech Króli)"
   - given:
