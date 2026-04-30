@@ -37,7 +37,7 @@ Non-standard regions (e.g. `ecbtarget`, `federalreserve`, etc) must be all one w
 
 #### `formal`/`informal`
 
-We consider `formal` dates as government-defined holidays. These could be the kinds of holidays where everyone stays home from work or perhaps are bank holidays but it is *not required* for a holiday to have these features to be considered formal.
+We consider `formal` dates as government-defined holidays, what are commonly called **statutory** holidays. These could be the kinds of holidays where everyone stays home from work or perhaps are bank holidays but it is *not required* for a holiday to have these features to be considered formal.
 
 `Informal` holidays are holidays that everyone knows about but aren't enshrined in law. For example, Valentine's Day in the US is considered an informal holiday.
 
