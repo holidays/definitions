@@ -1,5 +1,12 @@
 # Holiday definitions
 
+## 6.1.2
+
+* Fix `nz` Canterbury Anniversary Day to the second Friday after the first Tuesday of November for [holidays issue-285](https://github.com/holidays/holidays/issues/285)
+* Fix `lu` Whit Monday to fall on Monday (Easter Sunday + 50 days) instead of Sunday for [holidays issue-289](https://github.com/holidays/holidays/issues/289)
+* Replace nil-returning year-gate functions with `year_ranges`
+* Clarify that formal holidays are what is commonly called statutory holidays
+
 ## 6.1.1
 
 * Fix `fr` test cases to match Pentecôte/Lundi de Pentecôte informal swap introduced in 6.1.0
