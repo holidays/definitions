@@ -1,12 +1,20 @@
 # Singapore holiday definitions for the Holidays gem!
 
-# Days not included in the definitions (yet):
-# Vesak Day (falls on the first full moon in May)
-# Lunar New Year (falls on the first day of the Lunar Calendar)
-# Hari Raya Puasa and Hari Raya Haji (based on moon sightings, Islamic Calendar)
-# Deepavali (15th Day of September or October, based on the Hindu Calendar)
+# Singapore's movable holidays:
+#
+# * Chinese New Year (and its second day) follows the Chinese lunar calendar and
+#   is computed with the shared lunar_to_solar method (1st and 2nd days of the
+#   1st lunar month), so it is available for every year the lunar tables support.
+# * Vesak Day, Hari Raya Puasa, Hari Raya Haji and Deepavali follow the Buddhist,
+#   Islamic and Hindu calendars and are not reliably computable. They are listed
+#   explicitly from the dates officially gazetted by the Ministry of Manpower and
+#   currently cover 2017 through 2026; add new years here as they are gazetted.
+#
+# When any of these holidays falls on a Sunday the following Monday is a holiday,
+# applied via to_monday_if_sunday(date).
 
 # Source:
+# Ministry of Manpower public holiday datasets, https://data.gov.sg (collection 691)
 # http://publicholidays.sg/
 
 ---
@@ -23,6 +31,16 @@ months:
     regions: [sg]
     mday: 1
     observed: to_weekday_if_weekend(date)
+  - name: Chinese New Year
+    regions: [sg]
+    function: lunar_to_solar(year, month, day, region)
+    mday: 1
+    observed: to_monday_if_sunday(date)
+  - name: Chinese New Year
+    regions: [sg]
+    function: lunar_to_solar(year, month, day, region)
+    mday: 2
+    observed: to_monday_if_sunday(date)
   2:
   - name: Valentine's Day
     regions: [sg]
@@ -32,15 +50,262 @@ months:
     regions: [sg]
     mday: 15
     type: informal
+  3:
+  - name: Hari Raya Puasa
+    regions: [sg]
+    mday: 31
+    year_ranges:
+      limited: [2025]
+    observed: to_monday_if_sunday(date)
+  - name: Hari Raya Puasa
+    regions: [sg]
+    mday: 21
+    year_ranges:
+      limited: [2026]
+    observed: to_monday_if_sunday(date)
+  4:
+  - name: Hari Raya Puasa
+    regions: [sg]
+    mday: 22
+    year_ranges:
+      limited: [2023]
+    observed: to_monday_if_sunday(date)
+  - name: Hari Raya Puasa
+    regions: [sg]
+    mday: 10
+    year_ranges:
+      limited: [2024]
+    observed: to_monday_if_sunday(date)
   5:
   - name: Labour Day
     regions: [sg]
     mday: 1
+  - name: Vesak Day
+    regions: [sg]
+    mday: 10
+    year_ranges:
+      limited: [2017]
+    observed: to_monday_if_sunday(date)
+  - name: Vesak Day
+    regions: [sg]
+    mday: 29
+    year_ranges:
+      limited: [2018]
+    observed: to_monday_if_sunday(date)
+  - name: Vesak Day
+    regions: [sg]
+    mday: 19
+    year_ranges:
+      limited: [2019]
+    observed: to_monday_if_sunday(date)
+  - name: Vesak Day
+    regions: [sg]
+    mday: 7
+    year_ranges:
+      limited: [2020]
+    observed: to_monday_if_sunday(date)
+  - name: Vesak Day
+    regions: [sg]
+    mday: 26
+    year_ranges:
+      limited: [2021]
+    observed: to_monday_if_sunday(date)
+  - name: Vesak Day
+    regions: [sg]
+    mday: 15
+    year_ranges:
+      limited: [2022]
+    observed: to_monday_if_sunday(date)
+  - name: Vesak Day
+    regions: [sg]
+    mday: 22
+    year_ranges:
+      limited: [2024]
+    observed: to_monday_if_sunday(date)
+  - name: Vesak Day
+    regions: [sg]
+    mday: 12
+    year_ranges:
+      limited: [2025]
+    observed: to_monday_if_sunday(date)
+  - name: Vesak Day
+    regions: [sg]
+    mday: 31
+    year_ranges:
+      limited: [2026]
+    observed: to_monday_if_sunday(date)
+  - name: Hari Raya Puasa
+    regions: [sg]
+    mday: 24
+    year_ranges:
+      limited: [2020]
+    observed: to_monday_if_sunday(date)
+  - name: Hari Raya Puasa
+    regions: [sg]
+    mday: 13
+    year_ranges:
+      limited: [2021]
+    observed: to_monday_if_sunday(date)
+  - name: Hari Raya Puasa
+    regions: [sg]
+    mday: 3
+    year_ranges:
+      limited: [2022]
+    observed: to_monday_if_sunday(date)
+  - name: Hari Raya Haji
+    regions: [sg]
+    mday: 27
+    year_ranges:
+      limited: [2026]
+    observed: to_monday_if_sunday(date)
+  6:
+  - name: Vesak Day
+    regions: [sg]
+    mday: 2
+    year_ranges:
+      limited: [2023]
+    observed: to_monday_if_sunday(date)
+  - name: Hari Raya Puasa
+    regions: [sg]
+    mday: 25
+    year_ranges:
+      limited: [2017]
+    observed: to_monday_if_sunday(date)
+  - name: Hari Raya Puasa
+    regions: [sg]
+    mday: 15
+    year_ranges:
+      limited: [2018]
+    observed: to_monday_if_sunday(date)
+  - name: Hari Raya Puasa
+    regions: [sg]
+    mday: 5
+    year_ranges:
+      limited: [2019]
+    observed: to_monday_if_sunday(date)
+  - name: Hari Raya Haji
+    regions: [sg]
+    mday: 29
+    year_ranges:
+      limited: [2023]
+    observed: to_monday_if_sunday(date)
+  - name: Hari Raya Haji
+    regions: [sg]
+    mday: 17
+    year_ranges:
+      limited: [2024]
+    observed: to_monday_if_sunday(date)
+  - name: Hari Raya Haji
+    regions: [sg]
+    mday: 7
+    year_ranges:
+      limited: [2025]
+    observed: to_monday_if_sunday(date)
+  7:
+  - name: Hari Raya Haji
+    regions: [sg]
+    mday: 31
+    year_ranges:
+      limited: [2020]
+    observed: to_monday_if_sunday(date)
+  - name: Hari Raya Haji
+    regions: [sg]
+    mday: 20
+    year_ranges:
+      limited: [2021]
+    observed: to_monday_if_sunday(date)
+  - name: Hari Raya Haji
+    regions: [sg]
+    mday: 10
+    year_ranges:
+      limited: [2022]
+    observed: to_monday_if_sunday(date)
   8:
   - name: National Day
     regions: [sg]
     mday: 9
     observed: to_weekday_if_weekend(date)
+  - name: Hari Raya Haji
+    regions: [sg]
+    mday: 22
+    year_ranges:
+      limited: [2018]
+    observed: to_monday_if_sunday(date)
+  - name: Hari Raya Haji
+    regions: [sg]
+    mday: 11
+    year_ranges:
+      limited: [2019]
+    observed: to_monday_if_sunday(date)
+  9:
+  - name: Hari Raya Haji
+    regions: [sg]
+    mday: 1
+    year_ranges:
+      limited: [2017]
+    observed: to_monday_if_sunday(date)
+  10:
+  - name: Deepavali
+    regions: [sg]
+    mday: 18
+    year_ranges:
+      limited: [2017]
+    observed: to_monday_if_sunday(date)
+  - name: Deepavali
+    regions: [sg]
+    mday: 27
+    year_ranges:
+      limited: [2019]
+    observed: to_monday_if_sunday(date)
+  - name: Deepavali
+    regions: [sg]
+    mday: 24
+    year_ranges:
+      limited: [2022]
+    observed: to_monday_if_sunday(date)
+  - name: Deepavali
+    regions: [sg]
+    mday: 31
+    year_ranges:
+      limited: [2024]
+    observed: to_monday_if_sunday(date)
+  - name: Deepavali
+    regions: [sg]
+    mday: 20
+    year_ranges:
+      limited: [2025]
+    observed: to_monday_if_sunday(date)
+  11:
+  - name: Deepavali
+    regions: [sg]
+    mday: 6
+    year_ranges:
+      limited: [2018]
+    observed: to_monday_if_sunday(date)
+  - name: Deepavali
+    regions: [sg]
+    mday: 14
+    year_ranges:
+      limited: [2020]
+    observed: to_monday_if_sunday(date)
+  - name: Deepavali
+    regions: [sg]
+    mday: 4
+    year_ranges:
+      limited: [2021]
+    observed: to_monday_if_sunday(date)
+  - name: Deepavali
+    regions: [sg]
+    mday: 12
+    year_ranges:
+      limited: [2023]
+    observed: to_monday_if_sunday(date)
+  - name: Deepavali
+    regions: [sg]
+    mday: 8
+    year_ranges:
+      limited: [2026]
+    observed: to_monday_if_sunday(date)
   12:
   - name: Christmas Day
     regions: [sg]
@@ -90,3 +355,84 @@ tests:
       options: ["informal"]
     expect:
       name: "Christmas Day"
+  # Chinese New Year is computed from the lunar calendar (both days), so it
+  # resolves well beyond the gazetted range.
+  - given:
+      date: '2019-02-05'
+      regions: ["sg"]
+    expect:
+      name: "Chinese New Year"
+  - given:
+      date: '2019-02-06'
+      regions: ["sg"]
+    expect:
+      name: "Chinese New Year"
+  - given:
+      date: '2026-02-17'
+      regions: ["sg"]
+    expect:
+      name: "Chinese New Year"
+  - given:
+      date: '2030-02-03'
+      regions: ["sg"]
+    expect:
+      name: "Chinese New Year"
+  # Issue #351: the three 2019 festival dates that fell on a Sunday
+  - given:
+      date: '2019-05-19'
+      regions: ["sg"]
+    expect:
+      name: "Vesak Day"
+  - given:
+      date: '2019-08-11'
+      regions: ["sg"]
+    expect:
+      name: "Hari Raya Haji"
+  - given:
+      date: '2019-10-27'
+      regions: ["sg"]
+    expect:
+      name: "Deepavali"
+  # ...and their Monday holidays-in-lieu
+  - given:
+      date: '2019-05-20'
+      regions: ["sg"]
+      options: ["observed"]
+    expect:
+      name: "Vesak Day"
+  - given:
+      date: '2019-08-12'
+      regions: ["sg"]
+      options: ["observed"]
+    expect:
+      name: "Hari Raya Haji"
+  - given:
+      date: '2019-10-28'
+      regions: ["sg"]
+      options: ["observed"]
+    expect:
+      name: "Deepavali"
+  - given:
+      date: '2019-06-05'
+      regions: ["sg"]
+    expect:
+      name: "Hari Raya Puasa"
+  # Vesak that drifts into June (would be missed if computed via the lunar
+  # month section, so it is listed explicitly)
+  - given:
+      date: '2023-06-02'
+      regions: ["sg"]
+    expect:
+      name: "Vesak Day"
+  - given:
+      date: '2025-05-12'
+      regions: ["sg"]
+    expect:
+      name: "Vesak Day"
+  # Deepavali (and Hari Raya/Vesak) are gazette-only, so they are not returned
+  # beyond the officially announced range.
+  - given:
+      date: '2030-10-27'
+      regions: ["sg"]
+    expect:
+      holiday: false
