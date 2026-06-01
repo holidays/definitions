@@ -212,6 +212,7 @@ months:
   - name: Independence Day # fixed
     regions: [us]
     mday: 4
+    observed: to_weekday_if_weekend(date)
   - name: Independence Day (Holiday)
     regions: [us_va]
     mday: 4
@@ -219,6 +220,7 @@ months:
   - name: Pioneer Day # fixed
     regions: [us_ut]
     mday: 24
+    observed: to_weekday_if_weekend(date)
   8:
   - name: Victory Day # Second Monday in August
     regions: [us_ri]
@@ -740,8 +742,20 @@ tests:
     expect:
       name: "Independence Day (Holiday)"
   - given:
+      date: ['2020-7-3', '2021-7-5', '2026-7-3']
+      regions: ["us"]
+      options: ["observed"]
+    expect:
+      name: "Independence Day"
+  - given:
       date: ['2020-7-24']
       regions: ["us_ut"]
+    expect:
+      name: "Pioneer Day"
+  - given:
+      date: ['2021-7-23', '2022-7-25']
+      regions: ["us_ut"]
+      options: ["observed"]
     expect:
       name: "Pioneer Day"
 
