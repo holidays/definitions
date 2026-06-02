@@ -33,6 +33,14 @@ months:
     regions: [nz2_calendar_dates]
     week: 1
     wday: 1
+    year_ranges:
+      - before: 2022
+  - name: King's Birthday
+    regions: [nz2_calendar_dates]
+    week: 1
+    wday: 1
+    year_ranges:
+      - after: 2023
   - name: Matariki Holiday
     regions: [nz2_calendar_dates]
     function: matariki_holiday(year)

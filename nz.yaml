@@ -66,6 +66,14 @@ months:
     regions: [nz]
     week: 1
     wday: 1
+    year_ranges:
+      - before: 2022
+  - name: King's Birthday
+    regions: [nz]
+    week: 1
+    wday: 1
+    year_ranges:
+      - after: 2023
   - name: Matariki Holiday
     regions: [nz]
     function: matariki_holiday(year)
@@ -258,6 +266,16 @@ tests:
       options: ["observed"]
     expect:
       name: "Taranaki Anniversary Day"
+  - given:
+      date: ['2021-06-07', '2022-06-06']
+      regions: ["nz"]
+    expect:
+      name: "Queen's Birthday"
+  - given:
+      date: ['2023-06-05', '2024-06-03']
+      regions: ["nz"]
+    expect:
+      name: "King's Birthday"
 
 methods:
   closest_monday:
