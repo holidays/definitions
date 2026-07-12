@@ -77,11 +77,7 @@ methods:
     arguments: year
     ruby: |
       date = Date.new(year, 8, -1)
-
-      if date.wday != 1
-        date -= date.wday - 1
-      end
-
+      date -= (date.wday - 1) % 7
       date
 
 tests:
@@ -112,6 +108,11 @@ tests:
       name: "Ninoy Aquino Day"
   - given:
       date: '2015-08-31'
+      regions: ["ph"]
+    expect:
+      name: "National Heroes Day"
+  - given:
+      date: '2025-08-25'
       regions: ["ph"]
     expect:
       name: "National Heroes Day"
