@@ -7,6 +7,8 @@
 # When New Year's Day, May 1st, Assumption, All Saints' Day, Prince's Day, or Christmas
 # fall on a Sunday, the following Monday is a holiday.
 ---
+region_names:
+  mc: "Monaco"
 months:
   0:
   - name: Lundi de Pâques
