@@ -1,5 +1,11 @@
 # Holiday definitions
 
+## 8.0.1
+
+* Fix `ph` National Heroes Day when August 31st falls on a Sunday for [definitions issue-345](https://github.com/holidays/definitions/issues/345)
+* Fix `gb` Christmas and Boxing Day observed dates when Christmas falls on a Sunday for [holidays issue-396](https://github.com/holidays/holidays/issues/396)
+* Add required `region_names` to `mc` to satisfy the ISO 3166 validation introduced in 8.0.0
+
 ## 8.0.0
 
 * Rename Vietnam region code from `vi` to `vn` to follow ISO 3166-1 alpha-2 (`VI` is US Virgin Islands, `VN` is Vietnam) for [definitions issue-177](https://github.com/holidays/definitions/issues/177)
