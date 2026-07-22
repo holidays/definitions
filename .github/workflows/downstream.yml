@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout definitions
-        uses: actions/checkout@v4
+        uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd #v5.0.1
         with:
           path: definitions-src
 
@@ -20,7 +20,7 @@ jobs:
         run: git clone https://github.com/holidays/holidays.git holidays
 
       - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
+        uses: ruby/setup-ruby@c4e5b1316158f92e3d49443a9d58b31d25ac0f8f #v1.306.0
         with:
           ruby-version: 'ruby'
           working-directory: holidays
