@@ -605,3 +605,246 @@ tests:
       regions: ["gb"]
     expect:
       name: "Bank Holiday for the Coronation of King Charles III"
+  # Winter substitute days verified against https://www.gov.uk/bank-holidays.json
+  # Covers New Year's Day, 2nd January, Christmas Day and Boxing Day across
+  # gb_eng, gb_nir and gb_sct for 2021, 2023, 2027 and 2028.
+  - given:
+      date: '2021-01-01'
+      regions: ["gb_eng"]
+      options: ["observed"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: '2021-01-01'
+      regions: ["gb_nir"]
+      options: ["observed"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: '2021-01-01'
+      regions: ["gb_sct"]
+      options: ["observed"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: '2021-01-04'
+      regions: ["gb_sct"]
+      options: ["observed"]
+    expect:
+      name: "2nd January"
+  - given:
+      date: '2021-12-27'
+      regions: ["gb_eng"]
+      options: ["observed"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: '2021-12-27'
+      regions: ["gb_nir"]
+      options: ["observed"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: '2021-12-27'
+      regions: ["gb_sct"]
+      options: ["observed"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: '2021-12-28'
+      regions: ["gb_eng"]
+      options: ["observed"]
+    expect:
+      name: "Boxing Day"
+  - given:
+      date: '2021-12-28'
+      regions: ["gb_nir"]
+      options: ["observed"]
+    expect:
+      name: "Boxing Day"
+  - given:
+      date: '2021-12-28'
+      regions: ["gb_sct"]
+      options: ["observed"]
+    expect:
+      name: "Boxing Day"
+  - given:
+      date: '2023-01-02'
+      regions: ["gb_eng"]
+      options: ["observed"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: '2023-01-02'
+      regions: ["gb_nir"]
+      options: ["observed"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: '2023-01-02'
+      regions: ["gb_sct"]
+      options: ["observed"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: '2023-01-03'
+      regions: ["gb_sct"]
+      options: ["observed"]
+    expect:
+      name: "2nd January"
+  - given:
+      date: '2023-12-25'
+      regions: ["gb_eng"]
+      options: ["observed"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: '2023-12-25'
+      regions: ["gb_nir"]
+      options: ["observed"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: '2023-12-25'
+      regions: ["gb_sct"]
+      options: ["observed"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: '2023-12-26'
+      regions: ["gb_eng"]
+      options: ["observed"]
+    expect:
+      name: "Boxing Day"
+  - given:
+      date: '2023-12-26'
+      regions: ["gb_nir"]
+      options: ["observed"]
+    expect:
+      name: "Boxing Day"
+  - given:
+      date: '2023-12-26'
+      regions: ["gb_sct"]
+      options: ["observed"]
+    expect:
+      name: "Boxing Day"
+  - given:
+      date: '2027-01-01'
+      regions: ["gb_eng"]
+      options: ["observed"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: '2027-01-01'
+      regions: ["gb_nir"]
+      options: ["observed"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: '2027-01-01'
+      regions: ["gb_sct"]
+      options: ["observed"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: '2027-01-04'
+      regions: ["gb_sct"]
+      options: ["observed"]
+    expect:
+      name: "2nd January"
+  - given:
+      date: '2027-12-27'
+      regions: ["gb_eng"]
+      options: ["observed"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: '2027-12-27'
+      regions: ["gb_nir"]
+      options: ["observed"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: '2027-12-27'
+      regions: ["gb_sct"]
+      options: ["observed"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: '2027-12-28'
+      regions: ["gb_eng"]
+      options: ["observed"]
+    expect:
+      name: "Boxing Day"
+  - given:
+      date: '2027-12-28'
+      regions: ["gb_nir"]
+      options: ["observed"]
+    expect:
+      name: "Boxing Day"
+  - given:
+      date: '2027-12-28'
+      regions: ["gb_sct"]
+      options: ["observed"]
+    expect:
+      name: "Boxing Day"
+  - given:
+      date: '2028-01-03'
+      regions: ["gb_eng"]
+      options: ["observed"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: '2028-01-03'
+      regions: ["gb_nir"]
+      options: ["observed"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: '2028-01-03'
+      regions: ["gb_sct"]
+      options: ["observed"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: '2028-01-04'
+      regions: ["gb_sct"]
+      options: ["observed"]
+    expect:
+      name: "2nd January"
+  - given:
+      date: '2028-12-25'
+      regions: ["gb_eng"]
+      options: ["observed"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: '2028-12-25'
+      regions: ["gb_nir"]
+      options: ["observed"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: '2028-12-25'
+      regions: ["gb_sct"]
+      options: ["observed"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: '2028-12-26'
+      regions: ["gb_eng"]
+      options: ["observed"]
+    expect:
+      name: "Boxing Day"
+  - given:
+      date: '2028-12-26'
+      regions: ["gb_nir"]
+      options: ["observed"]
+    expect:
+      name: "Boxing Day"
+  - given:
+      date: '2028-12-26'
+      regions: ["gb_sct"]
+      options: ["observed"]
+    expect:
+      name: "Boxing Day"
