@@ -1,5 +1,12 @@
 # Holiday definitions
 
+## 8.0.2
+
+* Fix `sg` observed rule so Saturday holidays are no longer shifted back to Friday for [holidays issue-488](https://github.com/holidays/holidays/issues/488). New Year's Day, National Day and Christmas Day now use `to_monday_if_sunday`, matching the Ministry of Manpower rule that only a Sunday holiday gets a substitute
+* Add `sg` Chinese New Year, Vesak Day, Hari Raya Puasa, Hari Raya Haji and Deepavali for [holidays issue-351](https://github.com/holidays/holidays/issues/351)
+* Add `gb_sct` bank holiday for 15 June 2026 to mark the World Cup
+* Add gov.uk-verified `gb` winter substitute day tests for 2021, 2023, 2027 and 2028 across `gb_eng`, `gb_nir` and `gb_sct`
+
 ## 8.0.1
 
 * Fix `ph` National Heroes Day when August 31st falls on a Sunday for [definitions issue-345](https://github.com/holidays/definitions/issues/345)
