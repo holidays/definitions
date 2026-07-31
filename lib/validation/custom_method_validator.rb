@@ -7,10 +7,20 @@ module Definitions
 
       def call(methods)
         methods.each do |name, method|
-          raise Errors::InvalidCustomMethod unless
-          valid_name?(name) &&
-            valid_arguments?(method['arguments']) &&
-            valid_source?(method['ruby'])
+          unless valid_name?(name)
+            raise Errors::InvalidCustomMethod.new("A custom method is missing a name, received: '#{name}'")
+          end
+
+          unless valid_arguments?(method['arguments'])
+            raise Errors::InvalidCustomMethod.new(
+              "Custom method '#{name}' has invalid arguments: '#{method['arguments']}'. " \
+              "Valid arguments are: #{VALID_ARGUMENTS.join(', ')}"
+            )
+          end
+
+          unless valid_source?(method['ruby'])
+            raise Errors::InvalidCustomMethod.new("Custom method '#{name}' is missing a 'ruby' source block")
+          end
         end
 
         true

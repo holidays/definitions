@@ -144,7 +144,7 @@ describe Definitions::Validation::Test do
         it 'raises error if invalid date' do
           tests.first["given"]["date"] = "blah"
           expect { subject.call(tests) }.to raise_error(Definitions::Errors::InvalidTest) { |e|
-            expect(e.message).to include "Test must contain valid date"
+            expect(e.message).to include "Test must contain valid date, date value was: 'blah'"
           }
         end
       end

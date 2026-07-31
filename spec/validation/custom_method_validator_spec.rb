@@ -24,36 +24,48 @@ describe Definitions::Validation::CustomMethod do
       it 'returns false if empty' do
         methods = {}
         methods[""]  = {}
-        expect { subject.call(methods) }.to raise_error(Definitions::Errors::InvalidCustomMethod)
+        expect { subject.call(methods) }.to raise_error(Definitions::Errors::InvalidCustomMethod) { |e|
+          expect(e.message).to eq("A custom method is missing a name, received: ''")
+        }
       end
     end
 
     context 'arguments' do
       it 'returns false if nil' do
         methods['test']['arguments'] = nil
-        expect { subject.call(methods) }.to raise_error(Definitions::Errors::InvalidCustomMethod)
+        expect { subject.call(methods) }.to raise_error(Definitions::Errors::InvalidCustomMethod) { |e|
+          expect(e.message).to eq("Custom method 'test' has invalid arguments: ''. Valid arguments are: date, year, month, day")
+        }
       end
 
       it 'returns false if empty' do
         methods['test']['arguments'] = ""
-        expect { subject.call(methods) }.to raise_error(Definitions::Errors::InvalidCustomMethod)
+        expect { subject.call(methods) }.to raise_error(Definitions::Errors::InvalidCustomMethod) { |e|
+          expect(e.message).to eq("Custom method 'test' has invalid arguments: ''. Valid arguments are: date, year, month, day")
+        }
       end
 
-      it 'returns false if contains unknown variable' do
+      it 'names the method and the offending arguments if it contains an unknown variable' do
         methods['test']['arguments'] = "unknown"
-        expect { subject.call(methods) }.to raise_error(Definitions::Errors::InvalidCustomMethod)
+        expect { subject.call(methods) }.to raise_error(Definitions::Errors::InvalidCustomMethod) { |e|
+          expect(e.message).to eq("Custom method 'test' has invalid arguments: 'unknown'. Valid arguments are: date, year, month, day")
+        }
       end
     end
 
     context 'source' do
       it 'returns false if nil' do
         methods['test']['ruby'] = nil
-        expect { subject.call(methods) }.to raise_error(Definitions::Errors::InvalidCustomMethod)
+        expect { subject.call(methods) }.to raise_error(Definitions::Errors::InvalidCustomMethod) { |e|
+          expect(e.message).to eq("Custom method 'test' is missing a 'ruby' source block")
+        }
       end
 
       it 'returns false if empty' do
         methods['test']['ruby'] = ""
-        expect { subject.call(methods) }.to raise_error(Definitions::Errors::InvalidCustomMethod)
+        expect { subject.call(methods) }.to raise_error(Definitions::Errors::InvalidCustomMethod) { |e|
+          expect(e.message).to eq("Custom method 'test' is missing a 'ruby' source block")
+        }
       end
     end
   end
