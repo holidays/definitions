@@ -1,5 +1,14 @@
 # Holiday definitions
 
+## 8.1.0
+
+* Add `ie` St Brigid's Day, the first Monday in February or 1 February when that day is a Friday, a public holiday from 2023, for [definitions issue-348](https://github.com/holidays/definitions/issues/348)
+* Restore `sk` Deň Ústavy Slovenskej republiky and Deň boja za slobodu a demokraciu, which were removed entirely in 5.9.0 despite remaining state holidays in Slovak law
+* Mark `sk` Deň Ústavy Slovenskej republiky as informal from 2024 and Deň boja za slobodu a demokraciu as informal from 2025, the years each stopped being a day of rest, for [definitions pull-288](https://github.com/holidays/definitions/pull/288) (thanks to https://github.com/lucialopuchova)
+* Clarify that informal also covers holidays that remain in law but are ordinary working days
+* Add `us_ut` Juneteenth observance rule, observed on June 19 when that is a Monday, the preceding Monday when June 19 is Tuesday through Friday, and the following Monday when it is a weekend, for [definitions pull-290](https://github.com/holidays/definitions/pull/290) (thanks to https://github.com/philipwritescode)
+* Allow `region` as a custom method argument, matching what `doc/SYNTAX.md` has always documented
+
 ## 8.0.2
 
 * Fix `sg` observed rule so Saturday holidays are no longer shifted back to Friday for [holidays issue-488](https://github.com/holidays/holidays/issues/488). New Year's Day, National Day and Christmas Day now use `to_monday_if_sunday`, matching the Ministry of Manpower rule that only a Sunday holiday gets a substitute
