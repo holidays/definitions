@@ -3,7 +3,7 @@ require_relative 'error'
 module Definitions
   module Validation
     class CustomMethod
-      VALID_ARGUMENTS = ["date", "year", "month", "day"]
+      VALID_ARGUMENTS = ["date", "year", "month", "day", "region"]
 
       def call(methods)
         methods.each do |name, method|
