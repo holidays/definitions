@@ -34,21 +34,26 @@ describe Definitions::Validation::CustomMethod do
       it 'returns false if nil' do
         methods['test']['arguments'] = nil
         expect { subject.call(methods) }.to raise_error(Definitions::Errors::InvalidCustomMethod) { |e|
-          expect(e.message).to eq("Custom method 'test' has invalid arguments: ''. Valid arguments are: date, year, month, day")
+          expect(e.message).to eq("Custom method 'test' has invalid arguments: ''. Valid arguments are: date, year, month, day, region")
         }
       end
 
       it 'returns false if empty' do
         methods['test']['arguments'] = ""
         expect { subject.call(methods) }.to raise_error(Definitions::Errors::InvalidCustomMethod) { |e|
-          expect(e.message).to eq("Custom method 'test' has invalid arguments: ''. Valid arguments are: date, year, month, day")
+          expect(e.message).to eq("Custom method 'test' has invalid arguments: ''. Valid arguments are: date, year, month, day, region")
         }
+      end
+
+      it 'accepts region as an argument' do
+        methods['test']['arguments'] = "date, region"
+        expect(subject.call(methods)).to be true
       end
 
       it 'names the method and the offending arguments if it contains an unknown variable' do
         methods['test']['arguments'] = "unknown"
         expect { subject.call(methods) }.to raise_error(Definitions::Errors::InvalidCustomMethod) { |e|
-          expect(e.message).to eq("Custom method 'test' has invalid arguments: 'unknown'. Valid arguments are: date, year, month, day")
+          expect(e.message).to eq("Custom method 'test' has invalid arguments: 'unknown'. Valid arguments are: date, year, month, day, region")
         }
       end
     end
