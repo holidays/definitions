@@ -5,6 +5,7 @@ require 'countries'
 
 require_relative 'error'
 require_relative 'definition_validator'
+require_relative 'index_validator'
 require_relative 'region_names_validator'
 require_relative 'custom_method_validator'
 require_relative 'month_validator'
@@ -14,33 +15,31 @@ definitions_path = '/../../'
 
 module Definitions
   class Validate
-    def initialize(path, definition_validator)
+    def initialize(path, definition_validator, index_validator)
       @path = path
       @definition_validator = definition_validator
+      @index_validator = index_validator
     end
 
     def call
       path = File.expand_path(File.dirname(__FILE__)) + @path
 
       index_file = YAML.load(File.open(path + 'index.yaml'))
-      indexed_files = index_file['defs'].values.flatten.uniq
+      definition_files = Dir.glob('*.yaml', base: path) - ['index.yaml']
+
+      begin
+        @index_validator.call(index_file, definition_files)
+      rescue Definitions::Errors::InvalidIndex => e
+        puts "Failed on 'index.yaml', error: #{e}"
+        exit 1
+      end
 
       definition_count = 0
 
-      Dir.foreach(path) do |item|
-        next if item == '.' or item == '..'
-
+      definition_files.each do |item|
         target = path+item
-        next if File.extname(target) != '.yaml'
-        next if item == 'index.yaml'
 
         definition_count += 1
-
-        unless indexed_files.include?(item)
-          puts "Failed! Definition file '#{item}' is not listed in index.yaml."
-          puts "Please add '#{item}' to the appropriate region entry in index.yaml."
-          exit 1
-        end
 
         begin
           definition_file = YAML.load(File.open(target))
@@ -86,4 +85,5 @@ Definitions::Validate.new(
     Definitions::Validation::Month.new,
     Definitions::Validation::Test.new,
   ),
+  Definitions::Validation::Index.new,
 ).call

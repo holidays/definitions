@@ -8,5 +8,6 @@ module Definitions
     class InvalidCustomMethod < Error; end
     class InvalidTest < Error; end
     class InvalidRegionNames < Error; end
+    class InvalidIndex < Error; end
   end
 end
