@@ -68,7 +68,7 @@ module Definitions
       def parse_date!(d)
         DateTime.parse(d)
       rescue TypeError, ArgumentError, NoMethodError
-        err!("Test must contain valid date, date value was: '#{d}")
+        err!("Test must contain valid date, date value was: '#{d}'")
       end
 
       def validate_expect!(e)
