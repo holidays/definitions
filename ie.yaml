@@ -19,6 +19,12 @@ months:
     regions: [ie]
     mday: 1
     observed: to_monday_if_weekend(date)
+  2:
+  - name: St Brigid's Day
+    regions: [ie]
+    function: ie_st_brigids_day(year)
+    year_ranges:
+      from: 2023
   3:
   - name: St. Patrick's Day
     regions: [ie]
@@ -53,6 +59,18 @@ months:
     regions: [ie]
     mday: 26
     observed: to_weekday_if_boxing_weekend(date)
+
+methods:
+  ie_st_brigids_day:
+    # First Monday in February, or 1 February if that day is a Friday
+    arguments: year
+    ruby: |
+      date = Date.civil(year, 2, 1)
+      if date.wday == 5
+        date
+      else
+        date + ((1 - date.wday) % 7)
+      end
 
 tests:
   - given:
@@ -172,3 +190,32 @@ tests:
       options: ["observed"]
     expect:
       name: "St. Stephen's Day"
+  - given:
+      date: ['2023-02-06', '2024-02-05', '2025-02-03', '2026-02-02', '2028-02-07']
+      regions: ["ie"]
+    expect:
+      name: "St Brigid's Day"
+  # 1 February is itself the first Monday
+  - given:
+      date: '2027-02-01'
+      regions: ["ie"]
+    expect:
+      name: "St Brigid's Day"
+  # 1 February falls on a Friday, so the holiday is that Friday rather than the
+  # first Monday, which would have been 2030-02-04
+  - given:
+      date: '2030-02-01'
+      regions: ["ie"]
+    expect:
+      name: "St Brigid's Day"
+  - given:
+      date: '2030-02-04'
+      regions: ["ie"]
+    expect:
+      holiday: false
+  # Only a public holiday from 2023 onwards
+  - given:
+      date: '2022-02-07'
+      regions: ["ie"]
+    expect:
+      holiday: false
