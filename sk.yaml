@@ -1,8 +1,9 @@
 # Slovak holiday definitions for the Ruby Holiday gem.
 #
-# Updated: 2025-12-03.
+# Updated: 2026-07-22.
 # Sources:
 # - https://www.vlada.gov.sk/slovensko/statne-sviatky/
+# - https://www.slov-lex.sk/pravne-predpisy/SK/ZZ/1993/241/
 ---
 region_names:
   sk: "Slovakia"
@@ -39,6 +40,19 @@ months:
     regions: [sk]
     mday: 29
   9:
+  # A state holiday throughout, but a working day from 2024 onwards
+  # under zákon č. 530/2023 Z. z.
+  - name: Deň Ústavy Slovenskej republiky
+    regions: [sk]
+    mday: 1
+    year_ranges:
+      until: 2023
+  - name: Deň Ústavy Slovenskej republiky
+    regions: [sk]
+    mday: 1
+    type: informal
+    year_ranges:
+      from: 2024
   - name: Sedembolestná Panna Mária
     regions: [sk]
     mday: 15
@@ -46,6 +60,18 @@ months:
   - name: Sviatok všetkých svätých
     regions: [sk]
     mday: 1
+  # A state holiday throughout, but a working day from 2025 onwards.
+  - name: Deň boja za slobodu a demokraciu
+    regions: [sk]
+    mday: 17
+    year_ranges:
+      until: 2024
+  - name: Deň boja za slobodu a demokraciu
+    regions: [sk]
+    mday: 17
+    type: informal
+    year_ranges:
+      from: 2025
   12:
   - name: Štedrý deň
     regions: [sk]
@@ -107,6 +133,22 @@ tests:
     expect:
       name: "Výročie Slovenského národného povstania"
   - given:
+      date: '2023-09-01'
+      regions: ["sk"]
+    expect:
+      name: "Deň Ústavy Slovenskej republiky"
+  - given:
+      date: ['2024-09-01', '2025-09-01']
+      regions: ["sk"]
+    expect:
+      holiday: false
+  - given:
+      date: ['2024-09-01', '2025-09-01']
+      regions: ["sk"]
+      options: ["informal"]
+    expect:
+      name: "Deň Ústavy Slovenskej republiky"
+  - given:
       date: '2025-09-15'
       regions: ["sk"]
       options: ["informal"]
@@ -118,6 +160,22 @@ tests:
       options: ["informal"]
     expect:
       name: "Sviatok všetkých svätých"
+  - given:
+      date: '2024-11-17'
+      regions: ["sk"]
+    expect:
+      name: "Deň boja za slobodu a demokraciu"
+  - given:
+      date: ['2025-11-17', '2026-11-17']
+      regions: ["sk"]
+    expect:
+      holiday: false
+  - given:
+      date: ['2025-11-17', '2026-11-17']
+      regions: ["sk"]
+      options: ["informal"]
+    expect:
+      name: "Deň boja za slobodu a demokraciu"
   - given:
       date: '2025-12-24'
       regions: ["sk"]

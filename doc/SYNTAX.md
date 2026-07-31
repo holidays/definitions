@@ -40,7 +40,7 @@ Non-standard regions (e.g. `ecbtarget`, `federalreserve`, etc) must be all one w
 
 We consider `formal` dates as government-defined holidays, what are commonly called **statutory** holidays. These could be the kinds of holidays where everyone stays home from work or perhaps are bank holidays but it is *not required* for a holiday to have these features to be considered formal.
 
-`Informal` holidays are holidays that everyone knows about but aren't enshrined in law. For example, Valentine's Day in the US is considered an informal holiday.
+`Informal` holidays are holidays that are not days off work. Usually that means a holiday everyone knows about but that isn't enshrined in law, such as Valentine's Day in the US. It also covers the reverse case, a holiday that remains in law but is an ordinary working day, such as Slovakia's `Deň Ústavy Slovenskej republiky`, a state holiday that stopped being a day of rest in 2024. Either way it stays out of the default results and is returned only when `:informal` is asked for. If a holiday changes status partway through its life, use `year_ranges` to split the definition at the year it changed.
 
 We recognize that these definitions can be highly subjective. If you disagree with the current status of a holiday please open an issue so we can discuss it.
 
