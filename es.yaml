@@ -111,9 +111,15 @@ months:
     regions: [es_ct, es_vc]
     mday: 24
   7:
+  # Santiago Apóstol (Día Nacional de Galicia) is 25 July, not 23:
+  # - Real Decreto 2001/1983, art. 45.1.d: "25 de julio, Santiago Apóstol"
+  #   https://www.boe.es/buscar/act.php?id=BOE-A-1983-20906
+  # - Decreto 46/2025 (DOG): "se opta por el 25 de julio, fiesta de Santiago
+  #   Apóstol, como Día Nacional de Galicia"
+  #   https://www.xunta.gal/dog/Publicados/2025/20250620/AnuncioG0767-120625-0002_es.html
   - name: Santiago Apostol
     regions: [es_ga]
-    mday: 23
+    mday: 25
     observed: to_monday_if_sunday(date)
   8:
   - name: Asunción
@@ -485,7 +491,7 @@ tests:
     expect:
       name: "Día de La Rioja"
   - given:
-      date: '2009-07-23'
+      date: '2009-07-25'
       regions: ["es_ga"]
     expect:
       name: "Santiago Apostol"
