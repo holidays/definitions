@@ -9,6 +9,10 @@
 # - https://www.gob.pe/feriados
 # - https://www.gob.pe/feriados/historicos
 #
+# Two entries that were never feriados are marked informal: 6 January
+# (Bajada de Reyes) and Domingo de Resurrección. With those corrected the
+# formal list matches the official 16 exactly.
+#
 # Peru added four national holidays between 2021 and 2023. Each is dated from
 # its first observance, which is not always the year the law was published:
 #
@@ -44,17 +48,22 @@ months:
     regions: [pe]
     function: easter(year)
     function_modifier: -2
+  # Domingo de Resurrección is widely observed but is not a feriado; only
+  # Jueves Santo and Viernes Santo are days off under DL 713.
   - name: Pascua
     regions: [pe]
     function: easter(year)
+    type: informal
   1:
   - name: Año Nuevo
     regions: [pe]
     mday: 1
+  # Bajada de Reyes is celebrated locally but is an ordinary working day, so it
+  # carries no statutory observance rule.
   - name: Día de los Reyes Magos
     regions: [pe]
     mday: 6
-    observed: to_monday_if_sunday(date)
+    type: informal
   5:
   - name: Día del Trabajador
     regions: [pe]
@@ -304,3 +313,27 @@ tests:
       regions: ["pe"]
     expect:
       name: "Batalla de Ayacucho"
+  # Never feriados, so informal only. DL 713 makes Jueves Santo and Viernes
+  # Santo days off but not Domingo de Resurrección.
+  - given:
+      date: ['2016-01-06', '2026-01-06']
+      regions: ["pe"]
+    expect:
+      holiday: false
+  - given:
+      date: '2026-01-06'
+      regions: ["pe"]
+      options: ["informal"]
+    expect:
+      name: "Día de los Reyes Magos"
+  - given:
+      date: ['2016-03-27', '2026-04-05']
+      regions: ["pe"]
+    expect:
+      holiday: false
+  - given:
+      date: '2026-04-05'
+      regions: ["pe"]
+      options: ["informal"]
+    expect:
+      name: "Pascua"
