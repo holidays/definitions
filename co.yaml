@@ -1,6 +1,6 @@
 # Colombian holiday definitions for the Ruby Holiday gem.
 #
-# Updated: 2018-06-01.
+# Updated: 2026-07-10.
 #
 # Sources:
 # - https://en.wikipedia.org/wiki/Public_holidays_in_Colombia
@@ -9,6 +9,7 @@
 # - https://www.officeholidays.com/countries/colombia/
 # - https://www.timeanddate.com/holidays/colombia/
 # - http://www.bank-holidays.com/country/Colombia_42.htm
+# - https://www.mininterior.gov.co/noticias/gobierno-sanciona-ley-que-convierte-el-9-de-julio-en-nuevo-festivo-nacional/
 ---
 region_names:
   co: "Colombia"
@@ -47,6 +48,16 @@ methods:
     arguments: year
     ruby: |
       date = Date.civil( year, 6, 29 )
+      if date.wday > 1
+        date += ( 8 - date.wday )
+      elsif date.wday == 0
+        date += 1
+      end
+      date
+  our_lady_of_chiquinquira:
+    arguments: year
+    ruby: |
+      date = Date.civil( year, 7, 9 )
       if date.wday > 1
         date += ( 8 - date.wday )
       elsif date.wday == 0
@@ -135,6 +146,12 @@ months:
     regions: [co]
     function: saint_peter_and_saint_paul(year)
   7:
+  # National holiday since 2026, established by Law 2578 of 2026.
+  - name: Día de Nuestra Señora del Rosario de Chiquinquirá
+    regions: [co]
+    function: our_lady_of_chiquinquira(year)
+    year_ranges:
+      from: 2026
   - name: Día de la Independencia
     regions: [co]
     mday: 20
@@ -309,6 +326,27 @@ tests:
       regions: ['co']
     expect:
       name: 'San Pedro y San Pablo'
+  # Día de Nuestra Señora del Rosario de Chiquinquirá
+  - given:
+      date: '2026-07-13'
+      regions: ['co']
+    expect:
+      name: 'Día de Nuestra Señora del Rosario de Chiquinquirá'
+  - given:
+      date: '2027-07-12'
+      regions: ['co']
+    expect:
+      name: 'Día de Nuestra Señora del Rosario de Chiquinquirá'
+  - given:
+      date: '2029-07-09'
+      regions: ['co']
+    expect:
+      name: 'Día de Nuestra Señora del Rosario de Chiquinquirá'
+  - given:
+      date: '2025-07-14'
+      regions: ['co']
+    expect:
+      holiday: false
   # Día de la Independencia
   - given:
       date: '2014-07-20'
