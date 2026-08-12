@@ -1,11 +1,29 @@
 # Peruvian holiday definitions for the Ruby Holiday gem.
 #
 # created: 2016-06-18.
-# updated: 2016-06-18.
+# updated: 2026-08-12.
 #
 # Sources:
 # - http://www.timeanddate.com/holidays/peru/
 # - https://en.wikipedia.org/wiki/Public_holidays_in_Peru
+# - https://www.gob.pe/feriados
+# - https://www.gob.pe/feriados/historicos
+#
+# Two entries that were never feriados are marked informal: 6 January
+# (Bajada de Reyes) and Domingo de Resurrección. With those corrected the
+# formal list matches the official 16 exactly.
+#
+# Peru added four national holidays between 2021 and 2023. Each is dated from
+# its first observance, which is not always the year the law was published:
+#
+#   9 December  Batalla de Ayacucho     Ley 31381, published 2021-12-31, from 2022
+#   6 August    Batalla de Junín        Ley 31530, published 2022-07-26, from 2022
+#   7 June      Batalla de Arica        Ley 31788, published 2023-06-15, from 2024
+#  23 July      Día de la Fuerza Aérea  Ley 31822, published 2023-07-08, from 2023
+#
+# Ley 31530 was published before 6 August 2022, so that holiday was observed
+# the same year; Ley 31788 was published after 7 June 2023, so the first
+# observance was 2024.
 #
 # Avoided days:
 #   March equinox
@@ -30,17 +48,22 @@ months:
     regions: [pe]
     function: easter(year)
     function_modifier: -2
+  # Domingo de Resurrección is widely observed but is not a feriado; only
+  # Jueves Santo and Viernes Santo are days off under DL 713.
   - name: Pascua
     regions: [pe]
     function: easter(year)
+    type: informal
   1:
   - name: Año Nuevo
     regions: [pe]
     mday: 1
+  # Bajada de Reyes is celebrated locally but is an ordinary working day, so it
+  # carries no statutory observance rule.
   - name: Día de los Reyes Magos
     regions: [pe]
     mday: 6
-    observed: to_monday_if_sunday(date)
+    type: informal
   5:
   - name: Día del Trabajador
     regions: [pe]
@@ -51,10 +74,18 @@ months:
     wday: 0
     type: informal
   6:
+  # An informal observance until Ley 31788 made it a paid national holiday.
   - name: Día de la Bandera
     regions: [pe]
     mday: 7
     type: informal
+    year_ranges:
+      until: 2023
+  - name: Batalla de Arica y Día de la Bandera
+    regions: [pe]
+    mday: 7
+    year_ranges:
+      from: 2024
   - name: Día del Padre
     regions: [pe]
     week: 3
@@ -64,10 +95,15 @@ months:
     regions: [pe]
     mday: 24
     type: informal
-  - name: San Pablo y San Pedro
+  - name: Día de San Pedro y San Pablo
     regions: [pe]
     mday: 29
   7:
+  - name: Día de la Fuerza Aérea del Perú
+    regions: [pe]
+    mday: 23
+    year_ranges:
+      from: 2023
   - name: Primer Día de la Independencia
     regions: [pe]
     mday: 28
@@ -75,6 +111,11 @@ months:
     regions: [pe]
     mday: 29
   8:
+  - name: Batalla de Junín
+    regions: [pe]
+    mday: 6
+    year_ranges:
+      from: 2022
   - name: Santa Rosa de Lima
     regions: [pe]
     mday: 30
@@ -84,7 +125,7 @@ months:
     mday: 24
     type: informal
   10:
-  - name: Batalla de Angamos
+  - name: Combate de Angamos
     regions: [pe]
     mday: 8
   11:
@@ -96,6 +137,11 @@ months:
     regions: [pe]
     mday: 8
     observed: to_monday_if_sunday(date)
+  - name: Batalla de Ayacucho
+    regions: [pe]
+    mday: 9
+    year_ranges:
+      from: 2022
   - name: Navidad del Señor
     regions: [pe]
     mday: 25
@@ -160,7 +206,7 @@ tests:
       regions: ["pe"]
       options: ["informal"]
     expect:
-      name: "San Pablo y San Pedro"
+      name: "Día de San Pedro y San Pablo"
   - given:
       date: '2016-07-28'
       regions: ["pe"]
@@ -190,7 +236,7 @@ tests:
       regions: ["pe"]
       options: ["informal"]
     expect:
-      name: "Batalla de Angamos"
+      name: "Combate de Angamos"
   - given:
       date: '2016-11-01'
       regions: ["pe"]
@@ -209,3 +255,85 @@ tests:
       options: ["informal"]
     expect:
       name: "Navidad del Señor"
+  #
+  # Holidays added by Ley 31381, 31530, 31788 and 31822, each checked either
+  # side of its first observance. Cases without the informal option assert
+  # that the date is a full national holiday.
+  #
+  # 7 June: informal through 2023, national holiday from 2024
+  - given:
+      date: '2023-06-07'
+      regions: ["pe"]
+      options: ["informal"]
+    expect:
+      name: "Día de la Bandera"
+  - given:
+      date: '2023-06-07'
+      regions: ["pe"]
+    expect:
+      holiday: false
+  - given:
+      date: ['2024-06-07', '2026-06-07']
+      regions: ["pe"]
+    expect:
+      name: "Batalla de Arica y Día de la Bandera"
+  # 23 July: national holiday from 2023
+  - given:
+      date: '2022-07-23'
+      regions: ["pe"]
+      options: ["informal"]
+    expect:
+      holiday: false
+  - given:
+      date: ['2023-07-23', '2026-07-23']
+      regions: ["pe"]
+    expect:
+      name: "Día de la Fuerza Aérea del Perú"
+  # 6 August: national holiday from 2022
+  - given:
+      date: '2021-08-06'
+      regions: ["pe"]
+      options: ["informal"]
+    expect:
+      holiday: false
+  - given:
+      date: ['2022-08-06', '2026-08-06']
+      regions: ["pe"]
+    expect:
+      name: "Batalla de Junín"
+  # 9 December: national holiday from 2022
+  - given:
+      date: '2021-12-09'
+      regions: ["pe"]
+      options: ["informal"]
+    expect:
+      holiday: false
+  - given:
+      date: ['2022-12-09', '2026-12-09']
+      regions: ["pe"]
+    expect:
+      name: "Batalla de Ayacucho"
+  # Never feriados, so informal only. DL 713 makes Jueves Santo and Viernes
+  # Santo days off but not Domingo de Resurrección.
+  - given:
+      date: ['2016-01-06', '2026-01-06']
+      regions: ["pe"]
+    expect:
+      holiday: false
+  - given:
+      date: '2026-01-06'
+      regions: ["pe"]
+      options: ["informal"]
+    expect:
+      name: "Día de los Reyes Magos"
+  - given:
+      date: ['2016-03-27', '2026-04-05']
+      regions: ["pe"]
+    expect:
+      holiday: false
+  - given:
+      date: '2026-04-05'
+      regions: ["pe"]
+      options: ["informal"]
+    expect:
+      name: "Pascua"
