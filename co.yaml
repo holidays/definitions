@@ -24,86 +24,6 @@ methods:
         date += 1
       end
       date
-  epiphany:
-    arguments: year
-    ruby: |
-      date = Date.civil( year, 1, 6 )
-      if date.wday > 1
-        date += ( 8 - date.wday )
-      elsif date.wday == 0
-        date += 1
-      end
-      date
-  saint_josephs_day:
-    arguments: year
-    ruby: |
-      date = Date.civil( year, 3, 19 )
-      if date.wday > 1
-        date += ( 8 - date.wday )
-      elsif date.wday == 0
-        date += 1
-      end
-      date
-  saint_peter_and_saint_paul:
-    arguments: year
-    ruby: |
-      date = Date.civil( year, 6, 29 )
-      if date.wday > 1
-        date += ( 8 - date.wday )
-      elsif date.wday == 0
-        date += 1
-      end
-      date
-  our_lady_of_chiquinquira:
-    arguments: year
-    ruby: |
-      date = Date.civil( year, 7, 9 )
-      if date.wday > 1
-        date += ( 8 - date.wday )
-      elsif date.wday == 0
-        date += 1
-      end
-      date
-  assumption_of_mary:
-    arguments: year
-    ruby: |
-      date = Date.civil( year, 8, 15 )
-      if date.wday > 1
-        date += ( 8 - date.wday )
-      elsif date.wday == 0
-        date += 1
-      end
-      date
-  columbus_day:
-    arguments: year
-    ruby: |
-      date = Date.civil( year, 10, 12 )
-      if date.wday > 1
-        date += ( 8 - date.wday )
-      elsif date.wday == 0
-        date += 1
-      end
-      date
-  all_saints_day:
-    arguments: year
-    ruby: |
-      date = Date.civil( year, 11, 1 )
-      if date.wday > 1
-        date += ( 8 - date.wday )
-      elsif date.wday == 0
-        date += 1
-      end
-      date
-  independence_of_cartagena:
-    arguments: year
-    ruby: |
-      date = Date.civil( year, 11, 11 )
-      if date.wday > 1
-        date += ( 8 - date.wday )
-      elsif date.wday == 0
-        date += 1
-      end
-      date
 months:
   0:
   - name: Jueves Santo
@@ -132,11 +52,13 @@ months:
     mday: 1
   - name: Día de los Reyes Magos
     regions: [co]
-    function: epiphany(year)
+    mday: 6
+    function: to_following_monday_if_not_monday(date)
   3:
   - name: Día de San José
     regions: [co]
-    function: saint_josephs_day(year)
+    mday: 19
+    function: to_following_monday_if_not_monday(date)
   5:
   - name: Día del Trabajo
     regions: [co]
@@ -144,12 +66,14 @@ months:
   6:
   - name: San Pedro y San Pablo
     regions: [co]
-    function: saint_peter_and_saint_paul(year)
+    mday: 29
+    function: to_following_monday_if_not_monday(date)
   7:
   # National holiday since 2026, established by Law 2578 of 2026.
   - name: Día de Nuestra Señora del Rosario de Chiquinquirá
     regions: [co]
-    function: our_lady_of_chiquinquira(year)
+    mday: 9
+    function: to_following_monday_if_not_monday(date)
     year_ranges:
       from: 2026
   - name: Día de la Independencia
@@ -161,18 +85,22 @@ months:
     mday: 7
   - name: La Asunción de la Virgen
     regions: [co]
-    function: assumption_of_mary(year)
+    mday: 15
+    function: to_following_monday_if_not_monday(date)
   10:
   - name: Día de la Raza
     regions: [co]
-    function: columbus_day(year)
+    mday: 12
+    function: to_following_monday_if_not_monday(date)
   11:
   - name: Día de Todos los Santos
     regions: [co]
-    function: all_saints_day(year)
+    mday: 1
+    function: to_following_monday_if_not_monday(date)
   - name: Independencia de Cartagena
     regions: [co]
-    function: independence_of_cartagena(year)
+    mday: 11
+    function: to_following_monday_if_not_monday(date)
   12:
   - name: Día de la Inmaculada Concepción
     regions: [co]
@@ -475,3 +403,180 @@ tests:
       regions: ['co']
     expect:
       name: 'Navidad'
+  #
+  # Emiliani holidays: observed-date coverage for every base weekday, so that
+  # changes to the shared shift logic cannot pass unnoticed.
+  #
+  # Día de los Reyes Magos
+  - given:
+      date: '2013-01-07'
+      regions: ['co']
+    expect:
+      name: 'Día de los Reyes Magos'
+  - given:
+      date: '2016-01-11'
+      regions: ['co']
+    expect:
+      name: 'Día de los Reyes Magos'
+  - given:
+      date: '2022-01-10'
+      regions: ['co']
+    expect:
+      name: 'Día de los Reyes Magos'
+  - given:
+      date: '2018-01-08'
+      regions: ['co']
+    expect:
+      name: 'Día de los Reyes Magos'
+  # Día de San José
+  - given:
+      date: '2013-03-25'
+      regions: ['co']
+    expect:
+      name: 'Día de San José'
+  - given:
+      date: '2015-03-23'
+      regions: ['co']
+    expect:
+      name: 'Día de San José'
+  - given:
+      date: '2021-03-22'
+      regions: ['co']
+    expect:
+      name: 'Día de San José'
+  - given:
+      date: '2016-03-21'
+      regions: ['co']
+    expect:
+      name: 'Día de San José'
+  # San Pedro y San Pablo
+  - given:
+      date: '2031-06-30'
+      regions: ['co']
+    expect:
+      name: 'San Pedro y San Pablo'
+  - given:
+      date: '2015-06-29'
+      regions: ['co']
+    expect:
+      name: 'San Pedro y San Pablo'
+  - given:
+      date: '2021-07-05'
+      regions: ['co']
+    expect:
+      name: 'San Pedro y San Pablo'
+  - given:
+      date: '2018-07-02'
+      regions: ['co']
+    expect:
+      name: 'San Pedro y San Pablo'
+  - given:
+      date: '2013-07-01'
+      regions: ['co']
+    expect:
+      name: 'San Pedro y San Pablo'
+  # Día de Nuestra Señora del Rosario de Chiquinquirá
+  - given:
+      date: '2028-07-10'
+      regions: ['co']
+    expect:
+      name: 'Día de Nuestra Señora del Rosario de Chiquinquirá'
+  - given:
+      date: '2030-07-15'
+      regions: ['co']
+    expect:
+      name: 'Día de Nuestra Señora del Rosario de Chiquinquirá'
+  - given:
+      date: '2031-07-14'
+      regions: ['co']
+    expect:
+      name: 'Día de Nuestra Señora del Rosario de Chiquinquirá'
+  - given:
+      date: '2033-07-11'
+      regions: ['co']
+    expect:
+      name: 'Día de Nuestra Señora del Rosario de Chiquinquirá'
+  # La Asunción de la Virgen
+  - given:
+      date: '2021-08-16'
+      regions: ['co']
+    expect:
+      name: 'La Asunción de la Virgen'
+  - given:
+      date: '2018-08-20'
+      regions: ['co']
+    expect:
+      name: 'La Asunción de la Virgen'
+  - given:
+      date: '2013-08-19'
+      regions: ['co']
+    expect:
+      name: 'La Asunción de la Virgen'
+  - given:
+      date: '2015-08-17'
+      regions: ['co']
+    expect:
+      name: 'La Asunción de la Virgen'
+  # Día de la Raza
+  - given:
+      date: '2015-10-12'
+      regions: ['co']
+    expect:
+      name: 'Día de la Raza'
+  - given:
+      date: '2021-10-18'
+      regions: ['co']
+    expect:
+      name: 'Día de la Raza'
+  - given:
+      date: '2018-10-15'
+      regions: ['co']
+    expect:
+      name: 'Día de la Raza'
+  - given:
+      date: '2013-10-14'
+      regions: ['co']
+    expect:
+      name: 'Día de la Raza'
+  # Día de Todos los Santos
+  - given:
+      date: '2015-11-02'
+      regions: ['co']
+    expect:
+      name: 'Día de Todos los Santos'
+  - given:
+      date: '2021-11-01'
+      regions: ['co']
+    expect:
+      name: 'Día de Todos los Santos'
+  - given:
+      date: '2018-11-05'
+      regions: ['co']
+    expect:
+      name: 'Día de Todos los Santos'
+  - given:
+      date: '2013-11-04'
+      regions: ['co']
+    expect:
+      name: 'Día de Todos los Santos'
+  # Independencia de Cartagena
+  - given:
+      date: '2018-11-12'
+      regions: ['co']
+    expect:
+      name: 'Independencia de Cartagena'
+  - given:
+      date: '2013-11-11'
+      regions: ['co']
+    expect:
+      name: 'Independencia de Cartagena'
+  - given:
+      date: '2015-11-16'
+      regions: ['co']
+    expect:
+      name: 'Independencia de Cartagena'
+  - given:
+      date: '2021-11-15'
+      regions: ['co']
+    expect:
+      name: 'Independencia de Cartagena'
