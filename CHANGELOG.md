@@ -1,5 +1,13 @@
 # Holiday definitions
 
+## 8.2.0
+
+* Add `by` Belarus, with the nine non-working days set by the Labour Code plus Радуніца, the ninth day after Orthodox Easter, and the state holidays that remain ordinary working days marked informal, for [definitions pull-364](https://github.com/holidays/definitions/pull/364), reworked from [holidays pull-402](https://github.com/holidays/holidays/pull/402) (thanks to https://github.com/sania1801)
+* Add `co` Día de Nuestra Señora del Rosario de Chiquinquirá, 9 July moved to the following Monday under the Emiliani law, a national holiday from 2026 under Law 2578, for [definitions pull-344](https://github.com/holidays/definitions/pull/344) (thanks to https://github.com/heysebitas)
+* Update `pe` to Peru's official calendar, adding Batalla de Ayacucho and Batalla de Junín from 2022, Día de la Fuerza Aérea del Perú from 2023 and Batalla de Arica y Día de la Bandera from 2024, each dated from its first observance rather than its publication year, and correcting the names of Día de San Pedro y San Pablo and Combate de Angamos, for [definitions pull-365](https://github.com/holidays/definitions/pull/365) (thanks to https://github.com/juniorUsca)
+* Mark `pe` Día de los Reyes Magos and Pascua as informal, since neither is a feriado. Peru now returns the official 16 national holidays, so callers relying on either of these as formal holidays will no longer receive them
+* Fix `es_ga` Santiago Apóstol, which falls on 25 July and not 23, for [definitions pull-366](https://github.com/holidays/definitions/pull/366) (thanks to https://github.com/trumbitta)
+
 ## 8.1.0
 
 * Add `ie` St Brigid's Day, the first Monday in February or 1 February when that day is a Friday, a public holiday from 2023, for [definitions issue-348](https://github.com/holidays/definitions/issues/348)
