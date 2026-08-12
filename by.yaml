@@ -1,0 +1,192 @@
+# Belarusian holiday definitions for the Ruby Holiday gem. In Belarusian (беларуская).
+#
+# Updated: 2026-08-12.
+#
+# Belarus distinguishes state holidays from non-working days. The nine dates
+# below without a `type` are the non-working days set by the Labour Code; the
+# `informal` entries are state holidays and commemorative dates that remain in
+# law but are ordinary working days.
+#
+# Sources:
+# - https://president.gov.by/en/gosudarstvo/prazdniki
+# - https://en.wikipedia.org/wiki/Public_holidays_in_Belarus
+# - https://www.belarus.by/en/about-belarus/national-holidays
+---
+region_names:
+  by: "Belarus"
+months:
+  0:
+  - name: Вялікдзень каталіцкі
+    regions: [by]
+    function: easter(year)
+    type: informal
+  - name: Вялікдзень праваслаўны
+    regions: [by]
+    function: orthodox_easter(year)
+    type: informal
+  # Radunitsa, the ninth day after Orthodox Easter, always a Tuesday.
+  - name: Радуніца
+    regions: [by]
+    function: orthodox_easter(year)
+    function_modifier: 9
+  1:
+  - name: Новы год
+    regions: [by]
+    mday: 1
+  - name: Новы год
+    regions: [by]
+    mday: 2
+  - name: Каляды праваслаўныя
+    regions: [by]
+    mday: 7
+  2:
+  - name: Дзень абаронцаў Айчыны і Узброеных Сіл Рэспублікі Беларусь
+    regions: [by]
+    mday: 23
+    type: informal
+  3:
+  - name: Міжнародны жаночы дзень
+    regions: [by]
+    mday: 8
+  - name: Дзень Канстытуцыі
+    regions: [by]
+    mday: 15
+    type: informal
+  4:
+  - name: Дзень яднання народаў Беларусі і Расіі
+    regions: [by]
+    mday: 2
+    type: informal
+  5:
+  - name: Свята працы
+    regions: [by]
+    mday: 1
+  - name: Дзень Перамогі
+    regions: [by]
+    mday: 9
+  7:
+  - name: Дзень Незалежнасці Рэспублікі Беларусь (Дзень Рэспублікі)
+    regions: [by]
+    mday: 3
+  9:
+  - name: Дзень народнага адзінства
+    regions: [by]
+    mday: 17
+    type: informal
+  11:
+  - name: Дзяды
+    regions: [by]
+    mday: 2
+    type: informal
+  - name: Дзень Кастрычніцкай рэвалюцыі
+    regions: [by]
+    mday: 7
+  12:
+  - name: Каляды каталіцкія
+    regions: [by]
+    mday: 25
+tests:
+  # Non-working days
+  - given:
+      date: ['2017-01-01', '2026-01-01']
+      regions: ['by']
+    expect:
+      name: 'Новы год'
+  - given:
+      date: ['2017-01-02', '2026-01-02']
+      regions: ['by']
+    expect:
+      name: 'Новы год'
+  - given:
+      date: ['2017-01-07', '2026-01-07']
+      regions: ['by']
+    expect:
+      name: 'Каляды праваслаўныя'
+  - given:
+      date: ['2017-03-08', '2026-03-08']
+      regions: ['by']
+    expect:
+      name: 'Міжнародны жаночы дзень'
+  - given:
+      date: ['2017-05-01', '2026-05-01']
+      regions: ['by']
+    expect:
+      name: 'Свята працы'
+  - given:
+      date: ['2017-05-09', '2026-05-09']
+      regions: ['by']
+    expect:
+      name: 'Дзень Перамогі'
+  - given:
+      date: ['2017-07-03', '2026-07-03']
+      regions: ['by']
+    expect:
+      name: 'Дзень Незалежнасці Рэспублікі Беларусь (Дзень Рэспублікі)'
+  - given:
+      date: ['2017-11-07', '2026-11-07']
+      regions: ['by']
+    expect:
+      name: 'Дзень Кастрычніцкай рэвалюцыі'
+  - given:
+      date: ['2017-12-25', '2026-12-25']
+      regions: ['by']
+    expect:
+      name: 'Каляды каталіцкія'
+  # Радуніца, the ninth day after Orthodox Easter
+  - given:
+      date: '2023-04-25'
+      regions: ['by']
+    expect:
+      name: 'Радуніца'
+  - given:
+      date: '2024-05-14'
+      regions: ['by']
+    expect:
+      name: 'Радуніца'
+  - given:
+      date: '2025-04-29'
+      regions: ['by']
+    expect:
+      name: 'Радуніца'
+  - given:
+      date: '2026-04-21'
+      regions: ['by']
+    expect:
+      name: 'Радуніца'
+  # State holidays that are ordinary working days, returned only with :informal
+  - given:
+      date: '2026-02-23'
+      regions: ['by']
+      options: ['informal']
+    expect:
+      name: 'Дзень абаронцаў Айчыны і Узброеных Сіл Рэспублікі Беларусь'
+  - given:
+      date: '2026-03-15'
+      regions: ['by']
+      options: ['informal']
+    expect:
+      name: 'Дзень Канстытуцыі'
+  - given:
+      date: '2026-04-02'
+      regions: ['by']
+      options: ['informal']
+    expect:
+      name: 'Дзень яднання народаў Беларусі і Расіі'
+  - given:
+      date: '2026-09-17'
+      regions: ['by']
+      options: ['informal']
+    expect:
+      name: 'Дзень народнага адзінства'
+  - given:
+      date: '2026-11-02'
+      regions: ['by']
+      options: ['informal']
+    expect:
+      name: 'Дзяды'
+  # ... and are absent from the default, formal-only results
+  - given:
+      date: ['2026-02-23', '2026-03-15', '2026-04-02', '2026-09-17', '2026-11-02']
+      regions: ['by']
+    expect:
+      holiday: false

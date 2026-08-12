@@ -8,6 +8,7 @@ defs:
   BE_NL: ['be_nl.yaml']
   BR: ['br.yaml']
   BG: ['bg.yaml']
+  BY: ['by.yaml']
   CA: ['ca.yaml', 'northamericainformal.yaml']
   CH: ['ch.yaml']
   CL: ['cl.yaml']
