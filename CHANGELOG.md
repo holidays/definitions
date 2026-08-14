@@ -1,5 +1,9 @@
 # Holiday definitions
 
+## 8.2.1
+
+* Fix `jp` substitute holidays scanning past dates that are only holidays in other years, which dropped the 30 April 2018 振替休日 for 昭和の日 and produced a spurious 7 May 2018 holiday, for [holidays issue-366](https://github.com/holidays/holidays/issues/366)
+
 ## 8.2.0
 
 * Add `by` Belarus, with the nine non-working days set by the Labour Code plus Радуніца, the ninth day after Orthodox Easter, and the state holidays that remain ordinary working days marked informal, for [definitions pull-364](https://github.com/holidays/definitions/pull/364), reworked from [holidays pull-402](https://github.com/holidays/holidays/pull/402) (thanks to https://github.com/sania1801)
