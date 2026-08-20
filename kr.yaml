@@ -13,6 +13,9 @@ region_names:
   kr: "South Korea"
 months:
   1:
+  - name: 설날 연휴
+    regions: [kr]
+    function: kr_seollal_eve(year, region)
   - name: 설날
     regions: [kr]
     function: lunar_to_solar(year, month, day, region)
@@ -73,10 +76,12 @@ months:
   - name: 크리스마스
     regions: [kr]
     mday: 25
-  - name: 설날 연휴
-    regions: [kr]
-    function: lunar_to_solar(year, month, day, region)
-    mday: 30
+
+methods:
+  kr_seollal_eve:
+    arguments: year, region
+    ruby: |
+      Holidays::Factory::Definition.custom_methods_repository.find("lunar_to_solar(year, month, day, region)").call(year, 1, 1, region) - 1
 
 tests:
   - given:
@@ -157,6 +162,36 @@ tests:
       options: ["informal"]
     expect:
       name: "설날"
+  - given:
+      date: '2017-01-27'
+      regions: ["kr"]
+      options: ["informal"]
+    expect:
+      name: "설날 연휴"
+  - given:
+      date: '2017-02-15'
+      regions: ["kr"]
+      options: ["informal"]
+    expect:
+      holiday: false
+  - given:
+      date: '2020-01-24'
+      regions: ["kr"]
+      options: ["informal"]
+    expect:
+      name: "설날 연휴"
+  - given:
+      date: '2022-01-31'
+      regions: ["kr"]
+      options: ["informal"]
+    expect:
+      name: "설날 연휴"
+  - given:
+      date: '2025-01-28'
+      regions: ["kr"]
+      options: ["informal"]
+    expect:
+      name: "설날 연휴"
 
 # These are commented out until I can have a discussion and better understand these holidays.
 # Please see [issue 69](https://github.com/holidays/definitions/issues/69) (nice) for more information.
