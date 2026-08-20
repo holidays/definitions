@@ -442,6 +442,11 @@ tests:
     expect:
       name: "Internationaler Frauentag"
   - given:
+      date: '2022-03-08'
+      regions: ["de_mv"]
+    expect:
+      holiday: false
+  - given:
       date: '2023-03-08'
       regions: ["de_mv"]
     expect:
