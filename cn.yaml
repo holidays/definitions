@@ -1,0 +1,244 @@
+# China holiday definitions for the Holidays gem.
+#
+# SCOPE
+#
+# This file defines the statutory national holidays of the People's Republic of
+# China (法定节假日), as set by the State Council's Measures for National Annual
+# Holidays and Memorial Days (全国年节及纪念日放假办法).
+#
+# It deliberately does NOT model the annual holiday arrangement (调休) that the
+# State Council publishes each year. In practice China extends Spring Festival
+# and National Day into longer runs by designating nearby weekends as mandatory
+# make-up workdays. Those arrangements are issued by decree one year at a time,
+# are not derivable from any rule, and the gem has no concept of a make-up
+# workday, so they cannot be represented here.
+#
+# Treat these dates as the statutory floor, not as the days people actually
+# take off.
+#
+# Sources:
+# - https://en.wikipedia.org/wiki/Public_holidays_in_China
+# - https://www.gov.cn/zhengce/content/202411/content_6986382.htm (2024 revision,
+#   effective 2025: adds Chinese New Year's Eve and a second Labour Day)
+---
+region_names:
+  cn: "China"
+months:
+  1:
+  - name: 元旦
+    regions: [cn]
+    mday: 1
+  # Chinese New Year's Eve was statutory from 2008 to 2013, dropped by the 2014
+  # arrangement, and restored effective 2025. year_ranges takes a single
+  # operator, so the two spans need separate entries.
+  - name: 除夕
+    regions: [cn]
+    function: lunar_to_solar(year, month, day, region)
+    mday: 1
+    function_modifier: -1
+    year_ranges:
+      between:
+        start: 2008
+        end: 2013
+  - name: 除夕
+    regions: [cn]
+    function: lunar_to_solar(year, month, day, region)
+    mday: 1
+    function_modifier: -1
+    year_ranges:
+      from: 2025
+  - name: 春节
+    regions: [cn]
+    function: lunar_to_solar(year, month, day, region)
+    mday: 1
+  - name: 春节
+    regions: [cn]
+    function: lunar_to_solar(year, month, day, region)
+    mday: 2
+  # The third day of Spring Festival was not statutory from 2008 to 2013, when
+  # Chinese New Year's Eve occupied that slot instead.
+  - name: 春节
+    regions: [cn]
+    function: lunar_to_solar(year, month, day, region)
+    mday: 3
+    year_ranges:
+      until: 2007
+  - name: 春节
+    regions: [cn]
+    function: lunar_to_solar(year, month, day, region)
+    mday: 3
+    year_ranges:
+      from: 2014
+  4:
+  - name: 清明节
+    regions: [cn]
+    function: cn_qingming(year)
+    year_ranges:
+      from: 2008
+  5:
+  - name: 劳动节
+    regions: [cn]
+    mday: 1
+  # Labour Day ran 1 to 3 May before the 2008 reform, shrank to a single day
+  # from 2008 to 2024, and regained a second day effective 2025.
+  - name: 劳动节
+    regions: [cn]
+    mday: 2
+    year_ranges:
+      until: 2007
+  - name: 劳动节
+    regions: [cn]
+    mday: 2
+    year_ranges:
+      from: 2025
+  - name: 劳动节
+    regions: [cn]
+    mday: 3
+    year_ranges:
+      until: 2007
+  - name: 端午节
+    regions: [cn]
+    function: lunar_to_solar(year, month, day, region)
+    mday: 5
+    year_ranges:
+      from: 2008
+  8:
+  - name: 中秋节
+    regions: [cn]
+    function: lunar_to_solar(year, month, day, region)
+    mday: 15
+    year_ranges:
+      from: 2008
+  10:
+  - name: 国庆节
+    regions: [cn]
+    mday: 1
+  - name: 国庆节
+    regions: [cn]
+    mday: 2
+  - name: 国庆节
+    regions: [cn]
+    mday: 3
+methods:
+  # Qingming falls when the sun reaches celestial longitude 15 degrees, which
+  # lands on 4 or 5 April. This is the standard solar-term approximation; the
+  # century constant shifts between the 20th and 21st centuries.
+  cn_qingming:
+    arguments: year
+    ruby: |
+      constant =
+        case year
+        when 1900..1999
+          5.59
+        when 2000..2099
+          4.81
+        else
+          raise IndexError.new("Out of range")
+        end
+      y = year % 100
+      Date.civil(year, 4, (y * 0.2422 + constant).floor - (y / 4))
+
+tests:
+  - given:
+      date: '2025-01-01'
+      regions: ["cn"]
+    expect:
+      name: "元旦"
+  - given:
+      date: '2025-01-28'
+      regions: ["cn"]
+    expect:
+      name: "除夕"
+  - given:
+      date: '2025-01-29'
+      regions: ["cn"]
+    expect:
+      name: "春节"
+  - given:
+      date: '2025-01-30'
+      regions: ["cn"]
+    expect:
+      name: "春节"
+  - given:
+      date: '2025-01-31'
+      regions: ["cn"]
+    expect:
+      name: "春节"
+  - given:
+      date: '2024-02-10'
+      regions: ["cn"]
+    expect:
+      name: "春节"
+  # Chinese New Year's Eve was not statutory in 2024.
+  - given:
+      date: '2024-02-09'
+      regions: ["cn"]
+    expect:
+      holiday: false
+  - given:
+      date: '2010-02-13'
+      regions: ["cn"]
+    expect:
+      name: "除夕"
+  # The third day of Spring Festival was not statutory in 2010.
+  - given:
+      date: '2010-02-16'
+      regions: ["cn"]
+    expect:
+      holiday: false
+  - given:
+      date: '2025-04-04'
+      regions: ["cn"]
+    expect:
+      name: "清明节"
+  - given:
+      date: '2026-04-05'
+      regions: ["cn"]
+    expect:
+      name: "清明节"
+  - given:
+      date: '2025-05-01'
+      regions: ["cn"]
+    expect:
+      name: "劳动节"
+  - given:
+      date: '2025-05-02'
+      regions: ["cn"]
+    expect:
+      name: "劳动节"
+  # Labour Day was a single day in 2024.
+  - given:
+      date: '2024-05-02'
+      regions: ["cn"]
+    expect:
+      holiday: false
+  - given:
+      date: '2025-05-31'
+      regions: ["cn"]
+    expect:
+      name: "端午节"
+  - given:
+      date: '2024-06-10'
+      regions: ["cn"]
+    expect:
+      name: "端午节"
+  - given:
+      date: '2024-09-17'
+      regions: ["cn"]
+    expect:
+      name: "中秋节"
+  - given:
+      date: '2025-10-01'
+      regions: ["cn"]
+    expect:
+      name: "国庆节"
+  - given:
+      date: '2025-10-02'
+      regions: ["cn"]
+    expect:
+      name: "国庆节"
+  - given:
+      date: '2025-10-03'
+      regions: ["cn"]
+    expect:
+      name: "国庆节"
