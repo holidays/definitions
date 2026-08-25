@@ -32,6 +32,10 @@ months:
   - name: Matariki
     regions: [nz]
     function: matariki(year)
+  - name: Southland Anniversary Day
+    regions: [nz_sl]
+    function: easter(year)
+    function_modifier: 2
   1:
   - name: New Year's Day
     regions: [nz]
@@ -41,9 +45,6 @@ months:
     regions: [nz]
     mday: 2
     observed: to_weekday_if_boxing_weekend(date)
-  - name: Southland Anniversary Day
-    regions: [nz_sl]
-    mday: 17
   - name: Wellington Anniversary Day
     regions: [nz_we]
     mday: 22
@@ -101,7 +102,7 @@ months:
   10:
   - name: Hawke's bay Anniversary Day
     regions: [nz_hb]
-    week: 1
+    week: 4
     wday: 1
     observed: previous_friday(date)
   - name: Labour Day
@@ -136,6 +137,28 @@ months:
     observed: to_weekday_if_boxing_weekend(date)
 
 tests:
+  - given:
+      date: '2024-04-02'
+      regions: ["nz_sl"]
+    expect:
+      name: "Southland Anniversary Day"
+  - given:
+      date: '2025-04-22'
+      regions: ["nz_sl"]
+    expect:
+      name: "Southland Anniversary Day"
+  - given:
+      date: '2024-10-25'
+      regions: ["nz_hb"]
+      options: ["observed"]
+    expect:
+      name: "Hawke's bay Anniversary Day"
+  - given:
+      date: '2025-10-24'
+      regions: ["nz_hb"]
+      options: ["observed"]
+    expect:
+      name: "Hawke's bay Anniversary Day"
   - given:
       date: '2007-01-01'
       regions: ["nz"]
