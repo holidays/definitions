@@ -4,10 +4,10 @@
 #
 # Note:
 # This holiday definition file contains pre-defined dates
-# for Ramadan Feast and Sacrifice Feast from 2014 to 2026. These are
+# for Ramadan Feast and Sacrifice Feast from 2014 to 2030. These are
 # calendar-proclaimed dates (Diyanet), not derived algorithmically, so the
-# table needs extending periodically. See definitions#55 for the longer-term
-# plan to calculate these dynamically instead.
+# table needs extending periodically. See definitions#55 and definitions#377
+# for the longer-term plan to calculate these dynamically instead.
 #
 # Sources:
 # - https://en.wikipedia.org/wiki/Public_holidays_in_Turkey
@@ -18,7 +18,7 @@
 # - https://translate.yandex.com/?lang=en-tr
 # - https://de.wikibooks.org/wiki/Türkisch:_Zahlen
 # - https://en.wikipedia.org/wiki/Democracy_and_National_Unity_Day
-# - https://vakithesaplama.diyanet.gov.tr/resmitatiller.php (2021-2026 dates)
+# - https://vakithesaplama.diyanet.gov.tr/resmitatiller.php (2021-2030 dates)
 ---
 region_names:
   tr: "Türkiye"
@@ -97,7 +97,11 @@ methods:
           '2023' => Date.civil(2023, 4, 21),
           '2024' => Date.civil(2024, 4, 10),
           '2025' => Date.civil(2025, 3, 30),
-          '2026' => Date.civil(2026, 3, 20)
+          '2026' => Date.civil(2026, 3, 20),
+          '2027' => Date.civil(2027, 3, 9),
+          '2028' => Date.civil(2028, 2, 26),
+          '2029' => Date.civil(2029, 2, 15),
+          '2030' => Date.civil(2030, 2, 4)
       }
       begin_of_ramadan_feast[year.to_s]
   sacrifice_feast:
@@ -116,7 +120,11 @@ methods:
           '2023' => Date.civil(2023, 6, 28),
           '2024' => Date.civil(2024, 6, 16),
           '2025' => Date.civil(2025, 6, 6),
-          '2026' => Date.civil(2026, 5, 27)
+          '2026' => Date.civil(2026, 5, 27),
+          '2027' => Date.civil(2027, 5, 16),
+          '2028' => Date.civil(2028, 5, 5),
+          '2029' => Date.civil(2029, 4, 24),
+          '2030' => Date.civil(2030, 4, 13)
       }
       begin_of_sacrifice_feast[year.to_s]
 tests:
@@ -151,17 +159,17 @@ tests:
     expect:
       name: "Cumhuriyet Bayramı"
   - given:
-      date: ['2017-6-25', '2018-6-15', '2019-6-4', '2020-5-24', '2021-5-13', '2022-5-2', '2023-4-21', '2024-4-10', '2025-3-30', '2026-3-20']
+      date: ['2017-6-25', '2018-6-15', '2019-6-4', '2020-5-24', '2021-5-13', '2022-5-2', '2023-4-21', '2024-4-10', '2025-3-30', '2026-3-20', '2027-3-9', '2028-2-26', '2029-2-15', '2030-2-4']
       regions: ["tr"]
     expect:
       name: "Ramazan Bayramı"
   - given:
-      date: ['2017-6-26', '2018-6-16', '2019-6-5', '2020-5-25', '2021-5-14', '2022-5-3', '2023-4-22', '2024-4-11', '2025-3-31', '2026-3-21']
+      date: ['2017-6-26', '2018-6-16', '2019-6-5', '2020-5-25', '2021-5-14', '2022-5-3', '2023-4-22', '2024-4-11', '2025-3-31', '2026-3-21', '2027-3-10', '2028-2-27', '2029-2-16', '2030-2-5']
       regions: ["tr"]
     expect:
       name: "Ramazan Bayramı (ikinci tatil)"
   - given:
-      date: ['2017-6-27', '2018-6-17', '2019-6-6', '2020-5-26', '2021-5-15', '2022-5-4', '2023-4-23', '2024-4-12', '2025-4-1', '2026-3-22']
+      date: ['2017-6-27', '2018-6-17', '2019-6-6', '2020-5-26', '2021-5-15', '2022-5-4', '2023-4-23', '2024-4-12', '2025-4-1', '2026-3-22', '2027-3-11', '2028-2-28', '2029-2-17', '2030-2-6']
       regions: ["tr"]
     expect:
       name: "Ramazan Bayramı (üçüncü tatil)"
@@ -171,22 +179,22 @@ tests:
     expect:
       name: "Demokrasi ve Milli Birlik Günü"
   - given:
-      date: ['2017-9-1', '2018-8-21', '2019-8-11', '2020-7-31', '2021-7-20', '2022-7-9', '2023-6-28', '2024-6-16', '2025-6-6', '2026-5-27']
+      date: ['2017-9-1', '2018-8-21', '2019-8-11', '2020-7-31', '2021-7-20', '2022-7-9', '2023-6-28', '2024-6-16', '2025-6-6', '2026-5-27', '2027-5-16', '2028-5-5', '2029-4-24', '2030-4-13']
       regions: ["tr"]
     expect:
       name: "Kurban Bayramı"
   - given:
-      date: ['2017-9-2', '2018-8-22', '2019-8-12', '2020-8-01', '2021-7-21', '2022-7-10', '2023-6-29', '2024-6-17', '2025-6-7', '2026-5-28']
+      date: ['2017-9-2', '2018-8-22', '2019-8-12', '2020-8-01', '2021-7-21', '2022-7-10', '2023-6-29', '2024-6-17', '2025-6-7', '2026-5-28', '2027-5-17', '2028-5-6', '2029-4-25', '2030-4-14']
       regions: ["tr"]
     expect:
       name: "Kurban Bayramı (ikinci tatil)"
   - given:
-      date: ['2017-9-3', '2018-8-23', '2019-8-13', '2020-8-02', '2021-7-22', '2022-7-11', '2023-6-30', '2024-6-18', '2025-6-8', '2026-5-29']
+      date: ['2017-9-3', '2018-8-23', '2019-8-13', '2020-8-02', '2021-7-22', '2022-7-11', '2023-6-30', '2024-6-18', '2025-6-8', '2026-5-29', '2027-5-18', '2028-5-7', '2029-4-26', '2030-4-15']
       regions: ["tr"]
     expect:
       name: "Kurban Bayramı (üçüncü tatil)"
   - given:
-      date: ['2017-9-4', '2018-8-24', '2019-8-14', '2020-8-03', '2021-7-23', '2022-7-12', '2023-7-1', '2024-6-19', '2025-6-9', '2026-5-30']
+      date: ['2017-9-4', '2018-8-24', '2019-8-14', '2020-8-03', '2021-7-23', '2022-7-12', '2023-7-1', '2024-6-19', '2025-6-9', '2026-5-30', '2027-5-19', '2028-5-8', '2029-4-27', '2030-4-16']
       regions: ["tr"]
     expect:
       name: "Kurban Bayramı (dördüncü tatil)"
