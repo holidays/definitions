@@ -76,13 +76,6 @@ months:
   - name: 크리스마스
     regions: [kr]
     mday: 25
-
-methods:
-  kr_seollal_eve:
-    arguments: year, region
-    ruby: |
-      Holidays::Factory::Definition.custom_methods_repository.find("lunar_to_solar(year, month, day, region)").call(year, 1, 1, region) - 1
-
 tests:
   - given:
       date: '2016-02-08'

@@ -13,17 +13,6 @@
 ---
 region_names:
   co: "Colombia"
-methods:
-  # Movable holiday: when they do not fall on a Monday, these holidays are observed the following Monday.
-  to_following_monday_if_not_monday:
-    arguments: date
-    ruby: |
-      if date.wday > 1
-        date += ( 8 - date.wday )
-      elsif date.wday == 0
-        date += 1
-      end
-      date
 months:
   0:
   - name: Jueves Santo
