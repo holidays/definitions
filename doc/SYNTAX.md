@@ -1,10 +1,9 @@
 # Holiday Definition Syntax
 
-The definition syntax is a custom format developed over the life of this project. All holidays are defined in these YAML files. These definition files have four top-level properties:
+The definition syntax is a custom format developed over the life of this project. All holidays are defined in these YAML files. These definition files have three top-level properties:
 
 * `region_names` - human-readable English names for each region defined in this file
 * `months` - this is the meat! All definitions for months 1-12 are defined here
-* `methods` - this contains any custom logic that your definitions require
 * `tests` - this contains the tests for your definitions
 
 The `months` property is required. The remaining properties are not strictly required but are almost always used.
@@ -292,34 +291,7 @@ Holidays.on(Date.civil(1995, 7, 1), :jp)
 
 ## Methods
 
-Sometimes you need to perform a complex calculation to determine a holiday. To facilitate this we allow for users to specify custom methods to calculate a date. These should be placed under the `methods` property. Methods named in this way can then be referenced by entries in the `months` property.
-
-#### Important note
-
-One thing to note is that these methods are _language specific_ at this time, meaning we would have one for ruby, one for golang, etc. Coming up with a standardized way to represent the logic in the custom-written methods proved to be very difficult. This is a punt until we can come up with a better solution.
-
-Please feel free to only add the custom method source in the language that you choose. It will be up to downstream maintainers to ensure that their language has an implementation. So if you only want to add it in ruby please just do that!
-
-### Method Example
-
-Canada celebrates Victoria Day, which falls on the Monday on or before May 24. Under the `methods` property we would create a custom method for ruby that returns a Date object:
-
-```yaml
-methods:
-  ca_victoria_day:
-    arguments: year
-    ruby: |
-      date = Date.civil(year, 5, 24)
-      if date.wday > 1
-        date -= (date.wday - 1)
-      elsif date.wday == 0
-        date -= 6
-      end
-
-      date
-```
-
-This could then be used in a `months` entry:
+Some holidays need a calculation that the fixed-date and week-number forms above cannot express (Easter-based dates, lunar calendars, "the Monday on or before the 24th", observance shifts). These are handled by named methods that an entry references from its `function:` or `observed:` property:
 
 ```yaml
 5:
@@ -328,9 +300,17 @@ This could then be used in a `months` entry:
   function: ca_victoria_day(year)
 ```
 
+The method implementations do not live in this repository. Each consuming library implements them in its own language: the Ruby `holidays` gem in `lib/holidays/definition/custom_methods/`, the Go port in its own package. This keeps the definition data portable, a `function:` reference is a contract (a name plus its arguments), not code.
+
+### Adding a new method
+
+1. Pick a name and reference it from `function:` / `observed:`, using only the allowed arguments (below).
+2. Implement it in the consuming libraries. At minimum the Ruby `holidays` gem, since this repo's test suite runs against it. Open a companion PR there.
+3. Add `tests:` entries here that exercise the new calculation.
+
 ### Available arguments
 
-You may only specify the following values for arguments into a custom method: `date`, `year`, `month`, `day`, `region`
+You may only pass these values to a method: `date`, `year`, `month`, `day`, `region`
 
 Correct example:
 
@@ -352,7 +332,7 @@ The following will return an error since `week` is not a recognized argument:
 
 #### Whaa? Why do you restrict what I can pass in?
 
-This was done as an attempt to make it easier for the downstream projects to parse and use the custom methods. They have to be able to pass in the required data so we limit it to make that process easier.
+The list is restricted so every consuming library knows exactly what it must supply.
 
 We can add to this list if your custom logic needs something else! Open an issue with your use case and we can discuss it.
 
@@ -367,9 +347,9 @@ If a holiday does not have a fixed month (e.g. Easter) it should go in the '0' m
   function: easter(year)
 ```
 
-### Pre-existing methods
+### Built-in methods
 
-There are pre-existing methods for highly-used calculations. You can reference these methods in your definitions as you would a custom method that you have written:
+Every consuming library provides these without any per-definition setup. Reference them exactly as you would any other method:
 
 * `easter(year)` - calculates Easter via Gregorian calendar for a given year
 * `orthodox_easter(year)` - calculates Easter via Julian calendar for a given year
