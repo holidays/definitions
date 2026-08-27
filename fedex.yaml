@@ -44,13 +44,6 @@ months:
   - name: New Year's Eve
     regions: [fedex]
     mday: 31
-
-methods:
-  day_after_thanksgiving:
-    arguments: year
-    ruby: |
-      Holidays::Factory::DateCalculator.day_of_month_calculator.call(year, 11, 4, 4) + 1
-
 tests:
   - given:
       date: '2015-01-01'

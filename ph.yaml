@@ -70,16 +70,6 @@ months:
   - name: New Year's Eve
     regions: [ph]
     mday: 31
-
-methods:
-  ph_heroes_day:
-    # last Monday of August
-    arguments: year
-    ruby: |
-      date = Date.new(year, 8, -1)
-      date -= (date.wday - 1) % 7
-      date
-
 tests:
   - given:
       date: '2015-04-03'

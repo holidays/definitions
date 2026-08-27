@@ -229,20 +229,6 @@ months:
     regions: [de]
     mday: 31
     type: informal
-
-methods:
-  de_buss_und_bettag:
-    # Germany: Wednesday before November 23
-    arguments: year
-    ruby: |
-      date = Date.civil(year,11,23)
-      if date.wday > 3
-        date -= (date.wday - 3)
-      else
-        date -= (date.wday + 4)
-      end
-      date
-
 tests:
   - given:
       date: '2009-01-01'

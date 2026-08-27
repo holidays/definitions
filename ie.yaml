@@ -59,19 +59,6 @@ months:
     regions: [ie]
     mday: 26
     observed: to_weekday_if_boxing_weekend(date)
-
-methods:
-  ie_st_brigids_day:
-    # First Monday in February, or 1 February if that day is a Friday
-    arguments: year
-    ruby: |
-      date = Date.civil(year, 2, 1)
-      if date.wday == 5
-        date
-      else
-        date + ((1 - date.wday) % 7)
-      end
-
 tests:
   - given:
       date: '2008-01-01'
