@@ -1,5 +1,24 @@
 # Holiday definitions
 
+## 9.0.0
+
+**Breaking**
+
+* Remove the embedded `methods:` and `ruby:` blocks from all region files. Method bodies now live in each consuming library; `function:` and `observed:` names are unchanged. See `doc/SYNTAX.md`. [definitions pull-382](https://github.com/holidays/definitions/pull/382), [definitions pull-383](https://github.com/holidays/definitions/pull/383), [definitions issue-379](https://github.com/holidays/definitions/issues/379)
+
+**Non-breaking** (results may change for the listed regions; no consumer code change needed)
+
+* Add `cn` China statutory national holidays, with year ranges for the 2008 and 2025 reforms. 调休 make-up workdays are not modelled. [definitions pull-370](https://github.com/holidays/definitions/pull/370), [definitions issue-112](https://github.com/holidays/definitions/issues/112)
+* Fix `jp` substitute holidays ignoring `year_ranges`, which made the 2019-only Reiwa accession dates recur every year. [definitions pull-368](https://github.com/holidays/definitions/pull/368), [holidays issue-366](https://github.com/holidays/holidays/issues/366)
+* Fix `kr` 설날 연휴 (Seollal eve) resolving to the wrong year; now derived as the day before 설날. [definitions pull-371](https://github.com/holidays/definitions/pull/371), [holidays issue-388](https://github.com/holidays/holidays/issues/388)
+* Fix `nz_sl` Southland Anniversary Day to Easter Tuesday and `nz_hb` Hawke's Bay Anniversary Day to the Friday before Labour Day. [definitions pull-375](https://github.com/holidays/definitions/pull/375), [definitions issue-260](https://github.com/holidays/definitions/issues/260)
+* Restrict `ro` Boboteaza and Soborul Sfântului Ioan Botezătorul to 2024 onwards. [definitions pull-373](https://github.com/holidays/definitions/pull/373), [definitions issue-296](https://github.com/holidays/definitions/issues/296)
+* Extend `tr` Ramazan and Kurban Bayramı through 2030. [definitions pull-376](https://github.com/holidays/definitions/pull/376), [definitions pull-378](https://github.com/holidays/definitions/pull/378), [definitions issue-377](https://github.com/holidays/definitions/issues/377)
+* Add `de_be` Tag der Befreiung on 8 May 2025. [definitions pull-293](https://github.com/holidays/definitions/pull/293) (thanks to https://github.com/michaelem)
+* Add informal Day of the Dead for `us` and `ca` on 1 and 2 November. [definitions pull-374](https://github.com/holidays/definitions/pull/374), [holidays issue-393](https://github.com/holidays/holidays/issues/393)
+* Add a `de_mv` Internationaler Frauentag boundary test. [definitions pull-372](https://github.com/holidays/definitions/pull/372)
+* Fix a `th` test date typo. [definitions pull-381](https://github.com/holidays/definitions/pull/381)
+
 ## 8.2.0
 
 * Add `by` Belarus, with the nine non-working days set by the Labour Code plus Радуніца, the ninth day after Orthodox Easter, and the state holidays that remain ordinary working days marked informal, for [definitions pull-364](https://github.com/holidays/definitions/pull/364), reworked from [holidays pull-402](https://github.com/holidays/holidays/pull/402) (thanks to https://github.com/sania1801)
