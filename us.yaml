@@ -281,10 +281,7 @@ months:
   - name: Independence Day # fixed
     regions: [us]
     mday: 4
-  - name: Independence Day (Holiday)
-    regions: [us_va]
-    mday: 4
-    function: to_weekday_if_weekend(date) # Note: Always if Independence Day don't match
+    observed: independence_day(region, date)
   - name: Pioneer Day # fixed
     regions: [us_ut]
     mday: 24
@@ -780,7 +777,31 @@ tests:
       date: ['2020-7-3', '2021-7-5', '2026-7-3']
       regions: ["us_va"]
     expect:
-      name: "Independence Day (Holiday)"
+      holiday: false
+  - given:
+      date: ['2026-7-4', '2027-7-4']
+      regions: ["us", "us_ri"]
+      options: ["observed"]
+    expect:
+      holiday: false
+  - given:
+      date: ['2026-7-3', '2027-7-5']
+      regions: ["us", "us_va"]
+      options: ["observed"]
+    expect:
+      name: "Independence Day"
+  - given:
+      date: ['2026-7-6']
+      regions: ["us_ri"]
+      options: ["observed"]
+    expect:
+      name: "Independence Day"
+  - given:
+      date: ['2026-7-4']
+      regions: ["us_tx"]
+      options: ["observed"]
+    expect:
+      name: "Independence Day"
   - given:
       date: ['2020-7-24']
       regions: ["us_ut"]
