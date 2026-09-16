@@ -1,5 +1,11 @@
 # Holiday definitions
 
+## 9.1.0
+
+* Switch `tr` Ramazan and Kurban Bayramı to a calculated Hijri date instead of a hand-maintained per-year table, so they no longer silently disappear past 2030. [definitions pull-385](https://github.com/holidays/definitions/pull/385), [definitions issue-377](https://github.com/holidays/definitions/issues/377)
+* Fix `vn` Giỗ tổ Hùng Vương test dates for 2018-2023; the 2018 date was wrong due to a lunar calendar leap-month bug. [definitions pull-386](https://github.com/holidays/definitions/pull/386), [definitions issue-150](https://github.com/holidays/definitions/issues/150)
+* Shift observed `us` Independence Day off weekends for every region via a new `independence_day` function, replacing the `us_va`-only `to_weekday_if_weekend` shim; nearest weekday for most regions, the following Monday for `us_ri`, no shift for `us_tx`. [definitions pull-387](https://github.com/holidays/definitions/pull/387), [holidays issue-478](https://github.com/holidays/holidays/issues/478)
+
 ## 9.0.0
 
 **Breaking**
