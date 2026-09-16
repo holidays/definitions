@@ -41,3 +41,36 @@ jobs:
       - name: Run contract tests
         working-directory: holidays
         run: make test-contract
+
+  downstream-go:
+    name: Go (go-holidays)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout definitions
+        uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd #v5.0.1
+        with:
+          path: definitions-src
+
+      - name: Clone go-holidays repository
+        run: git clone https://github.com/holidays/go-holidays.git go-holidays
+
+      - name: Setup Go
+        uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff #v5.6.0
+        with:
+          go-version: '1.27'
+
+      - name: Install definitions into go-holidays
+        working-directory: go-holidays
+        run: |
+          git rm -f definitions || true
+          rm -rf .git/modules/definitions
+          git config -f .git/config --remove-section submodule.definitions 2>/dev/null || true
+          cp -r ../definitions-src definitions
+
+      - name: Generate definitions
+        working-directory: go-holidays
+        run: make generate
+
+      - name: Run tests
+        working-directory: go-holidays
+        run: make test
