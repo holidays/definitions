@@ -3,3 +3,16 @@
 coverage/
 Gemfile.lock
 tmp/
+
+# Claude Code (optional, not required by this repo)
+.claude/
+CLAUDE.md
+AGENTS.md
+
+# Beads issue tracker (optional, not required by this repo)
+.beads/
+.dolt/
+*.db
+.beads-credential-key
+.worktrees/
+/issues.jsonl
