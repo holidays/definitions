@@ -1,13 +1,38 @@
-# Morocco holiday (incomplete)definitions for the Ruby Holiday gem.
+# Morocco holiday definitions for the Ruby Holiday gem.
 #
-# Updated: 2013-07-01.
-# Some dates in Islamic Calendar are missing.
+# Updated: 2026-09-18.
+#
+# Eid al-Fitr and Eid al-Adha fall on fixed days of the Hijri calendar (1
+# Shawwal and 10 Dhul-Hijjah respectively). The eid_al_fitr and eid_al_adha
+# native custom methods compute them from an arithmetic Islamic calendar
+# calculation, with a per-year override table for the years where the
+# proclamation of Morocco's Ministry of Habous and Islamic Affairs differs
+# from the arithmetic result. See holidays#392.
+#
+# No observed/shift rule is applied to either feast: Morocco's Code du
+# travail (Arts. 217-230) does not provide for an automatic substitute day
+# off when a public holiday falls on the Saturday-Sunday weekend, so none is
+# added here, matching the rest of this file.
+#
+# Morocco's other Islamic-calendar holidays (Islamic New Year / 1 Muharram
+# and Mawlid al-Nabi) and the Amazigh New Year (Yennayer, January 14) are
+# still missing from this file; only Eid al-Fitr and Eid al-Adha have been
+# added so far.
+#
 # Sources:
 # - http://en.wikipedia.org/wiki/Public_holidays_in_Morocco
+# - lib/holidays/definition/custom_methods/ma.rb in the holidays gem (holidays#392)
 ---
 region_names:
   ma: "Morocco"
 months:
+  0:
+  - name: Eid al-Fitr
+    regions: [ma]
+    function: eid_al_fitr(year)
+  - name: Eid al-Adha
+    regions: [ma]
+    function: eid_al_adha(year)
   1:
   - name: Ras l' âm
     regions: [ma]
@@ -96,3 +121,23 @@ tests:
       options: ["informal"]
     expect:
       name: "Eid Al Istiqulal"
+  - given:
+      date: ['2018-6-15', '2023-4-22']
+      regions: ["ma"]
+    expect:
+      name: "Eid al-Fitr"
+  - given:
+      date: '2022-5-2'
+      regions: ["ma"]
+    expect:
+      name: "Eid al-Fitr"
+  - given:
+      date: ['2018-8-22', '2023-6-29']
+      regions: ["ma"]
+    expect:
+      name: "Eid al-Adha"
+  - given:
+      date: '2021-7-21'
+      regions: ["ma"]
+    expect:
+      name: "Eid al-Adha"
