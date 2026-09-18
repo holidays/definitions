@@ -3,8 +3,21 @@
 # Days not included in the definitions (yet):
 # Vesak Day (falls on the first full moon in May)
 # Lunar New Year (falls on the first day of the Lunar Calendar)
-# Hari Raya Puasa and Hari Raya Haji (based on moon sightings, Islamic Calendar)
 # Deepavali (15th Day of September or October, based on the Hindu Calendar)
+
+# Hari Raya Puasa (Eid al-Fitr, 1 Shawwal) and Hari Raya Haji (Eid al-Adha,
+# 10 Dhul-Hijjah) are computed from the arithmetic Hijri calendar via the
+# hari_raya_puasa and hari_raya_haji custom methods, with a table of
+# gazetted-date overrides for years where the civil holiday, fixed by the
+# Yang di-Pertuan Agong on JAKIM's moon-sighting advice, differs from the
+# arithmetic result. See holidays#392.
+#
+# Under the Holidays Act 1951 (s.3), a public holiday that falls on the
+# "weekly holiday" (Sunday, for the Federal Territory and most States) is
+# followed by a substitute holiday on the next day; a Saturday occurrence
+# gets no substitute. This is the same rule Singapore applies (see
+# definitions/sg.yaml), applied here via to_monday_if_sunday(date).
+# Source: https://www.kabinet.gov.my/storage/2024/11/1951_12_31_act369.pdf
 
 # Source:
 # http://publicholidays.com.my/
@@ -13,6 +26,15 @@
 region_names:
   my: "Malaysia"
 months:
+  0:
+  - name: Hari Raya Puasa
+    regions: [my]
+    function: hari_raya_puasa(year)
+    observed: to_monday_if_sunday(date)
+  - name: Hari Raya Haji
+    regions: [my]
+    function: hari_raya_haji(year)
+    observed: to_monday_if_sunday(date)
   1:
   - name: New Year's Day
     regions: [my]
@@ -80,3 +102,67 @@ tests:
       options: ["informal"]
     expect:
       name: "Christmas Day"
+
+  # Hari Raya Puasa / Hari Raya Haji (holidays#392): arithmetic Hijri
+  # calendar result for years with no gazetted-date override.
+  - given:
+      date: '2021-05-13'
+      regions: ["my"]
+    expect:
+      name: "Hari Raya Puasa"
+  - given:
+      date: '2020-07-31'
+      regions: ["my"]
+    expect:
+      name: "Hari Raya Haji"
+
+  # Gazetted-date overrides (GAZETTE_OVERRIDES in the custom method)
+  - given:
+      date: ['2014-07-28', '2015-07-17', '2016-07-06', '2017-06-25', '2026-03-21']
+      regions: ["my"]
+    expect:
+      name: "Hari Raya Puasa"
+  - given:
+      date: ['2016-09-12', '2017-09-01', '2019-08-11']
+      regions: ["my"]
+    expect:
+      name: "Hari Raya Haji"
+
+  # Observed rule (Holidays Act 1951, s.3): a holiday falling on the weekly
+  # holiday (Sunday) is followed by a substitute holiday the next day.
+  # 2017-06-25 and 2019-08-11 above are both Sundays, confirming the
+  # unobserved lookup still returns the holiday on its actual (Sunday) date.
+  - given:
+      date: '2017-06-26'
+      regions: ["my"]
+      options: ["observed"]
+    expect:
+      name: "Hari Raya Puasa"
+  - given:
+      date: '2019-08-12'
+      regions: ["my"]
+      options: ["observed"]
+    expect:
+      name: "Hari Raya Haji"
+  # Non-overridden (arithmetic) Sunday occurrence gets the same treatment.
+  - given:
+      date: '2022-07-11'
+      regions: ["my"]
+      options: ["observed"]
+    expect:
+      name: "Hari Raya Haji"
+
+  # A Saturday occurrence (2026-03-21, gazetted) has no substitute: the
+  # holiday stays on the Saturday and the following Sunday is not flagged.
+  - given:
+      date: '2026-03-21'
+      regions: ["my"]
+      options: ["observed"]
+    expect:
+      name: "Hari Raya Puasa"
+  - given:
+      date: '2026-03-22'
+      regions: ["my"]
+      options: ["observed"]
+    expect:
+      holiday: false
