@@ -1,5 +1,10 @@
 # Holiday definitions
 
+## 9.2.0
+
+* Add `ma` Eid al-Fitr and Eid al-Adha, calculated from the Hijri calendar. [definitions pull-391](https://github.com/holidays/definitions/pull/391)
+* Add `my` Hari Raya Puasa and Hari Raya Haji, calculated from the Hijri calendar and observed on the following Monday when they fall on a Sunday. [definitions pull-392](https://github.com/holidays/definitions/pull/392)
+
 ## 9.1.0
 
 * Switch `tr` Ramazan and Kurban Bayramı to a calculated Hijri date instead of a hand-maintained per-year table, so they no longer silently disappear past 2030. [definitions pull-385](https://github.com/holidays/definitions/pull/385), [definitions issue-377](https://github.com/holidays/definitions/issues/377)
