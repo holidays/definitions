@@ -117,7 +117,7 @@ tests:
     expect:
       name: 'Viernes Santo'
   - given:
-      date: '2026-04-05'
+      date: '2026-05-04'
       regions: ['do']
     expect:
       name: 'Dia del Trabajo'

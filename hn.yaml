@@ -1,0 +1,137 @@
+# Honduras bank holidays for the ruby gem
+# Source: Código del Trabajo art. 339 (as amended by Decreto 275, 1960)
+# https://www.trabajo.gob.hn/wp-content/uploads/2022/09/Codigo-del-Trabajo-y-sus-Reformas.pdf
+# The 3, 12 and 21 October holidays are moved to the Wednesday, Thursday and Friday
+# of the first week of October (Semana Morazánica).
+---
+methods:
+  hn_morazanic_thursday:
+    arguments: year
+    # Day after the first Wednesday of October
+    source: |
+      date = Date.civil(year, 10, 1)
+      date += (3 - date.wday) % 7
+      date + 1
+  hn_morazanic_friday:
+    arguments: year
+    # Two days after the first Wednesday of October
+    source: |
+      date = Date.civil(year, 10, 1)
+      date += (3 - date.wday) % 7
+      date + 2
+months:
+  0:
+  - name: Jueves Santo
+    regions: [hn]
+    function: easter(year)
+    function_modifier: -3
+  - name: Viernes Santo
+    regions: [hn]
+    function: easter(year)
+    function_modifier: -2
+  - name: Sábado Santo
+    regions: [hn]
+    function: easter(year)
+    function_modifier: -1
+  1:
+  - name: Año Nuevo
+    regions: [hn]
+    mday: 1
+  4:
+  - name: Día de las Américas
+    regions: [hn]
+    mday: 14
+  5:
+  - name: Día del Trabajo
+    regions: [hn]
+    mday: 1
+  9:
+  - name: Día de la Independencia
+    regions: [hn]
+    mday: 15
+  10:
+  - name: Día de Francisco Morazán
+    regions: [hn]
+    week: 1
+    wday: 3
+  - name: Día del Descubrimiento de América
+    regions: [hn]
+    function: hn_morazanic_thursday(year)
+  - name: Día de las Fuerzas Armadas
+    regions: [hn]
+    function: hn_morazanic_friday(year)
+  12:
+  - name: Navidad
+    regions: [hn]
+    mday: 25
+tests:
+  - given:
+      date: '2026-01-01'
+      regions: ['hn']
+    expect:
+      name: 'Año Nuevo'
+  - given:
+      date: '2026-04-02'
+      regions: ['hn']
+    expect:
+      name: 'Jueves Santo'
+  - given:
+      date: '2026-04-03'
+      regions: ['hn']
+    expect:
+      name: 'Viernes Santo'
+  - given:
+      date: '2026-04-04'
+      regions: ['hn']
+    expect:
+      name: 'Sábado Santo'
+  - given:
+      date: '2026-04-14'
+      regions: ['hn']
+    expect:
+      name: 'Día de las Américas'
+  - given:
+      date: '2026-05-01'
+      regions: ['hn']
+    expect:
+      name: 'Día del Trabajo'
+  - given:
+      date: '2026-09-15'
+      regions: ['hn']
+    expect:
+      name: 'Día de la Independencia'
+  - given:
+      date: '2026-10-07'
+      regions: ['hn']
+    expect:
+      name: 'Día de Francisco Morazán'
+  - given:
+      date: '2026-10-08'
+      regions: ['hn']
+    expect:
+      name: 'Día del Descubrimiento de América'
+  - given:
+      date: '2026-10-09'
+      regions: ['hn']
+    expect:
+      name: 'Día de las Fuerzas Armadas'
+  - given:
+      date: '2025-10-01'
+      regions: ['hn']
+    expect:
+      name: 'Día de Francisco Morazán'
+  - given:
+      date: '2025-10-03'
+      regions: ['hn']
+    expect:
+      name: 'Día de las Fuerzas Armadas'
+  - given:
+      date: '2026-10-12'
+      regions: ['hn']
+    expect:
+      holiday: false
+  - given:
+      date: '2026-12-25'
+      regions: ['hn']
+    expect:
+      name: 'Navidad'
