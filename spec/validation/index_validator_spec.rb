@@ -4,7 +4,7 @@ require 'validation/index_validator'
 describe Definitions::Validation::Index do
   subject { described_class.new }
 
-  let(:index) { { 'defs' => { 'US' => ['us.yaml'], 'CA' => ['ca.yaml'] } } }
+  let(:index) { { 'defs' => { 'CA' => ['ca.yaml'], 'US' => ['us.yaml'] } } }
   let(:definition_files) { ['us.yaml', 'ca.yaml'] }
 
   context 'valid' do
@@ -25,14 +25,14 @@ describe Definitions::Validation::Index do
     it 'allows aggregate regions to have no definition file of their own' do
       index = {
         'defs' => {
+          'BR' => ['br.yaml'],
+          'FR' => ['fr.yaml'],
+          'NO' => ['no.yaml'],
+          'US' => ['us.yaml'],
           'Europe' => ['fr.yaml'],
           'NorthAmerica' => ['us.yaml'],
           'Scandinavia' => ['no.yaml'],
           'SouthAmerica' => ['br.yaml'],
-          'FR' => ['fr.yaml'],
-          'US' => ['us.yaml'],
-          'NO' => ['no.yaml'],
-          'BR' => ['br.yaml'],
         }
       }
       expect(subject.call(index, ['fr.yaml', 'us.yaml', 'no.yaml', 'br.yaml'])).to be true
@@ -190,14 +190,14 @@ describe Definitions::Validation::Index do
 
   context 'indexed files that do not exist' do
     it 'raises error if the index lists a file that is not on disk' do
-      index = { 'defs' => { 'US' => ['us.yaml'], 'HK' => ['hk.yaml'] } }
+      index = { 'defs' => { 'HK' => ['hk.yaml'], 'US' => ['us.yaml'] } }
       expect { subject.call(index, ['us.yaml']) }.to raise_error(Definitions::Errors::InvalidIndex) { |e|
         expect(e.message).to eq("index.yaml lists files that do not exist: hk.yaml")
       }
     end
 
     it 'reports every missing file, sorted' do
-      index = { 'defs' => { 'US' => ['us.yaml', 'zz.yaml'], 'HK' => ['hk.yaml'] } }
+      index = { 'defs' => { 'HK' => ['hk.yaml'], 'US' => ['us.yaml', 'zz.yaml'] } }
       expect { subject.call(index, ['us.yaml']) }.to raise_error(Definitions::Errors::InvalidIndex) { |e|
         expect(e.message).to eq("index.yaml lists files that do not exist: hk.yaml, zz.yaml")
       }
@@ -214,14 +214,14 @@ describe Definitions::Validation::Index do
     end
 
     it 'reports every mismatched region, sorted' do
-      index = { 'defs' => { 'US' => ['ca.yaml'], 'GB' => ['ca.yaml'] } }
+      index = { 'defs' => { 'GB' => ['ca.yaml'], 'US' => ['ca.yaml'] } }
       expect { subject.call(index, ['ca.yaml']) }.to raise_error(Definitions::Errors::InvalidIndex) { |e|
         expect(e.message).to include("index entries do not list their own definition file: GB (expected 'gb.yaml'), US (expected 'us.yaml')")
       }
     end
 
     it 'raises error for a region that is not a known aggregate' do
-      index = { 'defs' => { 'Asia' => ['jp.yaml'], 'JP' => ['jp.yaml'] } }
+      index = { 'defs' => { 'JP' => ['jp.yaml'], 'Asia' => ['jp.yaml'] } }
       expect { subject.call(index, ['jp.yaml']) }.to raise_error(Definitions::Errors::InvalidIndex) { |e|
         expect(e.message).to include("Asia (expected 'asia.yaml')")
       }
