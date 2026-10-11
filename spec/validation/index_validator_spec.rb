@@ -89,6 +89,66 @@ describe Definitions::Validation::Index do
     end
   end
 
+  context 'invalid order' do
+    it 'raises error if the country codes are not ordered' do
+      index = { 'defs' => { 'US' => ['us.yaml'], 'CA' => ['ca.yaml'] } }
+      expect { subject.call(index, ['us.yaml', 'us.yaml']) }.to raise_error(Definitions::Errors::InvalidIndex) { |e|
+        expect(e.message).to eq("index has wrong order of definitions:\n-US\n-CA\n+CA\n+US")
+      }
+    end
+
+    it 'raises error if meta regions are not ordered' do
+      index = {
+        'defs' => {
+          'FR' => ['fr.yaml'],
+          'US' => ['us.yaml'],
+          'NorthAmerica' => ['us.yaml'],
+          'Europe' => ['fr.yaml'],
+        }
+      }
+      expect { subject.call(index, ['fr.yaml', 'us.yaml']) }.to raise_error(Definitions::Errors::InvalidIndex) { |e|
+        expect(e.message).to eq("index has wrong order of definitions:\n-NorthAmerica\n-Europe\n+Europe\n+NorthAmerica")
+      }
+    end
+
+    it 'raises error if organisation names are not ordered' do
+      index = {
+        'defs' => {
+          'Foo' => ['foo.yaml'],
+          'Bar' => ['bar.yaml'],
+        }
+      }
+      expect { subject.call(index, ['foo.yaml', 'bar.yaml']) }.to raise_error(Definitions::Errors::InvalidIndex) { |e|
+        expect(e.message).to eq("index has wrong order of definitions:\n-Foo\n-Bar\n+Bar\n+Foo")
+      }
+    end
+
+    it 'raises error if meta regions precede country codes' do
+      index = {
+        'defs' => {
+          'Europe' => ['fr.yaml'],
+          'FR' => ['fr.yaml'],
+        }
+      }
+      expect { subject.call(index, ['fr.yaml']) }.to raise_error(Definitions::Errors::InvalidIndex) { |e|
+        expect(e.message).to eq("index has wrong order of definitions:\n-Europe\n-FR\n+FR\n+Europe")
+      }
+    end
+
+    it 'raises error if organisation precede meta regions' do
+      index = {
+        'defs' => {
+          'FR' => ['fr.yaml'],
+          'Foo' => ['foo.yaml'],
+          'Europe' => ['fr.yaml'],
+        }
+      }
+      expect { subject.call(index, ['fr.yaml', 'foo.yaml']) }.to raise_error(Definitions::Errors::InvalidIndex) { |e|
+        expect(e.message).to eq("index has wrong order of definitions:\n-Foo\n-Europe\n+Europe\n+Foo")
+      }
+    end
+  end
+
   context 'invalid file names' do
     it 'raises error if an indexed file is uppercase' do
       index = { 'defs' => { 'US' => ['US.yaml'] } }
