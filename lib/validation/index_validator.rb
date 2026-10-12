@@ -19,6 +19,7 @@ module Definitions
       def call(index, definition_files)
         defs = validate_structure!(index)
 
+        validate_order!(defs.keys)
         validate_file_names!(defs)
         validate_all_files_indexed!(defs, definition_files)
         validate_all_indexed_files_exist!(defs, definition_files)
@@ -45,6 +46,31 @@ module Definitions
         end
 
         defs
+      end
+
+      def validate_order!(order)
+        expected_order = order.sort_by do |name|
+          group = case name
+          when /\A[A-Z]{2}(\z|_)/
+            0 # countries
+          when *AGGREGATE_REGIONS
+            1 # meta regions
+          else
+            2 # organisations
+          end
+
+          [group, name.downcase]
+        end
+
+        unless order == expected_order
+          out_of_order = order.each_index.select{ |i| order[i] != expected_order[i] }
+
+          diff = out_of_order.chunk_while{ |a, b| a + 1 == b }.flat_map do |chunk|
+            chunk.map{ |i| "-#{order[i]}" } + chunk.map{ |i| "+#{expected_order[i]}" }
+          end
+
+          raise Errors::InvalidIndex.new("index has wrong order of definitions:\n#{diff.join("\n")}")
+        end
       end
 
       def validate_file_names!(defs)
