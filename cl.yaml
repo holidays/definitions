@@ -3,6 +3,7 @@
 # Updated: 2019-02-10
 #
 # Sources:
+# - https://www.bcn.cl/leychile/navegar?i=1161743
 # - http://www.feriados.cl
 # - http://www.feriadoschilenos.cl
 #
@@ -29,6 +30,11 @@ months:
     function: other_churches_day_cl(year)
     year_ranges:
       from: 2008
+  - name: Día Nacional de los Pueblos Indígenas
+    regions: [cl]
+    function: indigenous_peoples_day_cl(year)
+    year_ranges:
+      from: 2021
   1:
   - name: Año Nuevo
     regions: [cl]
@@ -258,3 +264,43 @@ tests:
       options: ["informal"]
     expect:
       name: "Navidad"
+  - given:
+      date: '2021-06-21'
+      regions: [cl]
+    expect:
+      name: Día Nacional de los Pueblos Indígenas
+  - given:
+      date: '2022-06-21'
+      regions: [cl]
+    expect:
+      name: Día Nacional de los Pueblos Indígenas
+  - given:
+      date: '2023-06-21'
+      regions: [cl]
+    expect:
+      name: Día Nacional de los Pueblos Indígenas
+  - given:
+      date: '2024-06-20'
+      regions: [cl]
+    expect:
+      name: Día Nacional de los Pueblos Indígenas
+  - given:
+      date: '2025-06-20'
+      regions: [cl]
+    expect:
+      name: Día Nacional de los Pueblos Indígenas
+  - given:
+      date: '2026-06-21'
+      regions: [cl]
+    expect:
+      name: Día Nacional de los Pueblos Indígenas
+  - given:
+      date: '2029-06-20'
+      regions: [cl]
+    expect:
+      name: Día Nacional de los Pueblos Indígenas
+  - given:
+      date: '2046-06-21'
+      regions: [cl]
+    expect:
+      name: Día Nacional de los Pueblos Indígenas
