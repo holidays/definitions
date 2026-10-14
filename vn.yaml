@@ -54,3 +54,13 @@ tests:
       regions: ["vn"]
     expect:
       name: "Giỗ tổ Hùng Vương"
+  - given:
+      date: ['2009-04-04', '2037-04-24', '2038-04-13']
+      regions: ["vn"]
+    expect:
+      name: "Giỗ tổ Hùng Vương"
+  - given:
+      date: ['2009-04-05', '2037-04-25', '2038-04-14']
+      regions: ["vn"]
+    expect:
+      holiday: false
