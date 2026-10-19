@@ -1,11 +1,11 @@
-# Maltese holiday definitions for the Ruby Holiday gem.  In English.
+# Maltese holiday definitions for the Ruby Holiday gem. In English.
 #
 # Updated: 2017-06-08
 # Sources:
 # - https://en.wikipedia.org/wiki/Public_holidays_in_Malta
 ---
 region_names:
-  mt_en: "Malta"
+  mt_en: "Malta (English)"
 months:
   0:
   - name: Good Friday # Il-Ġimgħa l-Kbira

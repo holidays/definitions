@@ -4,8 +4,8 @@
 # Source:  http://en.wikipedia.org/wiki/Public_holidays_in_Bulgaria
 ---
 region_names:
-  bg_bg: "Bulgaria"
-  bg_en: "Bulgaria"
+  bg_bg: "Bulgaria (Bulgarian)"
+  bg_en: "Bulgaria (English)"
 months:
   0:
   - name: Good Friday
