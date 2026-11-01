@@ -2,7 +2,14 @@
 
 ## 9.3.0
 
+* Add an optional `excluded_regions` key to holiday definitions, so a holiday listed for a parent region can skip specific subregions. Consumers need the matching library support ([holidays pull-528](https://github.com/holidays/holidays/pull/528), [go-holidays pull-34](https://github.com/holidays/go-holidays/pull/34)). See `doc/SYNTAX.md`. [definitions pull-403](https://github.com/holidays/definitions/pull/403)
+* Exclude the 17 states that do not give state employees a paid Juneteenth holiday (including `us_hi`) from the formal `us` Juneteenth National Independence Day and list it as informal there instead; `us` and the observing states are unchanged. Exclusions apply to every year from 2021. [definitions pull-405](https://github.com/holidays/definitions/pull/405), [holidays issue-444](https://github.com/holidays/holidays/issues/444)
+* Fix `au_tas` getting New Year's Day on a weekend 1 January and a duplicate on the following Monday; Tasmania now only gets the Monday, per the Statutory Holidays Act 2000 s 4(a). [definitions pull-404](https://github.com/holidays/definitions/pull/404), [definitions issue-37](https://github.com/holidays/definitions/issues/37)
 * Pin `tr` Ramazan and Kurban Bayramı to the Diyanet dates for 2031-2035, fix the 2031 test dates, and add the second Ramazan Bayramı of 2033 (23-25 December) via a new `ramadan_feast_second_in_year` function. [definitions issue-55](https://github.com/holidays/definitions/issues/55)
+* Add `cl` Día Nacional de los Pueblos Indígenas via a new `indigenous_peoples_day_cl` function. [definitions pull-397](https://github.com/holidays/definitions/pull/397) (thanks to https://github.com/aundurraga)
+* Add per-language and per-script region names for countries with more than one official language or script. [definitions pull-399](https://github.com/holidays/definitions/pull/399) (thanks to https://github.com/toy)
+* Reorder `index.yaml` so `si`, `sk` and `ve` get themselves as parent region instead of a meta region. [definitions pull-395](https://github.com/holidays/definitions/pull/395) (thanks to https://github.com/toy)
+* Add `vn` Giỗ tổ Hùng Vương test dates for 2009, 2037 and 2038. [definitions pull-396](https://github.com/holidays/definitions/pull/396)
 
 ## 9.2.0
 
