@@ -46,8 +46,13 @@ months:
   1:
   - name: New Year's Day
     regions: [au, au_nsw, au_vic, au_act, au_sa, au_wa, au_nt, au_qld]
+    excluded_regions: [au_tas]
     mday: 1
     observed: to_monday_if_weekend(date)
+  # Tasmania moves the holiday rather than adding one: "New Year's Day (1 January),
+  # unless that day falls on a Saturday or Sunday, in which case the Monday following
+  # New Year's Day" (Statutory Holidays Act 2000 (Tas) s 4(a),
+  # https://www.legislation.tas.gov.au/view/whole/html/inforce/current/act-2000-096).
   - name: New Year's Day
     regions: [au_tas]
     mday: 1
@@ -725,15 +730,17 @@ tests:
     expect:
       name: "New Year's Day"
 
-#FIXME This commented test is valid but the current code in the ruby repo won't allow it
-#      to work. We need to discuss potential solutions but in the meantime I'm taking it out.
-#      See https://github.com/holidays/definitions/issues/37.
-#  - given:
-#      date: '2017-01-01'
-#      regions: ["au_tas"]
-#    expect:
-#      holiday: false
-
+  - given:
+      date: '2017-01-01'
+      regions: ["au_tas"]
+    expect:
+      holiday: false
+  - given:
+      date: '2017-01-01'
+      regions: ["au_tas"]
+      options: ["observed"]
+    expect:
+      holiday: false
   - given:
       date: '2017-01-02'
       regions: ["au", "au_qld", "au_nsw", "au_act", "au_vic", "au_sa", "au_wa", "au_nt"]
@@ -743,6 +750,12 @@ tests:
   - given:
       date: '2017-01-02'
       regions: ["au_tas"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: '2017-01-02'
+      regions: ["au_tas"]
+      options: ["observed"]
     expect:
       name: "New Year's Day"
   - given:
