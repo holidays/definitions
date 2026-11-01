@@ -9,6 +9,11 @@ describe Definitions::Validation::Month do
       months =  { 1 => [{"name"=>"Test Holiday", "regions"=>["test"], "mday"=>1}] }
       expect(subject.call(months)).to be true
     end
+
+    it 'reports success with excluded_regions that are subregions of its regions' do
+      months =  { 6 => [{"name"=>"Juneteenth", "regions"=>["us", "ca"], "excluded_regions"=>["us_hi", "ca_qc_x"], "mday"=>19}] }
+      expect(subject.call(months)).to be true
+    end
   end
 
   context 'invalid months' do
@@ -169,6 +174,66 @@ describe Definitions::Validation::Month do
             expect(e.message).to include("Holiday 'Test Holiday' in month 1 year_ranges only supports a single selector at this time, received: {")
           }
         end
+      end
+    end
+
+    context 'excluded_regions' do
+      def months_with(excluded, regions = ["us"])
+        { 6 => [{"name"=>"Juneteenth", "regions"=>regions, "excluded_regions"=>excluded, "mday"=>19}] }
+      end
+
+      it 'returns error if excluded_regions is not an array' do
+        expect { subject.call(months_with("us_hi")) }.to raise_error(Definitions::Errors::InvalidRegions) { |e|
+          expect(e.message).to eq("Holiday 'Juneteenth' in month 6 excluded_regions must be a non-empty array of regions, received: \"us_hi\"")
+        }
+      end
+
+      it 'returns error if excluded_regions is nil' do
+        expect { subject.call(months_with(nil)) }.to raise_error(Definitions::Errors::InvalidRegions) { |e|
+          expect(e.message).to eq("Holiday 'Juneteenth' in month 6 excluded_regions must be a non-empty array of regions, received: nil")
+        }
+      end
+
+      it 'returns error if excluded_regions is empty' do
+        expect { subject.call(months_with([])) }.to raise_error(Definitions::Errors::InvalidRegions) { |e|
+          expect(e.message).to eq("Holiday 'Juneteenth' in month 6 excluded_regions must be a non-empty array of regions, received: []")
+        }
+      end
+
+      it 'returns error if excluded_regions contains an empty region' do
+        expect { subject.call(months_with(["us_hi", ""])) }.to raise_error(Definitions::Errors::InvalidRegions) { |e|
+          expect(e.message).to eq("Holiday 'Juneteenth' in month 6 excluded_regions contains an empty or non-string region, received: [\"us_hi\", \"\"]")
+        }
+      end
+
+      it 'returns error if excluded_regions contains a non-string region' do
+        expect { subject.call(months_with([false])) }.to raise_error(Definitions::Errors::InvalidRegions) { |e|
+          expect(e.message).to eq("Holiday 'Juneteenth' in month 6 excluded_regions contains an empty or non-string region, received: [false]")
+        }
+      end
+
+      it 'returns error if an excluded region also appears in regions' do
+        expect { subject.call(months_with(["us_hi"], ["us", "us_hi"])) }.to raise_error(Definitions::Errors::InvalidRegions) { |e|
+          expect(e.message).to eq("Holiday 'Juneteenth' in month 6 excluded_regions entry 'us_hi' also appears in regions, received: [\"us\", \"us_hi\"]")
+        }
+      end
+
+      it 'returns error if an excluded region is the same as its region' do
+        expect { subject.call(months_with(["us"])) }.to raise_error(Definitions::Errors::InvalidRegions) { |e|
+          expect(e.message).to eq("Holiday 'Juneteenth' in month 6 excluded_regions entry 'us' also appears in regions, received: [\"us\"]")
+        }
+      end
+
+      it 'returns error if an excluded region is not a subregion of any region' do
+        expect { subject.call(months_with(["ca_on"])) }.to raise_error(Definitions::Errors::InvalidRegions) { |e|
+          expect(e.message).to eq("Holiday 'Juneteenth' in month 6 excluded_regions entry 'ca_on' must be a subregion of one of its regions, received: [\"us\"]")
+        }
+      end
+
+      it 'returns error if an excluded region only shares a prefix with a region' do
+        expect { subject.call(months_with(["usa"])) }.to raise_error(Definitions::Errors::InvalidRegions) { |e|
+          expect(e.message).to eq("Holiday 'Juneteenth' in month 6 excluded_regions entry 'usa' must be a subregion of one of its regions, received: [\"us\"]")
+        }
       end
     end
   end

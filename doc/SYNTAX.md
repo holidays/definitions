@@ -141,6 +141,28 @@ Holidays.on(Date.civil(2016, 9, 1), :fr, :informal)
 
 Then the holiday will be returned. This is especially useful for holidays like "Valentine's Day" in the USA, where it is commonly recognized as a holiday in society but not as a day that is celebrated by taking the day off.
 
+### Excluded regions
+
+Sub-regions inherit their parent's holidays. When a holiday applies to a parent region but not to one or more of its sub-regions, list those sub-regions in the optional `excluded_regions` property instead of enumerating every sub-region that does observe it.
+
+Example:
+
+```yaml
+6:
+- name: Juneteenth National Independence Day
+  regions: [us]
+  excluded_regions: [us_hi]
+  mday: 19
+```
+
+Each requested region is judged on its own: a region gets the holiday if it or one of its ancestors is in `regions` and neither it nor any of its ancestors is in `excluded_regions`. With the definition above, `:us` and `:us_tx` get the holiday but `:us_hi` does not. Excluding a sub-region also excludes its own sub-regions. Lookups with `:any` or a wildcard (e.g. `:us_`) are never blocked by `excluded_regions`, and returned holidays still report the rule's `regions`, not the excluded ones.
+
+Rules (enforced by `make validate`):
+
+* If present, `excluded_regions` must be a non-empty array of non-empty strings.
+* Each entry must be a sub-region of one of the holiday's `regions` (for `regions: [us]`, entries must start with `us_`).
+* An entry must not also appear in `regions`.
+
 ### Year ranges
 
 Certain holidays in various countries are only in effect during specific year ranges. A few examples of this are:

@@ -28,6 +28,7 @@ module Definitions
         raise Errors::InvalidMonth.new("A holiday in month #{month} is missing a 'name', received: #{month_def}") if name.nil? || name.empty?
 
         validate_regions!(month, name, month_def['regions'])
+        validate_excluded_regions!(month, name, month_def['regions'], month_def['excluded_regions']) if month_def.key?("excluded_regions")
         validate_year_ranges!(month, name, month_def['year_ranges']) if month_def.key?("year_ranges")
       end
 
@@ -39,6 +40,26 @@ module Definitions
         regions.each do |region|
           if region.nil? || region.empty?
             raise Errors::InvalidRegions.new("#{context(month, name)} contains an empty region, received: #{regions.inspect}")
+          end
+        end
+      end
+
+      def validate_excluded_regions!(month, name, regions, excluded)
+        unless excluded.is_a?(Array) && !excluded.empty?
+          raise Errors::InvalidRegions.new("#{context(month, name)} excluded_regions must be a non-empty array of regions, received: #{excluded.inspect}")
+        end
+
+        excluded.each do |region|
+          unless region.is_a?(String) && !region.empty?
+            raise Errors::InvalidRegions.new("#{context(month, name)} excluded_regions contains an empty or non-string region, received: #{excluded.inspect}")
+          end
+
+          if regions.include?(region)
+            raise Errors::InvalidRegions.new("#{context(month, name)} excluded_regions entry '#{region}' also appears in regions, received: #{regions.inspect}")
+          end
+
+          unless regions.any? { |parent| region.start_with?("#{parent}_") }
+            raise Errors::InvalidRegions.new("#{context(month, name)} excluded_regions entry '#{region}' must be a subregion of one of its regions, received: #{regions.inspect}")
           end
         end
       end
