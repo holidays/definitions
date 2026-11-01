@@ -9,7 +9,7 @@
 # - http://www.lexilogos.com/keyboard/serbian_conversion.htm
 ---
 region_names:
-  rs_cyrl: "Serbia"
+  rs_cyrl: "Serbia (Cyrillic)"
 months:
   0:
   - name: Велики петак # Good Friday

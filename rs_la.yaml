@@ -9,7 +9,7 @@
 # - http://www.lexilogos.com/keyboard/serbian_conversion.htm
 ---
 region_names:
-  rs_la: "Serbia"
+  rs_la: "Serbia (Latin)"
 months:
   0:
   - name: Veliki Petak # Good Friday
