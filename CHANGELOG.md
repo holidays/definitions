@@ -1,5 +1,9 @@
 # Holiday definitions
 
+## 9.3.1
+
+* Validate month definition fields: `mday`, `wday`, `week` and `function_modifier` must be integers in range, `type` must be a known type, region codes must be lowercase letters, digits and underscores, and names must not contain `#{`, backticks or control characters. No definition data changes. [definitions issue-407](https://github.com/holidays/definitions/issues/407)
+
 ## 9.3.0
 
 * Add an optional `excluded_regions` key to holiday definitions, so a holiday listed for a parent region can skip specific subregions. Consumers need the matching library support ([holidays pull-528](https://github.com/holidays/holidays/pull/528), [go-holidays pull-34](https://github.com/holidays/go-holidays/pull/34)). See `doc/SYNTAX.md`. [definitions pull-403](https://github.com/holidays/definitions/pull/403)

@@ -235,6 +235,84 @@ describe Definitions::Validation::Month do
           expect(e.message).to eq("Holiday 'Juneteenth' in month 6 excluded_regions entry 'usa' must be a subregion of one of its regions, received: [\"us\"]")
         }
       end
+
+      it 'returns error if an excluded region has invalid characters' do
+        expect { subject.call(months_with(["us_h i"])) }.to raise_error(Definitions::Errors::InvalidRegions) { |e|
+          expect(e.message).to eq("Holiday 'Juneteenth' in month 6 excluded_regions entry 'us_h i' must only contain lowercase letters, digits and underscores")
+        }
+      end
+    end
+
+    context 'field values' do
+      def holiday(fields)
+        { 1 => [{"name"=>"Test Holiday", "regions"=>["test"]}.merge(fields)] }
+      end
+
+      def expect_invalid_month(fields, message)
+        expect { subject.call(holiday(fields)) }.to raise_error(Definitions::Errors::InvalidMonth) { |e|
+          expect(e.message).to eq("Holiday 'Test Holiday' in month 1 #{message}")
+        }
+      end
+
+      it 'accepts every valid mday, wday and week' do
+        (1..31).each { |mday| expect(subject.call(holiday("mday"=>mday))).to be true }
+        (0..6).each { |wday| expect(subject.call(holiday("wday"=>wday, "week"=>1))).to be true }
+        [-5, -1, 1, 5].each { |week| expect(subject.call(holiday("wday"=>1, "week"=>week))).to be true }
+      end
+
+      it 'accepts names with accents, apostrophes and other scripts' do
+        ["Ramazan Bayramı", "King's Birthday", "Día de la Independencia", "春节"].each do |name|
+          expect(subject.call({ 1 => [{"name"=>name, "regions"=>["test"], "mday"=>1}] })).to be true
+        end
+      end
+
+      it 'returns error if mday is not an integer from 1 to 31' do
+        expect_invalid_month({"mday"=>"3, :x => 1"}, "mday must be an integer from 1 to 31, received: \"3, :x => 1\"")
+        expect_invalid_month({"mday"=>0}, "mday must be an integer from 1 to 31, received: 0")
+        expect_invalid_month({"mday"=>32}, "mday must be an integer from 1 to 31, received: 32")
+      end
+
+      it 'returns error if wday is not an integer from 0 to 6' do
+        expect_invalid_month({"wday"=>"1", "week"=>1}, "wday must be an integer from 0 to 6, received: \"1\"")
+        expect_invalid_month({"wday"=>7, "week"=>1}, "wday must be an integer from 0 to 6, received: 7")
+      end
+
+      it 'returns error if week is not an integer from 1 to 5 or -1 to -5' do
+        expect_invalid_month({"wday"=>1, "week"=>"1"}, "week must be an integer from 1 to 5 or -1 to -5, received: \"1\"")
+        expect_invalid_month({"wday"=>1, "week"=>0}, "week must be an integer from 1 to 5 or -1 to -5, received: 0")
+        expect_invalid_month({"wday"=>1, "week"=>6}, "week must be an integer from 1 to 5 or -1 to -5, received: 6")
+      end
+
+      it 'returns error if function_modifier is not an integer' do
+        expect_invalid_month({"function"=>"easter(year)", "function_modifier"=>"1"}, "function_modifier must be an integer, received: \"1\"")
+      end
+
+      it 'returns error if type is not a known type' do
+        expect_invalid_month({"mday"=>1, "type"=>"formal"}, "type must be one of: informal, received: \"formal\"")
+      end
+
+      it 'returns error if a region has invalid characters' do
+        months = { 1 => [{"name"=>"Test Holiday", "regions"=>["Test"], "mday"=>1}] }
+        expect { subject.call(months) }.to raise_error(Definitions::Errors::InvalidRegions) { |e|
+          expect(e.message).to eq("Holiday 'Test Holiday' in month 1 region 'Test' must only contain lowercase letters, digits and underscores")
+        }
+      end
+
+      it 'returns error if the name is not a string' do
+        months = { 1 => [{"name"=>2026, "regions"=>["test"], "mday"=>1}] }
+        expect { subject.call(months) }.to raise_error(Definitions::Errors::InvalidMonth) { |e|
+          expect(e.message).to eq("A holiday in month 1 must have a string 'name', received: 2026")
+        }
+      end
+
+      it 'returns error if the name contains #{, a backtick or a control character' do
+        ['Day #{x}', 'Day `x`', "Day\nTwo", "Day\u0000"].each do |name|
+          months = { 1 => [{"name"=>name, "regions"=>["test"], "mday"=>1}] }
+          expect { subject.call(months) }.to raise_error(Definitions::Errors::InvalidMonth) { |e|
+            expect(e.message).to eq("Holiday #{name.inspect} in month 1 name must not contain '\#{', backticks or control characters")
+          }
+        end
+      end
     end
   end
 end
