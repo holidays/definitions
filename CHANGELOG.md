@@ -1,5 +1,9 @@
 # Holiday definitions
 
+## 9.3.0
+
+* Pin `tr` Ramazan and Kurban Bayramı to the Diyanet dates for 2031-2035, fix the 2031 test dates, and add the second Ramazan Bayramı of 2033 (23-25 December) via a new `ramadan_feast_second_in_year` function. [definitions issue-55](https://github.com/holidays/definitions/issues/55)
+
 ## 9.2.0
 
 * Add `ma` Eid al-Fitr and Eid al-Adha, calculated from the Hijri calendar. [definitions pull-391](https://github.com/holidays/definitions/pull/391)
