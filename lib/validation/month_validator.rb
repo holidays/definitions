@@ -33,8 +33,8 @@ module Definitions
         raise Errors::InvalidMonth.new("A holiday in month #{month} must have a string 'name', received: #{name.inspect}") unless name.is_a?(String)
         raise Errors::InvalidMonth.new("Holiday #{name.inspect} in month #{month} name must not contain '\#{', backticks or control characters") if name.match?(UNSAFE_NAME)
 
-        validate_regions!(month, name, month_def['regions'])
         validate_fields!(month, name, month_def)
+        validate_regions!(month, name, month_def['regions'])
         validate_excluded_regions!(month, name, month_def['regions'], month_def['excluded_regions']) if month_def.key?("excluded_regions")
         validate_year_ranges!(month, name, month_def['year_ranges']) if month_def.key?("year_ranges")
       end
