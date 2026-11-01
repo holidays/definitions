@@ -261,9 +261,65 @@ months:
     regions: [us_hi]
     observed: to_weekday_if_weekend(date)
     mday: 11
+  # Juneteenth is a federal holiday, but these states do not give most state
+  # employees a paid day off for it in 2026, so they are excluded from the
+  # formal holiday and get it as an informal observance instead:
+  # - us_az: A.R.S. 1-315 says Juneteenth day is not a legal holiday
+  #   https://www.azleg.gov/ars/1/00315.htm
+  # - us_ar: Ark. Code 1-5-114 makes it a memorial day, not a legal holiday;
+  #   not on the OPM holiday list (Policy 52)
+  #   https://sas.arkansas.gov/wp-content/uploads/52-Holidays-and-Birthday-Leave-5.23.2025.pdf
+  # - us_ca: CalHR 2026 holidays; Juneteenth is only an optional personal holiday
+  #   https://www.calhr.ca.gov/about-calhr/divisions-programs/personnel-management/leave-benefits/state-holidays/
+  # - us_fl: Fla. Stat. 110.117 paid holidays
+  #   https://florida.public.law/statutes/fla._stat._110.117
+  # - us_hi: DHRD 2026 state holidays (HRS 8-1)
+  #   https://dhrd.hawaii.gov/wp-content/uploads/2026/06/State-Holidays-2026-2027.pdf
+  # - us_ia: Iowa Code 1C.2 paid holidays
+  #   https://www.legis.iowa.gov/docs/code/1C.2.pdf
+  # - us_in: Governor's 2026 state holidays memorandum
+  #   https://secure.in.gov/spd/benefits/files/2026-Holidays-Memorandum.pdf
+  # - us_ms: 27 Miss. Code R. 120-3.1 (Miss. Code 3-3-7 legal holidays)
+  #   https://www.law.cornell.edu/regulations/mississippi/27-Miss-Code-R-SS-120-3-1
+  # - us_mt: MCA 1-1-216 legal holidays
+  #   https://mca.legmt.gov/bills/mca/title_0010/chapter_0010/part_0020/section_0160/0010-0010-0020-0160.html
+  # - us_nc: OSHR 2026 state holidays
+  #   https://oshr.nc.gov/state-employee-resources/benefits/leave/holidays
+  # - us_nd: NDCC 1-03-01 holidays; 1-03-18 only designates the day
+  #   https://www.ndlegis.gov/cencode/t01c03.pdf
+  # - us_nh: RSA 288:1 legal holidays; RSA 4:13-aa calls for a proclamation
+  #   https://gc.nh.gov/rsa/html/XXV/288/288-1.htm
+  #   https://gc.nh.gov/rsa/html/I/4/4-13-aa.htm
+  # - us_ok: OMES 2026 state holidays (Executive Order 2025-14)
+  #   https://oklahoma.gov/omes/services/human-capital-management/state-holidays.html
+  # - us_sc: Department of Administration 2026 holiday schedule
+  #   https://scdps.sc.gov/sites/scdps/files/Documents/hr/docs/Holiday%20Schedule%202026.pdf
+  # - us_wi: DPM state holidays (Wis. Stat. 230.35)
+  #   https://dpm.wi.gov/Pages/How_Do_I/seeStateHolidays.aspx
+  # - us_wv: W. Va. Code 2-2-1 legal holidays; the governor's 2021 to 2024
+  #   proclamations ended in 2025 (June 19 2026 is off only as observed
+  #   West Virginia Day)
+  #   https://code.wvlegislature.gov/2-2-1/
+  # - us_wy: W.S. 8-4-101 legal holidays; 8-4-107 only names the day
+  #   https://wyoleg.gov/statutes/compress/title08.pdf
+  # Cross-checked against Pew Research Center, 2026-06-11:
+  # https://www.pewresearch.org/short-reads/2026/06/11/more-than-half-of-states-will-recognize-juneteenth-as-a-legal-holiday-in-2026/
+  # Exclusions have no year ranges, so this 2026 status applies to every year
+  # from 2021. States that granted the day only in some years (us_wv by
+  # proclamation 2021 to 2024) are excluded for those years too, and states
+  # that adopted it after 2021 (such as us_al, us_ak, us_vt) still inherit it
+  # from 2021.
   - name: Juneteenth National Independence Day
     regions: [us]
+    excluded_regions: [us_az, us_ar, us_ca, us_fl, us_hi, us_ia, us_in, us_ms, us_mt, us_nc, us_nd, us_nh, us_ok, us_sc, us_wi, us_wv, us_wy]
     mday: 19
+    observed: juneteenth_national_independence_day(region, date)
+    year_ranges:
+      from: 2021
+  - name: Juneteenth National Independence Day
+    regions: [us_az, us_ar, us_ca, us_fl, us_hi, us_ia, us_in, us_ms, us_mt, us_nc, us_nd, us_nh, us_ok, us_sc, us_wi, us_wv, us_wy]
+    mday: 19
+    type: informal
     observed: juneteenth_national_independence_day(region, date)
     year_ranges:
       from: 2021
@@ -738,6 +794,49 @@ tests:
       options: ["observed"]
     expect:
       name: "Juneteenth National Independence Day"
+  - given:
+      date: ['2026-06-19']
+      regions: ["us"]
+    expect:
+      name: "Juneteenth National Independence Day"
+  - given:
+      date: ['2026-06-19']
+      regions: ["us_ga"]
+    expect:
+      name: "Juneteenth National Independence Day"
+  - given:
+      date: ['2026-06-19']
+      regions: ["us_ky"]
+    expect:
+      name: "Juneteenth National Independence Day"
+  - given:
+      date: ['2026-06-19']
+      regions: ["us_dc"]
+    expect:
+      name: "Juneteenth National Independence Day"
+  - given:
+      date: ['2026-06-19']
+      regions: ["us_az", "us_ar", "us_ca", "us_fl", "us_hi", "us_ia", "us_in", "us_ms", "us_mt", "us_nc", "us_nd", "us_nh", "us_ok", "us_sc", "us_wi", "us_wv", "us_wy"]
+    expect:
+      holiday: false
+  - given:
+      date: ['2026-06-19']
+      regions: ["us_hi"]
+      options: ["informal"]
+    expect:
+      name: "Juneteenth National Independence Day"
+  - given:
+      date: ['2026-06-19']
+      regions: ["us_ca"]
+      options: ["informal"]
+    expect:
+      name: "Juneteenth National Independence Day"
+  - given:
+      date: ['2026-06-19']
+      regions: ["us_wv"]
+      options: ["observed"]
+    expect:
+      name: "West Virginia Day"
 
   - given:
       date: ['2017-6-20', '2020-6-19', '2021-6-21']
