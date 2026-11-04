@@ -12,6 +12,7 @@ permissions:
 jobs:
   downstream-ruby:
     name: Ruby (holidays)
+    if: github.event_name != 'schedule' || github.repository == 'holidays/definitions'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout definitions
@@ -47,6 +48,7 @@ jobs:
 
   downstream-go:
     name: Go (go-holidays)
+    if: github.event_name != 'schedule' || github.repository == 'holidays/definitions'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout definitions
