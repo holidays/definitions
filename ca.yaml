@@ -1,12 +1,23 @@
 # Canadian holiday definitions for the Ruby Holiday gem.
-# Updated 2020-03-18.
+# Updated 2026-11-09.
 #
 # Notes:
 #  - 'Family Day' in various provinces are only celebrated after certain years: http://www.timeanddate.com/holidays/canada/family-day
 #  - 'Family Day' for New Brunswick after 2018  http://www.gnb.ca/legis/bill/FILE/58/3/Bill-67-e.htm
-#  - 'National Aboriginal Day for Yukon' Bill 2 received Royal Assent on May 8, 2017. http://www.gov.yk.ca/news/17-075.html
+#  - 'National Aboriginal Day' in Yukon: Bill 2 received Royal Assent on May 8, 2017
+#    (http://www.gov.yk.ca/news/17-075.html). The Act to amend the National Aboriginal Day Act (2023) (SY 2023, c. 6)
+#    s. 5, assented to April 20, 2023, renamed it 'National Indigenous Peoples Day' in the Employment Standards Act
+#    (RSY 2002, c. 72) s. 1, https://laws.yukon.ca/cms/images/LEGISLATION/AMENDING/2023/2023-0006/2023-0006.pdf
+#  - 'National Aboriginal Day' in the Northwest Territories was renamed 'National Indigenous Peoples Day' by the
+#    National Indigenous Peoples Day Act (SNWT 2021, c. 15), assented to December 9, 2021 (Hansard p. 3381,
+#    https://www.ntlegislativeassembly.ca/sites/default/files/legacy/hn211209.pdf), so 2022 was the first June 21 under
+#    the new name,
+#    https://gnwt.ca/sites/default/files/legacy_justice/files/legislation/national-indigenous-peoples-day/national-indigenous-peoples-day.a.pdf
 #  - 'Nunavut’s legislative assembly voted to pass Bill 29 making Nunavut Day', July 9, an officially statutory holiday across the territory. https://www.gov.nu.ca/human-resources/information/public-service-holidays
 #  - 'According to Manitoba labour standards, Terry Fox Day is not a formal holiday. https://www.gov.mb.ca/labour/standards/doc,gen-holidays-after-april-30-07,factsheet.html#q13'
+#  - Manitoba's National Day for Truth and Reconciliation is a general holiday from 2024: The Employment Standards Code
+#    Amendment and Interpretation Amendment Act (Orange Shirt Day), S.M. 2023, c. 50, in force December 7, 2023.
+#    https://web2.gov.mb.ca/laws/statutes/2023/c05023.php?lang=en
 ---
 region_names:
   ca: "Canada"
@@ -43,9 +54,14 @@ months:
     regions: [ca]
     mday: 1
     observed: to_monday_if_weekend(date)
-  - name: New Year's
+  # January 2 is not a statutory holiday in Quebec: the Act respecting labour standards (CQLR c N-1.1)
+  # s. 60 lists January 1 and no January 2 (https://www.legisquebec.gouv.qc.ca/en/document/cs/N-1.1),
+  # nor does the CNESST (https://cnesst.gouv.qc.ca/en/working-conditions/leave/statutory-holidays/statutory-holidays).
+  # Kept as informal because some employers give the day.
+  - name: Day after New Year's Day
     regions: [ca_qc]
     mday: 2
+    type: informal
   2:
   - name: Family Day
     regions: [ca_ab]
@@ -123,14 +139,34 @@ months:
   - name: Fête Nationale
     regions: [ca_qc]
     mday: 24
+  # Northwest Territories: the National Indigenous Peoples Day Act (SNWT 2021, c. 15), assented to
+  # December 9, 2021, renamed the day in its own s. 1 and in the Employment Standards Act s. 22(1), so
+  # 2022 was the first June 21 under the new name
   - name: National Aboriginal Day
     regions: [ca_nt]
     mday: 21
+    year_ranges:
+      until: 2021
+  - name: National Indigenous Peoples Day
+    regions: [ca_nt]
+    mday: 21
+    year_ranges:
+      from: 2022
+  # Yukon: the Employment Standards Act (RSY 2002, c. 72) s. 1 has listed the day since 2017, and the
+  # Act to amend the National Aboriginal Day Act (2023) (SY 2023, c. 6) s. 5, assented to April 20, 2023,
+  # renamed it, https://laws.yukon.ca/cms/images/LEGISLATION/PRINCIPAL/2002/2002-0072/2002-0072.pdf
   - name: National Aboriginal Day
     regions: [ca_yt]
     mday: 21
     year_ranges:
-      from: 2017
+      between:
+        start: 2017
+        end: 2022
+  - name: National Indigenous Peoples Day
+    regions: [ca_yt]
+    mday: 21
+    year_ranges:
+      from: 2023
   7:
   - name: Canada Day
     regions: [ca]
@@ -192,19 +228,96 @@ months:
     week: 1
     regions: [ca]
     wday: 1
+  # British Columbia established the day by the National Day for Truth and Reconciliation Act
+  # (SBC 2023, c. 4), in force on Royal Assent, March 9, 2023, whose s. 3 adds it to the Employment
+  # Standards Act s. 1(1) statutory holidays, so 2023 is its first year there,
+  # https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/23004 (s. 3 as passed:
+  # https://www.bclaws.gov.bc.ca/civix/document/id/bills/billsprevious/4th42nd:gov02-3)
   - name: National Day for Truth and Reconciliation
-    regions: [ca_bc, ca_nt, ca_pe, ca_yt]
+    regions: [ca_bc]
     mday: 30
     observed: to_monday_if_weekend(date)
     year_ranges:
-      from: 2021
+      from: 2023
+  # Prince Edward Island added "National Day for Truth and Reconciliation, observed on September 30"
+  # to the Employment Standards Act s. 6(1) paid holidays by An Act to Amend the Employment Standards
+  # Act (No. 2) (SPEI 2021, c. 33), assented to November 17, 2021 with no commencement clause, so 2022
+  # is its first year there
   - name: National Day for Truth and Reconciliation
-    regions: [ca_ab, ca_mb, ca_nu]
+    regions: [ca_pe]
+    mday: 30
+    observed: to_monday_if_weekend(date)
+    year_ranges:
+      from: 2022
+  # The Northwest Territories added September 30 to the Employment Standards Act s. 22(1) and to the
+  # Interpretation Act s. 21 by An Act to Amend the Employment Standards Act, No. 2 (SNWT 2022, c. 8),
+  # which has no commencement clause and so took effect on assent in 2022, its first statutory year there,
+  # https://ntlegislativeassembly.ca/sites/default/files/legacy/bill_47.pdf. In 2021 the Public Service
+  # Holidays Order (R-052-2021) made September 30, 2021 a holiday for the territorial public service only
+  # (s. 4 of the same Act amends that order), so that year is informal
+  - name: National Day for Truth and Reconciliation
+    regions: [ca_nt]
+    mday: 30
+    observed: to_monday_if_weekend(date)
+    type: informal
+    year_ranges:
+      limited: [2021]
+  - name: National Day for Truth and Reconciliation
+    regions: [ca_nt]
+    mday: 30
+    observed: to_monday_if_weekend(date)
+    year_ranges:
+      from: 2022
+  # Yukon established the day by the National Day for Truth and Reconciliation Act (SY 2022, c. 18),
+  # assented to November 24, 2022, whose s. 2 adds it to the Employment Standards Act s. 1 general
+  # holidays, so 2023 is its first year there,
+  # https://laws.yukon.ca/cms/images/LEGISLATION/AMENDING/2022/2022-0018/2022-0018.pdf
+  - name: National Day for Truth and Reconciliation
+    regions: [ca_yt]
+    mday: 30
+    observed: to_monday_if_weekend(date)
+    year_ranges:
+      from: 2023
+  - name: National Day for Truth and Reconciliation
+    regions: [ca_ab]
     mday: 30
     observed: to_monday_if_weekend(date)
     type: informal
     year_ranges:
       from: 2021
+  # Nunavut's Labour Standards Act (C.S.Nu. c. L-10) s. 1 lists "National Day for Truth and
+  # Reconciliation, observed on September 30" as a general holiday, added by S.Nu. 2022, c. 7, s. 1,
+  # in force June 13, 2022 (official consolidation of June 13, 2022, nunavutlegislation.ca)
+  - name: National Day for Truth and Reconciliation
+    regions: [ca_nu]
+    mday: 30
+    observed: to_monday_if_weekend(date)
+    type: informal
+    year_ranges:
+      limited: [2021]
+  - name: National Day for Truth and Reconciliation
+    regions: [ca_nu]
+    mday: 30
+    observed: to_monday_if_weekend(date)
+    year_ranges:
+      from: 2022
+  # Manitoba made September 30 a general holiday by S.M. 2023, c. 50 (in force December 7, 2023), so its
+  # first statutory September 30 is 2024, https://web2.gov.mb.ca/laws/statutes/2023/c05023.php?lang=en
+  - name: National Day for Truth and Reconciliation
+    regions: [ca_mb]
+    mday: 30
+    observed: to_monday_if_weekend(date)
+    type: informal
+    year_ranges:
+      between:
+        start: 2021
+        end: 2023
+  - name: National Day for Truth and Reconciliation
+    regions: [ca_mb]
+    mday: 30
+    observed: to_monday_if_weekend(date)
+    year_ranges:
+      from: 2024
   10:
   - name: Thanksgiving
     week: 2
@@ -220,7 +333,7 @@ months:
     regions: [ca_on]
     mday: 25
     year_ranges:
-      until: 2020
+      until: 2019
     observed: to_weekday_if_weekend(date)
   - name: Christmas Day
     regions: [ca_on]
@@ -236,7 +349,7 @@ months:
     regions: [ca_on]
     mday: 26
     year_ranges:
-      until: 2020
+      until: 2019
     observed: to_monday_if_weekend(date)
   - name: Boxing Day
     regions: [ca_on]
@@ -781,16 +894,91 @@ tests:
   # National Day for Truth and Reconciliation
   - given:
       date: '2021-09-30'
-      regions: ["ca_bc", "ca_nt", "ca_pe", "ca_yt"]
-    expect:
-      name: "National Day for Truth and Reconciliation"
-  - given:
-      date: '2021-09-30'
-      regions: ["ca_ab", "ca_mb", "ca_nu"]
+      regions: ["ca_ab"]
       options: ["informal"]
     expect:
       name: "National Day for Truth and Reconciliation"
   - given:
+      date: '2021-09-30'
+      regions: ["ca_mb"]
+      options: ["informal"]
+    expect:
+      name: "National Day for Truth and Reconciliation"
+  - given:
+      date: '2021-09-30'
+      regions: ["ca_nu"]
+      options: ["informal"]
+    expect:
+      name: "National Day for Truth and Reconciliation"
+  # British Columbia and Yukon from 2023, the Northwest Territories and Prince Edward Island from 2022;
+  # the Northwest Territories' 2021 is informal
+  - given:
+      date: ['2021-09-30', '2022-09-30']
+      regions: ["ca_bc"]
+      options: ["informal"]
+    expect:
+      holiday: false
+  - given:
+      date: '2021-09-30'
+      regions: ["ca_pe"]
+      options: ["informal"]
+    expect:
+      holiday: false
+  - given:
+      date: '2021-09-30'
+      regions: ["ca_nt"]
+      options: ["informal"]
+    expect:
+      name: "National Day for Truth and Reconciliation"
+  - given:
+      date: '2021-09-30'
+      regions: ["ca_nt"]
+    expect:
+      holiday: false
+  - given:
+      date: ['2021-09-30', '2022-09-30']
+      regions: ["ca_yt"]
+      options: ["informal"]
+    expect:
+      holiday: false
+  - given:
+      date: ['2022-09-30', '2026-09-30']
+      regions: ["ca_nt"]
+    expect:
+      name: "National Day for Truth and Reconciliation"
+  - given:
+      date: ['2022-09-30', '2026-09-30']
+      regions: ["ca_pe"]
+    expect:
+      name: "National Day for Truth and Reconciliation"
+  - given:
+      date: ['2023-09-30', '2026-09-30']
+      regions: ["ca_bc"]
+    expect:
+      name: "National Day for Truth and Reconciliation"
+  - given:
+      date: ['2023-09-30', '2026-09-30']
+      regions: ["ca_yt"]
+    expect:
+      name: "National Day for Truth and Reconciliation"
+  # Nunavut: informal in 2021, a general holiday from 2022
+  - given:
+      date: '2021-09-30'
+      regions: ["ca_nu"]
+    expect:
+      holiday: false
+  - given:
+      date: ['2022-09-30', '2026-09-30']
+      regions: ["ca_nu"]
+    expect:
+      name: "National Day for Truth and Reconciliation"
+  - given:
+      date: '2028-10-02'
+      regions: ["ca_nu"]
+      options: ["observed"]
+    expect:
+      name: "National Day for Truth and Reconciliation"
+  - given:
       date: '2023-10-02'
       regions: ["ca_bc", "ca_nt", "ca_pe", "ca_yt"]
       options: ["observed"]
@@ -810,8 +998,44 @@ tests:
       name: "National Day for Truth and Reconciliation"
   - given:
       date: '2026-09-30'
-      regions: ["ca_ab", "ca_mb", "ca_nu"]
+      regions: ["ca_ab"]
       options: ["informal", "observed"]
+    expect:
+      name: "National Day for Truth and Reconciliation"
+  - given:
+      date: '2026-09-30'
+      regions: ["ca_nu"]
+      options: ["informal", "observed"]
+    expect:
+      name: "National Day for Truth and Reconciliation"
+
+  # National Day for Truth and Reconciliation - informal in Manitoba until 2023, a general holiday from 2024
+  - given:
+      date: '2022-09-30'
+      regions: ["ca_mb"]
+      options: ["informal"]
+    expect:
+      name: "National Day for Truth and Reconciliation"
+  - given:
+      date: ['2022-09-30', '2023-09-30']
+      regions: ["ca_mb"]
+    expect:
+      holiday: false
+  - given:
+      date: '2023-10-02'
+      regions: ["ca_mb"]
+      options: ["observed"]
+    expect:
+      holiday: false
+  - given:
+      date: ['2024-09-30', '2026-09-30']
+      regions: ["ca_mb"]
+    expect:
+      name: "National Day for Truth and Reconciliation"
+  - given:
+      date: '2028-10-02'
+      regions: ["ca_mb"]
+      options: ["observed"]
     expect:
       name: "National Day for Truth and Reconciliation"
 
@@ -843,6 +1067,23 @@ tests:
       regions: ["ca_on"]
     expect:
       name: "Christmas Day"
+  - given:
+      date: '2020-12-25'
+      regions: ["ca_on"]
+      options: ["observed"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: '2020-12-26'
+      regions: ["ca_on"]
+    expect:
+      name: "Boxing Day"
+  - given:
+      date: '2020-12-28'
+      regions: ["ca_on"]
+      options: ["observed"]
+    expect:
+      name: "Boxing Day"
   - given:
       date: '2022-12-25'
       regions: ["ca"]
@@ -906,17 +1147,40 @@ tests:
       regions: ['ca_yt']
     expect:
       holiday: false
-  # Yukon National Aboriginal Day - should be active after 2017
+  # Yukon National Aboriginal Day - active from 2017, renamed from 2023
   - given:
-      date: '2017-06-21'
+      date: ['2017-06-21', '2022-06-21']
       regions: ['ca_yt']
     expect:
       name: 'National Aboriginal Day'
   - given:
-      date: '2018-06-21'
+      date: ['2023-06-21', '2027-06-21']
       regions: ['ca_yt']
     expect:
+      name: 'National Indigenous Peoples Day'
+  # Northwest Territories National Aboriginal Day - renamed from 2022
+  - given:
+      date: ['2020-06-21', '2021-06-21']
+      regions: ['ca_nt']
+    expect:
       name: 'National Aboriginal Day'
+  - given:
+      date: ['2022-06-21', '2027-06-21']
+      regions: ['ca_nt']
+    expect:
+      name: 'National Indigenous Peoples Day'
+  # Quebec's January 2 is informal
+  - given:
+      date: '2026-01-02'
+      regions: ['ca_qc']
+    expect:
+      holiday: false
+  - given:
+      date: '2026-01-02'
+      regions: ['ca_qc']
+      options: ['informal']
+    expect:
+      name: "Day after New Year's Day"
   - given:
       date: '2019-08-05'
       regions: ['ca_mb']
