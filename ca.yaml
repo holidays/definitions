@@ -18,6 +18,55 @@
 #  - Manitoba's National Day for Truth and Reconciliation is a general holiday from 2024: The Employment Standards Code
 #    Amendment and Interpretation Amendment Act (Orange Shirt Day), S.M. 2023, c. 50, in force December 7, 2023.
 #    https://web2.gov.mb.ca/laws/statutes/2023/c05023.php?lang=en
+#  - A New Year's Day, Canada Day, National Day for Truth and Reconciliation, Remembrance Day, Christmas Day or Boxing
+#    Day that falls on a Saturday or Sunday moves only where a statute names the substitute day, which in most regions
+#    is the Interpretation or Legislation Act's definition of "holiday". Employment standards statutes that instead give
+#    the employee holiday pay or a day off in lieu (Manitoba's Employment Standards Code, C.C.S.M. c. E110, s. 26(2)(b);
+#    Newfoundland and Labrador's Labour Standards Act, R.S.N.L. 1990 c. L-2, s. 16; Nova Scotia's Labour Standards Code,
+#    R.S.N.S. 1989 c. 246, s. 38; Prince Edward Island's Employment Standards Act, R.S.P.E.I. 1988 c. E-6.3, s. 27(2))
+#    leave the public date where it is.
+#    A Sunday holiday moves to the Monday and a Saturday one stays on its date in Manitoba (Interpretation Act, C.C.S.M.
+#    c. I80, s. 23(2), which observes a Sunday Christmas Day on December 27 and excepts Remembrance Day,
+#    https://web2.gov.mb.ca/laws/statutes/ccsm/i080.php?lang=en), New Brunswick (Interpretation Act, R.S.N.B. 1973
+#    c. I-13, s. 38, whose list takes in any day a Statute in force in the Province appoints as a general holiday, which
+#    the Holidays Act, R.S.C. 1985 c. H-5, s. 3 does for Remembrance Day and no Statute does for Boxing Day, a
+#    prescribed day of rest for retail closing under the Days of Rest Act, S.N.B. 1985 c. D-4.2,
+#    https://laws.gnb.ca/en/document/cs/I-13), Newfoundland and Labrador (Interpretation Act, R.S.N.L. 1990 c. I-19,
+#    s. 27(1.1), https://www.assembly.nl.ca/legislation/sr/statutes/i19.htm), Nova Scotia (Interpretation Act, R.S.N.S.
+#    1989 c. 235, s. 7(1)(j), which excepts Remembrance Day,
+#    https://nslegislature.ca/sites/default/files/legc/statutes/interpretation.pdf), Ontario (Legislation Act, 2006,
+#    S.O. 2006 c. 21, Sched. F, s. 88(3) to (5), in force July 25, 2007, https://www.ontario.ca/laws/statute/06l21,
+#    which observes a Saturday Christmas Day on the Monday and a Sunday one on the Tuesday and moves no other Saturday
+#    holiday and no Boxing Day; until 2006 the Interpretation Act, R.S.O. 1990 c. I.11, s. 29(1) moved every Sunday
+#    holiday except Remembrance Day to the Monday), Saskatchewan (Legislation Act, S.S. 2019 c. L-10.2, s. 2-29, which
+#    excepts Remembrance Day and Boxing Day, https://pubsaskdev.blob.core.windows.net/pubsask-prod/112676/L10-2.pdf; The
+#    Employment Standards Regulations, 2025, R.R.S. c. S-15.1 Reg 15, s. 5-6 observes a Sunday New Year's Day, Christmas
+#    Day or Remembrance Day on the Monday in every establishment not normally open on Sunday,
+#    https://pubsaskdev.blob.core.windows.net/pubsask-prod/153135/S15-1r15.pdf, as The Employment Standards Regulations,
+#    R.R.S. c. S-15.1 Reg 5, s. 29 did from April 29, 2014,
+#    https://pubsaskdev.blob.core.windows.net/pubsask-prod/archived/78231/S15-1r5.pdf, and The Labour Standards
+#    Regulations, 1995, R.R.S. c. L-1 Reg 5, s. 21 from February 3, 1995,
+#    https://pubsaskdev.blob.core.windows.net/pubsask-prod/archived/2109/L1R5.pdf) and Yukon (Interpretation Act, R.S.Y.
+#    2002 c. 125, s. 21, which excepts Remembrance Day and does not list Boxing Day,
+#    https://laws.yukon.ca/cms/images/LEGISLATION/PRINCIPAL/2002/2002-0125/2002-0125.pdf).
+#    A Saturday or Sunday holiday moves to the Monday in the Northwest Territories (Interpretation Act, S.N.W.T. 2017
+#    c. 19, s. 21(o), as substituted by S.N.W.T. 2022 c. 8, s. 3,
+#    https://gnwt.ca/sites/default/files/legacy_justice/files/legislation/interpretation/interpretation.a.pdf) and
+#    Nunavut (Legislation Act, C.S.Nu. c. L-60, s. 1 "holiday" (o), in force July 1, 2021; (p) observes a Sunday Boxing
+#    Day on the Tuesday, and the Monday stays for the earlier years).
+#    Alberta (Interpretation Act, R.S.A. 2000 c. I-8, s. 28(1)(x), which observes a Sunday or Monday December 26 on
+#    December 27 and moves nothing else, https://kings-printer.alberta.ca/documents/Acts/I08.pdf), British Columbia
+#    (Interpretation Act, R.S.B.C. 1996 c. 238, s. 29,
+#    https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/96238_01), Prince Edward Island (Interpretation
+#    Act, R.S.P.E.I. 1988 c. I-8.1, Schedule, s. 1(w) "holiday",
+#    https://www.princeedwardisland.ca/sites/default/files/legislation/i-08-1-interpretation_act.pdf) and Quebec
+#    (Interpretation Act, CQLR c. I-16, s. 61(23)) keep the holiday on its date.
+#    Two entries approximate their statute, as their comments explain: Manitoba's Christmas Day also moves a Saturday to
+#    Monday, December 27, and Alberta's Boxing Day leaves a Monday December 26 in place. Each rule applies to every year
+#    unless the entry gives a year range, though some of the statutes commenced later.
+#  - A Sunday July 1 is observed on July 2 throughout Canada (Holidays Act, R.S.C. 1985 c. H-5, s. 2(2)).
+#  - In Quebec a Sunday June 24 is observed on June 25 for employees who do not ordinarily work on Sundays (National
+#    Holiday Act, CQLR c F-1.1, s. 2, https://www.legisquebec.gouv.qc.ca/en/document/cs/F-1.1).
 ---
 region_names:
   ca: "Canada"
@@ -50,10 +99,21 @@ months:
     function_modifier: 1
     type: informal
   1:
+  # Weekend observance differs by region; see the note at the top of the file. The ca entry carries the rule of
+  # Manitoba, New Brunswick, Newfoundland and Labrador, Nova Scotia, Ontario, Saskatchewan and Yukon: a Sunday New
+  # Year's Day moves to the Monday and a Saturday one stays
   - name: New Year's Day
     regions: [ca]
+    excluded_regions: [ca_ab, ca_bc, ca_nt, ca_nu, ca_pe, ca_qc]
+    mday: 1
+    observed: to_monday_if_sunday(date)
+  - name: New Year's Day
+    regions: [ca_nt, ca_nu]
     mday: 1
     observed: to_monday_if_weekend(date)
+  - name: New Year's Day
+    regions: [ca_ab, ca_bc, ca_pe, ca_qc]
+    mday: 1
   # January 2 is not a statutory holiday in Quebec: the Act respecting labour standards (CQLR c N-1.1)
   # s. 60 lists January 1 and no January 2 (https://www.legisquebec.gouv.qc.ca/en/document/cs/N-1.1),
   # nor does the CNESST (https://cnesst.gouv.qc.ca/en/working-conditions/leave/statutory-holidays/statutory-holidays).
@@ -139,25 +199,38 @@ months:
   - name: Fête Nationale
     regions: [ca_qc]
     mday: 24
+    observed: to_monday_if_sunday(date)
   # Northwest Territories: the National Indigenous Peoples Day Act (SNWT 2021, c. 15), assented to
   # December 9, 2021, renamed the day in its own s. 1 and in the Employment Standards Act s. 22(1), so
-  # 2022 was the first June 21 under the new name
+  # 2022 was the first June 21 under the new name. A weekend June 21 moves to the Monday under the
+  # Interpretation Act (SNWT 2017, c. 19) s. 21, as substituted by SNWT 2022, c. 8, s. 3, which
+  # lists the day at (e) and gives "the following Monday" at (o); the consolidation of January 25,
+  # 2019 gave the same Monday at (c),
+  # https://gnwt.ca/sites/default/files/legacy_justice/files/legislation/interpretation/interpretation.a.pdf
   - name: National Aboriginal Day
     regions: [ca_nt]
     mday: 21
+    observed: to_monday_if_weekend(date)
     year_ranges:
       until: 2021
   - name: National Indigenous Peoples Day
     regions: [ca_nt]
     mday: 21
+    observed: to_monday_if_weekend(date)
     year_ranges:
       from: 2022
-  # Yukon: the Employment Standards Act (RSY 2002, c. 72) s. 1 has listed the day since 2017, and the
-  # Act to amend the National Aboriginal Day Act (2023) (SY 2023, c. 6) s. 5, assented to April 20, 2023,
-  # renamed it, https://laws.yukon.ca/cms/images/LEGISLATION/PRINCIPAL/2002/2002-0072/2002-0072.pdf
+  # Yukon: the National Aboriginal Day Act (SY 2017, c. 1) made June 21 a holiday from 2017 and its
+  # s. 2 added it to the Employment Standards Act (RSY 2002, c. 72) s. 1, and the Act to amend the
+  # National Aboriginal Day Act (2023) (SY 2023, c. 6) s. 5, assented to April 20, 2023, renamed it,
+  # https://laws.yukon.ca/cms/images/LEGISLATION/PRINCIPAL/2017/2017-0001/2017-0001.pdf and
+  # https://laws.yukon.ca/cms/images/LEGISLATION/PRINCIPAL/2002/2002-0072/2002-0072.pdf.
+  # The Interpretation Act (RSY 2002, c. 125) s. 21 lists the day in its definition of "holiday" and
+  # makes the day after a Sunday holiday a holiday, so a Sunday June 21 moves to the Monday and a
+  # Saturday one stays, https://laws.yukon.ca/cms/images/LEGISLATION/PRINCIPAL/2002/2002-0125/2002-0125.pdf
   - name: National Aboriginal Day
     regions: [ca_yt]
     mday: 21
+    observed: to_monday_if_sunday(date)
     year_ranges:
       between:
         start: 2017
@@ -165,11 +238,19 @@ months:
   - name: National Indigenous Peoples Day
     regions: [ca_yt]
     mday: 21
+    observed: to_monday_if_sunday(date)
     year_ranges:
       from: 2023
   7:
+  # A Sunday July 1 is observed on July 2 everywhere (Holidays Act, R.S.C. 1985 c. H-5, s. 2(2)); the Northwest
+  # Territories and Nunavut also move a Saturday one to the Monday, see the note at the top of the file
   - name: Canada Day
     regions: [ca]
+    excluded_regions: [ca_nt, ca_nu]
+    mday: 1
+    observed: to_monday_if_sunday(date)
+  - name: Canada Day
+    regions: [ca_nt, ca_nu]
     mday: 1
     observed: to_monday_if_weekend(date)
   - name: Orangemen's Day
@@ -228,6 +309,7 @@ months:
     week: 1
     regions: [ca]
     wday: 1
+  # Weekend observance differs by region; see the note at the top of the file
   # British Columbia established the day by the National Day for Truth and Reconciliation Act
   # (SBC 2023, c. 4), in force on Royal Assent, March 9, 2023, whose s. 3 adds it to the Employment
   # Standards Act s. 1(1) statutory holidays, so 2023 is its first year there,
@@ -236,7 +318,6 @@ months:
   - name: National Day for Truth and Reconciliation
     regions: [ca_bc]
     mday: 30
-    observed: to_monday_if_weekend(date)
     year_ranges:
       from: 2023
   # Prince Edward Island added "National Day for Truth and Reconciliation, observed on September 30"
@@ -246,7 +327,6 @@ months:
   - name: National Day for Truth and Reconciliation
     regions: [ca_pe]
     mday: 30
-    observed: to_monday_if_weekend(date)
     year_ranges:
       from: 2022
   # The Northwest Territories added September 30 to the Employment Standards Act s. 22(1) and to the
@@ -270,18 +350,18 @@ months:
       from: 2022
   # Yukon established the day by the National Day for Truth and Reconciliation Act (SY 2022, c. 18),
   # assented to November 24, 2022, whose s. 2 adds it to the Employment Standards Act s. 1 general
-  # holidays, so 2023 is its first year there,
+  # holidays, and whose s. 3 adds it to the Interpretation Act s. 21 "holiday", so 2023 is its first year
+  # there and a Sunday September 30 moves to the Monday,
   # https://laws.yukon.ca/cms/images/LEGISLATION/AMENDING/2022/2022-0018/2022-0018.pdf
   - name: National Day for Truth and Reconciliation
     regions: [ca_yt]
     mday: 30
-    observed: to_monday_if_weekend(date)
+    observed: to_monday_if_sunday(date)
     year_ranges:
       from: 2023
   - name: National Day for Truth and Reconciliation
     regions: [ca_ab]
     mday: 30
-    observed: to_monday_if_weekend(date)
     type: informal
     year_ranges:
       from: 2021
@@ -302,11 +382,12 @@ months:
     year_ranges:
       from: 2022
   # Manitoba made September 30 a general holiday by S.M. 2023, c. 50 (in force December 7, 2023), so its
-  # first statutory September 30 is 2024, https://web2.gov.mb.ca/laws/statutes/2023/c05023.php?lang=en
+  # first statutory September 30 is 2024, https://web2.gov.mb.ca/laws/statutes/2023/c05023.php?lang=en.
+  # The same Act listed the day in the Interpretation Act s. 23(1), whose s. 23(2) moves a Sunday holiday
+  # to the Monday
   - name: National Day for Truth and Reconciliation
     regions: [ca_mb]
     mday: 30
-    observed: to_monday_if_weekend(date)
     type: informal
     year_ranges:
       between:
@@ -315,7 +396,7 @@ months:
   - name: National Day for Truth and Reconciliation
     regions: [ca_mb]
     mday: 30
-    observed: to_monday_if_weekend(date)
+    observed: to_monday_if_sunday(date)
     year_ranges:
       from: 2024
   10:
@@ -324,43 +405,94 @@ months:
     regions: [ca_ab, ca_bc, ca_mb, ca_nt, ca_nu, ca_on, ca_qc, ca_sk, ca_yt]
     wday: 1
   11:
+  # Weekend observance differs by region; see the note at the top of the file
   - name: Remembrance Day
-    regions: [ca_ab, ca_sk, ca_bc, ca_pe, ca_nl, ca_nt, ca_nu, ca_nb, ca_yt]
+    regions: [ca_nt, ca_nu]
     mday: 11
     observed: to_monday_if_weekend(date)
+  - name: Remembrance Day
+    regions: [ca_nb, ca_nl, ca_sk]
+    mday: 11
+    observed: to_monday_if_sunday(date)
+  - name: Remembrance Day
+    regions: [ca_ab, ca_bc, ca_pe, ca_yt]
+    mday: 11
   12:
+  # Ontario's Legislation Act, 2006 (S.O. 2006 c. 21, Sched. F, in force July 25, 2007) s. 88(5) makes the Monday after
+  # a Saturday Christmas Day and the Tuesday after a Sunday one a holiday; the Interpretation Act (R.S.O. 1990 c. I.11)
+  # s. 29(1) it replaced moved a Sunday holiday to the Monday and left a Saturday one on its date
   - name: Christmas Day
     regions: [ca_on]
     mday: 25
+    observed: to_monday_if_sunday(date)
     year_ranges:
-      until: 2019
-    observed: to_weekday_if_weekend(date)
+      until: 2006
   - name: Christmas Day
     regions: [ca_on]
     mday: 25
-    observed: to_monday_if_weekend(date)
+    observed: to_tuesday_if_sunday_or_monday_if_saturday(date)
     year_ranges:
-      from: 2020
+      from: 2007
+  # Weekend observance differs by region; see the note at the top of the file
   - name: Christmas Day
-    regions: [ca_ab, ca_bc, ca_mb, ca_nb, ca_nl, ca_nt, ca_ns, ca_nu, ca_pe, ca_qc, ca_sk, ca_yt]
+    regions: [ca_nt, ca_nu]
     mday: 25
-    observed: to_weekday_if_weekend(date)
+    observed: to_monday_if_weekend(date)
+  - name: Christmas Day
+    regions: [ca_nb, ca_nl, ca_ns, ca_sk, ca_yt]
+    mday: 25
+    observed: to_monday_if_sunday(date)
+  # Manitoba's Interpretation Act s. 23(2) observes a Sunday Christmas Day on December 27 and leaves a Saturday one on
+  # its date. No function gives that alone, so this one also moves a Saturday Christmas Day to the Monday, December
+  # 27, which is a holiday that year anyway as the day after a Sunday Boxing Day
+  - name: Christmas Day
+    regions: [ca_mb]
+    mday: 25
+    observed: to_tuesday_if_sunday_or_monday_if_saturday(date)
+  - name: Christmas Day
+    regions: [ca_ab, ca_bc, ca_pe, ca_qc]
+    mday: 25
+  # Neither Ontario Act moves Boxing Day
   - name: Boxing Day
     regions: [ca_on]
     mday: 26
-    year_ranges:
-      until: 2019
-    observed: to_monday_if_weekend(date)
+  # Weekend observance differs by region; see the note at the top of the file
   - name: Boxing Day
-    regions: [ca_on]
-    mday: 26
-    year_ranges:
-      from: 2020
-    observed: to_weekday_if_boxing_weekend(date)
-  - name: Boxing Day
-    regions: [ca_ab, ca_bc, ca_mb, ca_nb, ca_nl, ca_nt, ca_ns, ca_nu, ca_pe, ca_qc, ca_sk, ca_yt]
+    regions: [ca_nt]
     mday: 26
     observed: to_monday_if_weekend(date)
+    type: informal
+  # Nunavut's Legislation Act (C.S.Nu. c. L-60, in force July 1, 2021) s. 1 "holiday" (p) adds the Tuesday
+  # after a Sunday Boxing Day; the Monday stays for the earlier years
+  - name: Boxing Day
+    regions: [ca_nu]
+    mday: 26
+    observed: to_monday_if_weekend(date)
+    type: informal
+    year_ranges:
+      until: 2020
+  - name: Boxing Day
+    regions: [ca_nu]
+    mday: 26
+    observed: to_tuesday_if_sunday_or_monday_if_saturday(date)
+    type: informal
+    year_ranges:
+      from: 2021
+  - name: Boxing Day
+    regions: [ca_mb, ca_nl]
+    mday: 26
+    observed: to_monday_if_sunday(date)
+    type: informal
+  # Alberta's Interpretation Act s. 28(1)(x)(iv) makes December 27 the holiday when December 26 falls on a Sunday or a
+  # Monday. No function gives the Monday case, so a Monday Boxing Day stays on its date here
+  - name: Boxing Day
+    regions: [ca_ab]
+    mday: 26
+    observed: to_monday_if_sunday(date)
+    type: informal
+  - name: Boxing Day
+    regions: [ca_bc, ca_nb, ca_ns, ca_pe, ca_qc, ca_sk, ca_yt]
+    mday: 26
     type: informal
 tests:
   - given:
@@ -839,57 +971,339 @@ tests:
 
   # Remembrance Day in all Canadian provinces
   # except (Nova Scotia, Manitoba, Ontario, and Quebec)
+  # 2012-11-11 fell on a Sunday and 2017-11-11 on a Saturday
   - given:
-      date: ['2010-11-11', '2012-11-12', '2017-11-13']
-      regions: ["ca_ab", "ca_sk", "ca_bc", "ca_pe", "ca_nl", "ca_nt", "ca_nu", "ca_nb", "ca_yt"]
+      date: ['2012-11-12', '2017-11-13']
+      regions: ["ca_nt"]
       options: ["observed"]
     expect:
       name: "Remembrance Day"
+  - given:
+      date: ['2012-11-12', '2017-11-13']
+      regions: ["ca_nu"]
+      options: ["observed"]
+    expect:
+      name: "Remembrance Day"
+  - given:
+      date: ['2012-11-11', '2017-11-11']
+      regions: ["ca_nt", "ca_nu"]
+      options: ["observed"]
+    expect:
+      holiday: false
+  - given:
+      date: ['2012-11-12', '2017-11-11']
+      regions: ["ca_nl"]
+      options: ["observed"]
+    expect:
+      name: "Remembrance Day"
+  - given:
+      date: ['2012-11-11', '2017-11-13']
+      regions: ["ca_nl"]
+      options: ["observed"]
+    expect:
+      holiday: false
+  - given:
+      date: ['2012-11-12', '2017-11-11']
+      regions: ["ca_nb"]
+      options: ["observed"]
+    expect:
+      name: "Remembrance Day"
+  - given:
+      date: ['2012-11-11', '2017-11-13']
+      regions: ["ca_nb"]
+      options: ["observed"]
+    expect:
+      holiday: false
+  - given:
+      date: ['2012-11-12', '2017-11-11']
+      regions: ["ca_sk"]
+      options: ["observed"]
+    expect:
+      name: "Remembrance Day"
+  - given:
+      date: ['2012-11-11', '2017-11-13']
+      regions: ["ca_sk"]
+      options: ["observed"]
+    expect:
+      holiday: false
+  - given:
+      date: ['2012-11-11', '2017-11-11']
+      regions: ["ca_ab"]
+      options: ["observed"]
+    expect:
+      name: "Remembrance Day"
+  - given:
+      date: ['2012-11-11', '2017-11-11']
+      regions: ["ca_bc"]
+      options: ["observed"]
+    expect:
+      name: "Remembrance Day"
+  - given:
+      date: ['2012-11-11', '2017-11-11']
+      regions: ["ca_pe"]
+      options: ["observed"]
+    expect:
+      name: "Remembrance Day"
+  - given:
+      date: ['2012-11-11', '2017-11-11']
+      regions: ["ca_yt"]
+      options: ["observed"]
+    expect:
+      name: "Remembrance Day"
+  - given:
+      date: ['2012-11-12', '2017-11-13']
+      regions: ["ca_ab", "ca_bc", "ca_pe", "ca_yt"]
+      options: ["observed"]
+    expect:
+      holiday: false
   - given:
       date: '2016-11-11'
       regions: ["ca_ab", "ca_sk", "ca_bc", "ca_pe", "ca_nl", "ca_nt", "ca_nu", "ca_nb", "ca_yt"]
     expect:
       name: "Remembrance Day"
 
-  # New years observed date
+  # New Year's Day observed date: 2011-01-01 was a Saturday and 2012-01-01 a Sunday
   - given:
-      date: '2011-01-03'
+      date: ['2011-01-01', '2012-01-02']
       regions: ["ca"]
       options: ["observed"]
     expect:
       name: "New Year's Day"
   - given:
-      date: '2012-01-02'
+      date: ['2011-01-03', '2012-01-01']
       regions: ["ca"]
       options: ["observed"]
     expect:
-      name: "New Year's Day"
-  - given:
-      date: '2016-01-01'
-      regions: ["ca"]
-      options: ["observed"]
-    expect:
-      name: "New Year's Day"
+      holiday: false
 
-  # Canada Day observed date
+  # Canada Day observed date: 2012-07-01 was a Sunday and 2017-07-01 a Saturday
   - given:
-      date: '2011-07-01'
+      date: ['2012-07-02', '2017-07-01']
       regions: ["ca"]
       options: ["observed"]
     expect:
       name: "Canada Day"
   - given:
-      date: '2012-07-02'
+      date: ['2012-07-01', '2017-07-03']
       regions: ["ca"]
+      options: ["observed"]
+    expect:
+      holiday: false
+
+  # New Year's Day by region: 2022-01-01 was a Saturday and 2023-01-01 a Sunday
+  - given:
+      date: ['2022-01-01', '2023-01-02']
+      regions: ["ca_mb"]
+      options: ["observed"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: ['2022-01-01', '2023-01-02']
+      regions: ["ca_nb"]
+      options: ["observed"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: ['2022-01-01', '2023-01-02']
+      regions: ["ca_nl"]
+      options: ["observed"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: ['2022-01-01', '2023-01-02']
+      regions: ["ca_ns"]
+      options: ["observed"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: ['2022-01-01', '2023-01-02']
+      regions: ["ca_on"]
+      options: ["observed"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: ['2022-01-01', '2023-01-02']
+      regions: ["ca_sk"]
+      options: ["observed"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: ['2022-01-01', '2023-01-02']
+      regions: ["ca_yt"]
+      options: ["observed"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: ['2022-01-03', '2023-01-01']
+      regions: ["ca_mb", "ca_nb", "ca_nl", "ca_ns", "ca_on", "ca_sk", "ca_yt"]
+      options: ["observed"]
+    expect:
+      holiday: false
+  - given:
+      date: ['2022-01-03', '2023-01-02']
+      regions: ["ca_nt"]
+      options: ["observed"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: ['2022-01-03', '2023-01-02']
+      regions: ["ca_nu"]
+      options: ["observed"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: ['2022-01-01', '2023-01-01']
+      regions: ["ca_nt", "ca_nu"]
+      options: ["observed"]
+    expect:
+      holiday: false
+  - given:
+      date: ['2022-01-01', '2023-01-01']
+      regions: ["ca_ab"]
+      options: ["observed"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: ['2022-01-01', '2023-01-01']
+      regions: ["ca_bc"]
+      options: ["observed"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: ['2022-01-01', '2023-01-01']
+      regions: ["ca_pe"]
+      options: ["observed"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: ['2022-01-01', '2023-01-01']
+      regions: ["ca_qc"]
+      options: ["observed"]
+    expect:
+      name: "New Year's Day"
+  - given:
+      date: ['2022-01-03', '2023-01-02']
+      regions: ["ca_ab", "ca_bc", "ca_pe"]
+      options: ["observed"]
+    expect:
+      holiday: false
+  - given:
+      date: '2022-01-03'
+      regions: ["ca_qc"]
+      options: ["observed"]
+    expect:
+      holiday: false
+
+  # Canada Day by region: 2017-07-01 was a Saturday and 2018-07-01 a Sunday
+  - given:
+      date: ['2017-07-03', '2018-07-02']
+      regions: ["ca_nt"]
       options: ["observed"]
     expect:
       name: "Canada Day"
   - given:
-      date: '2017-07-03'
-      regions: ["ca"]
+      date: ['2017-07-03', '2018-07-02']
+      regions: ["ca_nu"]
       options: ["observed"]
     expect:
       name: "Canada Day"
+  - given:
+      date: ['2017-07-01', '2018-07-01']
+      regions: ["ca_nt", "ca_nu"]
+      options: ["observed"]
+    expect:
+      holiday: false
+  - given:
+      date: ['2017-07-01', '2018-07-02']
+      regions: ["ca_ab"]
+      options: ["observed"]
+    expect:
+      name: "Canada Day"
+  - given:
+      date: ['2017-07-01', '2018-07-02']
+      regions: ["ca_bc"]
+      options: ["observed"]
+    expect:
+      name: "Canada Day"
+  - given:
+      date: ['2017-07-01', '2018-07-02']
+      regions: ["ca_mb"]
+      options: ["observed"]
+    expect:
+      name: "Canada Day"
+  - given:
+      date: ['2017-07-01', '2018-07-02']
+      regions: ["ca_nb"]
+      options: ["observed"]
+    expect:
+      name: "Canada Day"
+  - given:
+      date: ['2017-07-01', '2018-07-02']
+      regions: ["ca_nl"]
+      options: ["observed"]
+    expect:
+      name: "Canada Day"
+  - given:
+      date: ['2017-07-01', '2018-07-02']
+      regions: ["ca_ns"]
+      options: ["observed"]
+    expect:
+      name: "Canada Day"
+  - given:
+      date: ['2017-07-01', '2018-07-02']
+      regions: ["ca_on"]
+      options: ["observed"]
+    expect:
+      name: "Canada Day"
+  - given:
+      date: ['2017-07-01', '2018-07-02']
+      regions: ["ca_pe"]
+      options: ["observed"]
+    expect:
+      name: "Canada Day"
+  - given:
+      date: ['2017-07-01', '2018-07-02']
+      regions: ["ca_qc"]
+      options: ["observed"]
+    expect:
+      name: "Canada Day"
+  - given:
+      date: ['2017-07-01', '2018-07-02']
+      regions: ["ca_sk"]
+      options: ["observed"]
+    expect:
+      name: "Canada Day"
+  - given:
+      date: ['2017-07-01', '2018-07-02']
+      regions: ["ca_yt"]
+      options: ["observed"]
+    expect:
+      name: "Canada Day"
+  - given:
+      date: ['2017-07-03', '2018-07-01']
+      regions: ["ca_ab", "ca_bc", "ca_mb", "ca_nb", "ca_nl", "ca_ns", "ca_on", "ca_pe", "ca_qc", "ca_sk", "ca_yt"]
+      options: ["observed"]
+    expect:
+      holiday: false
+
+  # Fête Nationale: 2029-06-24 is a Sunday and 2023-06-24 was a Saturday
+  - given:
+      date: ['2023-06-24', '2029-06-25']
+      regions: ["ca_qc"]
+      options: ["observed"]
+    expect:
+      name: "Fête Nationale"
+  - given:
+      date: ['2023-06-26', '2029-06-24']
+      regions: ["ca_qc"]
+      options: ["observed"]
+    expect:
+      holiday: false
+  - given:
+      date: '2029-06-24'
+      regions: ["ca_qc"]
+    expect:
+      name: "Fête Nationale"
 
   # National Day for Truth and Reconciliation
   - given:
@@ -978,18 +1392,99 @@ tests:
       options: ["observed"]
     expect:
       name: "National Day for Truth and Reconciliation"
+  # 2023-09-30 was a Saturday and 2029-09-30 is a Sunday
   - given:
-      date: '2023-10-02'
-      regions: ["ca_bc", "ca_nt", "ca_pe", "ca_yt"]
+      date: ['2023-10-02', '2029-10-01']
+      regions: ["ca_nt"]
       options: ["observed"]
     expect:
       name: "National Day for Truth and Reconciliation"
   - given:
+      date: ['2023-10-02', '2029-10-01']
+      regions: ["ca_nu"]
+      options: ["observed"]
+    expect:
+      name: "National Day for Truth and Reconciliation"
+  - given:
+      date: ['2023-09-30', '2029-09-30']
+      regions: ["ca_nt", "ca_nu"]
+      options: ["observed"]
+    expect:
+      holiday: false
+  # Yukon moves the Sunday to the Monday and keeps the Saturday
+  - given:
+      date: ['2023-09-30', '2029-10-01']
+      regions: ["ca_yt"]
+      options: ["observed"]
+    expect:
+      name: "National Day for Truth and Reconciliation"
+  - given:
+      date: ['2023-10-02', '2029-09-30']
+      regions: ["ca_yt"]
+      options: ["observed"]
+    expect:
+      holiday: false
+  - given:
       date: '2023-10-02'
-      regions: ["ca_ab", "ca_mb", "ca_nu"]
+      regions: ["ca_nu"]
       options: ["informal", "observed"]
     expect:
       name: "National Day for Truth and Reconciliation"
+  - given:
+      date: '2023-10-02'
+      regions: ["ca_mb"]
+      options: ["informal", "observed"]
+    expect:
+      holiday: false
+  # Alberta, British Columbia and Prince Edward Island keep Saturday 2028-09-30 and Sunday 2029-09-30
+  - given:
+      date: ['2028-09-30', '2029-09-30']
+      regions: ["ca_bc"]
+      options: ["observed"]
+    expect:
+      name: "National Day for Truth and Reconciliation"
+  - given:
+      date: ['2028-09-30', '2029-09-30']
+      regions: ["ca_pe"]
+      options: ["observed"]
+    expect:
+      name: "National Day for Truth and Reconciliation"
+  - given:
+      date: ['2028-09-30', '2029-09-30']
+      regions: ["ca_ab"]
+      options: ["informal", "observed"]
+    expect:
+      name: "National Day for Truth and Reconciliation"
+  - given:
+      date: '2029-10-01'
+      regions: ["ca_ab", "ca_bc", "ca_pe"]
+      options: ["informal", "observed"]
+    expect:
+      holiday: false
+  - given:
+      date: '2023-09-30'
+      regions: ["ca_bc"]
+      options: ["observed"]
+    expect:
+      name: "National Day for Truth and Reconciliation"
+  - given:
+      date: '2023-09-30'
+      regions: ["ca_pe"]
+      options: ["observed"]
+    expect:
+      name: "National Day for Truth and Reconciliation"
+  - given:
+      date: '2023-09-30'
+      regions: ["ca_ab"]
+      options: ["informal", "observed"]
+    expect:
+      name: "National Day for Truth and Reconciliation"
+  - given:
+      date: '2023-10-02'
+      regions: ["ca_ab", "ca_bc", "ca_pe"]
+      options: ["informal", "observed"]
+    expect:
+      holiday: false
   - given:
       date: '2026-09-30'
       regions: ["ca_bc", "ca_nt", "ca_pe", "ca_yt"]
@@ -1022,22 +1517,23 @@ tests:
     expect:
       holiday: false
   - given:
-      date: '2023-10-02'
-      regions: ["ca_mb"]
-      options: ["observed"]
-    expect:
-      holiday: false
-  - given:
       date: ['2024-09-30', '2026-09-30']
       regions: ["ca_mb"]
     expect:
       name: "National Day for Truth and Reconciliation"
+  # Manitoba from 2024: 2028-09-30 is a Saturday and stays, 2029-09-30 a Sunday and moves
   - given:
-      date: '2028-10-02'
+      date: ['2028-09-30', '2029-10-01']
       regions: ["ca_mb"]
       options: ["observed"]
     expect:
       name: "National Day for Truth and Reconciliation"
+  - given:
+      date: ['2028-10-02', '2029-09-30']
+      regions: ["ca_mb"]
+      options: ["observed"]
+    expect:
+      holiday: false
 
   # National Day for Truth and Reconciliation - should not be active before 2021
   - given:
@@ -1079,11 +1575,17 @@ tests:
     expect:
       name: "Boxing Day"
   - given:
-      date: '2020-12-28'
+      date: '2020-12-26'
       regions: ["ca_on"]
       options: ["observed"]
     expect:
       name: "Boxing Day"
+  - given:
+      date: '2020-12-28'
+      regions: ["ca_on"]
+      options: ["observed"]
+    expect:
+      holiday: false
   - given:
       date: '2022-12-25'
       regions: ["ca"]
@@ -1091,9 +1593,9 @@ tests:
     expect:
       holiday: false
 
-  # Christmas Day observed date
+  # Christmas Day observed date in Ontario: 2010-12-25 was a Saturday, 2012-12-25 a Tuesday and 2016-12-25 a Sunday
   - given:
-      date: '2010-12-24'
+      date: '2010-12-27'
       regions: ["ca_on"]
       options: ["observed"]
     expect:
@@ -1105,36 +1607,294 @@ tests:
     expect:
       name: "Christmas Day"
   - given:
-      date: '2016-12-26'
+      date: '2016-12-27'
       regions: ["ca_on"]
       options: ["observed"]
     expect:
       name: "Christmas Day"
   - given:
-      date: '2021-12-24'
-      regions: ["ca_ab", "ca_bc", "ca_mb", "ca_nb", "ca_nl", "ca_nt", "ca_ns", "ca_nu", "ca_pe", "ca_qc", "ca_sk", "ca_yt"]
+      date: ['2010-12-24', '2016-12-28']
+      regions: ["ca_on"]
       options: ["observed"]
     expect:
-      name: "Christmas Day"
+      holiday: false
+  # Ontario before the Legislation Act, 2006: 2004-12-25 was a Saturday and 2005-12-25 a Sunday
   - given:
-      date: '2021-12-27'
-      regions: [ "ca_on" ]
-      options: [ "observed" ]
-    expect:
-      name: "Christmas Day"
-  - given:
-      date: '2022-12-26'
+      date: ['2004-12-25', '2005-12-26']
       regions: ["ca_on"]
       options: ["observed"]
     expect:
       name: "Christmas Day"
+  - given:
+      date: ['2004-12-27', '2005-12-25']
+      regions: ["ca_on"]
+      options: ["observed"]
+    expect:
+      holiday: false
+  # Christmas Day by region: 2021-12-25 fell on a Saturday and 2022-12-25 on a Sunday
+  - given:
+      date: ['2021-12-27', '2022-12-26']
+      regions: ["ca_nt"]
+      options: ["observed"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: ['2021-12-27', '2022-12-26']
+      regions: ["ca_nu"]
+      options: ["observed"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: ['2021-12-25', '2022-12-25']
+      regions: ["ca_nt", "ca_nu"]
+      options: ["observed"]
+    expect:
+      holiday: false
+  - given:
+      date: ['2021-12-25', '2022-12-26']
+      regions: ["ca_nb"]
+      options: ["observed"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: ['2021-12-25', '2022-12-26']
+      regions: ["ca_nl"]
+      options: ["observed"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: ['2021-12-25', '2022-12-26']
+      regions: ["ca_ns"]
+      options: ["observed"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: ['2021-12-25', '2022-12-26']
+      regions: ["ca_sk"]
+      options: ["observed"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: ['2021-12-25', '2022-12-26']
+      regions: ["ca_yt"]
+      options: ["observed"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: ['2021-12-27', '2022-12-25']
+      regions: ["ca_nb", "ca_nl", "ca_ns", "ca_sk", "ca_yt"]
+      options: ["observed"]
+    expect:
+      holiday: false
+  # Manitoba: a Sunday Christmas Day is December 27; a Saturday one lands on the Monday too, see the entry
+  - given:
+      date: ['2021-12-27', '2022-12-27']
+      regions: ["ca_mb"]
+      options: ["observed"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: ['2021-12-25', '2022-12-25', '2022-12-26']
+      regions: ["ca_mb"]
+      options: ["observed"]
+    expect:
+      holiday: false
+  - given:
+      date: ['2021-12-25', '2022-12-25']
+      regions: ["ca_ab"]
+      options: ["observed"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: ['2021-12-25', '2022-12-25']
+      regions: ["ca_bc"]
+      options: ["observed"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: ['2021-12-25', '2022-12-25']
+      regions: ["ca_pe"]
+      options: ["observed"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: ['2021-12-25', '2022-12-25']
+      regions: ["ca_qc"]
+      options: ["observed"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: ['2021-12-27', '2022-12-26']
+      regions: ["ca_ab", "ca_bc", "ca_pe", "ca_qc"]
+      options: ["observed"]
+    expect:
+      holiday: false
+  - given:
+      date: ['2021-12-27', '2022-12-27']
+      regions: ["ca_on"]
+      options: ["observed"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: ['2021-12-25', '2022-12-25']
+      regions: ["ca_on"]
+      options: ["observed"]
+    expect:
+      holiday: false
 
+  # Boxing Day in Ontario stays on its date: 2010-12-26 was a Sunday and 2015-12-26 a Saturday
   - given:
-      date: ['2010-12-27', '2012-12-26', '2015-12-28']
+      date: ['2010-12-26', '2015-12-26']
       regions: ["ca_on"]
       options: ["observed"]
     expect:
       name: "Boxing Day"
+  - given:
+      date: ['2015-12-28', '2021-12-28']
+      regions: ["ca_on"]
+      options: ["observed"]
+    expect:
+      holiday: false
+
+  # Boxing Day by region: 2020-12-26 was a Saturday and 2021-12-26 a Sunday
+  - given:
+      date: '2020-12-28'
+      regions: ["ca_nt"]
+      options: ["informal", "observed"]
+    expect:
+      name: "Boxing Day"
+  - given:
+      date: '2020-12-28'
+      regions: ["ca_nu"]
+      options: ["informal", "observed"]
+    expect:
+      name: "Boxing Day"
+  - given:
+      date: ['2020-12-26', '2021-12-26']
+      regions: ["ca_nt", "ca_nu"]
+      options: ["informal", "observed"]
+    expect:
+      holiday: false
+  - given:
+      date: '2021-12-28'
+      regions: ["ca_nu"]
+      options: ["informal", "observed"]
+    expect:
+      name: "Boxing Day"
+  - given:
+      date: '2021-12-28'
+      regions: ["ca_nt"]
+      options: ["informal", "observed"]
+    expect:
+      holiday: false
+  # Nunavut's Tuesday starts with the Legislation Act in 2021: Sunday 2010-12-26 moved to the Monday,
+  # which Christmas (Saturday 2010-12-25) holds first, so the Sunday and the Tuesday are empty
+  - given:
+      date: ['2010-12-26', '2010-12-28']
+      regions: ["ca_nu"]
+      options: ["informal", "observed"]
+    expect:
+      holiday: false
+  # Nunavut still moves a Saturday Boxing Day to the Monday: 2026-12-26 is a Saturday
+  - given:
+      date: '2026-12-28'
+      regions: ["ca_nu"]
+      options: ["informal", "observed"]
+    expect:
+      name: "Boxing Day"
+  - given:
+      date: '2026-12-26'
+      regions: ["ca_nu"]
+      options: ["informal", "observed"]
+    expect:
+      holiday: false
+  # Sunday to Monday in Manitoba, Newfoundland and Labrador and Alberta; a Saturday stays. On Monday
+  # 2021-12-27 Manitoba's Christmas Day comes first, see the Christmas Day tests
+  - given:
+      date: ['2020-12-26', '2021-12-27']
+      regions: ["ca_ab"]
+      options: ["informal", "observed"]
+    expect:
+      name: "Boxing Day"
+  - given:
+      date: ['2020-12-26', '2021-12-27']
+      regions: ["ca_nl"]
+      options: ["informal", "observed"]
+    expect:
+      name: "Boxing Day"
+  - given:
+      date: '2020-12-26'
+      regions: ["ca_mb"]
+      options: ["informal", "observed"]
+    expect:
+      name: "Boxing Day"
+  - given:
+      date: '2021-12-27'
+      regions: ["ca_mb"]
+      options: ["informal", "observed"]
+    expect:
+      name: "Christmas Day"
+  - given:
+      date: ['2020-12-28', '2021-12-26', '2021-12-28']
+      regions: ["ca_ab", "ca_mb", "ca_nl"]
+      options: ["informal", "observed"]
+    expect:
+      holiday: false
+  # Manitoba's Boxing Day keeps Monday 2022-12-26 while its Christmas Day moves to the Tuesday
+  - given:
+      date: '2022-12-26'
+      regions: ["ca_mb"]
+      options: ["informal", "observed"]
+    expect:
+      name: "Boxing Day"
+  - given:
+      date: ['2020-12-26', '2021-12-26']
+      regions: ["ca_bc"]
+      options: ["informal", "observed"]
+    expect:
+      name: "Boxing Day"
+  - given:
+      date: ['2020-12-26', '2021-12-26']
+      regions: ["ca_nb"]
+      options: ["informal", "observed"]
+    expect:
+      name: "Boxing Day"
+  - given:
+      date: ['2020-12-26', '2021-12-26']
+      regions: ["ca_ns"]
+      options: ["informal", "observed"]
+    expect:
+      name: "Boxing Day"
+  - given:
+      date: ['2020-12-26', '2021-12-26']
+      regions: ["ca_pe"]
+      options: ["informal", "observed"]
+    expect:
+      name: "Boxing Day"
+  - given:
+      date: ['2020-12-26', '2021-12-26']
+      regions: ["ca_qc"]
+      options: ["informal", "observed"]
+    expect:
+      name: "Boxing Day"
+  - given:
+      date: ['2020-12-26', '2021-12-26']
+      regions: ["ca_sk"]
+      options: ["informal", "observed"]
+    expect:
+      name: "Boxing Day"
+  - given:
+      date: ['2020-12-26', '2021-12-26']
+      regions: ["ca_yt"]
+      options: ["informal", "observed"]
+    expect:
+      name: "Boxing Day"
+  - given:
+      date: ['2020-12-28', '2021-12-27']
+      regions: ["ca_bc", "ca_nb", "ca_ns", "ca_pe", "ca_qc", "ca_sk", "ca_yt"]
+      options: ["informal", "observed"]
+    expect:
+      holiday: false
 
   # Yukon National Aboriginal Day - should not be active before 2017
   - given:
@@ -1169,6 +1929,51 @@ tests:
       regions: ['ca_nt']
     expect:
       name: 'National Indigenous Peoples Day'
+  # June 21 observed date, under either name: 2020-06-21 and 2026-06-21 fall on a Sunday and 2014-06-21 and
+  # 2031-06-21 on a Saturday.
+  # The Northwest Territories move both to the Monday
+  - given:
+      date: ['2026-06-22', '2031-06-23']
+      regions: ['ca_nt']
+      options: ['observed']
+    expect:
+      name: 'National Indigenous Peoples Day'
+  - given:
+      date: ['2014-06-23', '2020-06-22']
+      regions: ['ca_nt']
+      options: ['observed']
+    expect:
+      name: 'National Aboriginal Day'
+  - given:
+      date: ['2020-06-22', '2031-06-23']
+      regions: ['ca_nt', 'ca_yt']
+    expect:
+      holiday: false
+  - given:
+      date: ['2014-06-21', '2026-06-21', '2031-06-21']
+      regions: ['ca_nt']
+      options: ['observed']
+    expect:
+      holiday: false
+  # Yukon moves the Sunday to the Monday and keeps the Saturday
+  - given:
+      date: ['2026-06-22', '2031-06-21']
+      regions: ['ca_yt']
+      options: ['observed']
+    expect:
+      name: 'National Indigenous Peoples Day'
+  - given:
+      date: '2020-06-22'
+      regions: ['ca_yt']
+      options: ['observed']
+    expect:
+      name: 'National Aboriginal Day'
+  - given:
+      date: ['2020-06-21', '2026-06-21', '2031-06-23']
+      regions: ['ca_yt']
+      options: ['observed']
+    expect:
+      holiday: false
   # Quebec's January 2 is informal
   - given:
       date: '2026-01-02'
