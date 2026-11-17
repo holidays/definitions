@@ -37,6 +37,13 @@ months:
     function: lunar_to_solar(year, month, day, region)
     mday: 8
   5:
+  # Labour Day became a public holiday from 2026 (promulgated 2026-04-09, in force 2026-05-01)
+  # https://www.moel.go.kr/news/enews/report/enewsView.do?news_seq=19193
+  - name: 노동절
+    regions: [kr]
+    mday: 1
+    year_ranges:
+      from: 2026
   - name: 어린이날
     regions: [kr]
     mday: 5
@@ -45,10 +52,19 @@ months:
     regions: [kr]
     mday: 6
   7:
+  # Constitution Day is a public holiday again from 2026 (promulgated 2026-02-10)
+  # https://www.mpm.go.kr/mpm/comm/newsPress/newsPressRelease/?cntId=4250&mode=view
   - name: 제헌절
     regions: [kr]
     mday: 17
     type: informal
+    year_ranges:
+      until: 2025
+  - name: 제헌절
+    regions: [kr]
+    mday: 17
+    year_ranges:
+      from: 2026
   8:
   - name: 추석 연휴
     regions: [kr]
@@ -125,6 +141,27 @@ tests:
       options: ["informal"]
     expect:
       name: "제헌절"
+  - given:
+      date: '2026-07-17'
+      regions: ["kr"]
+    expect:
+      name: "제헌절"
+  - given:
+      date: '2025-07-17'
+      regions: ["kr"]
+    expect:
+      holiday: false
+  - given:
+      date: ['2026-05-01', '2027-05-01']
+      regions: ["kr"]
+    expect:
+      name: "노동절"
+  - given:
+      date: '2025-05-01'
+      regions: ["kr"]
+      options: ["informal"]
+    expect:
+      holiday: false
   - given:
       date: '2016-08-15'
       regions: ["kr"]
