@@ -1,0 +1,411 @@
+# Indonesia holiday definitions for the Holidays gem!
+#
+# National holidays (hari libur nasional). Since 2002 they are set each year by
+# a joint decree of three ministers (SKB 3 Menteri: Religious Affairs, Manpower,
+# and State Apparatus Empowerment and Bureaucratic Reform).
+#
+# * Fixed-date holidays: New Year's Day, Labour Day (from 2014, Keputusan
+#   Presiden Nomor 24 Tahun 2013), Pancasila Day (from 2017, Keputusan Presiden
+#   Nomor 24 Tahun 2016), Independence Day and Christmas.
+# * Good Friday and Ascension Day follow Easter. Keputusan Presiden Nomor 8
+#   Tahun 2024 renamed them from "Isa Almasih" to "Yesus Kristus" and made
+#   Easter Sunday a national holiday from 2024.
+# * Chinese New Year (Tahun Baru Imlek, a national holiday since 2003 under
+#   Keputusan Presiden Nomor 19 Tahun 2002), the Islamic holidays, Nyepi
+#   (Balinese Saka calendar) and Vesak follow the dates in each year's SKB,
+#   because the government sets them from its own calendar and moon sighting
+#   rather than an arithmetic rule. They are listed per year and currently
+#   cover 2024 through 2027; add new years as each SKB is published.
+#   27 Rajab (Isra Mikraj) falls twice in 2027.
+# * 2024 also had two one-off national holidays for the general election
+#   (Keputusan Presiden Nomor 10 Tahun 2024) and the regional elections
+#   (Keputusan Presiden Nomor 33 Tahun 2024).
+#
+# Joint leave days (cuti bersama) are not included: they are deducted from
+# annual leave and are not public holidays.
+#
+# Sources:
+# https://peraturan.bpk.go.id/Details/276688/keppres-no-8-tahun-2024
+# https://peraturan.bpk.go.id/Details/277337/keppres-no-10-tahun-2024
+# https://peraturan.bpk.go.id/Details/308159/keppres-no-33-tahun-2024
+# https://web.archive.org/web/20250413193349/https://setkab.go.id/pemerintah-tetapkan-hari-libur-nasional-dan-cuti-bersama-tahun-2025/
+# https://www.setneg.go.id/baca/index/inilah_skb_3_menteri_libur_nasional_dan_cuti_bersama_2026
+# https://web.archive.org/web/20260917182154/https://setneg.go.id/baca/index/inilah_skb_3_menteri_libur_nasional_dan_cuti_bersama_2027
+# https://en.wikipedia.org/wiki/Public_holidays_in_Indonesia
+
+---
+region_names:
+  id: "Indonesia"
+months:
+  0:
+  - name: Wafat Isa Almasih
+    regions: [id]
+    function: easter(year)
+    function_modifier: -2
+    year_ranges:
+      until: 2023
+  - name: Wafat Yesus Kristus
+    regions: [id]
+    function: easter(year)
+    function_modifier: -2
+    year_ranges:
+      from: 2024
+  - name: Kebangkitan Yesus Kristus (Paskah)
+    regions: [id]
+    function: easter(year)
+    year_ranges:
+      from: 2024
+  - name: Kenaikan Isa Almasih
+    regions: [id]
+    function: easter(year)
+    function_modifier: 39
+    year_ranges:
+      until: 2023
+  - name: Kenaikan Yesus Kristus
+    regions: [id]
+    function: easter(year)
+    function_modifier: 39
+    year_ranges:
+      from: 2024
+  1:
+  - name: Tahun Baru Masehi
+    regions: [id]
+    mday: 1
+  - name: Isra Mikraj Nabi Muhammad
+    regions: [id]
+    mday: 5
+    year_ranges:
+      limited: [2027]
+  - name: Isra Mikraj Nabi Muhammad
+    regions: [id]
+    mday: 16
+    year_ranges:
+      limited: [2026]
+  - name: Isra Mikraj Nabi Muhammad
+    regions: [id]
+    mday: 27
+    year_ranges:
+      limited: [2025]
+  - name: Tahun Baru Imlek
+    regions: [id]
+    mday: 29
+    year_ranges:
+      limited: [2025]
+  2:
+  - name: Tahun Baru Imlek
+    regions: [id]
+    mday: 6
+    year_ranges:
+      limited: [2027]
+  - name: Isra Mikraj Nabi Muhammad
+    regions: [id]
+    mday: 8
+    year_ranges:
+      limited: [2024]
+  - name: Tahun Baru Imlek
+    regions: [id]
+    mday: 10
+    year_ranges:
+      limited: [2024]
+  - name: Hari Pemilihan Umum
+    regions: [id]
+    mday: 14
+    year_ranges:
+      limited: [2024]
+  - name: Tahun Baru Imlek
+    regions: [id]
+    mday: 17
+    year_ranges:
+      limited: [2026]
+  3:
+  - name: Hari Suci Nyepi
+    regions: [id]
+    mday: 8
+    year_ranges:
+      limited: [2027]
+  - name: Hari Raya Idul Fitri
+    regions: [id]
+    mday: 10
+    year_ranges:
+      limited: [2027]
+  - name: Hari Raya Idul Fitri
+    regions: [id]
+    mday: 11
+    year_ranges:
+      limited: [2027]
+  - name: Hari Suci Nyepi
+    regions: [id]
+    mday: 11
+    year_ranges:
+      limited: [2024]
+  - name: Hari Suci Nyepi
+    regions: [id]
+    mday: 19
+    year_ranges:
+      limited: [2026]
+  - name: Hari Raya Idul Fitri
+    regions: [id]
+    mday: 21
+    year_ranges:
+      limited: [2026]
+  - name: Hari Raya Idul Fitri
+    regions: [id]
+    mday: 22
+    year_ranges:
+      limited: [2026]
+  - name: Hari Suci Nyepi
+    regions: [id]
+    mday: 29
+    year_ranges:
+      limited: [2025]
+  - name: Hari Raya Idul Fitri
+    regions: [id]
+    mday: 31
+    year_ranges:
+      limited: [2025]
+  4:
+  - name: Hari Raya Idul Fitri
+    regions: [id]
+    mday: 1
+    year_ranges:
+      limited: [2025]
+  - name: Hari Raya Idul Fitri
+    regions: [id]
+    mday: 10
+    year_ranges:
+      limited: [2024]
+  - name: Hari Raya Idul Fitri
+    regions: [id]
+    mday: 11
+    year_ranges:
+      limited: [2024]
+  5:
+  - name: Hari Buruh Internasional
+    regions: [id]
+    mday: 1
+    year_ranges:
+      from: 2014
+  - name: Hari Raya Waisak
+    regions: [id]
+    mday: 12
+    year_ranges:
+      limited: [2025]
+  - name: Hari Raya Idul Adha
+    regions: [id]
+    mday: 17
+    year_ranges:
+      limited: [2027]
+  - name: Hari Raya Waisak
+    regions: [id]
+    mday: 20
+    year_ranges:
+      limited: [2027]
+  - name: Hari Raya Waisak
+    regions: [id]
+    mday: 23
+    year_ranges:
+      limited: [2024]
+  - name: Hari Raya Idul Adha
+    regions: [id]
+    mday: 27
+    year_ranges:
+      limited: [2026]
+  - name: Hari Raya Waisak
+    regions: [id]
+    mday: 31
+    year_ranges:
+      limited: [2026]
+  6:
+  - name: Hari Lahir Pancasila
+    regions: [id]
+    mday: 1
+    year_ranges:
+      from: 2017
+  - name: Hari Raya Idul Adha
+    regions: [id]
+    mday: 6
+    year_ranges:
+      limited: [2025]
+  - name: Tahun Baru Islam
+    regions: [id]
+    mday: 6
+    year_ranges:
+      limited: [2027]
+  - name: Tahun Baru Islam
+    regions: [id]
+    mday: 16
+    year_ranges:
+      limited: [2026]
+  - name: Hari Raya Idul Adha
+    regions: [id]
+    mday: 17
+    year_ranges:
+      limited: [2024]
+  - name: Tahun Baru Islam
+    regions: [id]
+    mday: 27
+    year_ranges:
+      limited: [2025]
+  7:
+  - name: Tahun Baru Islam
+    regions: [id]
+    mday: 7
+    year_ranges:
+      limited: [2024]
+  8:
+  - name: Maulid Nabi Muhammad
+    regions: [id]
+    mday: 15
+    year_ranges:
+      limited: [2027]
+  - name: Hari Kemerdekaan Republik Indonesia
+    regions: [id]
+    mday: 17
+  - name: Maulid Nabi Muhammad
+    regions: [id]
+    mday: 25
+    year_ranges:
+      limited: [2026]
+  9:
+  - name: Maulid Nabi Muhammad
+    regions: [id]
+    mday: 5
+    year_ranges:
+      limited: [2025]
+  - name: Maulid Nabi Muhammad
+    regions: [id]
+    mday: 16
+    year_ranges:
+      limited: [2024]
+  11:
+  - name: Hari Pemilihan Kepala Daerah
+    regions: [id]
+    mday: 27
+    year_ranges:
+      limited: [2024]
+  12:
+  - name: Hari Raya Natal
+    regions: [id]
+    mday: 25
+  - name: Isra Mikraj Nabi Muhammad
+    regions: [id]
+    mday: 26
+    year_ranges:
+      limited: [2027]
+
+tests:
+  - given:
+      date: ['2024-01-01', '2027-01-01']
+      regions: ["id"]
+    expect:
+      name: "Tahun Baru Masehi"
+  - given:
+      date: ['2014-05-01', '2027-05-01']
+      regions: ["id"]
+    expect:
+      name: "Hari Buruh Internasional"
+  - given:
+      date: '2013-05-01'
+      regions: ["id"]
+    expect:
+      holiday: false
+  - given:
+      date: ['2017-06-01', '2027-06-01']
+      regions: ["id"]
+    expect:
+      name: "Hari Lahir Pancasila"
+  - given:
+      date: '2016-06-01'
+      regions: ["id"]
+    expect:
+      holiday: false
+  - given:
+      date: ['1950-08-17', '2027-08-17']
+      regions: ["id"]
+    expect:
+      name: "Hari Kemerdekaan Republik Indonesia"
+  - given:
+      date: ['2024-12-25', '2027-12-25']
+      regions: ["id"]
+    expect:
+      name: "Hari Raya Natal"
+  - given:
+      date: '2023-04-07'
+      regions: ["id"]
+    expect:
+      name: "Wafat Isa Almasih"
+  - given:
+      date: '2023-05-18'
+      regions: ["id"]
+    expect:
+      name: "Kenaikan Isa Almasih"
+  - given:
+      date: '2023-04-09'
+      regions: ["id"]
+    expect:
+      holiday: false
+  - given:
+      date: ['2024-03-29', '2025-04-18', '2026-04-03', '2027-03-26']
+      regions: ["id"]
+    expect:
+      name: "Wafat Yesus Kristus"
+  - given:
+      date: ['2024-03-31', '2025-04-20', '2026-04-05', '2027-03-28']
+      regions: ["id"]
+    expect:
+      name: "Kebangkitan Yesus Kristus (Paskah)"
+  - given:
+      date: ['2024-05-09', '2025-05-29', '2026-05-14', '2027-05-06']
+      regions: ["id"]
+    expect:
+      name: "Kenaikan Yesus Kristus"
+  - given:
+      date: ['2024-02-08', '2025-01-27', '2026-01-16', '2027-01-05', '2027-12-26']
+      regions: ["id"]
+    expect:
+      name: "Isra Mikraj Nabi Muhammad"
+  - given:
+      date: ['2024-02-10', '2025-01-29', '2026-02-17', '2027-02-06']
+      regions: ["id"]
+    expect:
+      name: "Tahun Baru Imlek"
+  - given:
+      date: '2024-02-14'
+      regions: ["id"]
+    expect:
+      name: "Hari Pemilihan Umum"
+  - given:
+      date: ['2024-03-11', '2025-03-29', '2026-03-19', '2027-03-08']
+      regions: ["id"]
+    expect:
+      name: "Hari Suci Nyepi"
+  - given:
+      date: ['2024-04-10', '2024-04-11', '2025-03-31', '2025-04-01', '2026-03-21', '2026-03-22', '2027-03-10', '2027-03-11']
+      regions: ["id"]
+    expect:
+      name: "Hari Raya Idul Fitri"
+  - given:
+      date: ['2024-05-23', '2025-05-12', '2026-05-31', '2027-05-20']
+      regions: ["id"]
+    expect:
+      name: "Hari Raya Waisak"
+  - given:
+      date: ['2024-06-17', '2025-06-06', '2026-05-27', '2027-05-17']
+      regions: ["id"]
+    expect:
+      name: "Hari Raya Idul Adha"
+  - given:
+      date: ['2024-07-07', '2025-06-27', '2026-06-16', '2027-06-06']
+      regions: ["id"]
+    expect:
+      name: "Tahun Baru Islam"
+  - given:
+      date: ['2024-09-16', '2025-09-05', '2026-08-25', '2027-08-15']
+      regions: ["id"]
+    expect:
+      name: "Maulid Nabi Muhammad"
+  - given:
+      date: '2024-11-27'
+      regions: ["id"]
+    expect:
+      name: "Hari Pemilihan Kepala Daerah"
